@@ -1,11 +1,72 @@
-# Introduction
- 
-Welcome to Nextra! This is a basic docs template. You can use it as a starting point for your own project :)
+import { Link } from "../components";
 
-## What is Nextra?
+# About Auth.js
 
-A **simple**, **powerful** and **flexible** site generation framework with everything you love from Next.js.
+Auth.js is a complete open-source authentication solution for web applications.<br />Check out the live demos of Auth.js in action:
 
-## Documentation
+<div className="flex flex-row justify-around w-full mt-8 mb-12">
+  {[
+    {
+      href: "https://next-auth-example.vercel.app/",
+      img: "https://authjs.dev/img/frameworks/nextjs.svg",
+      name: "NextJS",
+      logoWidth: "40",
+    },
+    {
+      href: "https://sveltekit-auth-example.vercel.app/",
+      img: "https://authjs.dev/img/frameworks/sveltekit.svg",
+      name: "Sveltekit",
+      logoWidth: "35",
+    },
+    {
+      href: "https://auth-solid.vercel.app/",
+      img: "https://authjs.dev/img/frameworks/solidstart.svg",
+      name: "Solid start",
+      logoWidth: "45",
+    },
+  ].map(({ href, name, img, logoWidth }) => (
+    <Link
+      href={href}
+      key={href}
+      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-28 shadow-lg"
+    >
+      <img src={img} width={logoWidth} />
+      <div className="text-sm mt-3">{name}</div>
+    </Link>
+  ))}
+</div>
 
-The documentation is available at [https://nextra.site](https://nextra.site).
+Support for [more frameworks](/reference#roadmap) are on the way...
+
+Continue to our guides to see how to use Auth.js:
+
+- [Setup with OAuth](/getting-started/providers/oauth-tutorial)
+- [Setup with Magic Links](/getting-started/providers/email-tutorial)
+- [Setup with External Auth](/getting-started/providers/credentials-tutorial)
+
+### Features
+
+- Built in support for popular services (Google, Facebook, Auth0, Apple…)
+- Built-in support for databases/ORMs (MySQL, Postgres, Prisma, Drizzle…)
+- Built-in email/passwordless/magic link authentication
+- Use with _any_ [OAuth 2](https://www.ietf.org/rfc/rfc6749.html) or [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) provider
+- Use with _any_ username/password store
+
+### Flexible
+
+- Runtime agnostic - run anywhere! Vercel Edge Functions, Node.js, Serverless, etc.
+- Use with any modern framework! Next.js, SolidStart, SvelteKit, etc.
+- [Bring Your Own Database](/getting-started/adapters) - or none! MySQL, Postgres, MSSQL, MongoDB, etc. Choose database sessions or JWT.
+
+### Secure by default
+
+- Signed, prefixed, server-only cookies
+- Built-in CSRF protection
+- Doesn't rely on client-side JavaScript
+- Encrypted JWT sessions
+
+## Credits
+
+Auth.js is an open-source project that is only possible [thanks to contributors](/contributors).
+
+To financially support the development of Auth.js, you can check our [OpenCollective](https://opencollective.com/nextauth) page. We appreciate your support 💚.

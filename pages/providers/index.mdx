@@ -1,0 +1,25 @@
+import { Link } from "../../components";
+import manifest from "../data/manifest.json";
+
+# Authentication Providers
+
+Using an Auth.js provider....
+
+The following listed official providers are created and maintained by the community:
+
+<div className="grid gap-x-8 gap-y-4 grid-cols-4 w-full mt-8 mb-12">
+  {Object.entries(manifest.providers).map(([id, name]) => (
+    <Link
+      href={`/reference/core/providers/${id}`}
+      key={id}
+      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-36"
+    >
+      <img src={`/img/providers/${id}.svg`} width="40" />
+      <div class="text-sm mt-3 text-center">{name}</div>
+    </Link>
+  ))}
+</div>
+
+## TypeScript
+
+Check out the [`@auth/core/providers` API Reference](/reference/core/providers) documentation.
