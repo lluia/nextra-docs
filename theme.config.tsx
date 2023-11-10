@@ -9,14 +9,11 @@ const config: DocsThemeConfig = {
     a: (props: ChildrenProps) => <Link {...props} />,
   },
   project: {
-    link: "https://github.com/shuding/nextra-docs-template",
+    link: "https://github.com/nextauthjs/next-auth",
   },
-  chat: {
-    link: "https://discord.com",
-  },
-  docsRepositoryBase: "https://github.com/shuding/nextra-docs-template",
+  docsRepositoryBase: "https://github.com/nextauthjs/next-auth",
   footer: {
-    text: "Nextra Docs Template",
+    text: "☕️ Auth.js – spread love",
   },
 };
 

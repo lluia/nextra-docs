@@ -1,14 +1,11 @@
 {
   "index": "Introduction",
-  "providers": "Providers",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
-  }
+  "installation": "Installation",
+  "setup": "Setup",
+  "reference": "Reference",
+  "deployment": "Deployment",
+  "typescript": "Typescript",
+  "migrating-to-v5": "Migrating to v5",
+  "security": "Security",
+  "contributors": "Contributors"
 }

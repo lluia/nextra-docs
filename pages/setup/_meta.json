@@ -1,0 +1,5 @@
+{
+  "oauth-authentication": "OAuth",
+  "magic-links-authentication": "Magic links",
+  "external-authentication": "External auth"
+}
