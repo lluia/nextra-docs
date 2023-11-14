@@ -1,4 +1,4 @@
-import { Callout, Steps } from "nextra/components";
+import { Callout, Steps, Tabs } from "nextra/components";
 
 # Magic links authentication
 
@@ -90,17 +90,20 @@ EMAIL_FROM={SENDER_EMAIL}
 
 Note that we're also specifying from which domain emails are going to be sent from. You're going to need to verify [your sender's identity](https://docs.sendgrid.com/for-developers/sending-email/sender-identity) so that Sendgrid can send emails from the specified email domain. For simplicity, we recommend using a Gmail account.
 
-Finally, we need to expose this configuration values to Auth.js `EmailProvider`, which is the provider in charge of making magic links work.
+Finally, we need to expose this configuration values to Auth.js `EmailProvider`, which is the provider in charge of making magic links work:
 
-Open `pages/api/auth/[...nextauth].ts` and add the following:
-
-```ts filename="pages/api/auth/[...nextauth].ts"
+<Tabs items={["App router", "Pages router"]}>
+<Tabs.Tab>
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
-import EmailProvider from "next-auth/providers/email";
-
-export default NextAuth({
+import Email from "next-auth/providers/email";
+ 
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
   providers: [
-    EmailProvider({
+    Email({
       server: {
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
@@ -114,6 +117,40 @@ export default NextAuth({
   ],
 });
 ```
+```ts filename="app/api/auth/[...nextauth]/route.ts"
+export { GET, POST } from "./auth";
+export const runtime = "edge"; // optional
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import Email from "next-auth/providers/email";
+ 
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [
+    Email({
+      server: {
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
+});
+```
+```ts filename="pages/api/auth/[...nextauth].ts"
+export { GET, POST } from "./auth";
+```
+</Tabs.Tab>
+</Tabs>
 
 ## Setting up an adapter
 
@@ -162,22 +199,24 @@ if (process.env.NODE_ENV === "development") {
 
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
-export default clientPromise;
+export clientPromise;
 ```
 
 And lets reference this new adapter from our Auth.js configuration file:
 
-```diff filename="pages/api/auth/[...nextauth].ts"
+```diff filename="./auth.ts"
 import NextAuth from "next-auth"
-import EmailProvider from "next-auth/providers/email"
+import Email from "next-auth/providers/email"
 + import { MongoDBAdapter } from "@auth/mongodb-adapter"
-+ import clientPromise from "../../../lib/mongodb/client"
++ import { clientPromise } from "./lib/mongodb/client"
 
-export default NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
 + adapter: MongoDBAdapter(clientPromise),
   providers: [
-    EmailProvider({
+    Email({
       server: {
         host: process.env.EMAIL_SERVER_HOST,
         port: process.env.EMAIL_SERVER_PORT,

@@ -1,4 +1,4 @@
-import { Callout, Steps } from "nextra/components";
+import { Callout, Tabs, Steps } from "nextra/components";
 
 # OAuth authentication
 
@@ -49,28 +49,50 @@ If you're using the example app, Auth.js is already installed, otherwise follow 
 
 Next, we're gonna create the main Auth.js configuration file (which is a Next.js API route). This route contains the necessary configuration for Auth.js, as well as the dynamic route handler:
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+<Tabs items={["App router", "Pages router"]}>
+<Tabs.Tab>
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-
-export default NextAuth({
-  providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-  ],
+import GitHub from "next-auth/providers/github";
+ 
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [GitHub],
 });
 ```
+```ts filename="app/api/auth/[...nextauth]/route.ts"
+export { GET, POST } from "./auth";
+export const runtime = "edge"; // optional
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import GitHub from "next-auth/providers/github";
+ 
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [GitHub],
+});
+```
+```ts filename="pages/api/auth/[...nextauth].ts"
+export { GET, POST } from "./auth";
+```
+</Tabs.Tab>
+</Tabs>
 
-Behind the scenes, this creates all the relevant Auth API routes within `/api/auth/*` so that your application can interact with the chosen OAuth provider using the [OAuth 2](https://auth0.com/intro-to-iam/what-is-oauth-2) protocol.
+Behind the scenes, this creates all the relevant Auth API routes so that your application can interact with the chosen OAuth provider using the [OAuth 2](https://auth0.com/intro-to-iam/what-is-oauth-2) protocol.
 
 - See all Auth.js configuration options 🔗
 - See all the OAuth Provider configuration options 🔗
 
 ### Adding environment variables
 
-You may notice we are using environment variables in the code example above. If you haven't, create an `.env.local` file as explained in the [installation section](/installation) and add the following two variables:
+If you haven't, create an `.env.local` file as explained in the [installation section](/installation) and add the following two variables:
 
 ```bash filename=".env.local"
 GITHUB_ID="123"
@@ -83,7 +105,7 @@ We will be filling `GITHUB_ID` and `GITHUB_SECRET` with proper values from the G
 
 ### Creating an OAuth app in Github
 
-We need to register our application in GitHub, so that when NextAuth.js forwards the authorization requests to it, GitHub can recognize your application and authenticate the user for us.
+We need to register our application in GitHub, so that when Auth.js forwards the authorization requests to it, GitHub can recognize your application and authenticate the user for us.
 
 Log in [to GitHub](https://github.com/settings/developers), go to **Settings** → **Developers** → **OAuth Apps** and click "New OAuth App":
 

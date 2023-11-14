@@ -2,7 +2,7 @@
   "frameworks": [
     {
       "id": "Next.js",
-      "name": "NextAuth.js",
+      "name": "Auth.js",
       "url": "next-auth-example"
     },
     {
