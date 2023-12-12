@@ -1,11 +1,11 @@
 {
   "index": "Introduction",
   "installation": "Installation",
-  "setup": "Setup",
+  "setup": "Login setup",
   "reference": "Reference",
   "deployment": "Deployment",
   "typescript": "Typescript",
-  "migrating-to-v5": "Migrating to v5",
+  "migrating-to-v5": "Migrating to Auth.js",
   "security": "Security",
   "contributors": "Contributors"
 }

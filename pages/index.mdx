@@ -1,4 +1,8 @@
-import { Link } from "../components";
+import { Callout } from "nextra/components";
+import { Link } from "../components/Link/Link";
+import { Tooltip } from "../components/Tooltip/Tooltip";
+import { ListDisclosure } from "../components/ListDisclosure/ListDisclosure";
+import manifest from "./data/manifest.json";
 
 # About Auth.js
 
@@ -12,6 +16,7 @@ Auth.js is a complete open-source authentication solution for web applications.<
       name: "Next.js",
       logoWidth: "40",
       wip: false,
+      label: ""
     },
     {
       href: "https://sveltekit-auth-example.vercel.app/",
@@ -19,6 +24,7 @@ Auth.js is a complete open-source authentication solution for web applications.<
       name: "Sveltekit",
       logoWidth: "35",
       wip: true,
+      label: "Officially supported. Missing documentation. Help us document it."
     },
     {
       href: "https://auth-solid.vercel.app/",
@@ -26,36 +32,105 @@ Auth.js is a complete open-source authentication solution for web applications.<
       name: "Solid start",
       logoWidth: "45",
       wip: true,
+      label: "Officially supported. Missing documentation. Help us document it"
     },
-  ].map(({ href, name, img, logoWidth, wip }) => (
-    <Link
-      href={href}
-      key={href}
-      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-28 shadow-lg relative"
-    >
-      <img src={img} width={logoWidth} />
-      <div className="text-sm mt-3">{name}</div>
-      {wip ? (
-        <div
-          className="absolute px-3 py-1 font-semibold text-sm bg-amber-300 text-black rounded-full shadow-sm"
-          style={{ right: "-30px", top: "-15px" }}
-        >
-          Beta
-        </div>
-      ) : null}
-    </Link>
-  ))}
+  ].map(({ href, name, img, logoWidth, wip, label }) => {
+    const content = (
+      <Link
+        href={href}
+        key={href}
+        className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-28 shadow-lg relative"
+        target="_blank"
+      >
+        <img src={img} width={logoWidth} />
+        <div className="text-sm mt-3">{name}</div>
+        {wip ? (
+          <div
+            className="absolute px-3 py-1 font-semibold text-sm bg-amber-300 text-black rounded-full shadow-sm"
+            style={{ right: "-30px", top: "-15px" }}
+          >
+            Beta
+          </div>
+        ) : null}
+      </Link>
+    )
+
+return wip ? <Tooltip label={label}>{content}</Tooltip> : content
+})}
+
 </div>
 
-Support for [more frameworks](/reference#roadmap) are on the way...
+Support for more frameworks are on the way, check [our roadmap](/reference#roadmap)!
+
+## NextAuth.js → Auth.js
+
+NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and refactored the whole library to be an authentication layer which is framework agnostic.
+
+<img
+  src="/img/etc/authjs-architecture.png"
+  width="500"
+  className="mx-auto mt-4"
+/>
+
+Auth.js stays as a core JS authentication layer which can be used in any
+framework (using the specific package for the framework). See
+[Installation](/installation) for more details.
+
+<Callout type="info">
+  Migrating from v4? See [our migration guide](/migrating-to-v5).
+</Callout>
+
+## Authentication methods
 
 There are 3 ways to authenticate users with Auth.js:
 
-- [Setup with OAuth](/getting-started/providers/oauth-tutorial)
-- [Setup with Magic Links](/getting-started/providers/email-tutorial)
-- [Setup with External Auth](/getting-started/providers/credentials-tutorial)
+- [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- [Paswordless authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, WebAuthn, etc..._ )
+- [External Auth](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs, etc..._ )
 
-### Features
+Additionally, Auth.js can be integrated with an external database via Database adapters, in case you need or want to store user data.
+
+### OAuth Providers
+
+<ListDisclosure
+  limit="8"
+  className="grid gap-x-8 gap-y-4 grid-cols-4 w-full mt-8 mb-12"
+>
+  {Object.entries(manifest.providers).map(([id, name]) => (
+    <Link
+      href={`/reference/core/providers/${id}`}
+      key={id}
+      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+    >
+      <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
+      <div class="text-sm text-center">{name}</div>
+    </Link>
+  ))}
+</ListDisclosure>
+
+### Supported Databases
+
+<ListDisclosure
+  limit="8"
+  className="grid gap-x-4 gap-y-4 grid-cols-4 w-full mt-8 mb-12"
+>
+  {Object.entries(manifest.adapters).map(([id, [name, img]]) => (
+    <Link
+      href={`/reference/adapter/${id}`}
+      key={id}
+      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+    >
+      <img src={`/img/adapters/${img || `${id}.svg`}`} className="h-12 mt-2" />
+      <div class="text-sm text-center">{name}</div>
+    </Link>
+  ))}
+</ListDisclosure>
+
+## Next steps
+
+Ready to get started? Follow our [installation guide](/installation) to get Auth.js installed in your app.
+
+## Features
 
 - Built in support for popular services (Google, Facebook, Auth0, Apple…)
 - Built-in support for databases/ORMs (MySQL, Postgres, Prisma, Drizzle…)
