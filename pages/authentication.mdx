@@ -1,0 +1,39 @@
+import { Callout } from "nextra/components";
+
+# Choosing authentication method(s)
+
+<Callout type="warning">
+  Auth.js discourages the use of passwords due to the inherent security risks of
+  the username-password model. Passwords are still supported through the
+  <strong>CredentialsProvider</strong> but we strongly encourage to setup a combination
+  of Oauth and Passwordless for authentication.
+</Callout>
+
+Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports three main authentication paradigms:
+
+- **OAuth** ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- **Paswordless** ( _Magic links, OTP codes, WebAuthn, etc..._ )
+- **External Auth** ( _Integrating with external APIs, etc..._ )
+
+<br />
+
+<details>
+<summary>
+<b>OAuth is the recommended authentication method for your application</b>
+</summary>
+
+OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection ( _bot-protection, rate-limiting_ ), password management ( _password reset, credential stuffing, rotation_ ), data security ( _encryption/salting, strength validation_ ), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
+
+</details>
+<details>
+<summary>
+<b>Setting up more than one authentication method</b>
+</summary>
+
+OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection ( _bot-protection, rate-limiting_ ), password management ( _password reset, credential stuffing, rotation_ ), data security ( _encryption/salting, strength validation_ ), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
+
+</details>
+
+## Do I need a database?
+
+...

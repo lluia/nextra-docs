@@ -24,21 +24,21 @@ Auth.js is a complete open-source authentication solution for web applications.<
       name: "Sveltekit",
       logoWidth: "35",
       wip: true,
-      label: "Officially supported. Missing documentation. Help us document it."
+      label: "Officially supported but we need to update the documentation with code examples. Help us document it."
     },
     {
       href: "https://auth-solid.vercel.app/",
       img: "https://authjs.dev/img/frameworks/solidstart.svg",
-      name: "Solid start",
+      name: "SolidStart",
       logoWidth: "45",
       wip: true,
-      label: "Officially supported. Missing documentation. Help us document it"
+      label: "Officially supported but we need to update the documentation with code examples. Help us document it"
     },
   ].map(({ href, name, img, logoWidth, wip, label }) => {
     const content = (
       <Link
         href={href}
-        key={href}
+        key={name}
         className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-28 shadow-lg relative"
         target="_blank"
       >
@@ -92,14 +92,11 @@ Additionally, Auth.js can be integrated with an external database via Database a
 
 ### OAuth Providers
 
-<ListDisclosure
-  limit="8"
-  className="grid gap-x-8 gap-y-4 grid-cols-4 w-full mt-8 mb-12"
->
+<ListDisclosure limit={8}>
   {Object.entries(manifest.providers).map(([id, name]) => (
     <Link
       href={`/reference/core/providers/${id}`}
-      key={id}
+      key={name}
       className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
@@ -110,10 +107,7 @@ Additionally, Auth.js can be integrated with an external database via Database a
 
 ### Supported Databases
 
-<ListDisclosure
-  limit="8"
-  className="grid gap-x-4 gap-y-4 grid-cols-4 w-full mt-8 mb-12"
->
+<ListDisclosure limit={8}>
   {Object.entries(manifest.adapters).map(([id, [name, img]]) => (
     <Link
       href={`/reference/adapter/${id}`}

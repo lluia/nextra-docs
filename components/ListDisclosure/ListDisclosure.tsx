@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useListDisclosure } from "./useListDisclosure";
+import cx from "classnames";
 
 interface Props {
   children: React.ReactElement[];
@@ -7,19 +9,28 @@ interface Props {
 }
 
 export function ListDisclosure({ children, limit, className = "" }: Props) {
-  const [expanded, toggleExpanded] = useState(false);
-  const renderedItems = expanded ? children : children.slice(0, limit);
+  const { displayLimit, handleCollapseAll, handleDisplayMore } =
+    useListDisclosure(limit);
+
+  const rendered = children.slice(0, displayLimit);
+  const isAllDisplayed = displayLimit >= children.length;
 
   return (
-    <div className={className}>
-      {renderedItems}
-      <button
-        className="font-semibold text-sm bg-emerald-100 text-gray-900 rounded-full shadow-sm h-10 w-28 mt-4"
-        onClick={() => toggleExpanded((s: boolean) => !s)}
+    <>
+      <div
+        className={cx(
+          "grid gap-x-4 gap-y-4 grid-cols-4 w-full my-4",
+          className
+        )}
       >
-        {" "}
-        {expanded ? "Collapse" : "See all"}
+        {rendered}
+      </div>
+      <button
+        className="font-semibold text-sm bg-slate-900 text-white rounded-full shadow-md h-8 w-24 text-xs"
+        onClick={isAllDisplayed ? handleCollapseAll : handleDisplayMore}
+      >
+        {isAllDisplayed ? "Collapse all" : "Show more"}
       </button>
-    </div>
+    </>
   );
 }

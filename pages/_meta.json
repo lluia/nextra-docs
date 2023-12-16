@@ -1,8 +1,9 @@
 {
   "index": "Introduction",
   "installation": "Installation",
-  "setup": "Login setup",
-  "reference": "Reference",
+  "authentication": "Authentication",
+  "setup": "Setup login",
+  "securing": "Securing your app",
   "deployment": "Deployment",
   "typescript": "Typescript",
   "migrating-to-v5": "Migrating to Auth.js",

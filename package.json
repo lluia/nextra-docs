@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
     "@ark-ui/react": "^1.1.0",
+    "classnames": "^2.3.2",
     "next": "^14.0.1",
     "nextra": "^2.13.2",
     "nextra-theme-docs": "^2.13.2",

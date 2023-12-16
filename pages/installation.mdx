@@ -1,10 +1,30 @@
+import { Tabs, Callout } from "nextra/components";
+
 # Installing Auth.js
 
-This tutorial assumes you have a Next.js application set up. If you don't, you can follow the [Next.js tutorial](https://Next.js.org/learn/basics/create-Next.js-app) to get started. Installing Auth.js is easy, just run:
+Installing Auth.js is easy, you just need to run a single command and set one environment variable.
 
-```bash npm2yarnbun
-npm install next-auth
-```
+Start by installing the appropriate package for your framework of choice:
+
+{/* prettier-ignore */}
+<Tabs items={["Next.js", "Sveltekit", "SolidStart"]}>
+  <Tabs.Tab>
+    ```bash
+    npm install next-auth
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash
+    npm install @auth/sveltekit
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash
+    npm install @auth/solid-start
+    ```
+  </Tabs.Tab>
+</Tabs>
+{/* prettier-ignore */}
 
 ## Environment
 
@@ -14,10 +34,16 @@ Create a `.env.local` file at the root of your application and add the `AUTH_SEC
 AUTH_SECRET="This is an example"
 ```
 
-`AUTH_SECRET` is a random string used by the library to encrypt tokens and email verification hashes, and it's mandatory to keep things secure (See [Deployment](/deployment) for more details). On Unix based systems you can use this command:
+`AUTH_SECRET` is a random token used by the library to encrypt tokens and email verification hashes, and it's mandatory to keep things secure (See [Deployment](/deployment) to learn more). On Unix based systems you can use this command:
 
 ```bash
 openssl rand -base64 32
 ```
 
-or https://generate-secret.vercel.app/32 to generate a random value for it.
+or you can visit https://generate-secret.vercel.app/32 to generate one.
+
+<Callout type="warning">
+  When deploying your app outside <strong>Vercel</strong>, you'll need to set
+  also a `AUTH_TRUST_HOST` variable to `true` for other hosting providers like
+  <strong>Cloudflare Pages</strong> or <strong>Netlify</strong>.
+</Callout>
