@@ -1,0 +1,5 @@
+{
+  "oauth-github-setup": "OAuth with Github",
+  "paswordless-sentry-setup": "Passwordless with Sentry",
+  "external-auth-setup": "External auth setup"
+}

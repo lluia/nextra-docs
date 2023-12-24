@@ -1,0 +1,146 @@
+import { Callout, Tabs } from "nextra/components";
+import { Link } from "../../components/Link/Link";
+import { ListDisclosure } from "../../components/ListDisclosure/ListDisclosure";
+import manifest from "../data/manifest.json";
+
+# Authenticating users
+
+<Callout type="warning">
+  Auth.js discourages the use of passwords due to the inherent security risks of
+  the username-password model. Passwords are still supported through the
+  <strong>CredentialsProvider</strong> but we strongly encourage to setup a combination
+  of Oauth and Passwordless for authentication.
+</Callout>
+
+Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
+
+- **OAuth** ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- **Paswordless** ( _Magic links, OTP codes, WebAuthn, etc..._ )
+- **External Auth** ( _Integrating with external APIs, etc..._ )
+
+<br />
+
+<details>
+<summary>
+<b>Why Auth.js recommends OAuth as the main authentication method for your application?</b>
+</summary>
+
+OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection ( _bot-protection, rate-limiting_ ), password management ( _password reset, credential stuffing, rotation_ ), data security ( _encryption/salting, strength validation_ ), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
+
+</details>
+<details>
+<summary>
+<b>Do I need a database?</b>
+</summary>
+
+Auth.js by default uses [JSON Web Tokens](https://jwt.io/) for saving the user's session so you don't need to setup a database for authenticating users ( _all our JWT tokens are encrypted by default with A256GCM_ ). However, if you want to set up a database, you can use one of our official database adapters or create your own. The database will be used <u>to persist the user's session</u>. You can force the usage of JWT when using a database through the configuration options.
+
+</details>
+<details>
+<summary>
+<b>Can I set up more than one authentication method?</b>
+</summary>
+
+OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection ( _bot-protection, rate-limiting_ ), password management ( _password reset, credential stuffing, rotation_ ), data security ( _encryption/salting, strength validation_ ), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
+
+</details>
+
+Once you have chosen your authentication method, refer to one of the sections below on how you set it up:
+
+- [Setting up Oauth](#setting-up-oauth)
+- [Setting up Paswordless](#setting-up-paswordless)
+- [Setting up external auth](#setup-with-external-auth)
+
+## Setting up OAuth
+
+<Callout type="info">
+  Can't find the OAuth provider you're looking for? In that case, you'll need to
+  build your own provider, which is easy. [Learn how](/tutorials/custom-oauth)
+  to do so. Technically, Auth.js can be set with any OAuth provider as long as
+  they support **OAuth 2**.
+</Callout>
+
+Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
+
+<ListDisclosure limit={8}>
+  {Object.entries(manifest.providers).map(([id, name]) => (
+    <Link
+      href={`/reference/core/providers/${id}`}
+      key={name}
+      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+    >
+      <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
+      <div class="text-sm text-center">{name}</div>
+    </Link>
+  ))}
+</ListDisclosure>
+
+Start by creating a Auth.js config file in the root of your application:
+
+<Tabs items={["Next.js", "Sveltekit", "SolidStart"]}>
+<Tabs.Tab>
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+// In this example we're using Github, if you're using another provider, for example, like Google, it'll be:
+// `import Google from "next-auth/providers/google"`
+import GitHub from "next-auth/providers/github";
+ 
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [GitHub],
+});
+```
+</Tabs.Tab>
+<Tabs.Tab>
+_Sveltekit not documented yet._
+</Tabs.Tab>
+<Tabs.Tab>
+_Solidstart documented yet._
+</Tabs.Tab>
+</Tabs>
+
+<Callout type="warning">
+  Note that, if you haven't done it before, setting up OAuth from scratch can be
+  tricky. <u>We strongly recommend</u> you read our deep dive guide on [how to
+  setup Github OAuth with Auth.js](/tutorials/oauth-github-setup). The
+  instructions will be the same for any OAuth provider, only differing how you
+  register your application in the provider's dashboard.
+</Callout>
+
+If you run the app, this won't work yet. You need to register your application in the OAuth provider dashboard. For instance, for Github you would need to follow [these instructions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) to register the app.
+
+When registering, make sure you insert a callback URL with the following shape:
+
+```
+[origin]/api/auth/callback/[provider]
+```
+
+In this case, given we want to try our application locally, it would be (the provider's name is always in [kebab case](https://www.theserverside.com/definition/Kebab-case)):
+
+```
+https://localhost:3000/api/auth/callback/github
+```
+
+Once registered, you should get a `CLIENT_ID` and `CLIENT_SECRET`. Add those in your application environment file (`.env.local` for Next.js) like so:
+
+```bash filename=".env.local"
+GITHUB_ID={CLIENT_ID}
+GITHUB_SECRET={CLIENT_SECRET}
+```
+
+Auth.js is automatically configured to read these, so you don't need to make any changes in your configuration file. The shape of these variables in the environment is always the sale:
+
+```
+{PROVIDER-NAME}_ID=
+{PROVIDER-NAME}_SECRET=
+```
+
+## Setting up Paswordless
+
+...
+
+## Setup with external auth
+
+...

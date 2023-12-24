@@ -1,0 +1,11 @@
+{
+  "index": "Introduction",
+  "installation": "Installation",
+  "authentication": "Authentication",
+  "securing": "Securing your app",
+  "deployment": "Deployment",
+  "typescript": "Typescript",
+  "migrating-to-v5": "Migrating to Auth.js",
+  "security": "Security",
+  "contributors": "Contributors"
+}

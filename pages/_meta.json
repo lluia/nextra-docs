@@ -1,12 +1,23 @@
 {
-  "index": "Introduction",
-  "installation": "Installation",
-  "authentication": "Authentication",
-  "setup": "Setup login",
-  "securing": "Securing your app",
-  "deployment": "Deployment",
-  "typescript": "Typescript",
-  "migrating-to-v5": "Migrating to Auth.js",
-  "security": "Security",
-  "contributors": "Contributors"
+  "index": {
+    "title": "Homepage",
+    "type": "page",
+    "display": "hidden"
+  },
+  "overview": {
+    "title": "Getting started",
+    "type": "page"
+  },
+  "tutorials": {
+    "title": "Tutorials",
+    "type": "page"
+  },
+  "reference": {
+    "title": "API reference",
+    "type": "page"
+  },
+  "concepts": {
+    "title": "Concepts",
+    "type": "page"
+  }
 }

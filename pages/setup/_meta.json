@@ -1,5 +1,0 @@
-{
-  "oauth-authentication": "OAuth",
-  "magic-links-authentication": "Passwordless",
-  "external-authentication": "External auth"
-}
