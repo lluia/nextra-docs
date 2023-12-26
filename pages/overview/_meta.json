@@ -2,10 +2,12 @@
   "index": "Introduction",
   "installation": "Installation",
   "authentication": "Authentication",
+  "database-setup": "Database setup",
   "securing": "Securing your app",
   "deployment": "Deployment",
   "typescript": "Typescript",
   "migrating-to-v5": "Migrating to Auth.js",
   "security": "Security",
-  "contributors": "Contributors"
+  "contributors": "Contributors",
+  "todo": "Todo"
 }

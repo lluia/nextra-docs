@@ -1,0 +1,21 @@
+# Middleware (Next.js)
+
+With NextAuth.js 4.2.0 and Next.js 12, you can now protect your pages via the middleware pattern more easily. If you would like to protect all pages, you can create a `_middleware.ts` file in your root pages directory which looks like this:
+
+```ts filename="./middleware.ts"
+export { default } from "next-auth/middleware";
+```
+
+Otherwise, if you only want to protect a subset of pages, you could put it in a subdirectory as well, for example in `/app/admin/_middleware.ts` would protect all pages under the `/admin` route.
+
+For the time being, middleware only supports **jwt** as a session strategy, so it won't work with databases.
+
+## Recipes
+
+### Redirecting users
+
+...
+
+### Blocking access
+
+...

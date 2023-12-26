@@ -1,5 +1,6 @@
 {
-  "oauth-providers": "Oauth providers",
-  "adapters": "Database Adapters",
-  "session-management": "Session management"
+  "protecting-pages": "Protecting pages",
+  "protecting-apis": "Protecting API routes",
+  "session-management": "Session management",
+  "middleware": "Middleware"
 }

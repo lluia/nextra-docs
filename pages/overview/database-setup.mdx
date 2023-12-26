@@ -1,13 +1,14 @@
 import { Callout } from "nextra/components";
 import { Link } from "../../components/Link/Link";
-
-# Database adapters
-
 import manifest from "../data/manifest.json";
 
-An **Database Adapter** in Auth.js connects your application to whatever database or backend system you use to store data for users.
+# Setup a database
 
-**Adapters are optional**, unless you need to persist user information in your own database, or you want to implement certain flows. For instance, when implementing magic links, the [Email Provider](/getting-started/providers/email-tutorial) will require you a database adapter to be able to store [verification tokens](#verification-token) present on the links.
+Auth.js by default uses JSON Web Tokens for saving the user's session so you don't need to setup a database for authenticating users. However, if you want to persist user information in your own database, or you want to implement certain flows, you can use a **Database Adapter**.
+
+**Database Adapters** are packages maintained by the Auth.js team to connect Auth.js to the most common databases (see full list below).
+
+For instance, when implementing magic links, the [Email Provider](/getting-started/providers/email-tutorial) will require you to setup a database adapter to be able to store the [verification tokens](#verification-token) present on the links.
 
 ## Official adapters
 

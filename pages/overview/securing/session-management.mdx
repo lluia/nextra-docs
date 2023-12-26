@@ -1,19 +1,30 @@
 import { Callout } from "nextra/components";
+import { Code } from "../../../components/Code/Code";
 
 # Session management
 
 Auth.js allows you to easily add different authentication methods into your app. It also ships with some utilities to help you manage the user session easily. Here's an overview of them showing how they can be used.
 
 <Callout>
-  Note that for these helpers to work, first you need to setup an authentication
-  method. Either [OAuth](/setup/oauth-authentication), [Magic
-  links](/setup/magic-links-authentication) or [External
-  auth](/setup/external-authentication).
+  Note that for these helpers to work, first you need to [setup an
+  authentication method](/overview/authentication). Either **OAuth**,
+  **Paswordless** or **External auth**.
 </Callout>
 
-### Exposing the session
+## Login users
 
-To expose the user's session to rest of our Next.js application we can use the built-in [`SessionProvider`]():
+...
+
+## Logout users
+
+...
+
+## Exposing the session
+
+<Code>
+<Code.Next>
+
+To expose the user's session to components within Next.js we can use the built-in [`SessionProvider`]():
 
 ```ts filename="pages/_app.tsx"
 import { SessionProvider } from "next-auth/react";
@@ -31,9 +42,15 @@ export default function App({
 }
 ```
 
-### Consuming the session
+</Code.Next>
+</Code>
 
-Down the tree, you can now in your components use the builtin [`useSession()`]() hook to gain access to the user's session data and authentication status:
+## Consuming the session
+
+<Code>
+<Code.Next>
+
+Down the tree, you can now in components use the builtin [`useSession()`]() hook to gain access to the user's session data and authentication status:
 
 ```ts filename="pages/overview.tsx"
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -65,51 +82,5 @@ export default function Page() {
 }
 ```
 
-<Callout type="warning">
-  `useSession` should always be used within `SessionProvider` otherwise it will
-  throw an error.
-</Callout>
-
-### Protecting pages
-
-Auth.js is not opinionated on how to protect pages ((blocking unauthorized access). One simple approach can be implemented like so:
-
-```ts filename="_app.tsx"
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}: AppProps) {
-  const isAuthenticated = session.status === "authenticated";
-  return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
-  );
-}
-```
-
-### Protecting API Routes
-
-To protect API Routes (blocking unauthorized access to resources), you can use [`getServerSession()`](https://next-auth.js.org/configuration/Next.js#getserversession) to know whether a session exists or not:
-
-```ts filename="pages/api/movies/list.ts"
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]";
-
-export default async function listMovies(req, res) {
-  const session = await getServerSession(req, res, authOptions);
-
-  if (session) {
-    res.send({
-      movies: [
-        { title: "Alien vs Predator", id: 1 },
-        { title: "Reservoir Dogs", id: 2 },
-      ],
-    });
-  } else {
-    res.send({
-      error: "You must sign in to view movies.",
-    });
-  }
-}
-```
+</Code.Next>
+</Code>

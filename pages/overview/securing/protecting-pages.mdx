@@ -1,0 +1,53 @@
+import { Callout } from "nextra/components";
+import { Code } from "../../../components/Code/Code";
+
+# Protecting pages
+
+## Client side
+
+If data on a page is fetched using calls to secure API routes - i.e. routes that use getSession() or getToken() to access the session - you can use the useSession React Hook to secure pages.
+
+<Code>
+  <Code.Next>
+
+```ts
+import { useSession, getSession } from "next-auth";
+
+export default function Page() {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (status === "unauthenticated") {
+    return <p>Access Denied</p>;
+  }
+
+  return (
+    <>
+      <h1>Protected Page</h1>
+      <p>You can view this page because you are signed in.</p>
+    </>
+  );
+}
+```
+
+  </Code.Next>
+</Code>
+
+## Server side
+
+...
+
+## Middleware (Next.js)
+
+...
+
+## Redirecting users
+
+...
+
+## Role based authentication
+
+See the guide...

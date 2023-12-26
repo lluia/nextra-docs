@@ -1,22 +1,23 @@
 import { Callout, Tabs } from "nextra/components";
 import { Link } from "../../components/Link/Link";
+import { Code } from "../../components/Code/Code";
 import { ListDisclosure } from "../../components/ListDisclosure/ListDisclosure";
 import manifest from "../data/manifest.json";
 
 # Authenticating users
 
-<Callout type="warning">
+<Callout>
   Auth.js discourages the use of passwords due to the inherent security risks of
   the username-password model. Passwords are still supported through the
-  <strong>CredentialsProvider</strong> but we strongly encourage to setup a combination
-  of Oauth and Passwordless for authentication.
+  [External auth]((#setup-with-external-auth)) but we strongly encourage to
+  setup a combination of **Oauth + Passwordless** for authentication.
 </Callout>
 
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- **OAuth** ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- **Paswordless** ( _Magic links, OTP codes, WebAuthn, etc..._ )
-- **External Auth** ( _Integrating with external APIs, etc..._ )
+- [Oauth](#setup-oauth) ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- [Paswordless](#setup-paswordless) ( _Magic links, OTP codes, WebAuthn, etc..._ )
+- [External auth](#setup-with-external-auth) ( _Integrating with external APIs, etc..._ )
 
 <br />
 
@@ -45,19 +46,13 @@ OAuth providers spend significant amounts of money, time, and engineering effort
 
 </details>
 
-Once you have chosen your authentication method, refer to one of the sections below on how you set it up:
-
-- [Setting up Oauth](#setting-up-oauth)
-- [Setting up Paswordless](#setting-up-paswordless)
-- [Setting up external auth](#setup-with-external-auth)
-
-## Setting up OAuth
+## Setup OAuth
 
 <Callout type="info">
   Can't find the OAuth provider you're looking for? In that case, you'll need to
-  build your own provider, which is easy. [Learn how](/tutorials/custom-oauth)
-  to do so. Technically, Auth.js can be set with any OAuth provider as long as
-  they support **OAuth 2**.
+  build your own provider, which is easy. [Learn how](/tutorials/custom-oauth).
+  Auth.js can be setup with any OAuth provider as long as they support **OAuth
+  2**.
 </Callout>
 
 Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
@@ -65,7 +60,7 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
 <ListDisclosure limit={8}>
   {Object.entries(manifest.providers).map(([id, name]) => (
     <Link
-      href={`/reference/core/providers/${id}`}
+      href={`/reference/oauth-providers/${id}`}
       key={name}
       className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
@@ -77,14 +72,15 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
 
 Start by creating a Auth.js config file in the root of your application:
 
-<Tabs items={["Next.js", "Sveltekit", "SolidStart"]}>
-<Tabs.Tab>
+<Code>
+<Code.Next>
+
 ```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 // In this example we're using Github, if you're using another provider, for example, like Google, it'll be:
 // `import Google from "next-auth/providers/google"`
 import GitHub from "next-auth/providers/github";
- 
+
 export const {
   handlers: { GET, POST },
   auth,
@@ -92,14 +88,9 @@ export const {
   providers: [GitHub],
 });
 ```
-</Tabs.Tab>
-<Tabs.Tab>
-_Sveltekit not documented yet._
-</Tabs.Tab>
-<Tabs.Tab>
-_Solidstart documented yet._
-</Tabs.Tab>
-</Tabs>
+
+</Code.Next>
+</Code>
 
 <Callout type="warning">
   Note that, if you haven't done it before, setting up OAuth from scratch can be
@@ -109,7 +100,7 @@ _Solidstart documented yet._
   register your application in the provider's dashboard.
 </Callout>
 
-If you run the app, this won't work yet. You need to register your application in the OAuth provider dashboard. For instance, for Github you would need to follow [these instructions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) to register the app.
+If you run the app, this won't work yet. You need to register your application in the OAuth provider's dashboard. For instance, for Github you would need to follow [these instructions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) to register the app.
 
 When registering, make sure you insert a callback URL with the following shape:
 
@@ -123,24 +114,97 @@ In this case, given we want to try our application locally, it would be (the pro
 https://localhost:3000/api/auth/callback/github
 ```
 
-Once registered, you should get a `CLIENT_ID` and `CLIENT_SECRET`. Add those in your application environment file (`.env.local` for Next.js) like so:
+Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
 
 ```bash filename=".env.local"
 GITHUB_ID={CLIENT_ID}
 GITHUB_SECRET={CLIENT_SECRET}
 ```
 
-Auth.js is automatically configured to read these, so you don't need to make any changes in your configuration file. The shape of these variables in the environment is always the sale:
+Auth.js is automatically configured to read these, so you don't need to make any changes in your configuration file. The shape of these variables in the environment is always the same:
 
 ```
 {PROVIDER-NAME}_ID=
 {PROVIDER-NAME}_SECRET=
 ```
 
-## Setting up Paswordless
+Now start your application and navigate to `/signin`. Click on `Sign in with GitHub`, if all went well you should have signed in with Github (or whatever provider you chose) via OAuth.
+
+<Callout type="info">
+  You can click on the provider cards above, or visit [the provider's API
+  reference page](http://localhost:3000/reference/oauth-providers) to see the
+  configuration options you can supply to the provider.
+</Callout>
+
+## Setup Paswordless
 
 ...
 
 ## Setup with external auth
 
-...
+To setup Auth.js with external authentication we need to use the `CredentialsProvider`, which is designed to forward any inserted credentials (.i.e username/password) in the sign in form to your authentication service. This provider is very flexible, and can be easily setup to work with modern authentication methods like for example [WebAuthn](https://webauthn.io/).
+
+<Callout type="warning">
+  The functionality provided by the `CredentialsProvider` is intentionally
+  limited in favour of flexibility and to discourage the use of passwords due to
+  the inherent security risks associated with them (and the additional
+  complexity associated with supporting usernames and passwords).
+</Callout>
+
+Integrating the Credentials Provider is as simple as initializing it in the Auth.js configuration file:
+
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [
+    Credentials({
+      // `credentials` will usually contain the inserted username/password
+      // in the sign in form
+      async authorize(credentials) {
+        const authResponse = await fetch("/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        });
+
+        if (!authResponse.ok) {
+          return null;
+        }
+
+        const user = await authResponse.json();
+
+        return user;
+      },
+    }),
+  ],
+});
+```
+
+```ts filename="app/api/auth/[...nextauth]/route.ts"
+export { GET, POST } from "./auth";
+export const runtime = "edge"; // optional
+```
+
+</Code.Next>
+</Code>
+
+Note that we only had to define a single `authorize` method that is in charge of receiving the credentials inserted by the user and call whatever authentication service we want to use. Auth.js will then be in charge of managing the user session for us.
+
+- [Check the Credentials Provider options](/reference/core/providers/credentials) for further customization
+
+<Callout type="info">
+  If you're using TypeScript, you can [augment the `User`
+  interface](/getting-started/typescript#module-augmentation) to match the
+  response of your `authorize` callback, so whenever you read the user in other
+  callbacks (like the `jwt`) the type will match correctly.
+</Callout>

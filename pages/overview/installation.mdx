@@ -1,4 +1,5 @@
-import { Tabs, Callout } from "nextra/components";
+import { Callout } from "nextra/components";
+import { Code } from "../../components/Code/Code";
 
 # Installing Auth.js
 
@@ -6,25 +7,28 @@ Installing Auth.js is easy, you just need to run a single command and set one en
 
 Start by installing the appropriate package for your framework of choice:
 
-{/* prettier-ignore */}
-<Tabs items={["Next.js", "Sveltekit", "SolidStart"]}>
-  <Tabs.Tab>
+<Code>
+  <Code.Next>
+    
     ```bash
     npm install next-auth
     ```
-  </Tabs.Tab>
-  <Tabs.Tab>
+
+  </Code.Next>
+  <Code.Svelte>
+  
     ```bash
     npm install @auth/sveltekit
     ```
-  </Tabs.Tab>
-  <Tabs.Tab>
+  </Code.Svelte>
+  <Code.Solid>
+  
     ```bash
     npm install @auth/solid-start
     ```
-  </Tabs.Tab>
-</Tabs>
-{/* prettier-ignore */}
+  
+  </Code.Solid>
+</Code>
 
 ## Environment
 
