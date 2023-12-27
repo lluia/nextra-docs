@@ -1,12 +1,18 @@
+import { Callout } from "nextra/components";
+import { Code } from "../../components/Code/Code";
+
 # Role-based access control
 
-There are two ways to add role-based access control (RBAC) to your application, based on the [session strategy](/concepts/session-strategies) you choose. Let's see an example for each of these.
+There are two ways to add [role-based access control (RBAC)](https://en.wikipedia.org/wiki/Role-based_access_control) to your application with Auth.js, based on the [session strategy](/concepts/session-strategies) you choose. Let's see an example for each of these.
 
 ## Getting the role
 
-We are going to start by adding a `profile()` callback to the providers' config to determine the user role:
+Start by adding a `profile()` callback to the providers' config to determine the user role:
 
-```ts title="/pages/api/auth/[...nextauth].ts"
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 
@@ -22,11 +28,17 @@ export default NextAuth({
 })
 ```
 
-:::tip
-To determine the user's role, you can either add your logic or if your provider assigns roles already, use that instead.
-:::
+</Code.Next>
+</Code>
+
+<Callout>
+  To determine the user's role, you can either add your logic or if your
+  provider assigns roles already, use that instead.
+</Callout>
 
 ## Persisting the role
+
+Persisting the role will be different depending on the [session strategy](/concepts/session-strategies) you're using. If you don't know which session strategy you're using, then most likely you're using JWT (the default one).
 
 ### With JWT
 
@@ -34,7 +46,10 @@ When you don't have a database configured, the role will be persisted in a cooki
 
 If you also want to use the role on the client, you can expose it via the `session` callback.
 
-```ts title="/pages/api/auth/[...nextauth].ts"
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 
@@ -47,7 +62,6 @@ export default NextAuth({
       ...
     })
   ],
-  // highlight-start
   callbacks: {
     jwt({ token, user }) {
       if(user) token.role = user.role
@@ -58,13 +72,16 @@ export default NextAuth({
       return session
     }
   }
-  // highlight-end
 })
 ```
 
-:::info
-With this strategy, if you want to update the role, the user needs to be forced to sign in again.
-:::
+</Code.Next>
+</Code>
+
+<Callout type="info">
+  With this strategy, if you want to update the role, the user needs to be
+  forced to sign in again.
+</Callout>
 
 ### With Database
 
@@ -72,7 +89,7 @@ When you have a database, you can save the user role on the [User model](/refere
 
 First, add a `role` column to the User model.
 
-```ts title="/prisma/schema.prisma"
+```ts filename="/prisma/schema.prisma"
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -89,14 +106,15 @@ The `profile()` callback's return value is used to create users in the database.
 
 If you also want to use the role on the client, you can expose it via the `session` callback.
 
-```ts title="/pages/api/auth/[...nextauth].ts"
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
-  // highlight-next-line
 import prisma from "lib/prisma"
 
 export default NextAuth({
-  // highlight-next-line
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({
@@ -106,26 +124,31 @@ export default NextAuth({
       ...
     })
   ],
-  // highlight-start
   callbacks: {
     session({ session, user }) {
       session.user.role = user.role
       return session
     }
   }
-  // highlight-end
 })
 ```
 
-:::info
-It is up to you how you want to manage to update the roles, either through direct database access or building your role update API.
-:::
+</Code.Next>
+</Code>
+
+<Callout type="info">
+  It is up to you how you want to manage to update the roles, either through
+  direct database access or building your role update API.
+</Callout>
 
 ## Using the role
 
 If you want to use the role in the client, for both cases above, when using the `useSession` hook, `session.user.role` will have the required role if you exposed it via the `session` callback. You can use this to render a different UI for different users.
 
-```ts title="/pages/admin.tsx"
+<Code>
+<Code.Next>
+
+```ts filename="./app/admin/page.tsx"
 import { useSession } from "next-auth/react";
 
 export default function Page() {
@@ -136,17 +159,21 @@ export default function Page() {
   }
 
   return <p>You are not authorized to view this page!</p>;
-}
 ```
 
-:::tip
-When using Next.js and JWT, you can alternatively also use [Middleware](https://next-auth.js.org/configuration/nextjs#wrap-middleware) to redirect the user based on their role, even before rendering the page.
-:::
+</Code.Next>
+</Code>
+
+<Callout>
+  When using Next.js and JWT, you can alternatively also use
+  [Middleware](/overview/securing/middleware#redirecting-users) to redirect the
+  user based on their role, even before rendering the page.
+</Callout>
 
 ## Resources
 
 - [Concepts: Session strategies](/concepts/session-strategies)
-- [Next.js: Middleware](https://next-auth.js.org/configuration/nextjs#wrap-middleware)
-- [Adapters: User model](/reference/core/adapters/#adapteruser)
+- [Adapters: User model](/overview/database-setup#user-model)
 - [Adapters: Prisma adapter](/reference/adapter/prisma)
-- [TypeScript](/getting-started/typescript)
+- [Next.js: Middleware](/overview/securing/middleware)
+- [TypeScript](/overview/typescript)

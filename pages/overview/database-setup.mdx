@@ -8,7 +8,7 @@ Auth.js by default uses JSON Web Tokens for saving the user's session so you don
 
 **Database Adapters** are packages maintained by the Auth.js team to connect Auth.js to the most common databases (see full list below).
 
-For instance, when implementing magic links, the [Email Provider](/getting-started/providers/email-tutorial) will require you to setup a database adapter to be able to store the [verification tokens](#verification-token) present on the links.
+For instance, [when implementing magic links](/tutorials/paswordless-sentry-setup), the `EmailProvider` will require you to setup a database adapter to be able to store the [verification tokens](#verificationtoken-model) present on the links.
 
 ## Official adapters
 
@@ -18,7 +18,7 @@ Below you can see a list of official adapters that are distributed as their own 
   If you don't find an adapter for the database or service you use, you can
   always create one yourself (and optionally open a PR so anyone can make use of
   it). Have a look at our guide on [how to create a database
-  adapter](/guides/adapters/creating-a-database-adapter).
+  adapter](/tutorials/cusomt-adapter).
 </Callout>
 
 <div className="grid gap-x-4 gap-y-4 grid-cols-4 w-full mt-8 mb-12">

@@ -108,10 +108,10 @@ When registering, make sure you insert a callback URL with the following shape:
 [origin]/api/auth/callback/[provider]
 ```
 
-In this case, given we want to try our application locally, it would be (the provider's name is always in [kebab case](https://www.theserverside.com/definition/Kebab-case)):
+In this case, given we want to try our application locally, it would be (the provider's name is always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
 ```
-https://localhost:3000/api/auth/callback/github
+[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
 ```
 
 Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
@@ -121,12 +121,7 @@ GITHUB_ID={CLIENT_ID}
 GITHUB_SECRET={CLIENT_SECRET}
 ```
 
-Auth.js is automatically configured to read these, so you don't need to make any changes in your configuration file. The shape of these variables in the environment is always the same:
-
-```
-{PROVIDER-NAME}_ID=
-{PROVIDER-NAME}_SECRET=
-```
+Auth.js will automatically pick up these. You can [also use a different name if needed](/concepts/environment-variables#oauth-variables).
 
 Now start your application and navigate to `/signin`. Click on `Sign in with GitHub`, if all went well you should have signed in with Github (or whatever provider you chose) via OAuth.
 

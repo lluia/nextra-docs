@@ -10,11 +10,29 @@ Otherwise, if you only want to protect a subset of pages, you could put it in a 
 
 For the time being, middleware only supports **jwt** as a session strategy, so it won't work with databases.
 
-## Recipes
+## 🍜 Recipes
 
 ### Redirecting users
 
-...
+You can extend the default `withAuth` middleware to redirect users depending on certain conditions, for example their role:
+
+```ts
+import { withAuth } from "next-auth/middleware";
+
+export default withAuth(
+  // `withAuth` augments your `Request` with the user's token.
+  function middleware(req) {
+    console.log(req.nextauth.token);
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => token?.role === "admin",
+    },
+  }
+);
+
+export const config = { matcher: ["/admin"] };
+```
 
 ### Blocking access
 

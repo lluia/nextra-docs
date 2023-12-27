@@ -1,0 +1,96 @@
+import { Callout } from "nextra/components";
+import { Code } from "../../components/Code/Code";
+
+# Configuring an OAuth provider
+
+For built-in providers, in most cases [you will only need to specify the `clientId` and `clientSecret`](/concepts/environment-variables#oauth-variables), and in case of OIDC (Open ID) providers, the `issuer` property.
+
+If you need to override any of the defaults, you can add them in the provider's function call and they will be deeply-merged with the default configuration options.
+
+<Callout type="info">
+  The [provided config
+  options](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/oauth.ts#L110-L232)
+  for your provider are deeply merged with the default options. That means you
+  only have to override part of the options that you need to be different. For
+  example if you want different scopes, overriding `authorization.params.scope`
+  is enough, instead of the whole `authorization` option.
+</Callout>
+
+For example, to override a provider's default scopes, you can do the following:
+
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import Auth0 from "next-auth/providers/auth0";
+
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [
+    Auth0({
+      issuer: process.env.ISSUER,
+      authorization: { params: { scope: "openid your_custom_scope" } },
+    }),
+  ],
+});
+```
+
+</Code.Next>
+</Code>
+
+Another example, the `profile` callback will return `id`, `name`, `email` and `picture` by default, but you might want to return more information from the provider. After setting the correct scopes, you can then do something like this:
+
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import Auth0 from "next-auth/providers/auth0";
+
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [
+    Auth0({
+      profile(profile) {
+        return {
+          // Return all the profile information you need.
+          // The only truly required field is `id`
+          // to be able identify the account when added to a database
+        };
+      },
+    }),
+  ],
+});
+```
+
+</Code.Next>
+</Code>
+
+An example of how to enable automatic account linking:
+
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [
+    GoogleProvider({
+      allowDangerousEmailAccountLinking: true,
+    }),
+  ],
+});
+```
+
+</Code.Next>
+</Code>

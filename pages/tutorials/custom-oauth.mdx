@@ -1,3 +1,92 @@
+import { Callout, Steps } from "nextra/components";
+import { Code } from "../../components/Code/Code";
+
 # Custom OAuth Provider
 
-...
+<Callout>
+  You might not need to create a custom OAuth provider. Make sure you check the
+  [list of our official OAuth providers](/overview/authentication#setup-oauth)
+  before you create one.
+</Callout>
+
+You can use _any_ provider as long as they are compliant with the [OAuth/OIDC specifications](https://openid.net/developers/specs/). Auth.js uses the [`oauth4webapi`](https://github.com/panva/oauth4webapi/blob/main/docs/README.md) package under the hood.
+
+To use a custom OAuth provider with Auth.js, pass an object to the [`providers` list](/reference/core#providers).
+
+It can implement either the [`OAuth2Config`](/reference/core/providers#oauth2configprofile) or the [`OIDCConfig`](/reference/core/providers#oidcconfigprofile) interface, depending on if your provider is **OAuth 2** or **OpenID Connect** compliant.
+
+For example, if you have a fully OIDC-compliant provider, this is all you need:
+
+<Code>
+<Code.Next>
+
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+// Note that for types to work you will need to install the `@auth/core` package
+import type { OIDCConfig } from "@auth/core/providers";
+
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
+  providers: [
+    {
+      id: "my-provider",
+      name: "My Provider",
+      type: "oidc",
+      issuer: "https://my.oidc-provider.com",
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+    } satisfies OIDCConfig,
+  ],
+});
+```
+
+</Code.Next>
+</Code>
+
+Then, you can set the [callback URL](https://www.ietf.org/archive/id/draft-ietf-oauth-v2-1-07.html#name-client-redirection-endpoint) in your provider's dashboard to something like `https://app-url.com/auth/api/callback/my-provider`.
+
+<Callout type="warning">
+  Note that when setting the callback URL in your provider's dashboard, it'll
+  have this shape: ``` [origin]/[framework_path]/callback/[provider_id] ``` The
+  `framework_path` segment will be `/api/auth` for Next.js, and `auth` in other
+  frameworks. `provider_id` is what you set as `id` in the `auth.ts` config file
+  above.
+</Callout>
+
+## Publishing your provider as a built-in provider
+
+If you think your custom provider might be useful to others, we encourage you to open a PR and add it to the built-in list.
+
+<Callout type="warning">
+  We are only accepting new providers to `@auth/core`, and not `next-auth`.
+  Follow the steps below to make sure your PR is merged!
+</Callout>
+
+<Steps>
+
+### Creating the provider's file
+
+Create a new `{provider}.ts` (for it to get merged, you must use TypeScript) file under the [`packages/core/src/providers`](https://github.com/nextauthjs/next-auth/tree/main/packages/core/src/providers) directory.
+
+### Adhere to our code conventions
+
+Taking the already defined providers as a guide, make sure your provider adheres to the same code conventions, .i.e:
+
+- Use a named default export: `export default function YourProvider`
+- Export the TypeScript `interface` that defines the provider's available user info properties
+- Add the necessary JSDoc comments/documentation (Study the built-in providers to get an understanding what's needed. For example, the [Auth0 provider](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/auth0.ts) is a good example for OIDC and the [GitHub Provider](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/github.ts) is an OAuth provider.)
+- Add links to the provider's API reference/documentation so others can understand how to use the provider
+
+### Add your provider name in Github issues dropdown
+
+Add the new provider name to the `Provider type` dropdown options in [`the provider issue template`](https://github.com/nextauthjs/next-auth/edit/main/.github/ISSUE_TEMPLATE/2_bug_provider.yml)
+
+### Add a logo for your provider
+
+Add a logo `{provider}.svg` to the [`docs/static/img/providers`](https://github.com/nextauthjs/next-auth/tree/main/docs/static/img/providers) directory.
+
+</Steps>
+
+That's it! 🎉 Others will be able to discover and use this provider!
