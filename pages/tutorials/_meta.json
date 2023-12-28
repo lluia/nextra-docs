@@ -1,9 +1,9 @@
 {
   "configuration": "Configuring Auth.js",
   "configuring-oauth": "Configuring OAuth",
-  "oauth-github-setup": "OAuth with Github",
-  "paswordless-sentry-setup": "Passwordless with Sentry",
-  "custom-adapter": "Custom Database adapter",
   "custom-oauth": "Custom OAuth Provider",
-  "role-based-auth": "Role based authorisation"
+  "custom-adapter": "Custom Database adapter",
+  "custom-pages": "Custom Pages",
+  "role-based-auth": "Role based authorisation",
+  "deep-dive": "Deep dive"
 }
