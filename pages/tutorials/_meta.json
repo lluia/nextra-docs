@@ -3,7 +3,7 @@
   "configuring-oauth": "Configuring OAuth",
   "custom-oauth": "Custom OAuth Provider",
   "custom-adapter": "Custom Database adapter",
-  "custom-pages": "Custom Pages",
   "role-based-auth": "Role based authorisation",
+  "custom-pages": "Custom Pages",
   "deep-dive": "Deep dive"
 }
