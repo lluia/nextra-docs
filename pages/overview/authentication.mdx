@@ -101,6 +101,9 @@ If you run the app, this won't work yet. You need to register your application i
 
 When registering, make sure you insert a callback URL with the following shape:
 
+<Code>
+<Code.Next>
+
 ```
 [origin]/api/auth/callback/[provider]
 ```
@@ -110,6 +113,22 @@ In this case, given we want to try our application locally, it would be the prov
 ```
 [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
 ```
+
+</Code.Next>
+<Code.Svelte>
+
+```
+[origin]/api/callback/[provider]
+```
+
+In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+
+```
+[origin]/api/callback/[provider_name] → https://localhost:3000/api/callback/github
+```
+
+</Code.Svelte>
+</Code>
 
 Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
 

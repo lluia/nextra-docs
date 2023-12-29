@@ -1,28 +1,28 @@
-# Homepage (todo)
+import { Bleed } from "nextra-theme-docs";
+import { ShieldChevron } from "@phosphor-icons/react";
+import { DemoCards } from "../components/DemoCards/DemoCards";
 
-## Features
+<div className="animated-stars overflow-hidden">
+  <div id="nc-main" className="nc-main bg-cover bg-cc">
+    <div className="logo-proposal">
+      <img src="/img/etc/logo-sm.webp" style={{ width: "8rem" }} />
+      <span className="font-black text-8xl ml-6 pb-1">Auth.js</span>
+    </div>
+    <div className="full-wh">
+      <div className="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-- Built in support for popular services (Google, Facebook, Auth0, Apple…)
-- Built-in support for databases/ORMs (MySQL, Postgres, Prisma, Drizzle…)
-- Built-in email/passwordless/magic link authentication
-- Use with _any_ [OAuth 2](https://www.ietf.org/rfc/rfc6749.html) or [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) provider
-- Use with _any_ username/password store
+<p className="flex flex-row items-baseline gap-8 text-4xl font-black justify-center pt-8">
+  <span>Open Source</span>
+  <span>Full Stack</span>
+  <span>Own Your Data</span>
+</p>
 
-### Flexible
-
-- Runtime agnostic - run anywhere! Vercel Edge Functions, Node.js, Serverless, etc.
-- Use with any modern framework! Next.js, SolidStart, SvelteKit, etc.
-- [Bring Your Own Database](/getting-started/adapters) - or none! MySQL, Postgres, MSSQL, MongoDB, etc. Choose database sessions or JWT.
-
-### Secure by default
-
-- Signed, prefixed, server-only cookies
-- Built-in CSRF protection
-- Doesn't rely on client-side JavaScript
-- Encrypted JWT sessions
-
-## Credits
-
-Auth.js is an open-source project that is only possible [thanks to contributors](/contributors).
-
-To financially support the development of Auth.js, you can check our [OpenCollective](https://opencollective.com/nextauth) page. We appreciate your support 💚.
+<DemoCards />

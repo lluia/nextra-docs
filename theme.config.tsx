@@ -4,7 +4,17 @@ import { Link } from "./components/Link/Link";
 import { ChildrenProps } from "./utils/types";
 
 const config: DocsThemeConfig = {
-  logo: <img src="/img/logo-sm.png" width="30" />,
+  logo: (
+    <div className="flex flex-row items-center">
+      <img src="/img/etc/logo-xs.webp" width="30" />
+      <span
+        className="font-black text-xl"
+        style={{ marginLeft: "8px", color: "#334155" }}
+      >
+        Auth.js
+      </span>
+    </div>
+  ),
   components: {
     a: (props: ChildrenProps) => <Link {...props} />,
   },
