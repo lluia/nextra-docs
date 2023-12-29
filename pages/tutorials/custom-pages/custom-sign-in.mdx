@@ -75,7 +75,7 @@ We can now build our own custom sign in page:
 ```tsx filename="app/signin/page.tsx"
 // make sure your config object is exported so that you can read the configured providers (config.providers)!
 import { signIn, config, auth } from "../../../auth.ts";
-import { SignInWith } from "../../../components/sign-in-with";
+import { icons } from "../../../components/icons";
 import { redirect } from "next/navigation";
 
 async function getSession() {
@@ -96,7 +96,13 @@ export default async function SignInPage() {
   return (
     <div className="flex flex-col gap-4 max-w-80 mx-auto justify-center h-screen">
       {Object.values(config.providers).map((provider) => (
-        <SignInWith name={provider.name} />
+        <form action={provider.authorisation.url} method="POST">
+          <Button className="flex flex-row gap-2" type="submit">
+            <span>
+              {icons[provider.name]} Sign in with {provider.name}
+            </span>
+          </Button>
+        </form>
       ))}
     </div>
   );

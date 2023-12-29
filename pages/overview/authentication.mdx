@@ -50,9 +50,9 @@ OAuth providers spend significant amounts of money, time, and engineering effort
 
 <Callout type="info">
   Can't find the OAuth provider you're looking for? In that case, you'll need to
-  build your own provider, which is easy. [Learn how](/tutorials/custom-oauth).
-  Auth.js can be setup with any OAuth provider as long as they support **OAuth
-  2**.
+  build your own provider, which is easy. [Learn
+  how](/tutorials/deep-dive/oauth-github-setup). Auth.js can be setup with any
+  OAuth provider as long as they support **OAuth 2**.
 </Callout>
 
 Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
@@ -81,10 +81,7 @@ import NextAuth from "next-auth";
 // `import Google from "next-auth/providers/google"`
 import GitHub from "next-auth/providers/github";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { signIn, auth } = NextAuth({
   providers: [GitHub],
 });
 ```
@@ -108,7 +105,7 @@ When registering, make sure you insert a callback URL with the following shape:
 [origin]/api/auth/callback/[provider]
 ```
 
-In this case, given we want to try our application locally, it would be (the provider's name is always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
 ```
 [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
@@ -117,13 +114,40 @@ In this case, given we want to try our application locally, it would be (the pro
 Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
 
 ```bash filename=".env.local"
-GITHUB_ID={CLIENT_ID}
-GITHUB_SECRET={CLIENT_SECRET}
+AUTH_GITHUB_ID={CLIENT_ID}
+AUTH_GITHUB_SECRET={CLIENT_SECRET}
 ```
 
-Auth.js will automatically pick up these. You can [also use a different name if needed](/concepts/environment-variables#oauth-variables).
+Auth.js will automatically pick up these. You can [also use a different name for the environment variables](/concepts/environment-variables#oauth-variables) if needed.
 
-Now start your application and navigate to `/signin`. Click on `Sign in with GitHub`, if all went well you should have signed in with Github (or whatever provider you chose) via OAuth.
+Now add a sign in button somewhere in your application:
+
+<Code>
+<Code.Next>
+
+```tsx filename="./components/sign-in.tsx"
+"use client";
+
+import { signIn } from "../../auth.ts";
+
+export function SignIn() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn();
+      }}
+    >
+      <button type="submit">Sign In</button>
+    </form>
+  );
+}
+```
+
+</Code.Next>
+</Code>
+
+And start your application, clicking the sign in button we just added. If all went well, you should be redirected to Github (or the provider you chose) and once authenticated redirected back to the app already authenticated.
 
 <Callout type="info">
   You can click on the provider cards above, or visit [the provider's API

@@ -9,22 +9,22 @@ Auth.js is automatically configured to pick the right environment variables for 
 The shape of these variables in your environment file always follows the same pattern:
 
 ```
-{PROVIDER-NAME}_ID=
-{PROVIDER-NAME}_SECRET=
+{PROVIDER-NAME}_AUTH_ID=
+{PROVIDER-NAME}_AUTH_SECRET=
 ```
 
 For example if we're using the Google, Twitter and Github providers, it'll be:
 
 ```bash
 # Google
-GOOGLE_ID=123
-GOOGLE_SECRET=123
+AUTH_GOOGLE_ID=123
+AUTH_GOOGLE_SECRET=123
 # Twitter
-TwITTER_ID=123
-TWITTER_SECRET=123
+AUTH_TWITTER_ID=123
+AUTH_TWITTER_SECRET=123
 # Github
-GITHUB_ID=123
-GITHUB_SECRET=123
+AUTH_GITHUB_ID=123
+AUTH_GITHUB_ID=123
 ```
 
 Then, in our [Auth.js configuration file](/tutorials/configuration), you can just do:

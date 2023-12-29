@@ -22,6 +22,7 @@ export function Code({ children }: ChildrenProps) {
     <Tabs items={Object.values(frameworks)}>
       {frameworkNames.map((f) => {
         const [child] = Children.toArray(children).filter(
+          // @ts-expect-error
           (child) => child.type.name === f
         );
         return (
