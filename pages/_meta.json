@@ -2,7 +2,12 @@
   "index": {
     "title": "Homepage",
     "type": "page",
-    "display": "hidden"
+    "display": "hidden",
+    "theme": {
+      "sidebar": false,
+      "footer": false,
+      "layout": "raw"
+    }
   },
   "overview": {
     "title": "Getting started",
