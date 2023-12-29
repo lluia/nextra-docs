@@ -1,4 +1,5 @@
 {
   "index": "Overview",
-  "environment-variables": "Environment variables"
+  "environment-variables": "Environment variables",
+  "session-strategies": "Session strategies"
 }
