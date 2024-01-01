@@ -16,7 +16,7 @@ const config: DocsThemeConfig = {
     </div>
   ),
   components: {
-    a: (props: ChildrenProps) => <Link {...props} />,
+    a: (props: ChildrenProps) => <Link href="" {...props} />,
   },
   darkMode: false,
   project: {
