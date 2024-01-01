@@ -1,13 +1,6 @@
-import { Callout } from "nextra/components";
 import { Code } from "../../../components/Code/Code";
 
 # Custom error page
-
-<Callout>
-  Auth.js is quite customisable. You can build custom pages for [all these use
-  cases](/). If you don't want to build a page from scratch, you can customise
-  the already built-in pages through the [`theme`](/) config option.
-</Callout>
 
 Auth.js can be configured to display a custom error page when something goes wrong during the user authentication flow (sign in, sign out, etc..).
 
@@ -56,8 +49,7 @@ const errorMap = {
     <p>
       There was a problem when trying to authenticate. Please contact us if this
       error persists. Unique error code:{" "}
-      <code className="text-xs bg-slate-100 p-1 rounded-sm">Configuration</code>
-      .
+      <code className="text-xs bg-slate-100 p-1 rounded-sm">Configuration</code>.
     </p>
   ),
 };
