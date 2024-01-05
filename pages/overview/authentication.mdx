@@ -17,9 +17,9 @@ import manifest from "../data/manifest.json";
 
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- **Oauth** ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- **Paswordless** ( _Magic links, OTP codes, WebAuthn, etc..._ )
-- **External auth** ( _Integrating with external APIs, etc..._ )
+- **Oauth** (_Sign in with Google, Github, LinkedIn, etc..._)
+- **Paswordless** (_Magic links, OTP codes, WebAuthn, etc..._)
+- **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
 <br />
 
@@ -52,19 +52,19 @@ Once you have decided how to authenticate users in your application (you can alw
 
 <RichTabs defaultValue="oauth">
   <RichTabs.TabList>
-    <RichTabs.Tab value="oauth">
+    <RichTabs.Tab key="oauth" value="oauth">
       <div className="flex flex-col justify-center items-center h-full">
         <GitDiff fontSize="3rem" />
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab value="paswordless">
+    <RichTabs.Tab key="passwordless" value="paswordless">
       <div className="flex flex-col justify-center items-center h-full">
         <UserFocus fontSize="3rem" />
         <span>Setup Passwordless</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab value="external-auth">
+    <RichTabs.Tab key="external-auth" value="external-auth">
       <div className="flex flex-col justify-center items-center h-full">
         <Password fontSize="3rem" />
         <span>Setup External Auth</span>
@@ -87,7 +87,9 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
       key={name}
       className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
-      <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
+      <div class="grid place-items-center flex-grow">
+        <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
+      </div>
       <div class="text-sm text-center">{name}</div>
     </Link>
   ))}
