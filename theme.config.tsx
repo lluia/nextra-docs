@@ -7,7 +7,7 @@ const config: DocsThemeConfig = {
   logo: (
     <div className="flex flex-row items-center">
       <img src="/img/etc/logo-xs.webp" width="30" />
-      <span className="ml-2 text-xl font-black text-[#334155] dark:text-[#f1f5f9]" >
+      <span className="ml-2 text-xl font-black" >
         Auth.js
       </span>
     </div>
@@ -25,18 +25,15 @@ const config: DocsThemeConfig = {
   },
 
   toc: {
-    extraContent: <span aria-title="TODO: potential spot for ad?"></span>,
+    extraContent: <span data-todo="potential spot for ad?"></span>,
     backToTop: true
   },
   banner: {
     text: (
       <>
         <a
-          className="nx-text-primary-600"
+          className="text-violet-400"
           target="_blank"
-          style={{
-            color: "hsl(20deg 100% 45%/var(--tw-text-opacity))",
-          }}
           rel="noopener noreferrer"
           href="https://next-auth.js.org"
         >
@@ -46,7 +43,7 @@ const config: DocsThemeConfig = {
       </>
     ),
   },
-  docsRepositoryBase: "https://github.com/nextauthjs/next-auth",
+  docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
     text: "☕️ Auth.js – spread love",
   },
