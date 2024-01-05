@@ -64,13 +64,13 @@ However, Auth.js **supports Preview deployments**, even **with OAuth providers**
 2. Set `AUTH_REDIRECT_PROXY_URL` to that stable deployment URL, including the path from where Auth.js handles the routes. Eg.: (`https://auth.yourdomain.com/api/auth`)
 3. For your OAuth provider, set the callback URL using the stable deployment URL. Eg.: For GitHub `https://auth.yourdomain.com/api/auth/callback/github`)
 
-:::note
+<Callout type="info">
 To support preview deployments, the `AUTH_SECRET` value needs to be the same for the stable deployment and deployments that will need OAuth support.
-:::
+</Callout>
 
-:::note
+<Callout type="note">
 If you are storing users in a [database](/reference/core/adapters), we recommend using a different OAuth app for development/production so that you don't mix your test and production user base.
-:::
+</Callout>
 
 <details>
 <summary>
