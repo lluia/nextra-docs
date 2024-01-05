@@ -8,7 +8,7 @@ const config: DocsThemeConfig = {
     <div className="flex flex-row items-center">
       <img src="/img/etc/logo-xs.webp" width="30" />
       <span
-        className="font-black text-xl"
+        className="text-xl font-black"
         style={{ marginLeft: "8px", color: "#334155" }}
       >
         Auth.js
@@ -18,7 +18,6 @@ const config: DocsThemeConfig = {
   components: {
     a: (props: ChildrenProps) => <Link href="" {...props} />,
   },
-  darkMode: false,
   project: {
     link: "https://github.com/nextauthjs/next-auth",
   },
