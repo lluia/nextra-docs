@@ -2,6 +2,7 @@
   "index": "Introduction",
   "installation": "Installation",
   "authentication": "Authentication",
+  "user-management": "User management",
   "database-setup": "Database setup",
   "securing": "Securing your app",
   "deployment": "Deployment",

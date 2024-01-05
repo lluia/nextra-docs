@@ -1,0 +1,45 @@
+import { Callout } from "nextra/components";
+import { RichTabs } from "../../components/RichTabs/RichTabs";
+import { Code } from "../../components/Code/Code";
+import { SignIn, SignOut, UserCircle } from "@phosphor-icons/react";
+
+## User management
+
+Auth.js ships lightweight utilities to help you manage the user's session easily. Aside from [built-in pages](/tutorials/custom-pages/built-in-pages), which are [fully customisable](/tutorials/custom-pages/custom-sign-in), Auth.js does not come with any built-in styles.
+
+The library is designed to make you in charge of building the session handling components (sign in and sign out, navigation, etc...) so that you have full customisation power on how they look and behave.
+
+<Callout>
+  In the future, we might add more rich built-in components to the library if
+  there's a need. [Let us
+  know](https://github.com/nextauthjs/next-auth/issues/new/choose) what type of
+  component you would like Auth.js to ship with.
+</Callout>
+
+<RichTabs defaultValue="login">
+  <RichTabs.TabList>
+    <RichTabs.Tab value="login">
+      <div className="flex flex-col justify-center items-center h-full">
+        <SignIn fontSize="3rem" />
+        <span>Building sign in</span>
+      </div>
+    </RichTabs.Tab>
+    <RichTabs.Tab value="logout">
+      <div className="flex flex-col justify-center items-center h-full">
+        <SignOut fontSize="3rem" />
+        <span>Building sign out</span>
+      </div>
+    </RichTabs.Tab>
+    <RichTabs.Tab value="navigation">
+      <div className="flex flex-col justify-center items-center h-full">
+        <UserCircle fontSize="3rem" />
+        <span>Building navigation</span>
+      </div>
+    </RichTabs.Tab>
+  </RichTabs.TabList>
+  <RichTabs.Panels>
+    <RichTabs.Panel value="login">Login</RichTabs.Panel>
+    <RichTabs.Panel value="logout">Logout</RichTabs.Panel>
+    <RichTabs.Panel value="navigation">Navigation</RichTabs.Panel>
+  </RichTabs.Panels>
+</RichTabs>

@@ -1,25 +1,36 @@
 import { Callout } from "nextra/components";
 import { Code } from "../../../components/Code/Code";
+import { RichTabs } from "../../../components/RichTabs/RichTabs";
+import { IdentificationBadge, HardDrives } from "@phosphor-icons/react";
 
-# Session management
+# Handling sessions
 
-Auth.js allows you to easily add different authentication methods into your app. It also ships with some utilities to help you manage the user session easily. Here's an overview of them showing how they can be used.
+Auth.js ships lightweight utilities to help you manage the user's session easily. You can manage the session either client side or server side. We usually recommend to handle session redirects or invalidation and the server level for a smoother user experience.
 
-<Callout>
-  Note that for these helpers to work, first you need to [setup an
-  authentication method](/overview/authentication). Either **OAuth**,
-  **Paswordless** or **External auth**.
-</Callout>
+<RichTabs defaultValue="client">
+  <RichTabs.TabList>
+    <RichTabs.Tab value="client">
+      <div className="flex flex-col justify-center items-center h-full">
+        <IdentificationBadge fontSize="3rem" />
+        <span>Client side</span>
+      </div>
+    </RichTabs.Tab>
+    <RichTabs.Tab value="server">
+      <div className="flex flex-col justify-center items-center h-full">
+        <HardDrives fontSize="3rem" />
+        <span>Server side</span>
+      </div>
+    </RichTabs.Tab>
+  </RichTabs.TabList>
+  <RichTabs.Panels>
+  
+  {/* <!-------------------------------> */}
+  {/* <!---------- CLIENT TAB ---------> */}
+  {/* <!-------------------------------> */}
 
-## Login users
+  <RichTabs.Panel value="client" className="pt-0">
 
-...
-
-## Logout users
-
-...
-
-## Exposing the session
+### Exposing the session
 
 <Code>
 <Code.Next>
@@ -45,7 +56,7 @@ export default function App({
 </Code.Next>
 </Code>
 
-## Consuming the session
+### Reading the session
 
 <Code>
 <Code.Next>
@@ -84,3 +95,24 @@ export default function Page() {
 
 </Code.Next>
 </Code>
+
+</RichTabs.Panel>
+
+{/* <!-------------------------------> */}
+{/* <!---------- SERVER TAB ---------> */}
+{/* <!-------------------------------> */}
+
+<RichTabs.Panel value="server"  className="pt-0">
+
+### Reading the session
+
+...
+
+### Redirects
+
+...
+
+</RichTabs.Panel>
+
+</RichTabs.Panels>
+</RichTabs>

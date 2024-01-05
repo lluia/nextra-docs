@@ -1,6 +1,6 @@
 {
   "protecting-pages": "Protecting pages",
   "protecting-apis": "Protecting API routes",
-  "session-management": "Session management",
+  "session-management": "Session handling",
   "middleware": "Middleware"
 }

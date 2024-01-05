@@ -1,6 +1,8 @@
 import { Callout, Tabs } from "nextra/components";
 import { Link } from "../../components/Link/Link";
+import { RichTabs } from "../../components/RichTabs/RichTabs";
 import { Code } from "../../components/Code/Code";
+import { GitDiff, UserFocus, Password } from "@phosphor-icons/react";
 import { ListDisclosure } from "../../components/ListDisclosure/ListDisclosure";
 import manifest from "../data/manifest.json";
 
@@ -15,9 +17,9 @@ import manifest from "../data/manifest.json";
 
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- [Oauth](#setup-oauth) ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- [Paswordless](#setup-paswordless) ( _Magic links, OTP codes, WebAuthn, etc..._ )
-- [External auth](#setup-with-external-auth) ( _Integrating with external APIs, etc..._ )
+- **Oauth** ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- **Paswordless** ( _Magic links, OTP codes, WebAuthn, etc..._ )
+- **External auth** ( _Integrating with external APIs, etc..._ )
 
 <br />
 
@@ -46,14 +48,35 @@ OAuth providers spend significant amounts of money, time, and engineering effort
 
 </details>
 
-## Setup OAuth
+Once you have decided how to authenticate users in your application (you can always add more authentication methods later), click on the instructions below for the initial setup.
 
-<Callout type="info">
-  Can't find the OAuth provider you're looking for? In that case, you'll need to
-  build your own provider, which is easy. [Learn
-  how](/tutorials/deep-dive/oauth-github-setup). Auth.js can be setup with any
-  OAuth provider as long as they support **OAuth 2**.
-</Callout>
+<RichTabs defaultValue="oauth">
+  <RichTabs.TabList>
+    <RichTabs.Tab value="oauth">
+      <div className="flex flex-col justify-center items-center h-full">
+        <GitDiff fontSize="3rem" />
+        <span>Setup OAuth</span>
+      </div>
+    </RichTabs.Tab>
+    <RichTabs.Tab value="paswordless">
+      <div className="flex flex-col justify-center items-center h-full">
+        <UserFocus fontSize="3rem" />
+        <span>Setup Passwordless</span>
+      </div>
+    </RichTabs.Tab>
+    <RichTabs.Tab value="external-auth">
+      <div className="flex flex-col justify-center items-center h-full">
+        <Password fontSize="3rem" />
+        <span>Setup External Auth</span>
+      </div>
+    </RichTabs.Tab>
+  </RichTabs.TabList>
+  <RichTabs.Panels>
+    <RichTabs.Panel value="oauth">
+
+{/* <!--------------------------> */}
+{/* <!-----  OAUTH CONTENT -----> */}
+{/* <!--------------------------> */}
 
 Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
 
@@ -69,6 +92,13 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
     </Link>
   ))}
 </ListDisclosure>
+
+<Callout type="info">
+  Can't find the OAuth provider you're looking for? In that case, you'll need to
+  build your own provider, which is easy. [Learn
+  how](/tutorials/deep-dive/oauth-github-setup). Auth.js can be setup with any
+  OAuth provider as long as they support **OAuth 2**.
+</Callout>
 
 Start by creating a Auth.js config file in the root of your application:
 
@@ -166,15 +196,25 @@ export function SignIn() {
 </Code.Next>
 </Code>
 
-And start your application, clicking the sign in button we just added. If all went well, you should be redirected to Github (or the provider you chose) and once authenticated redirected back to the app already authenticated.
+And start your application, clicking the sign in button we just added. You should see an option to login with Github. Click on it:
 
-<Callout type="info">
+<img src="/img/getting-started/oauth-options.png" alt="" />
+
+If all went well, you should be redirected to Github (or the provider you chose) and once authenticated redirected back to the app already authenticated.
+
+<Callout>
   You can click on the provider cards above, or visit [the provider's API
   reference page](http://localhost:3000/reference/oauth-providers) to see the
   configuration options you can supply to the provider.
 </Callout>
 
-## Setup Paswordless
+</RichTabs.Panel>
+
+{/* <!--------------------------> */}
+{/* <!-------  PW CONTENT ------> */}
+{/* <!--------------------------> */}
+
+<RichTabs.Panel value="paswordless">
 
 You can setup Auth.js to allow paswordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
 
@@ -200,7 +240,7 @@ There are two ways to setup magic links, either through a SMTP server or connect
 Auth.js does not include `nodemailer` as a dependency, so you'll need to install it yourself if you want to use the [`EmailProvider`](/). Run:
 
 ```sh npm2yarn
-npm install nodemailer or yarn add nodemailer.
+npm install nodemailer
 ```
 
 You will need an SMTP account; ideally for one of [the services known to work with nodemailer](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/).
@@ -276,7 +316,46 @@ providers: [
   setup).
 </Callout>
 
-## Setup with external auth
+Now add a sign in button somewhere in your application:
+
+<Code>
+<Code.Next>
+
+```tsx filename="./components/sign-in.tsx"
+"use client";
+
+import { signIn } from "../../auth.ts";
+
+export function SignIn() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn();
+      }}
+    >
+      <button type="submit">Sign In</button>
+    </form>
+  );
+}
+```
+
+</Code.Next>
+</Code>
+
+And start your application, clicking the sign in button we just added. You should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign up with your email:
+
+<img src="/img/magic-links/start.png" alt="Screenshot of sign in page" />
+
+Insert your email and click "Sign in with Email". You should receive an email from Auth.js, click on it and should be redirected to your application, landing already authenticated.
+
+</RichTabs.Panel>
+
+{/* <!-------------------------------> */}
+{/* <!------- EX. AUTH CONTENT ------> */}
+{/* <!-------------------------------> */}
+
+<RichTabs.Panel value="external-auth">
 
 To setup Auth.js with external authentication we need to use the `CredentialsProvider`, which is designed to forward any inserted credentials (.i.e username/password) in the sign in form to your authentication service. This provider is very flexible, and can be easily setup to work with modern authentication methods like for example [WebAuthn](https://webauthn.io/).
 
@@ -287,7 +366,40 @@ To setup Auth.js with external authentication we need to use the `CredentialsPro
   complexity associated with supporting usernames and passwords).
 </Callout>
 
-Integrating the `CredentialsProvider` is as simple as initializing it in the Auth.js configuration file:
+Lets start by creating a simple sign in button:
+
+<Code>
+<Code.Next>
+
+```tsx filename="./components/sign-in.tsx"
+"use client";
+
+import { signIn } from "../../auth.ts";
+
+export function SignIn() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn("credentials", {
+          // Note: The credentials (username/password) will usually be collected through a sign in form you have you build yourself.
+          //       The CredentialsProvider is non-opinionated, username/password is the simplest use-case, but you can configure it
+          //       with other types of external auth like WebAuthn,
+          username: "foo@foo.com",
+          password: "helloworld",
+        });
+      }}
+    >
+      <button type="submit">Sign In</button>
+    </form>
+  );
+}
+```
+
+</Code.Next>
+</Code>
+
+Next, lets initialise the `CredentialsProvider` in the Auth.js configuration file, specifying our custom authentication logic:
 
 <Code>
 <Code.Next>
@@ -302,9 +414,11 @@ export const {
 } = NextAuth({
   providers: [
     Credentials({
-      // `credentials` will usually contain the inserted username/password
-      // in the sign in form
+      // `credentials` will usually contain the collected user's credentials
+      // forwarded through the `signIn()` helper.
       async authorize(credentials) {
+        // You can call here your external API or run the logic to authenticate the
+        // user using the collected credentials
         const authResponse = await fetch("/users/login", {
           method: "POST",
           headers: {
@@ -326,17 +440,17 @@ export const {
 });
 ```
 
-```ts filename="app/api/auth/[...nextauth]/route.ts"
-export { GET, POST } from "./auth";
-export const runtime = "edge"; // optional
-```
-
 </Code.Next>
 </Code>
 
 Note that we only had to define a single `authorize` method that is in charge of receiving the credentials inserted by the user and call whatever authentication service we want to use. Auth.js will then be in charge of managing the user session for us.
 
-- [Check the Credentials Provider options](/reference/core/providers/credentials) for further customization
+Now display the `SignIn` button we made somewhere in your app and click it, inserting the expected credentials. If the supplied credentials pass the logic you have defined in the `authorize` callback we wrote, you should be redirected back to the app already authenticated.
+
+<Callout type="info">
+  [Check the Credentials Provider
+  options](/reference/core/providers/credentials) for further customization
+</Callout>
 
 <Callout type="info">
   If you're using TypeScript, you can [augment the `User`
@@ -344,3 +458,10 @@ Note that we only had to define a single `authorize` method that is in charge of
   response of your `authorize` callback, so whenever you read the user in other
   callbacks (like the `jwt`) the type will match correctly.
 </Callout>
+
+</RichTabs.Panel>
+
+</RichTabs.Panels>
+</RichTabs>
+
+Check out the next guide, [User management](/overview/user-management), to learn how to read the session and display the logged in status.
