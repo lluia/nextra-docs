@@ -4,7 +4,7 @@
   "description": "Auth.js Documenation",
   "scripts": {
     "typedoc": "typedoc",
-    "dev": "TYPEDOC_WATCH=1 typedoc & next dev",
+    "dev": "typedoc --watch & next dev",
     "build": "next build",
     "start": "next start"
   },
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/ubbe-xyz/nextra-docs"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Auth.js Team (https://authjs.dev/contributors)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ubbe-xyz/nextra-docs/issues"
