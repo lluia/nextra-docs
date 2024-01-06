@@ -33,7 +33,7 @@ export function Code({ children }: ChildrenProps) {
         );
         return (
           child || (
-            <Tabs.Tab>
+            <Tabs.Tab key={f}>
               <p className="italic">
                 {frameworks[f]} not documented yet. Help us by contributing <a className="underline" target="_blank" href={`${config.project.link}/edit/main/docs/pages${router.pathname}.mdx`}>here</a>.
               </p>
