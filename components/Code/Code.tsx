@@ -23,8 +23,6 @@ export function Code({ children }: ChildrenProps) {
   const frameworkNames = Object.keys(frameworks);
   const config = useConfig()
   const router = useRouter()
-  console.log('useConfig', config)
-  console.log('path', router.pathname)
 
   return (
     <Tabs items={Object.values(frameworks)}>
@@ -37,7 +35,7 @@ export function Code({ children }: ChildrenProps) {
           child || (
             <Tabs.Tab>
               <p className="italic">
-                {frameworks[f]} not documented yet. Help us by contributing <a class="underline" target="_blank" href={`${config.project.link}/edit/main/docs/pages${router.pathname}.mdx`}>here</a>.
+                {frameworks[f]} not documented yet. Help us by contributing <a className="underline" target="_blank" href={`${config.project.link}/edit/main/docs/pages${router.pathname}.mdx`}>here</a>.
               </p>
             </Tabs.Tab>
           )

@@ -80,7 +80,7 @@ export function DemoCards() {
         );
 
         return wip ? (
-          <Tooltip label={label as string}>{content}</Tooltip>
+          <Tooltip key={name} label={label as string}>{content}</Tooltip>
         ) : (
           content
         );
