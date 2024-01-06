@@ -2,27 +2,26 @@ import { Bleed } from "nextra-theme-docs";
 import { ShieldChevron } from "@phosphor-icons/react";
 import { DemoCards } from "../components/DemoCards/DemoCards";
 
-<div className="animated-stars overflow-hidden">
-  <div id="nc-main" className="nc-main bg-cover bg-cc">
-    <div className="logo-proposal">
-      <img src="/img/etc/logo-sm.webp" style={{ width: "8rem" }} />
+<div className="w-full h-full mx-auto max-w-7xl">
+  <div className="flex flex-col items-center gap-24 mt-32">
+    <div className="w-full flex justify-center">
+      <img src="/img/etc/logo-sm.webp" className="w-32" />
       <span className="font-black text-8xl ml-6 pb-1">Auth.js</span>
     </div>
-    <div className="full-wh">
-      <div className="bg-animation">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div id="stars4"></div>
-      </div>
+    <div className="w-full">
+      <p className="flex flex-row items-baseline gap-8 text-4xl font-black justify-center pt-8">
+        <span>Open Source</span>
+        <span>Full Stack</span>
+        <span>Own Your Data</span>
+      </p>
     </div>
+    <DemoCards />
+  </div>
+  <div className="bg-animation -z-10">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div id="stars4"></div>
   </div>
 </div>
 
-<p className="flex flex-row items-baseline gap-8 text-4xl font-black justify-center pt-8">
-  <span>Open Source</span>
-  <span>Full Stack</span>
-  <span>Own Your Data</span>
-</p>
-
-<DemoCards />
