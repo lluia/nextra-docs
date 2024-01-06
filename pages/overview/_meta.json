@@ -2,13 +2,14 @@
   "index": "Introduction",
   "installation": "Installation",
   "authentication": "Authentication",
-  "session": "User Session Management",
+  "user-session": "User session",
   "database-setup": "Database setup",
   "securing": "Securing your app",
-  "custom-pages": "Custom pages",
   "deployment": "Deployment",
   "typescript": "Typescript",
   "migrating-to-v5": "Migrating to Auth.js",
   "security": "Security",
+  "contributors": "Contributors",
+  "sponsors": "Sponsors",
   "todo": "Todo"
 }

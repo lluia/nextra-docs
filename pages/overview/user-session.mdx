@@ -3,9 +3,9 @@ import { RichTabs } from "../../components/RichTabs/RichTabs";
 import { Code } from "../../components/Code/Code";
 import { SignIn, SignOut, UserCircle } from "@phosphor-icons/react";
 
-# Custom Pages
+# Managing the user session
 
-Auth.js ships lightweight utilities to help you manage the user's session easily. Aside from [built-in pages](/tutorials/custom-pages/built-in-pages), which are [fully customisable](/tutorials/custom-pages/custom-sign-in), Auth.js does not come with any built-in styles.
+Auth.js ships with lightweight utilities to help you manage the user's session easily. Aside from [built-in pages](/tutorials/custom-pages/built-in-pages), which are [fully customisable](/tutorials/custom-pages/custom-sign-in), Auth.js does not come with any built-in styles.
 
 Auth.js automatically creates simple, unbranded authentication pages for handling Sign in, Sign out, Email Verification and displaying error messages.
 
@@ -52,7 +52,7 @@ To add a custom login page, extend the Auth.js configuration with a pages object
   <RichTabs.Panels>
     <RichTabs.Panel value="login">
       <Code>
-        <Code.NextApp>
+        <Code.Next>
 
         ```ts filename="./auth.ts"
         import NextAuth from "next-auth";
@@ -73,7 +73,7 @@ To add a custom login page, extend the Auth.js configuration with a pages object
         // TODO
         ```
 
-        </Code.NextApp>
+        </Code.Next>
         <Code.NextPages>
 
         ```ts filename="./pages/api/auth/[...nextauth].ts
@@ -191,5 +191,6 @@ To add a custom login page, extend the Auth.js configuration with a pages object
     </RichTabs.Panel>
     <RichTabs.Panel value="logout">Logout</RichTabs.Panel>
     <RichTabs.Panel value="navigation">Navigation</RichTabs.Panel>
+
   </RichTabs.Panels>
 </RichTabs>
