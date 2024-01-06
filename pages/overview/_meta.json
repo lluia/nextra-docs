@@ -2,6 +2,7 @@
   "index": "Introduction",
   "installation": "Installation",
   "authentication": "Authentication",
+  "session": "User Session Management",
   "database-setup": "Database setup",
   "securing": "Securing your app",
   "custom-pages": "Custom pages",
