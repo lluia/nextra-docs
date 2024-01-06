@@ -5,6 +5,7 @@
   "custom-adapter": "Custom Database adapter",
   "role-based-auth": "Role based authorisation",
   "testing": "Testing with Playwright",
+  "debugging": "Debugging",
   "theming": "Theming",
   "custom-pages": "Custom Pages",
   "deep-dive": "Deep dive"

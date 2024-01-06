@@ -18,7 +18,7 @@ import manifest from "../data/manifest.json";
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
 - **Oauth** (_Sign in with Google, Github, LinkedIn, etc..._)
-- **Paswordless** (_Magic links, OTP codes, WebAuthn, etc..._)
+- **Paswordless** (_Magic links, WebAuthn, etc..._)
 - **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
 <br />
@@ -465,5 +465,7 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 </RichTabs.Panels>
 </RichTabs>
+
+**TODO**: Tell users that it already works, by showing the cookie has been set in the browser, and they can inspect the session there. Show the cookie before they log in and after.
 
 Check out the next guide, [User management](/overview/user-management), to learn how to read the session and display the logged in status.
