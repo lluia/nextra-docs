@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Auth.js Documenation",
   "scripts": {
-    "dev": "next dev",
+    "typedoc": "typedoc",
+    "dev": "TYPEDOC_WATCH=1 typedoc & next dev",
     "build": "next build",
     "start": "next start"
   },
