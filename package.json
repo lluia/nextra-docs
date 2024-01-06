@@ -26,7 +26,9 @@
     "nextra": "^2.13.2",
     "nextra-theme-docs": "^2.13.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typedoc": "^0.25.6",
+    "typedoc-plugin-markdown": "4.0.0-next.39"
   },
   "devDependencies": {
     "@types/node": "20.9.0",
