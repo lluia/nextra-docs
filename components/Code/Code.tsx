@@ -7,13 +7,17 @@ interface ChildrenProps {
   children: React.ReactElement;
 }
 
-Code.Next = NextJsCode;
+Code.Next = NextCode;
+Code.NextPages = NextPagesCode;
+Code.NextApp = NextAppCode;
 Code.Svelte = SvelteCode;
 Code.Solid = SolidCode;
 Code.Express = ExpressCode;
 
 const frameworks = {
-  [NextJsCode.name]: "Next.js",
+  // [NextCode.name]: "Next.js",
+  [NextAppCode.name]: "Next.js (App)",
+  [NextPagesCode.name]: "Next.js (Pages)",
   [SvelteCode.name]: "Sveltekit",
   [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
@@ -45,7 +49,13 @@ export function Code({ children }: ChildrenProps) {
   );
 }
 
-function NextJsCode({ children }: ChildrenProps) {
+function NextAppCode({ children }: ChildrenProps) {
+  return <Tabs.Tab>{children}</Tabs.Tab>;
+}
+function NextPagesCode({ children }: ChildrenProps) {
+  return <Tabs.Tab>{children}</Tabs.Tab>;
+}
+function NextCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;
 }
 
