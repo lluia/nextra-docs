@@ -15,7 +15,7 @@ Code.Solid = SolidCode;
 Code.Express = ExpressCode;
 
 const frameworks = {
-  // [NextCode.name]: "Next.js",
+  [NextCode.name]: "Next.js",
   [NextAppCode.name]: "Next.js (App)",
   [NextPagesCode.name]: "Next.js (Pages)",
   [SvelteCode.name]: "Sveltekit",
