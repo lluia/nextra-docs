@@ -7,10 +7,7 @@ const config: DocsThemeConfig = {
   logo: (
     <div className="flex flex-row items-center">
       <img src="/img/etc/logo-xs.webp" width="30" />
-      <span
-        className="font-black text-xl"
-        style={{ marginLeft: "8px", color: "#334155" }}
-      >
+      <span className="ml-2 text-xl font-black" >
         Auth.js
       </span>
     </div>
@@ -18,13 +15,49 @@ const config: DocsThemeConfig = {
   components: {
     a: (props: ChildrenProps) => <Link href="" {...props} />,
   },
-  darkMode: false,
   project: {
     link: "https://github.com/nextauthjs/next-auth",
   },
-  docsRepositoryBase: "https://github.com/nextauthjs/next-auth",
+  darkMode: true,
+  primaryHue: {
+    light: 260,
+    dark: 20,
+  },
+  head: (
+    <>
+      <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+      <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    </>
+  ),
+  toc: {
+    extraContent: <span data-todo="potential spot for ad?"></span>,
+    backToTop: true
+  },
+  banner: {
+    text: (
+      <>
+        <a
+          className="text-violet-400"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://next-auth.js.org"
+        >
+          NextAuth.js
+        </a>{" "}
+        is now Auth.js! 🎉 Authentication for the Web. Everyone included.
+      </>
+    ),
+  },
+  docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
     text: "☕️ Auth.js – spread love",
+  },
+  useNextSeoProps() {
+    return {
+      titleTemplate: "%s – Auth.js",
+      description: "Authentication for the Web.",
+    }
   },
 };
 

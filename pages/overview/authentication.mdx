@@ -17,9 +17,9 @@ import manifest from "../data/manifest.json";
 
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- **Oauth** ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- **Paswordless** ( _Magic links, OTP codes, WebAuthn, etc..._ )
-- **External auth** ( _Integrating with external APIs, etc..._ )
+- **Oauth** (_Sign in with Google, Github, LinkedIn, etc..._)
+- **Paswordless** (_Magic links, OTP codes, WebAuthn, etc..._)
+- **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
 <br />
 
@@ -28,7 +28,7 @@ Before start setting up Auth.js, you need to decide how you're gonna authenticat
 <b>Why Auth.js recommends OAuth as the main authentication method for your application?</b>
 </summary>
 
-OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection ( _bot-protection, rate-limiting_ ), password management ( _password reset, credential stuffing, rotation_ ), data security ( _encryption/salting, strength validation_ ), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
+OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection (_bot-protection, rate-limiting_), password management (_password reset, credential stuffing, rotation_), data security (_encryption/salting, strength validation_), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
 
 </details>
 <details>
@@ -36,7 +36,7 @@ OAuth providers spend significant amounts of money, time, and engineering effort
 <b>Do I need a database?</b>
 </summary>
 
-Auth.js by default uses [JSON Web Tokens](https://jwt.io/) for saving the user's session so you don't need to setup a database for authenticating users ( _all our JWT tokens are encrypted by default with A256GCM_ ). However, if you want to set up a database, you can use one of our official database adapters or create your own. The database will be used <u>to persist the user's session</u>. You can force the usage of JWT when using a database through the configuration options.
+Auth.js by default uses [JSON Web Tokens](https://jwt.io/) for saving the user's session so you don't need to setup a database for authenticating users (_all our JWT tokens are encrypted by default with A256GCM_). However, if you want to set up a database, you can use one of our official database adapters or create your own. The database will be used <u>to persist the user's session</u>. You can force the usage of JWT when using a database through the configuration options.
 
 </details>
 <details>
@@ -44,7 +44,7 @@ Auth.js by default uses [JSON Web Tokens](https://jwt.io/) for saving the user's
 <b>Can I set up more than one authentication method?</b>
 </summary>
 
-OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection ( _bot-protection, rate-limiting_ ), password management ( _password reset, credential stuffing, rotation_ ), data security ( _encryption/salting, strength validation_ ), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
+OAuth providers spend significant amounts of money, time, and engineering effort to build abuse detection (_bot-protection, rate-limiting_), password management (_password reset, credential stuffing, rotation_), data security (_encryption/salting, strength validation_), and much more. It is likely that your application would benefit from leveraging these battle-tested solutions rather than try to rebuild them from scratch.
 
 </details>
 
@@ -52,19 +52,19 @@ Once you have decided how to authenticate users in your application (you can alw
 
 <RichTabs defaultValue="oauth">
   <RichTabs.TabList>
-    <RichTabs.Tab value="oauth">
+    <RichTabs.Tab key="oauth" value="oauth">
       <div className="flex flex-col justify-center items-center h-full">
         <GitDiff fontSize="3rem" />
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab value="paswordless">
+    <RichTabs.Tab key="passwordless" value="paswordless">
       <div className="flex flex-col justify-center items-center h-full">
         <UserFocus fontSize="3rem" />
         <span>Setup Passwordless</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab value="external-auth">
+    <RichTabs.Tab key="external-auth" value="external-auth">
       <div className="flex flex-col justify-center items-center h-full">
         <Password fontSize="3rem" />
         <span>Setup External Auth</span>
@@ -72,7 +72,7 @@ Once you have decided how to authenticate users in your application (you can alw
     </RichTabs.Tab>
   </RichTabs.TabList>
   <RichTabs.Panels>
-    <RichTabs.Panel value="oauth">
+    <RichTabs.Panel key="oauth" value="oauth">
 
 {/* <!--------------------------> */}
 {/* <!-----  OAUTH CONTENT -----> */}
@@ -87,8 +87,10 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
       key={name}
       className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
-      <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
-      <div class="text-sm text-center">{name}</div>
+      <div className="grid place-items-center flex-grow">
+        <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
+      </div>
+      <div className="text-sm text-center">{name}</div>
     </Link>
   ))}
 </ListDisclosure>
@@ -214,7 +216,7 @@ If all went well, you should be redirected to Github (or the provider you chose)
 {/* <!-------  PW CONTENT ------> */}
 {/* <!--------------------------> */}
 
-<RichTabs.Panel value="paswordless">
+<RichTabs.Panel key="passwordless" value="paswordless">
 
 You can setup Auth.js to allow paswordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
 
@@ -355,7 +357,7 @@ Insert your email and click "Sign in with Email". You should receive an email fr
 {/* <!------- EX. AUTH CONTENT ------> */}
 {/* <!-------------------------------> */}
 
-<RichTabs.Panel value="external-auth">
+<RichTabs.Panel key="external-auth" value="external-auth">
 
 To setup Auth.js with external authentication we need to use the `CredentialsProvider`, which is designed to forward any inserted credentials (.i.e username/password) in the sign in form to your authentication service. This provider is very flexible, and can be easily setup to work with modern authentication methods like for example [WebAuthn](https://webauthn.io/).
 

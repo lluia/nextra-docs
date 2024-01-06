@@ -3,7 +3,7 @@ import { Tooltip } from "../Tooltip/Tooltip";
 
 export function DemoCards() {
   return (
-    <div className="flex flex-row justify-around w-full mt-8 mb-12">
+    <div className="mb-12 mt-8 flex w-full flex-row justify-around">
       {[
         {
           href: "https://next-auth-example.vercel.app/",
@@ -43,19 +43,34 @@ export function DemoCards() {
             </>
           ),
         },
+        {
+          href: "https://authjs-express-dev-app.onrender.com/",
+          img: "https://authjs.dev/img/frameworks/express.svg",
+          name: "Express",
+          logoWidth: "45",
+          wip: true,
+          label: (
+            <>
+              Officially supported but not documented. Help us{" "}
+              <a href="https://github.com/nextauthjs/next-auth/issues">
+                document it.
+              </a>
+            </>
+          ),
+        },
       ].map(({ href, name, img, logoWidth, wip, label }) => {
         const content = (
           <Link
             href={href}
             key={name}
-            className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-28 shadow-lg relative"
+            className="relative flex w-28 flex-col items-center justify-between rounded-lg border border-solid border-slate-200 p-4 shadow-lg"
             target="_blank"
           >
             <img src={img} width={logoWidth} />
-            <div className="text-sm mt-3">{name}</div>
+            <div className="mt-3 text-sm">{name}</div>
             {wip ? (
               <div
-                className="absolute px-3 py-1 font-semibold text-sm bg-amber-300 text-black rounded-full shadow-sm"
+                className="absolute rounded-full bg-amber-300 px-3 py-1 text-sm font-semibold text-black shadow-sm"
                 style={{ right: "-30px", top: "-15px" }}
               >
                 Beta
@@ -65,7 +80,7 @@ export function DemoCards() {
         );
 
         return wip ? (
-          <Tooltip label={label as string}>{content}</Tooltip>
+          <Tooltip key={name} label={label as string}>{content}</Tooltip>
         ) : (
           content
         );
