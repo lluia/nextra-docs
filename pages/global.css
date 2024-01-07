@@ -4,6 +4,23 @@
 
 @import url("./animated-stars.css");
 
-details>*:not(summary) {
+details > *:not(summary) {
   @apply p-4;
+}
+
+.underline-highlight {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -0.125rem;
+    left: -0.5rem;
+    right: -0.5rem;
+    height: 0.75rem;
+    z-index: -1;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

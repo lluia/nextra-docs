@@ -63,7 +63,7 @@ export function DemoCards() {
           <Link
             href={href}
             key={name}
-            className="relative flex w-28 flex-col items-center justify-between rounded-lg border border-solid border-slate-200 p-4 shadow-lg"
+            className="relative flex w-28 flex-col flex-wrap items-center justify-between rounded-lg border border-solid border-slate-200 p-4 shadow-lg bg-white"
             target="_blank"
           >
             <img src={img} width={logoWidth} />
@@ -80,7 +80,9 @@ export function DemoCards() {
         );
 
         return wip ? (
-          <Tooltip key={name} label={label as string}>{content}</Tooltip>
+          <Tooltip key={name} label={label as string}>
+            {content}
+          </Tooltip>
         ) : (
           content
         );

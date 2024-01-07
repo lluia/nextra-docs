@@ -7,9 +7,7 @@ const config: DocsThemeConfig = {
   logo: (
     <div className="flex flex-row items-center">
       <img src="/img/etc/logo-xs.webp" width="30" />
-      <span className="ml-2 text-xl font-black" >
-        Auth.js
-      </span>
+      <span className="ml-2 text-xl font-black">Auth.js</span>
     </div>
   ),
   components: {
@@ -25,14 +23,24 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
-      <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
-      <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+      <link
+        rel="icon"
+        href="/favicon-32x32.png"
+        sizes="32x32"
+        type="image/png"
+      />
+      <link
+        rel="icon"
+        href="/favicon-16x16.png"
+        sizes="16x16"
+        type="image/png"
+      />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     </>
   ),
   toc: {
     extraContent: <span data-todo="potential spot for ad?"></span>,
-    backToTop: true
+    backToTop: true,
   },
   banner: {
     text: (
@@ -57,7 +65,7 @@ const config: DocsThemeConfig = {
     return {
       titleTemplate: "%s – Auth.js",
       description: "Authentication for the Web.",
-    }
+    };
   },
 };
 

@@ -58,3 +58,31 @@ or you can visit https://generate-secret.vercel.app/32 to generate one.
   also a `AUTH_TRUST_HOST` variable to `true` for other hosting providers like
   <strong>Cloudflare Pages</strong> or <strong>Netlify</strong>.
 </Callout>
+
+## Initialisation
+
+The most important file in your Auth.js project is the Auth.js config file. It's there where you control the behaviour of the library and specify custom authentication logic.
+
+Start by creating a new `auth.ts` file at the root of your app with the following content:
+
+<Callout type="info">
+  You can actually name the file however you want and place it wherever you
+  like. Make sure you place it's easy to reference via imports, as we'll be
+  using its 3 main exports: `signIn`, `signOut` and `auth`.
+</Callout>
+
+<Code>
+  <Code.Next>
+    
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+
+export const { signIn, signOut, auth } = NextAuth({
+  providers: [],
+});
+```
+
+  </Code.Next>
+</Code>
+
+If you run your app, nothing will happen yet. Refer to the next section, [Authentication](/overview/authentication), to learn to setup an authentication method.

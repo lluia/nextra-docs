@@ -1,9 +1,19 @@
 {
   "index": "Introduction",
   "installation": "Installation",
-  "authentication": "Authentication",
+  "authentication": {
+    "title": "Authentication",
+    "theme": {
+      "toc": false
+    }
+  },
   "database-setup": "Database setup",
-  "session-management": "Session management",
+  "session-management": {
+    "title": "Session management",
+    "theme": {
+      "toc": false
+    }
+  },
   "deployment": "Deployment",
   "typescript": "Typescript",
   "migrating-to-v5": "Migrating to Auth.js",

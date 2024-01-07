@@ -4,7 +4,7 @@ import manifest from "../data/manifest.json";
 
 # Setup a database
 
-Auth.js by default uses JSON Web Tokens for saving the user's session so you don't need to setup a database for authenticating users. However, if you want to persist user information in your own database, or you want to implement certain flows, you can use a **Database Adapter**.
+Setting up a database in optional. Auth.js by default uses JSON Web Tokens for saving the user's session so you don't need to setup a database for authenticating users. However, if you want to persist user information in your own database, or you want to implement certain flows, you can use a **Database Adapter**.
 
 **Database Adapters** are packages maintained by the Auth.js team to connect Auth.js to the most common databases (see full list below).
 
@@ -18,7 +18,7 @@ Below you can see a list of official adapters that are distributed as their own 
   If you don't find an adapter for the database or service you use, you can
   always create one yourself (and optionally open a PR so anyone can make use of
   it). Have a look at our guide on [how to create a database
-  adapter](/tutorials/cusomt-adapter).
+  adapter](/tutorials/custom-adapter).
 </Callout>
 
 <div className="grid gap-x-4 gap-y-4 grid-cols-4 w-full mt-8 mb-12">

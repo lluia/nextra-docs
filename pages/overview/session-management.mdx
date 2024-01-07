@@ -15,7 +15,7 @@ import {
 
 Auth.js ships with lightweight utilities to help you manage the user's session easily. Aside from [built-in pages](/tutorials/custom-pages/built-in-pages), which are [themable](/tutorials/theming) or [fully customisable](/tutorials/custom-pages/custom-sign-in), Auth.js does not come with any built-in styles.
 
-You're in charge of the building the UI for session management. Below we summarise some of the most common patterns that you'll need to setup to have your app production ready.
+You're in charge of the building the UI for session management. Below we summarise some of the most common patterns for handling user sessions that you'll need to build before shipping your app to production.
 
 <RichTabs defaultValue="login">
   <RichTabs.TabList>
@@ -52,7 +52,11 @@ You're in charge of the building the UI for session management. Below we summari
 
 <RichTabs.Panel value="login">
 
-### Handle sign in
+<h3 class="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
+  Handling sign in
+</h3>
+
+For signing in users, assuming you have [already setup an authentication method](/overview/authentication), you only need to build a button that when pressed calls the `signIn` function exported in your Auth.js config:
 
 <Code>
   <Code.Next>
@@ -70,62 +74,77 @@ export const { signIn, auth } = NextAuth({
 });
 ```
 
-```ts filename="./app/auth/signin/page.tsx"
-import { signIn, providers } from "../../../auth";
+```tsx filename="./components/auth/sign-in.tsx"
+import { signIn } from "../../auth.ts";
 
-// TODO
+export function SignIn() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn();
+      }}
+    >
+      <button type="submit">Sign in</button>
+    </form>
+  );
+}
 ```
 
   </Code.Next>
+</Code>
 
-  <Code.Svelte>
+When clicking this button in your application, the user will be redirected to the configured sign in page. If you did not setup a [custom sign in page](/tutorials/custom-pages/custom-sign-in), the user will be redirected to `/api/auth/signin`, the sign in page Auth.js ships with. There the configured authentication methods will be displayed:
 
-```ts filename="./src/hooks.server.ts"
-import { SvelteKitAuth } from "@auth/sveltekit";
-import GitHub from "@auth/sveltekit/providers/github";
+<img src="/img/getting-started/default-signin-page.png" />
 
-export const handle = SvelteKitAuth({
-  providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })],
-  pages: {
-    signIn: "/login",
-  },
-});
-```
-
-  </Code.Svelte>
-  <Code.Solid>
-
-```ts filename="./src/routes/auth.ts
-// TODO
-import { SolidAuth } from "@auth/solid";
-
-export const handleAuth = SolidAuth({
-  ...
-  pages: {
-    signIn: "/login",
-  },
-});
-```
-
-  </Code.Solid>
-  <Code.Express>
+Once authenticated, the user will be redirected to your the app (by default `/`). If you want the user to be redirected somewhere else after sign in (.i.e `/dashboard`), you can do so via the [`redirect`](/reference/core/types#redirect) callback:
 
 ```ts filename="./auth.ts"
-// TODO
-
-import { ExpressAuth } from "@auth/express";
+import NextAuth from "next-auth";
+// In this example we're using Github, if you're using another provider, for example, like Google, it'll be:
+// `import Google from "next-auth/providers/google"`
 import GitHub from "next-auth/providers/github";
 
-export const { signIn, auth } = ExpressAuth({
-  providers: [GitHub],
-  pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
+export const { signIn, auth } = NextAuth({
+  providers: [GitHub, Google],
+  callbacks: {
+    /**
+     * @url → the default configured callback URL
+     * @baseUrl → the baseUrl of the app
+     */
+    async redirect({ url, baseUrl }) {
+      return `${baseUrl}/dashboard`;
+    },
   },
 });
 ```
 
-  </Code.Express>
+### Handling sign out
+
+Similarly, to sign out users, just build a simple sign out button that calls the exported `signOut` function from your Auth.js config:
+
+<Code>
+  
+<Code.Next>
+```tsx
+export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
+  return (
+    <form
+      action={async () => {
+        "use server"
+        await signOut()
+      }}
+    >
+      <button type="submit" {...props}>
+        Sign Out
+      </button>
+    </form>
+  )
+}
+```
+</Code.Next>
+
 </Code>
 
 </RichTabs.Panel>
