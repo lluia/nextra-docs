@@ -1,4 +1,4 @@
-{
+export default {
   "configuration": "Configuring Auth.js",
   "configuring-oauth": "Configuring OAuth",
   "custom-oauth": "Custom OAuth Provider",

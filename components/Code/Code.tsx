@@ -1,4 +1,4 @@
-import { useConfig } from "nextra-theme-docs";
+import { useThemeConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import { Tabs } from "nextra/components";
 import React, { Children } from "react";
@@ -21,7 +21,7 @@ const frameworks = {
 
 export function Code({ children }: ChildrenProps) {
   const frameworkNames = Object.keys(frameworks);
-  const config = useConfig();
+  const { project } = useThemeConfig();
   const router = useRouter();
 
   return (
@@ -34,12 +34,12 @@ export function Code({ children }: ChildrenProps) {
         return (
           child || (
             <Tabs.Tab key={f}>
-              <p className="font-semibold bg-slate-100 p-6 rounded-lg">
+              <p className="rounded-lg bg-slate-100 p-6 font-semibold">
                 {frameworks[f]} not documented yet. Help us by contributing{" "}
                 <a
                   className="underline"
                   target="_blank"
-                  href={`${config.project.link}/edit/main/docs/pages${router.pathname}.mdx`}
+                  href={`${project.link}/edit/main/docs/pages${router.pathname}.mdx`}
                 >
                   here
                 </a>

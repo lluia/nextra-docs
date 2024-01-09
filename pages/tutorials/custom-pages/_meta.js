@@ -1,4 +1,4 @@
-{
+export default {
   "built-in-pages": "Built-in pages",
   "custom-sign-in": "Custom sign in",
   "custom-sign-out": "Custom sign out",

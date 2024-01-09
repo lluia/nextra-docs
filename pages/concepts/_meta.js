@@ -1,4 +1,4 @@
-{
+export default {
   "index": "Overview",
   "oauth": "How OAuth works",
   "environment-variables": "Environment variables",
