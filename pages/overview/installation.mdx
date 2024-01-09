@@ -74,7 +74,7 @@ Start by creating a new `auth.ts` file at the root of your app with the followin
 
 <Code>
   <Code.Next>
-    
+
 ```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 
@@ -85,7 +85,7 @@ export const { signIn, signOut, auth } = NextAuth({
 
   </Code.Next>
   <Code.Svelte>
-    
+
 ```ts filename="./src/hooks.server.ts"
 import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from "@auth/sveltekit/providers/github"
@@ -103,7 +103,7 @@ export const handle = SvelteKitAuth({
 
   </Code.Svelte>
   <Code.Solid>
-    
+
 ```ts filename="./routes/api/auth/[...solidauth].ts"
 import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
 import GitHub from "@auth/core/providers/github"
@@ -122,7 +122,7 @@ export const { GET, POST } = SolidAuth(authOpts)
 
   </Code.Solid>
   <Code.Express>
-    
+
 ```ts filename="./src/routes/auth.route.ts"
 import { ExpressAuth } from "@auth/express"
 import GitHub from "@auth/express/providers/github"
