@@ -1,7 +1,8 @@
-import { Callout } from "nextra/components";
+import { Steps, Callout } from "nextra/components";
 import { Code } from "../../components/Code/Code";
 
-# Installing Auth.js
+<Steps>
+### Installing Auth.js
 
 Installing Auth.js is easy, you just need to run a single command and set one environment variable.
 
@@ -37,7 +38,7 @@ Start by installing the appropriate package for your framework of choice:
   </Code.Express>
 </Code>
 
-## Environment
+### Setup Environment
 
 Create a `.env.local` file at the root of your application and add the `AUTH_SECRET` environment variable:
 
@@ -59,7 +60,7 @@ or you can visit https://generate-secret.vercel.app/32 to generate one.
   <strong>Cloudflare Pages</strong> or <strong>Netlify</strong>.
 </Callout>
 
-## Initialisation
+### Initialise Auth.js
 
 The most important file in your Auth.js project is the Auth.js config file. It's there where you control the behaviour of the library and specify custom authentication logic.
 
@@ -83,6 +84,77 @@ export const { signIn, signOut, auth } = NextAuth({
 ```
 
   </Code.Next>
+  <Code.Svelte>
+    
+```ts filename="./src/hooks.server.ts"
+import { SvelteKitAuth } from "@auth/sveltekit"
+import GitHub from "@auth/sveltekit/providers/github"
+import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
+
+export const handle = SvelteKitAuth({
+  providers: [
+    GitHub({ 
+      clientId: GITHUB_ID, 
+      clientSecret: GITHUB_SECRET 
+    })
+  ],
+})
+```
+
+  </Code.Svelte>
+  <Code.Solid>
+    
+```ts filename="./routes/api/auth/[...solidauth].ts"
+import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
+import GitHub from "@auth/core/providers/github"
+
+export const authOpts: SolidAuthConfig = {
+  providers: [
+    GitHub({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+  ],
+}
+
+export const { GET, POST } = SolidAuth(authOpts)
+```
+
+  </Code.Solid>
+  <Code.Express>
+    
+```ts filename="./src/routes/auth.route.ts"
+import { ExpressAuth } from "@auth/express"
+import GitHub from "@auth/express/providers/github"
+import express from "express"
+
+const app = express()
+
+// Make sure to use these body parsers so Auth.js can receive data from the client
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+// If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
+app.use('trust proxy')
+
+app.use(
+  "/api/auth/*",
+  ExpressAuth({
+    providers: [
+      GitHub({
+        clientId: process.env.GITHUB_ID,
+        clientSecret: process.env.GITHUB_SECRET,
+      }),
+    ],
+  })
+)
+```
+
+  </Code.Express>
 </Code>
 
-If you run your app, nothing will happen yet. Refer to the next section, [Authentication](/overview/authentication), to learn to setup an authentication method.
+### Setup Authentication Methods
+
+With that the basic setup is complete! Refer to the next section, [Authentication](/overview/authentication), to setup your first authentication method.
+
+</Steps>
