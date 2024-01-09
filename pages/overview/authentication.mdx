@@ -1,23 +1,24 @@
-import { Callout, Tabs } from "nextra/components";
-import { Link } from "../../components/Link/Link";
-import { RichTabs } from "../../components/RichTabs/RichTabs";
-import { Code } from "../../components/Code/Code";
+import { Steps, Callout, Tabs } from "nextra/components";
+import { Link } from "@components/Link/Link";
+import { RichTabs } from "@components/RichTabs/RichTabs";
+import { Code } from "@components/Code/Code";
+import { Screenshot } from "@components/Screenshot";
 import { GitDiff, UserFocus, Password } from "@phosphor-icons/react";
-import { ListDisclosure } from "../../components/ListDisclosure/ListDisclosure";
-import manifest from "../data/manifest.json";
+import { ListDisclosure } from "@components/ListDisclosure/ListDisclosure";
+import manifest from "@data/manifest.json";
 
 # Authenticating users
 
 <Callout>
   Auth.js discourages the use of passwords due to the inherent security risks of
   the username-password model. Passwords are still supported through the
-  [External auth]((#setup-with-external-auth)) but we strongly encourage to
-  setup a combination of **Oauth + Passwordless** for authentication.
+  [external auth]((#setup-with-external-auth)) but we strongly encourage to
+  setup a combination of **OAuth + Passwordless** for authentication.
 </Callout>
 
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- **Oauth** (_Sign in with Google, Github, LinkedIn, etc..._)
+- **OAuth** (_Sign in with Google, Github, LinkedIn, etc..._)
 - **Paswordless** (_Magic links, WebAuthn, etc..._)
 - **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
@@ -102,10 +103,94 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
   OAuth provider as long as they support **OAuth 2**.
 </Callout>
 
-Let's enable Github as a sign in option in our Auth.js config file:
+<Steps>
+
+### Setup Provider OAuth App
+
+First you must setup an OAuth application on your provider's platform. 
+
+<Callout type="warning">
+  Note that, if you haven't done it before, setting up OAuth from scratch can be
+  tricky. <u>We strongly recommend</u> you read our deep dive guide on [how to
+  setup Github OAuth with Auth.js](/tutorials/oauth-github-setup). The
+  instructions will be the same for any OAuth provider, only differing how you
+  register your application in the provider's dashboard.
+</Callout>
+
+You can find detailed instructions on registering an OAuth application with your provider of choice on their respective pages linked above. When registering an OAuth application, they will all ask you to enter your application's callback URL. See below for the default callback URL pattern based on your client library.
 
 <Code>
-<Code.Next>
+  <Code.Next>
+
+  ```
+  [origin]/api/auth/callback/[provider]
+  ```
+
+  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+
+  ```
+  [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+  ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+  ```
+  [origin]/api/callback/[provider]
+  ```
+
+  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+
+  ```
+  [origin]/api/callback/[provider_name] → https://localhost:3000/api/callback/github
+  ```
+
+  </Code.Svelte>
+  <Code.Solid>
+
+  ```
+  [origin]/api/auth/callback/[provider]
+  ```
+
+  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+
+  ```
+  [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+  ```
+
+  </Code.Solid>
+  <Code.Express>
+
+  ```
+  [origin]/api/auth/callback/[provider]
+  ```
+
+  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+
+  ```
+  [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+  ```
+
+  </Code.Express>
+</Code>
+
+### Setup Environment Variables
+
+Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
+
+```bash filename=".env.local"
+AUTH_GITHUB_ID={CLIENT_ID}
+AUTH_GITHUB_SECRET={CLIENT_SECRET}
+```
+
+Auth.js (with Next.js) will automatically pick up these. You can [also use a different name for the environment variables](/concepts/environment-variables#oauth-variables) if needed, but then you'll need to pass them to the provider manually. All other client libraries also require you to manually pass the environment variables to the provider.
+
+### Setup Auth.js Provider
+
+Let's enable Github as a sign in option in our Auth.js configuration. You'll have to import the `GitHub` provider from the package and pass it to the `providers` array we setup before. With most Auth.js clients you'll also have to pass the provider your environment variables manually.
+
+<Code>
+  <Code.Next>
 
 ```ts filename="./auth.ts"
 import NextAuth from "next-auth";
@@ -118,60 +203,79 @@ export const { signIn, auth } = NextAuth({
 });
 ```
 
-</Code.Next>
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="./src/hooks.server.ts"
+import { SvelteKitAuth } from "@auth/sveltekit"
+import GitHub from "@auth/sveltekit/providers/github"
+import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
+
+export const handle = SvelteKitAuth({
+  providers: [
+    GitHub({ 
+      clientId: GITHUB_ID, 
+      clientSecret: GITHUB_SECRET 
+    })
+  ],
+})
+```
+
+  </Code.Svelte>
+  <Code.Solid>
+
+```ts filename="./routes/api/auth/[...solidauth].ts"
+import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
+import GitHub from "@auth/core/providers/github"
+
+export const authOpts: SolidAuthConfig = {
+  providers: [
+    GitHub({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+  ],
+}
+
+export const { GET, POST } = SolidAuth(authOpts)
+```
+
+  </Code.Solid>
+  <Code.Express>
+
+```ts filename="./src/routes/auth.route.ts"
+import { ExpressAuth } from "@auth/express"
+import GitHub from "@auth/express/providers/github"
+import express from "express"
+
+const app = express()
+
+// Make sure to use these body parsers so Auth.js can receive data from the client
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+// If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
+app.use('trust proxy')
+
+app.use(
+  "/api/auth/*",
+  ExpressAuth({
+    providers: [
+      GitHub({
+        clientId: process.env.GITHUB_ID,
+        clientSecret: process.env.GITHUB_SECRET,
+      }),
+    ],
+  })
+)
+```
+
+  </Code.Express>
 </Code>
 
-<Callout type="warning">
-  Note that, if you haven't done it before, setting up OAuth from scratch can be
-  tricky. <u>We strongly recommend</u> you read our deep dive guide on [how to
-  setup Github OAuth with Auth.js](/tutorials/oauth-github-setup). The
-  instructions will be the same for any OAuth provider, only differing how you
-  register your application in the provider's dashboard.
-</Callout>
+### Signin Button
 
-If you run the app, this won't work yet. You need to register your application in the OAuth provider's dashboard. For instance, for Github you would need to follow [these instructions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) to register the app.
-
-When registering, make sure you insert a callback URL with the following shape:
-
-<Code>
-<Code.Next>
-
-```
-[origin]/api/auth/callback/[provider]
-```
-
-In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
-
-```
-[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
-```
-
-</Code.Next>
-<Code.Svelte>
-
-```
-[origin]/api/callback/[provider]
-```
-
-In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
-
-```
-[origin]/api/callback/[provider_name] → https://localhost:3000/api/callback/github
-```
-
-</Code.Svelte>
-</Code>
-
-Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
-
-```bash filename=".env.local"
-AUTH_GITHUB_ID={CLIENT_ID}
-AUTH_GITHUB_SECRET={CLIENT_SECRET}
-```
-
-Auth.js will automatically pick up these. You can [also use a different name for the environment variables](/concepts/environment-variables#oauth-variables) if needed.
-
-Now add a sign in button somewhere in your application:
+Next, we can add a sign in button somewhere in your application like the Navbar. This will forward the user on to the Auth.js default signin page.
 
 <Code>
 <Code.Next>
@@ -196,17 +300,19 @@ export function SignIn() {
 </Code.Next>
 </Code>
 
-And start your application, clicking the sign in button we just added. You should see an option to login with Github. Click on it:
+### Ship it!
+
+Now you should be able to test signing in. Start your application, and visit `/api/auth/signin`. That route will load the default Auth.js signin page.
 
 <img src="/img/getting-started/oauth-options.png" alt="" />
 
-If all went well, you should be redirected to Github (or the provider you chose) and once authenticated redirected back to the app already authenticated.
+Click the "Sign in with GitHub" button and if all went well, you should be redirected to Github and once authenticated, redirected back to the app!
 
 <Callout>
-  You can click on the provider cards above, or visit [the provider's API
-  reference page](http://localhost:3000/reference/oauth-providers) to see the
-  configuration options you can supply to the provider.
+You can build your own Signin, Signout, etc. pages to match the style of your application, check out [session management](/overview/session-management) for more details.
 </Callout>
+
+</Steps>
 
 </RichTabs.Panel>
 
@@ -228,12 +334,14 @@ Once the user provide their email address, a **Verification Token** is sent to t
   without using a database.
 </Callout>
 
-There are two ways to setup magic links, either through a SMTP server or connecting to HTTP-based email services (like AWS SES, Postmark, Sendgrid, etc...). We're gonna explain how to setup magic links connecting to a SMTP server (the simplest use case):
+There are two ways to setup magic links through the `EmailProvider`, either through an SMTP server or via HTTP-based email services like AWS SES, Postmark, Sendgrid, etc. We're going to walk through the SMTP Server setup here.
 
 <Callout type="info">
   Make sure you check the [HTTP-based magic links tutorial](/) in case you want
   to integrate with an HTTP-based email service instead of an SMTP server.
 </Callout>
+
+<Steps>
 
 ### Install `nodemailer`
 
@@ -243,11 +351,11 @@ Auth.js does not include `nodemailer` as a dependency, so you'll need to install
 npm install nodemailer
 ```
 
-You will need an SMTP account; ideally for one of [the services known to work with nodemailer](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/).
+You will need access to an SMTP server, ideally from one of [the services known to work with nodemailer](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/).
 
-### Setting up a database adapter
+### Database Adapter
 
-Check our guide on how to [setup a database adapter](/overview/database-setup), as mentioned earlier, a database is required for paswordless login to work as verification tokens needs to be stored.
+Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier, a database is required for paswordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
 
@@ -316,7 +424,9 @@ providers: [
   setup).
 </Callout>
 
-Now add a sign in button somewhere in your application:
+### Signin Button
+
+Next, we can add a sign in button somewhere in your application like the Navbar. This will forward the user on to the Auth.js default signin page.
 
 <Code>
 <Code.Next>
@@ -341,11 +451,15 @@ export function SignIn() {
 </Code.Next>
 </Code>
 
-And start your application, clicking the sign in button we just added. You should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign up with your email:
+### Signin
+
+Start your application, click on the sign in button we just added, and you should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign in with your email:
 
 <img src="/img/magic-links/start.png" alt="Screenshot of sign in page" />
 
 Insert your email and click "Sign in with Email". You should receive an email from Auth.js, click on it and should be redirected to your application, landing already authenticated.
+
+</Steps>
 
 </RichTabs.Panel>
 
@@ -364,7 +478,11 @@ To setup Auth.js with external authentication we need to use the `CredentialsPro
   complexity associated with supporting usernames and passwords).
 </Callout>
 
-Lets start by creating a simple sign in button:
+<Steps>
+
+### Signin Button
+
+Lets start by creating a simple sign in button.
 
 <Code>
 <Code.Next>
@@ -394,6 +512,8 @@ export function SignIn() {
 
 </Code.Next>
 </Code>
+
+### Credentials Provider
 
 Next, lets initialise the `CredentialsProvider` in the Auth.js configuration file, specifying our custom authentication logic:
 
@@ -441,7 +561,7 @@ export const {
 
 Note that we only had to define a single `authorize` method that is in charge of receiving the credentials inserted by the user and call whatever authentication service we want to use. Auth.js will then be in charge of managing the user session for us.
 
-Now display the `SignIn` button we made somewhere in your app and click it, inserting the expected credentials. If the supplied credentials pass the logic you have defined in the `authorize` callback we wrote, you should be redirected back to the app already authenticated.
+Now display the `SignIn` button we made somewhere in your app and click it, inserting the expected credentials. If the supplied credentials pass the logic you have defined in the `authorize` callback we wrote, you should be redirected back to the app, now authenticated.
 
 <Callout type="info">
   [Check the Credentials Provider
@@ -455,13 +575,19 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
   callbacks (like the `jwt`) the type will match correctly.
 </Callout>
 
+</Steps>
+
 </RichTabs.Panel>
 
 </RichTabs.Panels>
 </RichTabs>
 
+### Next Steps
+
 If you open your browser's devtools, you can now inspect the cookies 🍪 and see that Auth.js has set the session cookie correctly:
 
-<img src="/img/getting-started/auth-js-cookie.png" />
+import AuthJsCookieImage from "../../public/img/getting-started/auth-js-cookie2.png"
 
-This should server for now as proof that you're authenticated and your setup is working. See the next section, [Session management](/overview/session-management), to learn how to display the user session on the app and manage it.
+<Screenshot className="mb-12" src={AuthJsCookieImage} alt="Auth.js Cookies" /> 
+
+If you've gotten this far, you can be confident that your user is authenticated and your setup is working. See the next section, [Session management](/overview/session-management), to learn how to manage and display your user's session in your application.
