@@ -88,16 +88,9 @@ export const { signIn, signOut, auth } = NextAuth({
 
 ```ts filename="./src/hooks.server.ts"
 import { SvelteKitAuth } from "@auth/sveltekit"
-import GitHub from "@auth/sveltekit/providers/github"
-import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
 
 export const handle = SvelteKitAuth({
-  providers: [
-    GitHub({ 
-      clientId: GITHUB_ID, 
-      clientSecret: GITHUB_SECRET 
-    })
-  ],
+  providers: [],
 })
 ```
 
@@ -106,15 +99,9 @@ export const handle = SvelteKitAuth({
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
 import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
-import GitHub from "@auth/core/providers/github"
 
 export const authOpts: SolidAuthConfig = {
-  providers: [
-    GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-  ],
+  providers: [],
 }
 
 export const { GET, POST } = SolidAuth(authOpts)
@@ -125,7 +112,6 @@ export const { GET, POST } = SolidAuth(authOpts)
 
 ```ts filename="./src/routes/auth.route.ts"
 import { ExpressAuth } from "@auth/express"
-import GitHub from "@auth/express/providers/github"
 import express from "express"
 
 const app = express()
@@ -140,12 +126,7 @@ app.use('trust proxy')
 app.use(
   "/api/auth/*",
   ExpressAuth({
-    providers: [
-      GitHub({
-        clientId: process.env.GITHUB_ID,
-        clientSecret: process.env.GITHUB_SECRET,
-      }),
-    ],
+    providers: [],
   })
 )
 ```
