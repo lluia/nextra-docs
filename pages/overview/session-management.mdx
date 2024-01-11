@@ -187,16 +187,57 @@ For Next.js, we recommend calling `auth()` in a server component. `auth()` shoul
 
 <Code.NextPages>
 
-```tsx filename="./pages/_app.tsx"
-import type { AppProps } from "next/app";
+You can access the session server-side by calling [`auth()`](/) in [`getServerSideProps()`](/):
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+```tsx filename="./pages/hello.tsx"
+import { getServerSession } from "next-auth/next";
+import options from "./api/auth/[...nextauth]";
+
+export default function HelloPage({ session }) {
+  return <UserAvatar img={session.img}>{session.name}</UserAvatar>;
+}
+
+export async function getServerSideProps(ctx) {
+  const session = await auth(ctx);
+
+  return {
+    props: {
+      serverSession: session,
+    },
+  };
 }
 ```
 
-```tsx filename="./"
-...
+You can also access the session client-wise using `useSession()` (deprecated) making sure `<SessionProvider />` (deprecated) is above on the tree:
+
+```tsx filename="./pages/_app.tsx"
+import type { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
+
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
+  return (
+    <SessionProvider session={session}>
+      <Component {...pageProps} />;
+    </SessionProvider>
+  );
+}
+```
+
+```tsx
+import { getServerSession } from "next-auth/next";
+import options from "./api/auth/[...nextauth]";
+
+export default function HelloPage() {
+  // If you need to access the session on the client.
+  // It will only work if <SessionProvider /> is above on the React tree.
+  // Discouraged and might be deprecated on a next major release.
+  const session = await useSession();
+
+  return <UserAvatar img={session.img}>{session.name}</UserAvatar>;
+}
 ```
 
 </Code.NextPages>
