@@ -98,7 +98,7 @@ When clicking this button in your application, the user will be redirected to th
 
 <img src="/img/getting-started/default-signin-page.png" />
 
-Once authenticated, the user will be redirected to your the app (by default `/`). If you want the user to be redirected somewhere else after sign in (.i.e `/dashboard`), you can do so via the [`redirect`](/reference/core/types#redirect) callback:
+Once authenticated, the user will be redirected to your app (by default `/`). If you want the user to be redirected somewhere else after sign in (.i.e `/dashboard`), you can do so via the [`redirect`](/reference/core/types#redirect) callback:
 
 ```ts filename="./auth.ts"
 import NextAuth from "next-auth";
@@ -122,7 +122,7 @@ export const { signIn, auth } = NextAuth({
 
 ### Handling sign out
 
-Similarly, to sign out users, just build a simple sign out button that calls the exported `signOut` function from your Auth.js config:
+Similarly, to sign out users, just build a button that calls the exported `signOut` function from your Auth.js config when pressed:
 
 <Code>
   
@@ -153,7 +153,57 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
 {/* <!---------- Display user -------> */}
 {/* <!-------------------------------> */}
 
-<RichTabs.Panel value="user-menu">Navigation</RichTabs.Panel>
+<RichTabs.Panel value="user-menu">
+
+Most commonly, once a user is logged in, you need to display the session by displaying the user's name and profile picture.
+
+Doing this in Auth.js is easy enough, we just need to call the `auth()` helper exported from the Auth.js configuration file to get the available user session:
+
+<Code>
+  
+<Code.Next>
+
+```tsx filename="./components/UserAvatar"
+import { auth } from "../../../auth.ts";
+import { Flex, Avatar, Text } from "@components";
+
+export function UserAvatar(props) {
+  const { session } = await auth();
+
+  if (!session) return null;
+
+  return (
+    <Flex gap="2">
+      <Avatar src={session?.user.img} fallback="U" />
+      <Text>Welcome {session?.user.name}!</Text>
+    </Flex>
+  );
+}
+```
+
+For Next.js, we recommend calling `auth()` in a server component. `auth()` should always be called [on a server component](https://nextjs.org/learn/react-foundations/server-and-client-components) and that should solve 98% of your use cases. If for some reason, you need to read the session on a client component, see the `Next.js (pages)` tab where we explain how to do so with `useSession()` (deprecated).
+
+</Code.Next>
+
+<Code.NextPages>
+
+```tsx filename="./pages/_app.tsx"
+import type { AppProps } from "next/app";
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+```tsx filename="./"
+...
+```
+
+</Code.NextPages>
+
+</Code>
+
+</RichTabs.Panel>
 
 {/* <!-------------------------------> */}
 {/* <!------ PROTECTING ROUTES -----> */}
@@ -205,8 +255,7 @@ For the time being, middleware only supports **jwt** as a session strategy, so i
 </RichTabs>
 
 <Callout>
-  In the future, we might add more rich built-in components to the library if
-  there's a need. [Let us
-  know](https://github.com/nextauthjs/next-auth/issues/new/choose) what type of
-  component you would like Auth.js to ship with.
+  In the future, we might add more rich built-in components to the library. [Let
+  us know](https://github.com/nextauthjs/next-auth/issues/new/choose) what type
+  of component you would like Auth.js to ship with.
 </Callout>
