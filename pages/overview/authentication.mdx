@@ -107,7 +107,7 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
 
 ### Setup Provider OAuth App
 
-First you must setup an OAuth application on your provider's platform. 
+First you must setup an OAuth application on your provider's platform.
 
 <Callout type="warning">
   Note that, if you haven't done it before, setting up OAuth from scratch can be
@@ -122,54 +122,54 @@ You can find detailed instructions on registering an OAuth application with your
 <Code>
   <Code.Next>
 
-  ```
-  [origin]/api/auth/callback/[provider]
-  ```
+```
+[origin]/api/auth/callback/[provider]
+```
 
-  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
-  ```
-  [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
-  ```
+```
+[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+```
 
   </Code.Next>
   <Code.Svelte>
 
-  ```
-  [origin]/api/callback/[provider]
-  ```
+```
+[origin]/api/callback/[provider]
+```
 
-  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
-  ```
-  [origin]/api/callback/[provider_name] → https://localhost:3000/api/callback/github
-  ```
+```
+[origin]/api/callback/[provider_name] → https://localhost:3000/api/callback/github
+```
 
   </Code.Svelte>
   <Code.Solid>
 
-  ```
-  [origin]/api/auth/callback/[provider]
-  ```
+```
+[origin]/api/auth/callback/[provider]
+```
 
-  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
-  ```
-  [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
-  ```
+```
+[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+```
 
   </Code.Solid>
   <Code.Express>
 
-  ```
-  [origin]/api/auth/callback/[provider]
-  ```
+```
+[origin]/api/auth/callback/[provider]
+```
 
-  In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
+In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
-  ```
-  [origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
-  ```
+```
+[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+```
 
   </Code.Express>
 </Code>
@@ -207,26 +207,26 @@ export const { signIn, auth } = NextAuth({
   <Code.Svelte>
 
 ```ts filename="./src/hooks.server.ts"
-import { SvelteKitAuth } from "@auth/sveltekit"
-import GitHub from "@auth/sveltekit/providers/github"
-import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
+import { SvelteKitAuth } from "@auth/sveltekit";
+import GitHub from "@auth/sveltekit/providers/github";
+import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private";
 
 export const handle = SvelteKitAuth({
   providers: [
-    GitHub({ 
-      clientId: GITHUB_ID, 
-      clientSecret: GITHUB_SECRET 
-    })
+    GitHub({
+      clientId: GITHUB_ID,
+      clientSecret: GITHUB_SECRET,
+    }),
   ],
-})
+});
 ```
 
   </Code.Svelte>
   <Code.Solid>
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
-import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
-import GitHub from "@auth/core/providers/github"
+import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start";
+import GitHub from "@auth/core/providers/github";
 
 export const authOpts: SolidAuthConfig = {
   providers: [
@@ -235,27 +235,27 @@ export const authOpts: SolidAuthConfig = {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-}
+};
 
-export const { GET, POST } = SolidAuth(authOpts)
+export const { GET, POST } = SolidAuth(authOpts);
 ```
 
   </Code.Solid>
   <Code.Express>
 
 ```ts filename="./src/routes/auth.route.ts"
-import { ExpressAuth } from "@auth/express"
-import GitHub from "@auth/express/providers/github"
-import express from "express"
+import { ExpressAuth } from "@auth/express";
+import GitHub from "@auth/express/providers/github";
+import express from "express";
 
-const app = express()
+const app = express();
 
 // Make sure to use these body parsers so Auth.js can receive data from the client
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
-app.use('trust proxy')
+app.use("trust proxy");
 
 app.use(
   "/api/auth/*",
@@ -267,7 +267,7 @@ app.use(
       }),
     ],
   })
-)
+);
 ```
 
   </Code.Express>
@@ -309,7 +309,9 @@ Now you should be able to test signing in. Start your application, and visit `/a
 Click the "Sign in with GitHub" button and if all went well, you should be redirected to Github and once authenticated, redirected back to the app!
 
 <Callout>
-You can build your own Signin, Signout, etc. pages to match the style of your application, check out [session management](/overview/session-management) for more details.
+  You can build your own Signin, Signout, etc. pages to match the style of your
+  application, check out [session management](/overview/session-management) for
+  more details.
 </Callout>
 
 </Steps>
@@ -584,10 +586,13 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 ### Next Steps
 
-If you open your browser's devtools, you can now inspect the cookies 🍪 and see that Auth.js has set the session cookie correctly:
+If you now navigate in your app to `/api/auth/session`, should see the Auth.js session displayed as a JSON:
 
-import AuthJsCookieImage from "../../public/img/getting-started/auth-js-cookie.png"
-
-<Screenshot className="mb-12" src={AuthJsCookieImage} alt="Auth.js Cookies" /> 
-
-If you've gotten this far, you can be confident that your user is authenticated and your setup is working. See the next section, [Session management](/overview/session-management), to learn how to manage and display your user's session in your application.
+<img
+  className="mb-12"
+  src="/img/getting-started/session-working.png"
+  alt="Auth.js Session"
+/>
+If you've gotten this far, you can be confident that your user is authenticated and
+your setup is working. See the next section, [Session management](/overview/session-management),
+to learn how to manage and display the user's session in your application.
