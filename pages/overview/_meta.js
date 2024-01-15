@@ -1,13 +1,13 @@
 export default {
   "index": "Introduction",
   "installation": "Installation",
+  "database-setup": "Database setup",
   "authentication": {
     "title": "Authentication",
     "theme": {
       "toc": false
     }
   },
-  "database-setup": "Database setup",
   "session-management": {
     "title": "Session management",
     "theme": {

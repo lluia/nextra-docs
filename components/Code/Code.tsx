@@ -8,12 +8,21 @@ interface ChildrenProps {
 }
 
 Code.Next = NextCode;
+Code.NextPages = NextPagesCode;
 Code.Svelte = SvelteCode;
 Code.Solid = SolidCode;
 Code.Express = ExpressCode;
 
-const frameworks = {
+const baseFrameWorks = {
   [NextCode.name]: "Next.js",
+  [SvelteCode.name]: "Sveltekit",
+  [SolidCode.name]: "SolidStart",
+  [ExpressCode.name]: "Express",
+};
+
+const allFrameworks = {
+  [NextCode.name]: "Next.js",
+  [NextPagesCode.name]: "Next.js (Pages)",
   [SvelteCode.name]: "Sveltekit",
   [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
@@ -23,19 +32,29 @@ export function Code({ children }: ChildrenProps) {
   const frameworkNames = Object.keys(frameworks);
   const { project } = useThemeConfig();
   const router = useRouter();
+  const childs = Children.toArray(children);
+
+  const withNextJsPages = childs.some(
+    // @ts-expect-error
+    (p) => p && p.type.name === NextPagesCode.name
+  );
+
+  const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameWorks;
 
   return (
-    <Tabs items={Object.values(frameworks)}>
-      {frameworkNames.map((f) => {
-        const [child] = Children.toArray(children).filter(
+    <Tabs items={Object.values(renderedFrameworks)}>
+      {Object.keys(renderedFrameworks).map((f) => {
+        const [child] = childs.filter(
           // @ts-expect-error
-          (child) => child.type.name === f
+          (c) => (c ? c.type.name === f : false)
         );
+
         return (
           child || (
             <Tabs.Tab key={f}>
-              <p className="rounded-lg bg-slate-100 p-6 font-semibold">
-                {frameworks[f]} not documented yet. Help us by contributing{" "}
+              <p className="font-semibold bg-slate-100 p-6 rounded-lg">
+                {renderedFrameworks[f]} not documented yet. Help us by
+                contributing{" "}
                 <a
                   className="underline"
                   target="_blank"
@@ -53,36 +72,22 @@ export function Code({ children }: ChildrenProps) {
   );
 }
 
-function NextAppCode({ children }: ChildrenProps) {
-  return <Tabs.Tab>{children}</Tabs.Tab>;
-}
 function NextPagesCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;
 }
+
 function NextCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;
 }
 
 function SvelteCode({ children }: ChildrenProps) {
-  return (
-    <Tabs.Tab>
-      {children || <p className="italic">Sveltekit not documented yet.</p>}
-    </Tabs.Tab>
-  );
+  return <Tabs.Tab>{children}</Tabs.Tab>;
 }
 
 function SolidCode({ children }: ChildrenProps) {
-  return (
-    <Tabs.Tab>
-      {children || <p className="italic">SolidStart not documented yet.</p>}
-    </Tabs.Tab>
-  );
+  return <Tabs.Tab>{children}</Tabs.Tab>;
 }
 
 function ExpressCode({ children }: ChildrenProps) {
-  return (
-    <Tabs.Tab>
-      {children || <p className="italic">Express not documented yet.</p>}
-    </Tabs.Tab>
-  );
+  return <Tabs.Tab>{children}</Tabs.Tab>;
 }
