@@ -33,6 +33,7 @@ export function FrameworkExamples() {
           const desc = frameworkDetails[f];
           return (
             <button
+              key={f}
               onClick={() => setActive(f)}
               className="flex w-32 h-32 flex-col flex-wrap gap-2 items-center justify-center rounded-lg border-4 border-solid border-slate-200 p-4 aria-selected:border-indigo-400"
               aria-selected={f === active}

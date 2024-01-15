@@ -29,7 +29,6 @@ const allFrameworks = {
 };
 
 export function Code({ children }: ChildrenProps) {
-  const frameworkNames = Object.keys(frameworks);
   const { project } = useThemeConfig();
   const router = useRouter();
   const childs = Children.toArray(children);
