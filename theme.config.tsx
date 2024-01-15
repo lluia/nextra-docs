@@ -21,7 +21,7 @@ const config: DocsThemeConfig = {
     hue: {
       light: 260,
       dark: 20,
-    }
+    },
   },
   head: (
     <>
@@ -63,12 +63,6 @@ const config: DocsThemeConfig = {
   footer: {
     content: "☕️ Auth.js – spread love",
   },
-  // useNextSeoProps() {
-  //   return {
-  //     titleTemplate: "%s – Auth.js",
-  //     description: "Authentication for the Web.",
-  //   };
-  // },
 };
 
 export default config;

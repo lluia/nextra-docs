@@ -17,28 +17,6 @@ Auth.js ships with lightweight utilities to help you manage the user's session e
 
 You're in charge of the building the UI for session management. Below we summarise some of the most common patterns for handling user sessions that you'll need to build before shipping your app to production.
 
-```ts twoslash
-// @module: esnext
-interface IdLabel {id: number, /* some fields */ }
-interface NameLabel {name: string, /* other fields */ }
-type NameOrId<T extends number | string> = T extends number ? IdLabel : NameLabel;
-// This comment should not be included
-
-// ---cut---
-function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
-  throw "unimplemented"
-}
-
-const c = document.querySelector(".className")
-
-let a = createLabel("typescript");
-
-export function absolute(num: number) {
-  if (num < 0) return num * -1;
-  return num;
-}
-```
-
 Where absolute is a very important function
 
 <RichTabs defaultValue="login">
@@ -85,9 +63,7 @@ For signing in users, assuming you have [already setup an authentication method]
 <Code>
   <Code.Next>
 
-```ts twoslash filename="./auth.ts"
-// @noErrors
-// @esModuleInterop
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 
