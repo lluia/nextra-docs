@@ -17,9 +17,11 @@ const config: DocsThemeConfig = {
     link: "https://github.com/nextauthjs/next-auth",
   },
   darkMode: true,
-  primaryHue: {
-    light: 260,
-    dark: 20,
+  color: {
+    hue: {
+      light: 260,
+      dark: 20,
+    },
   },
   head: (
     <>
@@ -43,7 +45,7 @@ const config: DocsThemeConfig = {
     backToTop: true,
   },
   banner: {
-    text: (
+    content: (
       <>
         <a
           className="text-violet-400"
@@ -59,13 +61,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
-    text: "☕️ Auth.js – spread love",
-  },
-  useNextSeoProps() {
-    return {
-      titleTemplate: "%s – Auth.js",
-      description: "Authentication for the Web.",
-    };
+    content: "☕️ Auth.js – spread love",
   },
 };
 

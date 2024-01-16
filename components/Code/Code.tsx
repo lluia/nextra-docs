@@ -1,4 +1,4 @@
-import { useConfig } from "nextra-theme-docs";
+import { useThemeConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import { Tabs } from "nextra/components";
 import React, { Children } from "react";
@@ -29,7 +29,7 @@ const allFrameworks = {
 };
 
 export function Code({ children }: ChildrenProps) {
-  const config = useConfig();
+  const { project } = useThemeConfig();
   const router = useRouter();
   const childs = Children.toArray(children);
 
@@ -57,7 +57,7 @@ export function Code({ children }: ChildrenProps) {
                 <a
                   className="underline"
                   target="_blank"
-                  href={`${config.project.link}/edit/main/docs/pages${router.pathname}.mdx`}
+                  href={`${project.link}/edit/main/docs/pages${router.pathname}.mdx`}
                 >
                   here
                 </a>
