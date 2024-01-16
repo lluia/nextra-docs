@@ -4,7 +4,7 @@
 
 @import url("./animated-stars.css");
 
-details>*:not(summary) {
+details > *:not(summary) {
   @apply p-4;
 }
 
