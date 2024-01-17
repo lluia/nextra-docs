@@ -57,14 +57,14 @@ Additionally, Auth.js can be integrated with an external database via Database a
 ### Supported Databases
 
 <ListDisclosure limit={8}>
-  {Object.entries(manifest.adapters).map(([id, [name, img]]) => (
+  {Object.entries(manifest.adapters).map(([value, label]) => (
     <Link
-      href={`/reference/adapter/${id}`}
-      key={id}
+      href={`/reference/adapter/${value}`}
+      key={value}
       className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
-      <img src={`/img/adapters/${img || `${id}.svg`}`} className="h-12 mt-2" />
-      <div className="text-sm text-center">{name}</div>
+      <img src={`/img/adapters/${value}.svg`} className="h-12 mt-2" />
+      <div className="text-sm text-center">{label}</div>
     </Link>
   ))}
 </ListDisclosure>
