@@ -1,9 +1,9 @@
-import { Link } from "../Link/Link";
-import { Tooltip } from "../Tooltip/Tooltip";
+import { Link } from "@/components/Link";
+import { Tooltip } from "@/components/Tooltip";
 
 export function DemoCards() {
   return (
-    <div className="mb-12 mt-8 flex w-full flex-row justify-around">
+    <div className="flex flex-row justify-around mt-8 mb-12 w-full">
       {[
         {
           href: "https://next-auth-example.vercel.app/",
@@ -63,14 +63,14 @@ export function DemoCards() {
           <Link
             href={href}
             key={name}
-            className="relative flex w-28 flex-col flex-wrap items-center justify-between rounded-lg border border-solid border-slate-200 p-4 shadow-lg bg-white"
+            className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200"
             target="_blank"
           >
             <img src={img} width={logoWidth} />
             <div className="mt-3 text-sm">{name}</div>
             {wip ? (
               <div
-                className="absolute rounded-full bg-amber-300 px-3 py-1 text-sm font-semibold text-black shadow-sm"
+                className="absolute py-1 px-3 text-sm font-semibold text-black bg-amber-300 rounded-full shadow-sm"
                 style={{ right: "-30px", top: "-15px" }}
               >
                 Beta

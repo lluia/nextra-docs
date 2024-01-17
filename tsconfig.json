@@ -20,10 +20,13 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
+      "@/components/*": [
         "components/*"
       ],
-      "@data/*": [
+      "@/utils/*": [
+        "utils/*"
+      ]
+      "@/data/*": [
         "pages/data/*"
       ]
     }
