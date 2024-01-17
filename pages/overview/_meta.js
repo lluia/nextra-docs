@@ -17,6 +17,4 @@ export default {
   deployment: "Deployment",
   typescript: "Typescript",
   "migrating-to-v5": "Migrate to NextAuth@5",
-  contributors: "Contributors",
-  sponsors: "Sponsors",
 };
