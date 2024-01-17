@@ -1,5 +1,10 @@
 export default {
   index: "Introduction",
+  "migrating-to-v5": "Migrate to NextAuth@5",
+  "-- Setup": {
+    type: "separator",
+    title: "Setup",
+  },
   installation: "Installation",
   database: "Database",
   authentication: {
@@ -16,7 +21,10 @@ export default {
   },
   deployment: "Deployment",
   typescript: "Typescript",
-  "migrating-to-v5": "Migrate to NextAuth@5",
+  "-- More": {
+    type: "separator",
+    title: "More",
+  },
   contributors: "Contributors",
   sponsors: "Sponsors",
 };
