@@ -40,6 +40,9 @@ Start by installing the appropriate package for your framework of choice:
 
 ### Setup Environment
 
+<Code>
+  <Code.Next>
+
 Create a `.env.local` file at the root of your application and add the `AUTH_SECRET` environment variable:
 
 ```bash filename=".env.local"
@@ -48,21 +51,26 @@ AUTH_SECRET="This is an example"
 
 `AUTH_SECRET` is a random token used by the library to encrypt tokens and email verification hashes, and it's mandatory to keep things secure (See [Deployment](/overview/deployment) to learn more). On Unix based systems you can use this command:
 
+  </Code.Next>
+  <Code.Svelte />
+  <Code.Solid />
+  <Code.Express />
+</Code>
+
 ```bash
 openssl rand -base64 32
 ```
 
 or you can visit https://generate-secret.vercel.app/32 to generate one.
 
-<Callout type="warning">
-  When deploying your app outside <strong>Vercel</strong>, you'll need to set
-  also a `AUTH_TRUST_HOST` variable to `true` for other hosting providers like
-  <strong>Cloudflare Pages</strong> or <strong>Netlify</strong>.
-</Callout>
-
 ### Initialise Auth.js
 
-The most important file in your Auth.js project is the Auth.js config file. It's there where you control the behaviour of the library and specify custom authentication logic.
+The most important part of your Auth.js project is the Auth.js config object. There you can control
+  the behaviour of the library and specify custom authentication logic, adapters, etc.
+
+
+<Code>
+  <Code.Next>
 
 Start by creating a new `auth.ts` file at the root of your app with the following content:
 
@@ -71,9 +79,6 @@ Start by creating a new `auth.ts` file at the root of your app with the followin
   like. Make sure you place it's easy to reference via imports, as we'll be
   using its 3 main exports: `signIn`, `signOut` and `auth`.
 </Callout>
-
-<Code>
-  <Code.Next>
 
 ```ts filename="./auth.ts"
 import NextAuth from "next-auth";

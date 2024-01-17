@@ -15,7 +15,7 @@ Code.Express = ExpressCode;
 
 const baseFrameWorks = {
   [NextCode.name]: "Next.js",
-  [SvelteCode.name]: "Sveltekit",
+  [SvelteCode.name]: "SvelteKit",
   [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
 };
@@ -23,7 +23,7 @@ const baseFrameWorks = {
 const allFrameworks = {
   [NextCode.name]: "Next.js",
   [NextPagesCode.name]: "Next.js (Pages)",
-  [SvelteCode.name]: "Sveltekit",
+  [SvelteCode.name]: "SvelteKit",
   [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
 };
@@ -47,7 +47,7 @@ export function Code({ children }: ChildrenProps) {
         const child = childs.find((c) => c?.type?.name === f);
 
         // @ts-expect-error - Hacky dynamic child wrangling
-        return !!Object.keys(child.props).length ? (
+        return !!Object.keys(child?.props ?? {}).length ? (
           child
         ) : (
           <Tabs.Tab key={f}>
