@@ -1,24 +1,22 @@
 export default {
-  "index": "Introduction",
-  "installation": "Installation",
+  index: "Introduction",
+  installation: "Installation",
   "database-setup": "Database setup",
-  "authentication": {
-    "title": "Authentication",
-    "theme": {
-      "toc": false
-    }
+  authentication: {
+    title: "Authentication",
+    theme: {
+      toc: false,
+    },
   },
   "session-management": {
-    "title": "Session management",
-    "theme": {
-      "toc": false
-    }
+    title: "Session management",
+    theme: {
+      toc: false,
+    },
   },
-  "deployment": "Deployment",
-  "typescript": "Typescript",
-  "migrating-to-v5": "Migrate to NextAuth.js@v5",
-  "security": "Security",
-  "contributors": "Contributors",
-  "sponsors": "Sponsors",
-  "todo": "Todo"
-}
+  deployment: "Deployment",
+  typescript: "Typescript",
+  "migrating-to-v5": "Migrate to NextAuth@5",
+  contributors: "Contributors",
+  sponsors: "Sponsors",
+};
