@@ -1,7 +1,7 @@
 import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
-import { Link } from "./components/Link/Link";
-import { ChildrenProps } from "./utils/types";
+import { Link } from "@/components/Link";
+import { ChildrenProps } from "@/utils/types";
 
 const config: DocsThemeConfig = {
   logo: (
