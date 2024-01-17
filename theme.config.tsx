@@ -1,7 +1,7 @@
-import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { Link } from "@/components/Link";
 import { ChildrenProps } from "@/utils/types";
+import Footer from "@/components/Footer";
 
 const config: DocsThemeConfig = {
   logo: (
@@ -38,6 +38,10 @@ const config: DocsThemeConfig = {
         type="image/png"
       />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:url" content="https://authjs.dev" />
+      <meta property="og:title" content="Auth.js" />
+      <meta property="og:description" content="Authentication for the Web" />
     </>
   ),
   toc: {
@@ -45,6 +49,7 @@ const config: DocsThemeConfig = {
     backToTop: true,
   },
   banner: {
+    key: "authjs-rename",
     content: (
       <>
         <a
@@ -61,7 +66,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
-    content: "☕️ Auth.js – spread love",
+    component: <Footer />,
   },
 };
 
