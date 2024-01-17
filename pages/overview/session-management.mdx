@@ -1,6 +1,6 @@
 import { Callout } from "nextra/components";
-import { RichTabs } from "../../components/RichTabs/RichTabs";
-import { Code } from "../../components/Code/Code";
+import { RichTabs } from "@/components/RichTabs";
+import { Code } from "@/components/Code";
 import {
   SignIn,
   SignOut,
@@ -165,7 +165,7 @@ Doing this in Auth.js is easy enough, we just need to call the `auth()` helper e
 
 ```tsx filename="./components/UserAvatar"
 import { auth } from "../../../auth.ts";
-import { Flex, Avatar, Text } from "@components";
+import { Flex, Avatar, Text } from "@/components";
 
 export function UserAvatar(props) {
   const { session } = await auth();

@@ -1,7 +1,7 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
-import { Link } from "./components/Link/Link";
-import { ChildrenProps } from "./utils/types";
-import Footer from "./components/Footer";
+import { Link } from "@/components/Link";
+import { ChildrenProps } from "@/utils/types";
+import Footer from "@/components/Footer";
 
 const config: DocsThemeConfig = {
   logo: (
