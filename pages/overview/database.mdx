@@ -14,6 +14,48 @@ database for authenticating users**. However, if you want to persist user inform
 
 For instance, [when implementing magic links](/tutorials/paswordless-sentry-setup), the `EmailProvider` will require you to setup a database adapter to be able to store the [verification tokens](/concepts/database-models#verificationtoken-model) present on the links.
 
+This is a generic ER Diagram of what the database schema should look like. Your database adapter of
+choice will include a template schema with more details for the underlying database of choice
+(MySQL, PostgreSQL, etc.)
+
+```mermaid
+%%{init: {'theme':'neutral'}}%%
+erDiagram
+    Account }o--|| User : ""
+    Account {
+        string userId
+        string type
+        string provider
+        string providerAccountId
+        string refresh_token
+        string access_token
+        int expires_at
+        string token_type
+        string scope
+        string id_token
+        string session_state
+    }
+    Session }o--|| User : ""
+    Session {
+        string userId
+        string sessionToken
+        timestamp expires
+    }
+    VerificationToken }o--|| User : ""
+    VerificationToken {
+        string identified
+        string token
+        timestamp expires
+    }
+    User {
+        string id
+        string name
+        string email
+        timestamp emailVerified
+        string image
+    }
+```
+
 ## Official adapters
 
 Below is a list of official adapters that are distributed as their own packages under the `@auth/`
