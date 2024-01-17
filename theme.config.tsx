@@ -1,7 +1,7 @@
-import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { Link } from "./components/Link/Link";
 import { ChildrenProps } from "./utils/types";
+import Footer from "./components/Footer";
 
 const config: DocsThemeConfig = {
   logo: (
@@ -61,7 +61,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
-    content: "☕️ Auth.js – spread love",
+    component: <Footer />,
   },
 };
 
