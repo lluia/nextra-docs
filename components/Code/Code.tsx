@@ -1,4 +1,4 @@
-import { useConfig, useTheme } from "nextra-theme-docs";
+import { useThemeConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import { Tabs } from "nextra/components";
 import React, { Children } from "react";
@@ -31,7 +31,7 @@ const allFrameworks = {
 export function Code({ children }: ChildrenProps) {
   const router = useRouter();
   const childs = Children.toArray(children);
-  const { project } = useConfig();
+  const { project } = useThemeConfig();
 
   const withNextJsPages = childs.some(
     // @ts-expect-error

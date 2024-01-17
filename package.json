@@ -1,6 +1,7 @@
 {
   "name": "auth-js-docs",
   "version": "0.0.1",
+  "packageManager": "pnpm@8.14.0",
   "description": "Auth.js Documenation",
   "type": "module",
   "scripts": {
