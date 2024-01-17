@@ -16,7 +16,7 @@ export default {
   },
   "deployment": "Deployment",
   "typescript": "Typescript",
-  "migrating-to-v5": "Migrating to Auth.js",
+  "migrating-to-v5": "Migrate to NextAuth.js@v5",
   "security": "Security",
   "contributors": "Contributors",
   "sponsors": "Sponsors",

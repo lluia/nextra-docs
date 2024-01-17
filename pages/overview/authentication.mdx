@@ -7,7 +7,7 @@ import { GitDiff, UserFocus, Password } from "@phosphor-icons/react";
 import { ListDisclosure } from "@components/ListDisclosure/ListDisclosure";
 import manifest from "@data/manifest.json";
 
-# Authenticating users
+# Authentication
 
 <Callout>
   Auth.js discourages the use of passwords due to the inherent security risks of
@@ -100,7 +100,7 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
   Can't find the OAuth provider you're looking for? In that case, you'll need to
   build your own provider, which is easy. [Learn
   how](/tutorials/deep-dive/oauth-github-setup). Auth.js can be setup with any
-  OAuth provider as long as they support **OAuth 2**.
+  OAuth provider as long as they support **OAuth/OIDC**.
 </Callout>
 
 <Steps>
@@ -109,12 +109,9 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
 
 First you must setup an OAuth application on your provider's platform.
 
-<Callout type="warning">
-  Note that, if you haven't done it before, setting up OAuth from scratch can be
-  tricky. <u>We strongly recommend</u> you read our deep dive guide on [how to
-  setup Github OAuth with Auth.js](/tutorials/oauth-github-setup). The
-  instructions will be the same for any OAuth provider, only differing how you
-  register your application in the provider's dashboard.
+<Callout>
+  If you haven't used OAuth before, you can read the deep dive guide on [how to
+  setup Github OAuth with Auth.js](/tutorials/oauth-github-setup).
 </Callout>
 
 You can find detailed instructions on registering an OAuth application with your provider of choice on their respective pages linked above. When registering an OAuth application, they will all ask you to enter your application's callback URL. See below for the default callback URL pattern based on your client library.

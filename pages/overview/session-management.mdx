@@ -181,7 +181,7 @@ export function UserAvatar(props) {
 }
 ```
 
-For Next.js, we recommend calling `auth()` in a server component. `auth()` should always be called [on a server component](https://nextjs.org/learn/react-foundations/server-and-client-components) and that should solve 98% of your use cases. If for some reason, you need to read the session on a client component, see the `Next.js (pages)` tab where we explain how to do so with `useSession()` (deprecated).
+For Next.js, we recommend calling `auth()` in a server component. `auth()` should always be called [on a server component](https://nextjs.org/learn/react-foundations/server-and-client-components) and that should solve the most common use cases. If for some reason, you need to read the session on a client component, see the `Next.js (pages)` tab where we explain how to do so with `useSession()` (deprecated).
 
 </Code.Next>
 
@@ -294,9 +294,3 @@ For the time being, middleware only supports **jwt** as a session strategy, so i
 
 </RichTabs.Panels>
 </RichTabs>
-
-<Callout>
-  In the future, we might add more rich built-in components to the library. [Let
-  us know](https://github.com/nextauthjs/next-auth/issues/new/choose) what type
-  of component you would like Auth.js to ship with.
-</Callout>

@@ -2,12 +2,9 @@ import { Callout } from "nextra/components";
 
 # Deployment
 
-Auth.js, by default, uses the [JWT session strategy](/concepts/session-strategies#jwt) so it does not require a database to be configured.
-
 <Callout type="info">
   Auth.js relies strictly on standard Web APIs, so it can be deployed anywhere
-  you can deploy a JavaScript application. Auth.js is fully compatible with Edge
-  runtimes too.
+  you can deploy a JavaScript application.
 </Callout>
 
 ## Environment Variables
@@ -26,7 +23,7 @@ openssl rand -base64 32
 
 or https://generate-secret.vercel.app/32 to generate a random value for it.
 
-If you are using an [OAuth Provider](/reference/oauth-providers), your provider will have a <ins>Client ID</ins> and <ins>Client Secret</ins> that you will need to set as environment variables as well (in the case of OIDC, a third `issuer` option is also required).
+If you are using an [OAuth Provider](/reference/oauth-providers), your provider will have a <ins>Client ID</ins> and <ins>Client Secret</ins> that you will need to set as environment variables as well (in the case of OIDC, a third `issuer` might be also required, refer to the provider's setup).
 
 <Callout type="info">
   Some Auth.js libraries can infer environment variables without passing them
@@ -65,11 +62,14 @@ However, Auth.js **supports Preview deployments**, even **with OAuth providers**
 3. For your OAuth provider, set the callback URL using the stable deployment URL. Eg.: For GitHub `https://auth.yourdomain.com/api/auth/callback/github`)
 
 <Callout type="info">
-To support preview deployments, the `AUTH_SECRET` value needs to be the same for the stable deployment and deployments that will need OAuth support.
+  To support preview deployments, the `AUTH_SECRET` value needs to be the same
+  for the stable deployment and deployments that will need OAuth support.
 </Callout>
 
 <Callout type="note">
-If you are storing users in a [database](/reference/core/adapters), we recommend using a different OAuth app for development/production so that you don't mix your test and production user base.
+  If you are storing users in a [database](/reference/core/adapters), we
+  recommend using a different OAuth app for development/production so that you
+  don't mix your test and production user base.
 </Callout>
 
 <details>
