@@ -29,9 +29,9 @@ const allFrameworks = {
 };
 
 export function Code({ children }: ChildrenProps) {
-  const { project } = useThemeConfig();
   const router = useRouter();
   const childs = Children.toArray(children);
+  const { project } = useThemeConfig();
 
   const withNextJsPages = childs.some(
     // @ts-expect-error
