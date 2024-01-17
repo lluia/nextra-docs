@@ -6,7 +6,7 @@ export default {
     title: "Setup",
   },
   installation: "Installation",
-  "database-setup": "Database",
+  database: "Database",
   authentication: {
     title: "Authentication",
     theme: {
