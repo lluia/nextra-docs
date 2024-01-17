@@ -25,7 +25,7 @@
       ],
       "@/utils/*": [
         "utils/*"
-      ]
+      ],
       "@/data/*": [
         "pages/data/*"
       ]
