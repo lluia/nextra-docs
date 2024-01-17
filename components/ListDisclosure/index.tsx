@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useListDisclosure } from "./useListDisclosure";
 import cx from "classnames";
 
@@ -26,7 +26,7 @@ export function ListDisclosure({ children, limit, className = "" }: Props) {
         {rendered}
       </div>
       <button
-        className="font-semibold text-sm bg-slate-900 text-white rounded-full shadow-md h-8 w-24 text-xs"
+        className="w-24 h-8 text-sm font-semibold text-white rounded-full shadow-md bg-slate-900"
         onClick={isAllDisplayed ? handleCollapseAll : handleDisplayMore}
       >
         {isAllDisplayed ? "Collapse all" : "Show more"}
