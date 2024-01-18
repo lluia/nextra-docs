@@ -1,4 +1,5 @@
 import { Code } from "@/components/Code";
+import { Screenshot } from "@/components/Screenshot";
 
 # Custom error page
 
@@ -82,4 +83,6 @@ export default function AuthErrorPage() {
 
 Now, when an error happens, Auth.js will redirect the user to our custom error page:
 
-<img src="/img/tutorials/custom-error-page.png" />
+import CustomErrorPage from "../../../public/img/tutorials/custom-error-page.webp"
+
+<Screenshot src={CustomErrorPage} alt="Custom Error Page" />

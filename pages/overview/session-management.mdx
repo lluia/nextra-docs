@@ -1,6 +1,7 @@
 import { Callout } from "nextra/components";
 import { RichTabs } from "@/components/RichTabs";
 import { Code } from "@/components/Code";
+import { Screenshot } from "@/components/Screenshot";
 import {
   SignIn,
   SignOut,
@@ -96,7 +97,9 @@ export function SignIn() {
 
 When clicking this button in your application, the user will be redirected to the configured sign in page. If you did not setup a [custom sign in page](/tutorials/custom-pages/custom-sign-in), the user will be redirected to `/api/auth/signin`, the sign in page Auth.js ships with. There the configured authentication methods will be displayed:
 
-<img src="/img/getting-started/default-signin-page.png" />
+import DefaultSignInPage from "../../public/img/getting-started/default-signin-page.webp"
+
+<Screenshot src={DefaultSignInPage} alt="Default Sign-in Page" />
 
 Once authenticated, the user will be redirected to your app (by default `/`). If you want the user to be redirected somewhere else after sign in (.i.e `/dashboard`), you can do so via the [`redirect`](/reference/core/types#redirect) callback:
 
