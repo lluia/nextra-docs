@@ -72,11 +72,11 @@ In this case, given we want to try our application locally, it would be (the pro
 https://localhost:3000/api/auth/callback/auth0
 ```
 
-Once registered, you should get a `CLIENT_ID` and `CLIENT_SECRET`. Add those in your application environment file (`.env.local` for Next.js) like so:
+Once registered, you should get a clientId and clientSecret. Add those in your application environment file (`.env.local` for Next.js) like so:
 
 ```bash filename=".env.local"
-AUTH0_ID={CLIENT_ID}
-AUTH0_SECRET={CLIENT_SECRET}
+AUTH_AUTH0_ID={clientId}
+AUTH_AUTH0_SECRET={clientSecret}
 ```
 
 Auth.js is automatically configured to read these, so you don't need to make any changes in your configuration file.

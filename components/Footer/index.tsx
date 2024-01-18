@@ -52,8 +52,8 @@ const Footer = () => {
         <div className="flex flex-col">
           <h3 className="mb-4 text-lg font-black">Acknowledgements</h3>
           <ul className="flex flex-col gap-2">
-            <a href="/contributors">Contributors</a>
-            <a href="/sponsors">Sponsors</a>
+            <a href="/overview/contributors">Contributors</a>
+            <a href="/overview/sponsors">Sponsors</a>
           </ul>
         </div>
       </div>

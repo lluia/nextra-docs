@@ -52,7 +52,7 @@ Once you have decided how to authenticate users in your application (you can alw
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab key="passwordless" value="paswordless">
+    <RichTabs.Tab key="token-auth" value="token-auth">
       <div className="flex flex-col justify-center items-center h-full gap-1">
         <ChatText fontSize="2.5rem" />
         <span>Setup Token auth</span>
@@ -199,14 +199,10 @@ export const { signIn, auth } = NextAuth({
 ```ts filename="./src/hooks.server.ts"
 import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/sveltekit/providers/github";
-import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private";
 
 export const handle = SvelteKitAuth({
   providers: [
-    GitHub({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET,
-    }),
+    GitHub(),
   ],
 });
 ```
@@ -221,8 +217,8 @@ import GitHub from "@auth/core/providers/github";
 export const authOpts: SolidAuthConfig = {
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
   ],
 };
@@ -252,8 +248,8 @@ app.use(
   ExpressAuth({
     providers: [
       GitHub({
-        clientId: process.env.GITHUB_ID,
-        clientSecret: process.env.GITHUB_SECRET,
+        clientId: process.env.AUTH_GITHUB_ID,
+        clientSecret: process.env.AUTH_GITHUB_SECRET,
       }),
     ],
   })
@@ -294,7 +290,9 @@ export function SignIn() {
 
 Now you should be able to test signing in. Start your application, and visit `/api/auth/signin`. That route will load the default Auth.js signin page.
 
-<img src="/img/getting-started/oauth-options.png" alt="" />
+import OAuthOptions from "../../public/img/getting-started/oauth-options.webp"
+
+<Screenshot src={OAuthOptions} alt="OAuth Options" />
 
 Click the "Sign in with GitHub" button and if all went well, you should be redirected to Github and once authenticated, redirected back to the app!
 
@@ -309,12 +307,12 @@ Click the "Sign in with GitHub" button and if all went well, you should be redir
 </RichTabs.Panel>
 
 {/* <!--------------------------> */}
-{/* <!-------  PW CONTENT ------> */}
+{/* <!------ TOKEN CONTENT -----> */}
 {/* <!--------------------------> */}
 
-<RichTabs.Panel key="passwordless" value="paswordless">
+<RichTabs.Panel key="token-auth" value="token-auth">
 
-You can setup Auth.js to allow paswordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
+You can setup Auth.js to allow passwordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
 
 Once the user provide their email address, a **Verification Token** is sent to the them. By default this token is valid <u>for 24 hours</u>. If the Verification Token is used within that time (i.e. by clicking on the link in the email) an account is created for the user and they are signed in.
 
@@ -347,7 +345,8 @@ You will need access to an SMTP server, ideally from one of [the services known 
 
 ### Database Adapter
 
-Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier, a database is required for paswordless login to work as verification tokens need to be stored.
+Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier,
+    a database is required for passwordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
 
@@ -411,7 +410,7 @@ providers: [
 
 <Callout>
   Check our deep-dive tutorial on how to setup [Auth.js magic links with
-  Sentry](/tutorials/deep-dive/paswordless-sentry-setup) for a better
+  Sentry](/tutorials/deep-dive/passwordless-sentry-setup) for a better
   understanding on how to setup magic links end-to-end (including database
   setup).
 </Callout>
@@ -447,7 +446,9 @@ export function SignIn() {
 
 Start your application, click on the sign in button we just added, and you should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign in with your email:
 
-<img src="/img/magic-links/start.png" alt="Screenshot of sign in page" />
+import MagicLink from "../../public/img/magic-links/start.webp"
+
+<Screenshot src={MagicLink} alt="Screenshot of sign in page" />
 
 Insert your email and click "Sign in with Email". You should receive an email from Auth.js, click on it and should be redirected to your application, landing already authenticated.
 
@@ -578,11 +579,14 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 If you now navigate in your app to `/api/auth/session`, should see the Auth.js session displayed as a JSON:
 
-<img
+import SessionWorking from "../../public/img/getting-started/session-working.webp"
+
+<Screenshot
   className="mb-12"
-  src="/img/getting-started/session-working.png"
+  src={SessionWorking}
   alt="Auth.js Session"
 />
+
 If you've gotten this far, you can be confident that your user is authenticated and
 your setup is working. See the next section, [Session management](/overview/session-management),
 to learn how to manage and display the user's session in your application.

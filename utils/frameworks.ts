@@ -61,14 +61,10 @@ function codeSvelte() {
   return `
 import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from '@auth/sveltekit/providers/github'
-import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
   
 export const handle = SvelteKitAuth({
   providers: [
-    GitHub({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET
-    })
+    GitHub()
   ],
 })
 `;
@@ -82,8 +78,8 @@ import GitHub from "@auth/core/providers/github"
 export const { GET, POST } = SolidAuth({
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET
     })
   ]
 })
