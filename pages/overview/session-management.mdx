@@ -19,39 +19,34 @@ Auth.js ships with lightweight utilities to help you manage the user's session e
 You're in charge of the building the UI for session management. Below we summarise some of the most common patterns for handling user sessions that you'll need to build before shipping your app to production.
 
 <RichTabs defaultValue="login">
-  <RichTabs.TabList>
-    <RichTabs.Tab value="login">
+  <RichTabs.List>
+    <RichTabs.Trigger value="login">
       <div className="flex flex-col justify-center items-center h-full">
         <SignIn fontSize="3rem" />
         <span>Handle sign in/out</span>
       </div>
-    </RichTabs.Tab>
-    <RichTabs.Tab value="user-menu">
+    </RichTabs.Trigger>
+    <RichTabs.Trigger value="user-menu">
       <div className="flex flex-col justify-center items-center h-full">
         <UserCircle fontSize="3rem" />
         <span>Display user menu</span>
       </div>
-    </RichTabs.Tab>
-    <RichTabs.Tab value="protecting">
+    </RichTabs.Trigger>
+    <RichTabs.Trigger value="protecting">
       <div className="flex flex-col justify-center items-center h-full">
         <GitFork fontSize="3rem" />
         <span>Protecting routes</span>
       </div>
-    </RichTabs.Tab>
-    <RichTabs.Tab value="custom-pages">
+    </RichTabs.Trigger>
+    <RichTabs.Trigger value="custom-pages">
       <div className="flex flex-col justify-center items-center h-full">
         <PaintBucket fontSize="3rem" />
         <span>Custom pages</span>
       </div>
-    </RichTabs.Tab>
-  </RichTabs.TabList>
-  <RichTabs.Panels>
+    </RichTabs.Trigger>
+  </RichTabs.List>
 
-{/* <!-------------------------------> */}
-{/* <!---------- LOGIN/LOGOUT -------> */}
-{/* <!-------------------------------> */}
-
-<RichTabs.Panel value="login">
+<RichTabs.Content value="login">
 
 <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
   Handling sign in
@@ -97,7 +92,7 @@ export function SignIn() {
 
 When clicking this button in your application, the user will be redirected to the configured sign in page. If you did not setup a [custom sign in page](/tutorials/custom-pages/custom-sign-in), the user will be redirected to `/api/auth/signin`, the sign in page Auth.js ships with. There the configured authentication methods will be displayed:
 
-import DefaultSignInPage from "../../public/img/getting-started/default-signin-page.webp"
+import DefaultSignInPage from "../../public/img/getting-started/default-signin-page.webp";
 
 <Screenshot src={DefaultSignInPage} alt="Default Sign-in Page" />
 
@@ -150,13 +145,9 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
 
 </Code>
 
-</RichTabs.Panel>
+</RichTabs.Content>
 
-{/* <!-------------------------------> */}
-{/* <!---------- Display user -------> */}
-{/* <!-------------------------------> */}
-
-<RichTabs.Panel value="user-menu">
+<RichTabs.Content value="user-menu">
 
 Most commonly, once a user is logged in, you need to display the session by displaying the user's name and profile picture.
 
@@ -247,13 +238,9 @@ export default function HelloPage() {
 
 </Code>
 
-</RichTabs.Panel>
+</RichTabs.Content>
 
-{/* <!-------------------------------> */}
-{/* <!------ PROTECTING ROUTES -----> */}
-{/* <!-------------------------------> */}
-
-<RichTabs.Panel value="protecting">
+<RichTabs.Content value="protecting">
 
 ### Redirecting users
 
@@ -293,7 +280,5 @@ Otherwise, if you only want to protect a subset of pages, you could put it in a 
 
 For the time being, middleware only supports **jwt** as a session strategy, so it won't work with databases.
 
-</RichTabs.Panel>
-
-</RichTabs.Panels>
+</RichTabs.Content>
 </RichTabs>
