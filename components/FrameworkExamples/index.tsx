@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { addClassToHast, codeToHtml } from "shikiji";
-import { FrameWork, frameworkDetails } from "utils/frameworks";
+import { Framework, frameworkDetails } from "utils/frameworks";
 import { FileCode } from "@phosphor-icons/react";
 import styles from "./styles.module.css";
 
-async function renderNextJs(framework: FrameWork) {
+async function renderNextJs(framework: Framework) {
   return codeToHtml(frameworkDetails[framework].code, {
     lang: "typescript",
     theme: "material-theme-darker",
@@ -19,7 +19,7 @@ async function renderNextJs(framework: FrameWork) {
 }
 
 export function FrameworkExamples() {
-  const [active, setActive] = useState<FrameWork>(FrameWork.NextJs);
+  const [active, setActive] = useState<Framework>(Framework.NextJs);
   const [example, setExample] = useState("");
 
   useEffect(() => {
@@ -27,15 +27,15 @@ export function FrameworkExamples() {
   }, [active]);
 
   return (
-    <div className="w-full flex flex-row flex-wrap max-w-5xl items-start justify-between h-">
-      <div className="flex flex-row flex-wrap justify-start items-center gap-4 w-1/3 mx-auto m-0">
-        {Object.keys(frameworkDetails).map((f: FrameWork) => {
+    <div className="flex flex-row flex-wrap justify-between items-start w-full max-w-5xl h-">
+      <div className="flex flex-row flex-wrap gap-4 justify-start items-center m-0 mx-auto w-1/3">
+        {Object.keys(frameworkDetails).map((f: Framework) => {
           const desc = frameworkDetails[f];
           return (
             <button
               key={f}
               onClick={() => setActive(f)}
-              className="flex w-32 h-32 flex-col flex-wrap gap-2 items-center justify-center rounded-lg border-4 border-solid border-slate-200 p-4 aria-selected:border-indigo-400"
+              className="flex flex-col flex-wrap gap-2 justify-center items-center p-4 w-32 h-32 rounded-lg border-4 border-solid border-slate-200 aria-selected:border-indigo-400"
               aria-selected={f === active}
             >
               <img src={desc.logo} width={desc.logoW} />
@@ -46,18 +46,18 @@ export function FrameworkExamples() {
       </div>
       <aside className="!w-2/3">
         <div
-          className="rounded-lg m-0 mb-2"
+          className="m-0 mb-2 rounded-lg"
           dangerouslySetInnerHTML={{ __html: example }}
         />
         <a
-          className="w-full flex flex-row items-center gap-2 justify-end cursor-pointer"
+          className="flex flex-row gap-2 justify-end items-center w-full cursor-pointer"
           target="_blank"
           href={frameworkDetails[active].example}
         >
           <FileCode fontSize="2rem" className="inline" />
           <span>
             Check the{" "}
-            <span className="no-underline text-purple-700 font-medium">
+            <span className="font-medium text-purple-700 no-underline">
               {frameworkDetails[active].title} example app
             </span>
           </span>

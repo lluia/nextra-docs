@@ -31,19 +31,26 @@ RichTabs.Trigger = ({
         className,
         orientation === "horizontal"
           ? "aria-selected:border-b-white rounded-tl-lg rounded-tr-lg border-l border-t border-r "
-          : "rounded-tl-md rounded-bl-md border border-r-0"
+          : "rounded-md"
       )}
     />
   );
 };
 
-RichTabs.Content = ({ className, ...rest }: TabsContentProps) => {
+RichTabs.Content = ({
+  className,
+  orientation = "horizontal",
+  ...rest
+}: TabsContentProps & { orientation?: TabsProps["orientation"] }) => {
   return (
     <Content
       {...rest}
       className={cx(
-        "border border-solid dark:border-gray-800 border-slate-200 rounded-bl-lg rounded-br-lg rounded-tr-lg shadow-sm",
-        className
+        "border border-solid dark:border-gray-800 border-slate-200 shadow-sm",
+        className,
+        orientation === "horizontal"
+          ? "rounded-bl-lg rounded-br-lg rounded-tr-lg"
+          : "rounded-md"
       )}
     />
   );
