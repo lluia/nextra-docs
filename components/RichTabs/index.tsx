@@ -40,7 +40,7 @@ export function RichTabs({
   return (
     <RadixTabs.Root
       className={cx(styles.root, className)}
-      defaultValue={tab || rest.defaultValue}
+      defaultValue={typeof tab === "string" ? tab : tab[0] || rest.defaultValue}
       {...rest}
     >
       {children}
