@@ -23,7 +23,8 @@ export function FrameworkExamples() {
   const [example, setExample] = useState("");
 
   useEffect(() => {
-    renderNextJs(active).then((code) => setExample(code));
+    // eslint-disable-next-line no-console
+    renderNextJs(active).then((code) => setExample(code)).catch(err => console.error(err));
   }, [active]);
 
   return (
@@ -53,6 +54,7 @@ export function FrameworkExamples() {
           className="w-full flex flex-row items-center gap-2 justify-end cursor-pointer"
           target="_blank"
           href={frameworkDetails[active].example}
+          rel="noreferrer"
         >
           <FileCode fontSize="2rem" className="inline" />
           <span>

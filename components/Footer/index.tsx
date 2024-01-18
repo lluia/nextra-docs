@@ -1,6 +1,4 @@
-import Image from "next/image";
-
-const Footer = () => {
+export function Footer() {
   return (
     <div className="flex flex-col items-center px-6 my-8 mx-auto w-full text-gray-600 dark:text-gray-100 max-w-[90rem]">
       <div className="flex flex-col gap-4 justify-between mb-8 w-full sm:flex-row sm:gap-0">
@@ -62,6 +60,6 @@ const Footer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

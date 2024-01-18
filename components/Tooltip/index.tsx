@@ -1,6 +1,5 @@
 import React from "react";
 import { Tooltip as ArkTooltip } from "@ark-ui/react";
-import { ChildrenProps } from "../../utils/types";
 
 interface Props {
   label: string;

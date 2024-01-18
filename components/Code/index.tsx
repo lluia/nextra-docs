@@ -34,6 +34,7 @@ export function Code({ children }: ChildrenProps) {
   const { project } = useThemeConfig();
 
   const withNextJsPages = childs.some(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     (p) => p && p.type.name === NextPagesCode.name
   );
@@ -44,6 +45,7 @@ export function Code({ children }: ChildrenProps) {
     <Tabs items={Object.values(renderedFrameworks)}>
       {Object.keys(renderedFrameworks).map((f) => {
         const [child] = childs.filter(
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error
           (c) => (c ? c.type.name === f : false)
         );
@@ -57,6 +59,7 @@ export function Code({ children }: ChildrenProps) {
                 <a
                   className="underline"
                   target="_blank"
+                  rel="noreferrer"
                   href={`${project.link}/edit/main/docs/pages${router.pathname}.mdx`}
                 >
                   here
