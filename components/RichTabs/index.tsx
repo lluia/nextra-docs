@@ -13,21 +13,25 @@ RichTabs.List = ({ className, ...rest }: TabsListProps) => {
   return (
     <List
       {...rest}
-      className={cx(
-        "flex flex-row items-center justify-start gap-8 p-0 -mb-1px",
-        className
-      )}
+      className={cx("flex flex-row items-center justify-start", className)}
     />
   );
 };
 
-RichTabs.Trigger = ({ className, ...rest }: TabsTriggerProps) => {
+RichTabs.Trigger = ({
+  className,
+  orientation = "horizontal",
+  ...rest
+}: TabsTriggerProps & { orientation?: TabsProps["orientation"] }) => {
   return (
     <Trigger
       {...rest}
       className={cx(
-        "relative font-semibold dark:bg-neutral-900 bg-slate-50 text-sm border-l border-t border-r border-solid dark:border-gray-800 border-slate-200 rounded-tl-lg rounded-tr-lg flex flex-col items-center justify-between w-48 h-28 dark:aria-selected:bg-neutral-700 transition-all duration-300 aria-selected:bg-white aria-selected:border-b-white aria-selected:top-px",
-        className
+        "relative font-semibold dark:bg-neutral-900 bg-slate-50 text-sm border-solid dark:border-gray-800 border-slate-200  flex flex-col items-center justify-between w-48 h-28 dark:aria-selected:bg-neutral-700 transition-all duration-300 aria-selected:bg-white  ",
+        className,
+        orientation === "horizontal"
+          ? "aria-selected:border-b-white rounded-tl-lg rounded-tr-lg border-l border-t border-r "
+          : "rounded-tl-md rounded-bl-md border border-r-0"
       )}
     />
   );
@@ -38,7 +42,7 @@ RichTabs.Content = ({ className, ...rest }: TabsContentProps) => {
     <Content
       {...rest}
       className={cx(
-        "px-8 py-8 border border-solid dark:border-gray-800 border-slate-200  rounded-bl-lg rounded-br-lg rounded-tr-lg shadow-sm",
+        "border border-solid dark:border-gray-800 border-slate-200 rounded-bl-lg rounded-br-lg rounded-tr-lg shadow-sm",
         className
       )}
     />
@@ -49,8 +53,9 @@ export function RichTabs({
   children,
   className,
   orientation = "horizontal",
+  onTabChange,
   ...rest
-}: TabsProps) {
+}: TabsProps & { onTabChange?: (value: string) => void }) {
   let [tabValue, setTabValue] = useState(rest.defaultValue);
   const router = useRouter();
   const {
@@ -69,6 +74,9 @@ export function RichTabs({
 
   function handleValueChanged(value: string) {
     setTabValue(value);
+    if (onTabChange) {
+      onTabChange(value);
+    }
   }
 
   return (

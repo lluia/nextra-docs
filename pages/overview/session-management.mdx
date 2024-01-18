@@ -19,7 +19,7 @@ Auth.js ships with lightweight utilities to help you manage the user's session e
 You're in charge of the building the UI for session management. Below we summarise some of the most common patterns for handling user sessions that you'll need to build before shipping your app to production.
 
 <RichTabs defaultValue="login">
-  <RichTabs.List>
+  <RichTabs.List className="gap-2">
     <RichTabs.Trigger value="login">
       <div className="flex flex-col justify-center items-center h-full">
         <SignIn fontSize="3rem" />
@@ -46,7 +46,7 @@ You're in charge of the building the UI for session management. Below we summari
     </RichTabs.Trigger>
   </RichTabs.List>
 
-<RichTabs.Content value="login">
+<RichTabs.Content className="p-8" value="login">
 
 <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
   Handling sign in
@@ -147,7 +147,7 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
 
 </RichTabs.Content>
 
-<RichTabs.Content value="user-menu">
+<RichTabs.Content className="p-8" value="user-menu">
 
 Most commonly, once a user is logged in, you need to display the session by displaying the user's name and profile picture.
 
@@ -240,7 +240,7 @@ export default function HelloPage() {
 
 </RichTabs.Content>
 
-<RichTabs.Content value="protecting">
+<RichTabs.Content className="p-8" value="protecting">
 
 ### Redirecting users
 
