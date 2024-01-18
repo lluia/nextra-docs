@@ -35,8 +35,8 @@ export const {
       name: "My Provider",
       type: "oidc",
       issuer: "https://my.oidc-provider.com",
-      clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
+      clientId: process.env.AUTH_CLIENT_ID,
+      clientSecret: process.env.AUTH_CLIENT_SECRET,
     } satisfies OIDCConfig,
   ],
 });

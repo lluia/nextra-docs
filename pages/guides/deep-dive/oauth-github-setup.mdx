@@ -95,11 +95,11 @@ Behind the scenes, this creates all the relevant Auth API routes so that your ap
 If you haven't, create an `.env.local` file as explained in the [installation section](/installation) and add the following two variables:
 
 ```bash filename=".env.local"
-GITHUB_ID="123"
-GITHUB_SECRET="123"
+AUTH_GITHUB_ID="123"
+AUTH_GITHUB_SECRET="123"
 ```
 
-We will be filling `GITHUB_ID` and `GITHUB_SECRET` with proper values from the GitHub Developer Portal once we have registered our application in Github.
+We will be filling `AUTH_GITHUB_ID` and `AUTH_GITHUB_SECRET` with proper values from the GitHub Developer Portal once we have registered our application in Github.
 
 ## Registering our app
 
@@ -156,11 +156,11 @@ We have finished configuring our OAuth provider, now let's wire all together so 
 
 ## Wiring all together
 
-Let's paste both the <ins>Client ID</ins> and <ins>Client Secret</ins> created in the previous section into our app's environment file:
+Let's paste both the Client ID and Client Secret created in the previous section into our app's environment file:
 
 ```bash filename=".env.local"
-GITHUB_ID={CLIENT_ID}
-GITHUB_SECRET={CLIENT_SECRET}
+AUTH_GITHUB_ID={clientId}
+AUTH_GITHUB_SECRET={clientSecret}
 ```
 
 Finally, we're ready to run our application locally.
