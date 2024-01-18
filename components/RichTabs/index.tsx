@@ -1,6 +1,7 @@
 import * as RadixTabs from "@radix-ui/react-tabs";
 import cx from "classnames";
 import { styles } from "./styles";
+import { useRouter } from "next/router";
 
 RichTabs.TabList = function TabList({
   className,
@@ -32,8 +33,14 @@ export function RichTabs({
   className,
   ...rest
 }: RadixTabs.TabsProps) {
+  const router = useRouter();
+  const { query = "" } = router;
   return (
-    <RadixTabs.Root className={cx(styles.root, className)} {...rest}>
+    <RadixTabs.Root
+      className={cx(styles.root, className)}
+      {...rest}
+      value={query.section}
+    >
       {children}
     </RadixTabs.Root>
   );
