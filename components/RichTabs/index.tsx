@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import * as RadixTabs from "@radix-ui/react-tabs";
 import cx from "classnames";
 import { styles } from "./styles";
+import { useRouter } from "next/router";
 
 RichTabs.TabList = function TabList({
   className,
@@ -32,8 +34,33 @@ export function RichTabs({
   className,
   ...rest
 }: RadixTabs.TabsProps) {
+  let [tabValue, setTabValue] = useState(rest.defaultValue);
+  const router = useRouter();
+  const {
+    query: { tab },
+  } = router;
+
+  useEffect(() => {
+    setTabValue(
+      Array.isArray(tab)
+        ? tab[0]
+        : typeof tab === "string" && tab.length > 0
+        ? tab
+        : rest.defaultValue
+    );
+  }, [tab]);
+
+  function handleValueChanged(value: string) {
+    setTabValue(value);
+  }
+
   return (
-    <RadixTabs.Root className={cx(styles.root, className)} {...rest}>
+    <RadixTabs.Root
+      className={cx(styles.root, className)}
+      {...rest}
+      value={tabValue}
+      onValueChange={handleValueChanged}
+    >
       {children}
     </RadixTabs.Root>
   );

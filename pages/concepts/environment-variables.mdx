@@ -99,8 +99,8 @@ If for whatever reason you want to name the variables differently:
 
 ```bash
 # Google
-GOOGLE_CLIENT_ID=123
-GOOGLE_CLIENT_SECRET=123
+AUTH_GOOGLE_ID=123
+AUTH_GOOGLE_SECRET=123
 ```
 
 Then you will need to manually reference them in the config:
@@ -118,8 +118,8 @@ export const {
 } = NextAuth({
   providers: [
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
 });

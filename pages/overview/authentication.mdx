@@ -19,7 +19,7 @@ import manifest from "@/data/manifest.json";
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
 - **OAuth** (_Sign in with Google, Github, LinkedIn, etc..._)
-- **Paswordless** (_Magic links, WebAuthn, etc..._)
+- **Passwordless** (_Magic links, WebAuthn, etc..._)
 - **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
 <br />
@@ -59,7 +59,7 @@ Once you have decided how to authenticate users in your application (you can alw
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab key="passwordless" value="paswordless">
+    <RichTabs.Tab key="passwordless" value="passwordless">
       <div className="flex flex-col justify-center items-center h-full">
         <UserFocus fontSize="3rem" />
         <span>Setup Passwordless</span>
@@ -206,14 +206,10 @@ export const { signIn, auth } = NextAuth({
 ```ts filename="./src/hooks.server.ts"
 import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/sveltekit/providers/github";
-import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private";
 
 export const handle = SvelteKitAuth({
   providers: [
-    GitHub({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET,
-    }),
+    GitHub(),
   ],
 });
 ```
@@ -228,8 +224,8 @@ import GitHub from "@auth/core/providers/github";
 export const authOpts: SolidAuthConfig = {
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
   ],
 };
@@ -259,8 +255,8 @@ app.use(
   ExpressAuth({
     providers: [
       GitHub({
-        clientId: process.env.GITHUB_ID,
-        clientSecret: process.env.GITHUB_SECRET,
+        clientId: process.env.AUTH_GITHUB_ID,
+        clientSecret: process.env.AUTH_GITHUB_SECRET,
       }),
     ],
   })
@@ -321,9 +317,9 @@ Click the "Sign in with GitHub" button and if all went well, you should be redir
 {/* <!-------  PW CONTENT ------> */}
 {/* <!--------------------------> */}
 
-<RichTabs.Panel key="passwordless" value="paswordless">
+<RichTabs.Panel key="passwordless" value="passwordless">
 
-You can setup Auth.js to allow paswordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
+You can setup Auth.js to allow passwordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
 
 Once the user provide their email address, a **Verification Token** is sent to the them. By default this token is valid <u>for 24 hours</u>. If the Verification Token is used within that time (i.e. by clicking on the link in the email) an account is created for the user and they are signed in.
 
@@ -356,7 +352,8 @@ You will need access to an SMTP server, ideally from one of [the services known 
 
 ### Database Adapter
 
-Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier, a database is required for paswordless login to work as verification tokens need to be stored.
+Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier,
+    a database is required for passwordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
 
@@ -420,7 +417,7 @@ providers: [
 
 <Callout>
   Check our deep-dive tutorial on how to setup [Auth.js magic links with
-  Sentry](/tutorials/deep-dive/paswordless-sentry-setup) for a better
+  Sentry](/tutorials/deep-dive/passwordless-sentry-setup) for a better
   understanding on how to setup magic links end-to-end (including database
   setup).
 </Callout>
