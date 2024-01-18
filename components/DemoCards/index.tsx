@@ -63,10 +63,10 @@ export function DemoCards() {
           <Link
             href={href}
             key={name}
-            className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200"
+            className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg dark:border-gray-800 border-slate-200 dark:bg-neutral-900"
             target="_blank"
           >
-            <img src={img} width={logoWidth} />
+            <img alt={name} src={img} width={logoWidth} />
             <div className="mt-3 text-sm">{name}</div>
             {wip ? (
               <div
