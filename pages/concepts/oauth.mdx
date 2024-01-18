@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Screenshot } from "@/components/Screenshot"
 
 # OAuth
 
@@ -54,7 +55,10 @@ Here is a more visual representation 👀 of a typical OAuth flow with Auth.js (
 
 <br />
 <br />
-<img src="/img/concepts/oauth-diagram.webp" />
+
+import OAuthDiagram from "../../public/img/concepts/oauth-diagram.webp"
+
+<Screenshot src={OAuthDiagram} alt="OAuth Flow Diagram" />
 
 To learn more, check out the following blog posts:
 

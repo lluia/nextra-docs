@@ -1,4 +1,5 @@
 import { Code } from "@/components/Code";
+import { Screenshot } from "@/components/Screenshot"
 
 # Custom sign out page
 
@@ -41,6 +42,8 @@ export default function SignOutPage() {
 
 Now if the user navigates to `/auth-signout` they'll see the following page:
 
-<img src="/img/tutorials/custom-sign-out.png" />
+import CustomSignOut from "../../../public/img/tutorials/custom-sign-out.webp"
+
+<Screenshot src={CustomSignOut} alt="Custom Sign-out" />
 
 If they click "Sign out", the session will be deleted and they will be redirected to the homepage (which is always `/` by default).
