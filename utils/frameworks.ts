@@ -8,7 +8,7 @@ type Details = {
 
 export enum FrameWork {
   NextJs = "nextjs",
-  Svelte = "svelte",
+  Svelte = "sveltekit",
   SolidStart = "solidstart",
   // Express = "express",
 }
