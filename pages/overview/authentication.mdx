@@ -3,24 +3,17 @@ import { Link } from "@/components/Link";
 import { RichTabs } from "@/components/RichTabs";
 import { Code } from "@/components/Code";
 import { Screenshot } from "@/components/Screenshot";
-import { GitDiff, UserFocus, Password } from "@phosphor-icons/react";
+import { GitDiff, ChatText, Password } from "@phosphor-icons/react";
 import { ListDisclosure } from "@/components/ListDisclosure";
 import manifest from "@/data/manifest.json";
 
 # Authentication
 
-<Callout>
-  Auth.js discourages the use of passwords due to the inherent security risks of
-  the username-password model. Passwords are still supported through the
-  [external auth]((#setup-with-external-auth)) but we strongly encourage to
-  setup a combination of **OAuth + Passwordless** for authentication.
-</Callout>
-
-Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
+Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>several authentication paradigms</u>:
 
 - **OAuth** (_Sign in with Google, Github, LinkedIn, etc..._)
-- **Passwordless** (_Magic links, WebAuthn, etc..._)
-- **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
+- **Token-based** ( _Magic links, OTP codes, etc..._ )
+- **Credentials** ( _External Auth, Webauthn, etc..._ )
 
 <br />
 
@@ -59,16 +52,16 @@ Once you have decided how to authenticate users in your application (you can alw
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Tab>
-    <RichTabs.Tab key="passwordless" value="passwordless">
-      <div className="flex flex-col justify-center items-center h-full">
-        <UserFocus fontSize="3rem" />
-        <span>Setup Passwordless</span>
+    <RichTabs.Tab key="token-auth" value="token-auth">
+      <div className="flex flex-col justify-center items-center h-full gap-1">
+        <ChatText fontSize="2.5rem" />
+        <span>Setup Token auth</span>
       </div>
     </RichTabs.Tab>
     <RichTabs.Tab key="external-auth" value="external-auth">
       <div className="flex flex-col justify-center items-center h-full">
         <Password fontSize="3rem" />
-        <span>Setup External Auth</span>
+        <span>Setup Credentials</span>
       </div>
     </RichTabs.Tab>
   </RichTabs.TabList>
@@ -314,10 +307,10 @@ Click the "Sign in with GitHub" button and if all went well, you should be redir
 </RichTabs.Panel>
 
 {/* <!--------------------------> */}
-{/* <!-------  PW CONTENT ------> */}
+{/* <!------ TOKEN CONTENT -----> */}
 {/* <!--------------------------> */}
 
-<RichTabs.Panel key="passwordless" value="passwordless">
+<RichTabs.Panel key="token-auth" value="token-auth">
 
 You can setup Auth.js to allow passwordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
 
