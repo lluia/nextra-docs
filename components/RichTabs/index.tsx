@@ -34,12 +34,14 @@ export function RichTabs({
   ...rest
 }: RadixTabs.TabsProps) {
   const router = useRouter();
-  const { query = "" } = router;
+  const {
+    query: { tab },
+  } = router;
   return (
     <RadixTabs.Root
       className={cx(styles.root, className)}
+      defaultValue={tab || rest.defaultValue}
       {...rest}
-      value={query.section}
     >
       {children}
     </RadixTabs.Root>
