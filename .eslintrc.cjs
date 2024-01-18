@@ -31,9 +31,9 @@ module.exports = {
       },
       // When adding a new rule or disabling a rule, please add a comment for why!
       rules: {
-        // typescript does this already, and this linter can't detect (V)FC<Props>
+        // typescript does this already
         "react/prop-types": "off",
-        // Unused things are fine in dev but still worth warning about for PRs etc.
+        // Unused things are fine if tagged with _
         "@typescript-eslint/no-unused-vars": [
           "error",
           {
@@ -41,7 +41,7 @@ module.exports = {
             varsIgnorePattern: "^_",
           },
         ],
-        // Always use the structured logger for Datadog logs
+        // No consoles ha ha 
         "no-console": "error",
         // React does not have to be imported in the latest version of React
         "react/react-in-jsx-scope": "off",
