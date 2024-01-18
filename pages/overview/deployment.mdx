@@ -11,8 +11,8 @@ import { Callout } from "nextra/components";
 
 <Callout>
   For consistency, we recommend prefixing all Auth.js environment variables with
-  `AUTH_`. This way we can autodetect them, and it's they can also be
-  distinguished from other environment variables.
+  `AUTH_`. This way we can better autodetect them, and they can also be
+  distinguished from other environment variables more easily.
 </Callout>
 
 Auth.js libraries require you to set an `AUTH_SECRET` environment variable. This is used to encrypt cookies and tokens. It should be a random string of at least 32 characters. On Unix based systems you can use this command:
@@ -27,10 +27,16 @@ If you are using an [OAuth Provider](/reference/oauth-providers), your provider 
 
 <Callout type="info">
   Some Auth.js libraries can infer environment variables without passing them
-  explicitly. For example, for Next.js, Auth.hs can infer the `AUTH_GITHUB_ID`
+  explicitly. For example, `next-auth` can infer the `AUTH_GITHUB_ID`
   and `AUTH_GITHUB_SECRET` environment variables as the `clientId` and
   `clientSecret` options of the OAuth provider. See the API reference for your
   framework to learn more about this feature.
+</Callout>
+
+<Callout type="warning">
+  When deploying your app outside <strong>Vercel</strong>, you'll need to set
+  also a `AUTH_TRUST_HOST` variable to `true` for other hosting providers like
+  <strong>Cloudflare Pages</strong> or <strong>Netlify</strong>.
 </Callout>
 
 ### Managing environments
