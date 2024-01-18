@@ -25,6 +25,15 @@ export default {
     type: "separator",
     title: "More",
   },
-  contributors: "Contributors",
-  sponsors: "Sponsors",
+  roadmap: {
+    title: "Roadmap",
+  },
+  contributors: {
+    hidden: "true",
+    title: "Contributors",
+  },
+  sponsors: {
+    hidden: "true",
+    title: "Sponsors",
+  },
 };
