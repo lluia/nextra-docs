@@ -37,11 +37,18 @@ export function RichTabs({
   const {
     query: { tab },
   } = router;
+  const tabValue = Array.isArray(tab)
+    ? tab?.[0]
+    : typeof tab === "string"
+    ? tab
+    : rest.defaultValue;
+
+  console.log("tab", { tab, tabValue });
   return (
     <RadixTabs.Root
       className={cx(styles.root, className)}
-      defaultValue={typeof tab === "string" ? tab : tab[0] || rest.defaultValue}
       {...rest}
+      defaultValue={tabValue}
     >
       {children}
     </RadixTabs.Root>
