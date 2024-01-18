@@ -25,8 +25,8 @@ export default {
     type: "separator",
     title: "More",
   },
-  roadmap: {
-    title: "Roadmap",
+  integrations: {
+    title: "Integrations",
   },
   contributors: {
     hidden: "true",
