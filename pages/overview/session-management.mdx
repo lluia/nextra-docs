@@ -21,26 +21,26 @@ You're in charge of the building the UI for session management. Below we summari
 <RichTabs defaultValue="login">
   <RichTabs.TabList>
     <RichTabs.Tab value="login">
-      <div className="flex flex-col justify-center items-center h-full">
-        <SignIn fontSize="3rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full">
+        <SignIn fontSize="2.2rem" />
         <span>Handle sign in/out</span>
       </div>
     </RichTabs.Tab>
     <RichTabs.Tab value="user-menu">
-      <div className="flex flex-col justify-center items-center h-full">
-        <UserCircle fontSize="3rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full">
+        <UserCircle fontSize="2.2rem" />
         <span>Display user menu</span>
       </div>
     </RichTabs.Tab>
     <RichTabs.Tab value="protecting">
-      <div className="flex flex-col justify-center items-center h-full">
-        <GitFork fontSize="3rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full">
+        <GitFork fontSize="2.2rem" />
         <span>Protecting routes</span>
       </div>
     </RichTabs.Tab>
     <RichTabs.Tab value="custom-pages">
-      <div className="flex flex-col justify-center items-center h-full">
-        <PaintBucket fontSize="3rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full">
+        <PaintBucket fontSize="2.2rem" />
         <span>Custom pages</span>
       </div>
     </RichTabs.Tab>
@@ -53,7 +53,7 @@ You're in charge of the building the UI for session management. Below we summari
 
 <RichTabs.Panel value="login">
 
-<h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
+<h3 className="_font-semibold _tracking-tight _text-slate-900 dark:_text-slate-100 _mt-8 _text-2xl mt-0">
   Handling sign in
 </h3>
 
@@ -97,7 +97,7 @@ export function SignIn() {
 
 When clicking this button in your application, the user will be redirected to the configured sign in page. If you did not setup a [custom sign in page](/tutorials/custom-pages/custom-sign-in), the user will be redirected to `/api/auth/signin`, the sign in page Auth.js ships with. There the configured authentication methods will be displayed:
 
-import DefaultSignInPage from "../../public/img/getting-started/default-signin-page.webp"
+import DefaultSignInPage from "../../public/img/getting-started/default-signin-page.webp";
 
 <Screenshot src={DefaultSignInPage} alt="Default Sign-in Page" />
 

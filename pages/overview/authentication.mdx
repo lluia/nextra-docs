@@ -47,20 +47,20 @@ Once you have decided how to authenticate users in your application (you can alw
 <RichTabs defaultValue="oauth">
   <RichTabs.TabList>
     <RichTabs.Tab key="oauth" value="oauth">
-      <div className="flex flex-col justify-center items-center h-full">
-        <GitDiff fontSize="3rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full">
+        <GitDiff fontSize="2.2rem" />
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Tab>
     <RichTabs.Tab key="token-auth" value="token-auth">
-      <div className="flex flex-col justify-center items-center h-full gap-1">
-        <ChatText fontSize="2.5rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full gap-1">
+        <ChatText fontSize="2.2rem" />
         <span>Setup Token auth</span>
       </div>
     </RichTabs.Tab>
     <RichTabs.Tab key="external-auth" value="external-auth">
-      <div className="flex flex-col justify-center items-center h-full">
-        <Password fontSize="3rem" />
+      <div className="flex flex-col gap-1 justify-center items-center h-full">
+        <Password fontSize="2.3rem" />
         <span>Setup Credentials</span>
       </div>
     </RichTabs.Tab>
@@ -201,9 +201,7 @@ import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/sveltekit/providers/github";
 
 export const handle = SvelteKitAuth({
-  providers: [
-    GitHub(),
-  ],
+  providers: [GitHub()],
 });
 ```
 
@@ -290,7 +288,7 @@ export function SignIn() {
 
 Now you should be able to test signing in. Start your application, and visit `/api/auth/signin`. That route will load the default Auth.js signin page.
 
-import OAuthOptions from "../../public/img/getting-started/oauth-options.webp"
+import OAuthOptions from "../../public/img/getting-started/oauth-options.webp";
 
 <Screenshot src={OAuthOptions} alt="OAuth Options" />
 
@@ -346,7 +344,7 @@ You will need access to an SMTP server, ideally from one of [the services known 
 ### Database Adapter
 
 Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier,
-    a database is required for passwordless login to work as verification tokens need to be stored.
+a database is required for passwordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
 
@@ -446,7 +444,7 @@ export function SignIn() {
 
 Start your application, click on the sign in button we just added, and you should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign in with your email:
 
-import MagicLink from "../../public/img/magic-links/start.webp"
+import MagicLink from "../../public/img/magic-links/start.webp";
 
 <Screenshot src={MagicLink} alt="Screenshot of sign in page" />
 
@@ -579,13 +577,9 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 If you now navigate in your app to `/api/auth/session`, should see the Auth.js session displayed as a JSON:
 
-import SessionWorking from "../../public/img/getting-started/session-working.webp"
+import SessionWorking from "../../public/img/getting-started/session-working.webp";
 
-<Screenshot
-  className="mb-12"
-  src={SessionWorking}
-  alt="Auth.js Session"
-/>
+<Screenshot className="mb-12" src={SessionWorking} alt="Auth.js Session" />
 
 If you've gotten this far, you can be confident that your user is authenticated and
 your setup is working. See the next section, [Session management](/overview/session-management),
