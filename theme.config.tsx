@@ -19,8 +19,8 @@ const config: DocsThemeConfig = {
   darkMode: true,
   color: {
     hue: {
-      light: 260,
-      dark: 20,
+      light: 268,
+      dark: 268,
     },
   },
   head: (
