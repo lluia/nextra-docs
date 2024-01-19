@@ -44,7 +44,7 @@ export function FrameworkExamples() {
         defaultValue="nextjs"
         className="flex flex-col justify-center !pb-4 md:flex-row md:max-w-full w-[75vw]"
       >
-        <RichTabs.List className="flex flex-row gap-2 justify-start p-2 mb-4 bg-white rounded-xl shadow-md md:flex-col md:mr-4 dark:bg-neutral-950">
+        <RichTabs.List className="flex flex-row gap-2 justify-start p-2 mb-4 bg-white rounded-xl shadow-md md:flex-col md:mr-4 md:mb-0 dark:bg-neutral-950">
           <RichTabs.Trigger
             value="nextjs"
             orientation="vertical"
