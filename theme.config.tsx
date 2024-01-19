@@ -23,6 +23,13 @@ const config: DocsThemeConfig = {
       dark: 268,
     },
   },
+  navbar: {
+    extraContent: (
+      <div className="relative">
+        <div className="github-counter">20k</div>
+      </div>
+    ),
+  },
   head: (
     <>
       <link
