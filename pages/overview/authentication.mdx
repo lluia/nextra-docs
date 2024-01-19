@@ -9,18 +9,11 @@ import manifest from "@/data/manifest.json";
 
 # Authentication
 
-<Callout>
-  Auth.js discourages the use of passwords due to the inherent security risks of
-  the username-password model. Passwords are still supported through the
-  [external auth]((#setup-with-external-auth)) but we strongly encourage to
-  setup a combination of **OAuth + Passwordless** for authentication.
-</Callout>
-
 Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
 - **OAuth** (_Sign in with Google, Github, LinkedIn, etc..._)
-- **Passwordless** (_Magic links, WebAuthn, etc..._)
-- **External auth** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
+- **Token-based** (_Magic links, WebAuthn, etc..._)
+- **Credentials** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
 <br />
 
