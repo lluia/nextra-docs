@@ -3,7 +3,7 @@ import { Tooltip } from "@/components/Tooltip";
 
 export function DemoCards() {
   return (
-    <div className="flex flex-row justify-around mt-8 mb-12 w-full">
+    <div className="flex flex-row flex-wrap gap-2 justify-around mt-8 mb-12 w-full">
       {[
         {
           href: "https://next-auth-example.vercel.app/",

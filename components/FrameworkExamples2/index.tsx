@@ -14,7 +14,10 @@ async function renderNextJs(framework: Framework) {
     transformers: [
       {
         pre(node) {
-          addClassToHast(node, "w-full h-full !p-4 rounded-md");
+          addClassToHast(
+            node,
+            "w-full h-full !px-2 !py-4 rounded-md overflow-x-scroll"
+          );
         },
       },
     ],
@@ -30,7 +33,6 @@ export function FrameworkExamples() {
   }, [active]);
 
   function handleTabChange(value: Framework) {
-    console.log("tab", value);
     setActive(value);
   }
 
@@ -40,9 +42,9 @@ export function FrameworkExamples() {
         onTabChange={handleTabChange}
         orientation="vertical"
         defaultValue="nextjs"
-        className="flex"
+        className="flex flex-col justify-center !pb-4 md:flex-row md:max-w-full w-[75vw]"
       >
-        <RichTabs.List className="flex flex-col justify-start p-2 mr-4 space-y-2 bg-white rounded-xl shadow-md dark:bg-neutral-950">
+        <RichTabs.List className="flex flex-row gap-2 justify-start p-2 mb-4 bg-white rounded-xl shadow-md md:flex-col md:mr-4 dark:bg-neutral-950">
           <RichTabs.Trigger
             value="nextjs"
             orientation="vertical"
@@ -71,25 +73,35 @@ export function FrameworkExamples() {
             </div>
           </RichTabs.Trigger>
         </RichTabs.List>
-        <div className="w-[clamp(20rem,_50vw,_40rem)] p-2 dark:bg-neutral-950 bg-white rounded-xl shadow-md">
+        <div className="md:w-[clamp(20rem,_50vw,_45rem)] w-full p-2 dark:bg-neutral-950 bg-white rounded-xl shadow-md">
           <RichTabs.Content
+            orientation="vertical"
             value="nextjs"
-            className="h-full rounded-md"
+            className="h-full"
             tabIndex={-1}
           >
             <div
               className="w-full h-full"
-              tabIndex={-1}
               dangerouslySetInnerHTML={{ __html: example }}
             />
           </RichTabs.Content>
-          <RichTabs.Content value="sveltekit" className="h-full">
+          <RichTabs.Content
+            value="sveltekit"
+            className="h-full"
+            tabIndex={-1}
+            orientation="vertical"
+          >
             <div
               className="w-full h-full"
               dangerouslySetInnerHTML={{ __html: example }}
             />
           </RichTabs.Content>
-          <RichTabs.Content value="solidstart" className="h-full">
+          <RichTabs.Content
+            value="solidstart"
+            className="h-full"
+            tabIndex={-1}
+            orientation="vertical"
+          >
             <div
               className="w-full h-full"
               dangerouslySetInnerHTML={{ __html: example }}

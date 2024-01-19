@@ -45,6 +45,10 @@ details > *:not(summary) {
   background-color: rgb(126 34 206);
 }
 
+.nextra-code pre {
+  @apply dark:bg-neutral-950;
+}
+
 @layer utilities {
   .animation-delay-200 {
     animation-delay: 200ms;
@@ -82,4 +86,26 @@ details > *:not(summary) {
   .animation-delay-4000 {
     animation-delay: 4s;
   }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply dark:bg-neutral-800 bg-neutral-700 transition-colors duration-300;
+  border-radius: 100vh;
+  transition: all 250ms ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply dark:bg-neutral-950 bg-neutral-800;
+  cursor: pointer;
 }

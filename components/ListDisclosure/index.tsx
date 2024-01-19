@@ -19,7 +19,7 @@ export function ListDisclosure({ children, limit, className = "" }: Props) {
     <>
       <div
         className={cx(
-          "grid gap-x-4 gap-y-4 grid-cols-4 w-full my-4",
+          "grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full my-4",
           className
         )}
       >
