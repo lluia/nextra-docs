@@ -135,3 +135,30 @@ html[data-theme="dark"] .github-counter {
   background-color: #222;
   color: #fff;
 }
+
+/* ark-ui tooltip animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+[data-scope="tooltip"][data-part="content"][data-state="open"] {
+  animation: fadeIn 250ms ease-out;
+}
+
+[data-scope="tooltip"][data-part="content"][data-state="closed"] {
+  animation: fadeOut 250ms ease-in;
+}
