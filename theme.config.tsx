@@ -20,7 +20,11 @@ const config: DocsThemeConfig = {
   color: {
     hue: {
       light: 268,
-      dark: 268,
+      dark: 280,
+    },
+    saturation: {
+      light: 100,
+      dark: 50,
     },
   },
   navbar: {
