@@ -17,7 +17,7 @@ Support for more frameworks are on the way, check [our roadmap](/reference#roadm
 
 NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and refactored the whole library to be an authentication layer which is framework agnostic.
 
-import AuthArchitecture from "../../public/img/etc/authjs-architecture.webp"
+import AuthArchitecture from "../../public/img/etc/authjs-architecture.webp";
 
 <Screenshot
   src={AuthArchitecture}
@@ -50,7 +50,7 @@ Additionally, Auth.js can be integrated with an external database via Database a
     <Link
       href={`/reference/core/providers/${id}`}
       key={name}
-      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+      className="p-4 border border-solid dark:border-neutral-800 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
       <div className="text-sm text-center">{name}</div>
@@ -65,7 +65,7 @@ Additionally, Auth.js can be integrated with an external database via Database a
     <Link
       href={`/reference/adapter/${value}`}
       key={value}
-      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+      className="p-4 border border-solid dark:border-neutral-800 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <img src={`/img/adapters/${value}.svg`} className="h-12 mt-2" />
       <div className="text-sm text-center">{label}</div>

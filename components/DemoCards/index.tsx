@@ -7,7 +7,7 @@ export function DemoCards() {
       {[
         {
           href: "https://next-auth-example.vercel.app/",
-          img: "https://authjs.dev/img/frameworks/nextjs.svg",
+          img: "/img/etc/nextjs.svg",
           name: "Next.js",
           logoWidth: "40",
           wip: false,
@@ -15,7 +15,7 @@ export function DemoCards() {
         },
         {
           href: "https://sveltekit-auth-example.vercel.app/",
-          img: "https://authjs.dev/img/frameworks/sveltekit.svg",
+          img: "/img/etc/sveltekit.svg",
           name: "Sveltekit",
           logoWidth: "35",
           wip: true,
@@ -30,7 +30,7 @@ export function DemoCards() {
         },
         {
           href: "https://auth-solid.vercel.app/",
-          img: "https://authjs.dev/img/frameworks/solidstart.svg",
+          img: "/img/etc/solidstart.svg",
           name: "SolidStart",
           logoWidth: "45",
           wip: true,
@@ -45,7 +45,7 @@ export function DemoCards() {
         },
         {
           href: "https://authjs-express-dev-app.onrender.com/",
-          img: "https://authjs.dev/img/frameworks/express.svg",
+          img: "/img/etc/express.svg",
           name: "Express",
           logoWidth: "45",
           wip: true,
@@ -63,7 +63,7 @@ export function DemoCards() {
           <Link
             href={href}
             key={name}
-            className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg dark:border-gray-800 border-slate-200 dark:bg-neutral-900"
+            className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
             target="_blank"
           >
             <img alt={name} src={img} width={logoWidth} />
