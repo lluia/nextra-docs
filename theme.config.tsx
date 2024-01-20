@@ -19,9 +19,20 @@ const config: DocsThemeConfig = {
   darkMode: true,
   color: {
     hue: {
-      light: 260,
-      dark: 20,
+      light: 268,
+      dark: 280,
     },
+    saturation: {
+      light: 100,
+      dark: 50,
+    },
+  },
+  navbar: {
+    extraContent: (
+      <div className="relative">
+        <div className="github-counter">20k</div>
+      </div>
+    ),
   },
   head: (
     <>

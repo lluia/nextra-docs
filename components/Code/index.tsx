@@ -13,7 +13,7 @@ Code.Svelte = SvelteCode;
 Code.Solid = SolidCode;
 Code.Express = ExpressCode;
 
-const baseFrameWorks = {
+const baseFrameworks = {
   [NextCode.name]: "Next.js",
   [SvelteCode.name]: "SvelteKit",
   [SolidCode.name]: "SolidStart",
@@ -38,7 +38,7 @@ export function Code({ children }: ChildrenProps) {
     (p) => p && p.type.name === NextPagesCode.name
   );
 
-  const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameWorks;
+  const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameworks;
 
   return (
     <Tabs items={Object.values(renderedFrameworks)}>

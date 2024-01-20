@@ -1,39 +1,68 @@
 import { useEffect, useState } from "react";
-import * as RadixTabs from "@radix-ui/react-tabs";
+import { List, Trigger, Root, Content } from "@radix-ui/react-tabs";
+import type {
+  TabsListProps,
+  TabsTriggerProps,
+  TabsContentProps,
+  TabsProps,
+} from "@radix-ui/react-tabs";
 import cx from "classnames";
-import { styles } from "./styles";
 import { useRouter } from "next/router";
 
-RichTabs.TabList = function TabList({
-  className,
-  ...p
-}: RadixTabs.TabsListProps) {
-  return <RadixTabs.List {...p} className={cx(styles.tablist, className)} />;
+RichTabs.List = ({ className, ...rest }: TabsListProps) => {
+  return (
+    <List
+      {...rest}
+      className={cx("flex flex-row items-center justify-start", className)}
+    />
+  );
 };
 
-RichTabs.Tab = function Tab({ className, ...p }: RadixTabs.TabsTriggerProps) {
-  return <RadixTabs.Trigger {...p} className={cx(styles.tab, className)} />;
+RichTabs.Trigger = ({
+  className,
+  orientation = "horizontal",
+  ...rest
+}: TabsTriggerProps & { orientation?: TabsProps["orientation"] }) => {
+  return (
+    <Trigger
+      {...rest}
+      className={cx(
+        "relative font-semibold dark:bg-neutral-900 bg-slate-50 text-sm border-solid dark:border-neutral-800 border-slate-200  flex flex-col items-center justify-between w-48 h-28 dark:aria-selected:bg-neutral-700 transition-all duration-300 aria-selected:bg-white  ",
+        className,
+        orientation === "horizontal"
+          ? "aria-selected:border-b-white rounded-tl-lg rounded-tr-lg border-l border-t border-r "
+          : "rounded-md"
+      )}
+    />
+  );
 };
 
-RichTabs.Panels = function Panels({
+RichTabs.Content = ({
   className,
-  ...p
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return <div {...p} className={cx(styles.panels, className)} />;
-};
-
-RichTabs.Panel = function Panel({
-  className,
-  ...p
-}: RadixTabs.TabsContentProps) {
-  return <RadixTabs.Content {...p} className={cx(styles.panel, className)} />;
+  orientation = "horizontal",
+  ...rest
+}: TabsContentProps & { orientation?: TabsProps["orientation"] }) => {
+  return (
+    <Content
+      {...rest}
+      className={cx(
+        "border border-solid dark:border-neutral-800 border-slate-200 shadow-sm",
+        className,
+        orientation === "horizontal"
+          ? "rounded-bl-lg rounded-br-lg rounded-tr-lg"
+          : "rounded-md"
+      )}
+    />
+  );
 };
 
 export function RichTabs({
   children,
   className,
+  orientation = "horizontal",
+  onTabChange,
   ...rest
-}: RadixTabs.TabsProps) {
+}: TabsProps & { onTabChange?: (value: string) => void }) {
   let [tabValue, setTabValue] = useState(rest.defaultValue);
   const router = useRouter();
   const {
@@ -52,16 +81,20 @@ export function RichTabs({
 
   function handleValueChanged(value: string) {
     setTabValue(value);
+    if (onTabChange) {
+      onTabChange(value);
+    }
   }
 
   return (
-    <RadixTabs.Root
-      className={cx(styles.root, className)}
+    <Root
+      className={cx("px-0 pt-4 m-0 rounded-lg mt-2", className)}
+      orientation={orientation}
       {...rest}
       value={tabValue}
       onValueChange={handleValueChanged}
     >
       {children}
-    </RadixTabs.Root>
+    </Root>
   );
 }

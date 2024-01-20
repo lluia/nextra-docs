@@ -1,9 +1,28 @@
-import Image from "next/image";
+import { useEffect } from "react";
+import cx from "classnames";
 
-const Footer = () => {
+const kFormatter = (num: number) => {
+  return (Math.sign(num) * (Math.abs(num) / 1000)).toFixed(1) + "k";
+};
+
+const Footer = ({ className = "" }) => {
+  useEffect(() => {
+    window
+      .fetch("https://api.github.com/repos/nextauthjs/next-auth")
+      .then((res) => res.json())
+      .then((data) => {
+        const githubStat = document.querySelector(".github-counter");
+        githubStat.innerHTML = kFormatter(data.stargazers_count);
+      });
+  }, []);
   return (
-    <div className="flex flex-col items-center px-6 my-8 mx-auto w-full text-gray-600 dark:text-gray-100 max-w-[90rem]">
-      <div className="flex flex-col gap-4 justify-between mb-8 w-full sm:flex-row sm:gap-0">
+    <div
+      className={cx(
+        "flex flex-col items-center my-8 mx-auto w-full text-gray-600 dark:text-gray-100",
+        className
+      )}
+    >
+      <div className="flex flex-col gap-4 justify-between px-6 mb-8 w-full sm:flex-row sm:gap-0 max-w-[90rem]">
         <div className="flex flex-col">
           <h3 className="mb-4 text-lg font-black">About Auth.js</h3>
           <ul className="flex flex-col gap-2">

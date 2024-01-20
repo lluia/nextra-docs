@@ -3,17 +3,17 @@ import { Link } from "@/components/Link";
 import { RichTabs } from "@/components/RichTabs";
 import { Code } from "@/components/Code";
 import { Screenshot } from "@/components/Screenshot";
-import { GitDiff, ChatText, Password } from "@phosphor-icons/react";
+import { GitDiff, UserFocus, Password } from "@phosphor-icons/react";
 import { ListDisclosure } from "@/components/ListDisclosure";
 import manifest from "@/data/manifest.json";
 
 # Authentication
 
-Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>several authentication paradigms</u>:
+Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
 - **OAuth** (_Sign in with Google, Github, LinkedIn, etc..._)
-- **Token-based** ( _Magic links, OTP codes, etc..._ )
-- **Credentials** ( _External Auth, Webauthn, etc..._ )
+- **Token-based** (_Magic links, WebAuthn, etc..._)
+- **Credentials** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
 
 <br />
 
@@ -45,32 +45,27 @@ OAuth providers spend significant amounts of money, time, and engineering effort
 Once you have decided how to authenticate users in your application (you can always add more authentication methods later), click on the instructions below for the initial setup.
 
 <RichTabs defaultValue="oauth">
-  <RichTabs.TabList>
-    <RichTabs.Tab key="oauth" value="oauth">
+  <RichTabs.List className="gap-2">
+    <RichTabs.Trigger key="oauth" value="oauth">
       <div className="flex flex-col justify-center items-center h-full">
         <GitDiff fontSize="3rem" />
         <span>Setup OAuth</span>
       </div>
-    </RichTabs.Tab>
-    <RichTabs.Tab key="token-auth" value="token-auth">
-      <div className="flex flex-col justify-center items-center h-full gap-1">
-        <ChatText fontSize="2.5rem" />
-        <span>Setup Token auth</span>
+    </RichTabs.Trigger>
+    <RichTabs.Trigger key="passwordless" value="passwordless">
+      <div className="flex flex-col justify-center items-center h-full">
+        <UserFocus fontSize="3rem" />
+        <span>Setup Passwordless</span>
       </div>
-    </RichTabs.Tab>
-    <RichTabs.Tab key="external-auth" value="external-auth">
+    </RichTabs.Trigger>
+    <RichTabs.Trigger key="external-auth" value="external-auth">
       <div className="flex flex-col justify-center items-center h-full">
         <Password fontSize="3rem" />
-        <span>Setup Credentials</span>
+        <span>Setup External Auth</span>
       </div>
-    </RichTabs.Tab>
-  </RichTabs.TabList>
-  <RichTabs.Panels>
-    <RichTabs.Panel key="oauth" value="oauth">
-
-{/* <!--------------------------> */}
-{/* <!-----  OAUTH CONTENT -----> */}
-{/* <!--------------------------> */}
+    </RichTabs.Trigger>
+  </RichTabs.List>
+  <RichTabs.Content className="p-8" key="oauth" value="oauth">
 
 Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
 
@@ -79,7 +74,7 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
     <Link
       href={`/reference/oauth-providers/${id}`}
       key={name}
-      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+      className="p-4 border border-solid dark:border-neutral-800 dark:bg-neutral-950 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <div className="grid place-items-center flex-grow">
         <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
@@ -201,9 +196,7 @@ import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/sveltekit/providers/github";
 
 export const handle = SvelteKitAuth({
-  providers: [
-    GitHub(),
-  ],
+  providers: [GitHub()],
 });
 ```
 
@@ -290,7 +283,7 @@ export function SignIn() {
 
 Now you should be able to test signing in. Start your application, and visit `/api/auth/signin`. That route will load the default Auth.js signin page.
 
-import OAuthOptions from "../../public/img/getting-started/oauth-options.webp"
+import OAuthOptions from "../../public/img/getting-started/oauth-options.webp";
 
 <Screenshot src={OAuthOptions} alt="OAuth Options" />
 
@@ -304,13 +297,9 @@ Click the "Sign in with GitHub" button and if all went well, you should be redir
 
 </Steps>
 
-</RichTabs.Panel>
+</RichTabs.Content>
 
-{/* <!--------------------------> */}
-{/* <!------ TOKEN CONTENT -----> */}
-{/* <!--------------------------> */}
-
-<RichTabs.Panel key="token-auth" value="token-auth">
+<RichTabs.Content className="p-8" key="passwordless" value="passwordless">
 
 You can setup Auth.js to allow passwordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
 
@@ -346,7 +335,7 @@ You will need access to an SMTP server, ideally from one of [the services known 
 ### Database Adapter
 
 Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier,
-    a database is required for passwordless login to work as verification tokens need to be stored.
+a database is required for passwordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
 
@@ -446,7 +435,7 @@ export function SignIn() {
 
 Start your application, click on the sign in button we just added, and you should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign in with your email:
 
-import MagicLink from "../../public/img/magic-links/start.webp"
+import MagicLink from "../../public/img/magic-links/start.webp";
 
 <Screenshot src={MagicLink} alt="Screenshot of sign in page" />
 
@@ -454,13 +443,9 @@ Insert your email and click "Sign in with Email". You should receive an email fr
 
 </Steps>
 
-</RichTabs.Panel>
+</RichTabs.Content>
 
-{/* <!-------------------------------> */}
-{/* <!------- EX. AUTH CONTENT ------> */}
-{/* <!-------------------------------> */}
-
-<RichTabs.Panel key="external-auth" value="external-auth">
+<RichTabs.Content className="p-8" key="external-auth" value="external-auth">
 
 To setup Auth.js with external authentication we need to use the `CredentialsProvider`, which is designed to forward any inserted credentials (.i.e username/password) in the sign in form to your authentication service. This provider is very flexible, and can be easily setup to work with modern authentication methods like for example [WebAuthn](https://webauthn.io/).
 
@@ -570,22 +555,16 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 </Steps>
 
-</RichTabs.Panel>
-
-</RichTabs.Panels>
+</RichTabs.Content>
 </RichTabs>
 
 ### Next Steps
 
 If you now navigate in your app to `/api/auth/session`, should see the Auth.js session displayed as a JSON:
 
-import SessionWorking from "../../public/img/getting-started/session-working.webp"
+import SessionWorking from "../../public/img/getting-started/session-working.webp";
 
-<Screenshot
-  className="mb-12"
-  src={SessionWorking}
-  alt="Auth.js Session"
-/>
+<Screenshot className="mb-12" src={SessionWorking} alt="Auth.js Session" />
 
 If you've gotten this far, you can be confident that your user is authenticated and
 your setup is working. See the next section, [Session management](/overview/session-management),
