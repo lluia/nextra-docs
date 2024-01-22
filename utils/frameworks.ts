@@ -10,7 +10,7 @@ export enum Framework {
   NextJs = "nextjs",
   Svelte = "sveltekit",
   SolidStart = "solidstart",
-  // Express = "express",
+  Express = "express",
 }
 
 export const frameworkDetails: Record<Framework, Details> = {
@@ -34,6 +34,13 @@ export const frameworkDetails: Record<Framework, Details> = {
     logo: "/img/etc/solidstart.svg",
     logoW: "45",
     example: "https://auth-solid.vercel.app/",
+  },
+  [Framework.Express]: {
+    title: "Express",
+    code: codeExpress(),
+    logo: "/img/etc/express.svg",
+    logoW: "45",
+    example: "https://express.vercel.app/",
   },
 };
 
@@ -80,5 +87,14 @@ export const { GET, POST } = SolidAuth({
     })
   ]
 })
+`;
+}
+
+function codeExpress() {
+  return `
+import { SolidAuth } from "@auth/express"
+import GitHub from "@auth/express/providers/github"
+// TODO: Finish
+app.use("/api/auth/*", ExpressAuth(authConfig))
 `;
 }
