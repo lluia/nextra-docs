@@ -6,32 +6,32 @@ type Details = {
   example: string;
 };
 
-export enum FrameWork {
+export enum Framework {
   NextJs = "nextjs",
-  Svelte = "svelte",
+  Svelte = "sveltekit",
   SolidStart = "solidstart",
   // Express = "express",
 }
 
-export const frameworkDetails: Record<FrameWork, Details> = {
-  [FrameWork.NextJs]: {
+export const frameworkDetails: Record<Framework, Details> = {
+  [Framework.NextJs]: {
     title: "Next.js",
     code: codeNextJs(),
-    logo: "https://authjs.dev/img/frameworks/nextjs.svg",
+    logo: "/img/etc/nextjs.svg",
     logoW: "45",
     example: "https://next-auth-example.vercel.app/",
   },
-  [FrameWork.Svelte]: {
-    title: "Sveltekit",
+  [Framework.Svelte]: {
+    title: "SvelteKit",
     code: codeSvelte(),
-    logo: "https://authjs.dev/img/frameworks/sveltekit.svg",
+    logo: "/img/etc/sveltekit.svg",
     logoW: "40",
     example: "https://sveltekit-auth-example.vercel.app/",
   },
-  [FrameWork.SolidStart]: {
+  [Framework.SolidStart]: {
     title: "SolidStart",
     code: codeSolid(),
-    logo: "https://authjs.dev/img/frameworks/solidstart.svg",
+    logo: "/img/etc/solidstart.svg",
     logoW: "45",
     example: "https://auth-solid.vercel.app/",
   },
@@ -59,17 +59,12 @@ export const runtime = "edge"
 
 function codeSvelte() {
   return `
+// src/hooks.server.ts
 import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from '@auth/sveltekit/providers/github'
-import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
   
 export const handle = SvelteKitAuth({
-  providers: [
-    GitHub({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET
-    })
-  ],
+  providers: [GitHub()],
 })
 `;
 }
@@ -77,13 +72,13 @@ export const handle = SvelteKitAuth({
 function codeSolid() {
   return `
 import { SolidAuth } from "@auth/solid-start"
-import GitHub from "@auth/core/providers/github"
+import GitHub from "@auth/solid-start/providers/github"
   
 export const { GET, POST } = SolidAuth({
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET
     })
   ]
 })

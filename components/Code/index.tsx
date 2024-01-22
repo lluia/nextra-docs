@@ -13,9 +13,9 @@ Code.Svelte = SvelteCode;
 Code.Solid = SolidCode;
 Code.Express = ExpressCode;
 
-const baseFrameWorks = {
+const baseFrameworks = {
   [NextCode.name]: "Next.js",
-  [SvelteCode.name]: "Sveltekit",
+  [SvelteCode.name]: "SvelteKit",
   [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
 };
@@ -23,7 +23,7 @@ const baseFrameWorks = {
 const allFrameworks = {
   [NextCode.name]: "Next.js",
   [NextPagesCode.name]: "Next.js (Pages)",
-  [SvelteCode.name]: "Sveltekit",
+  [SvelteCode.name]: "SvelteKit",
   [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
 };
@@ -34,40 +34,36 @@ export function Code({ children }: ChildrenProps) {
   const { project } = useThemeConfig();
 
   const withNextJsPages = childs.some(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     (p) => p && p.type.name === NextPagesCode.name
   );
 
-  const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameWorks;
+  const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameworks;
 
   return (
     <Tabs items={Object.values(renderedFrameworks)}>
       {Object.keys(renderedFrameworks).map((f) => {
-        const [child] = childs.filter(
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          (c) => (c ? c.type.name === f : false)
-        );
+        // @ts-expect-error - Hacky dynamic child wrangling
+        const child = childs.find((c) => c?.type?.name === f);
 
-        return (
-          child || (
-            <Tabs.Tab key={f}>
-              <p className="font-semibold bg-slate-100 p-6 rounded-lg">
-                {renderedFrameworks[f]} not documented yet. Help us by
-                contributing{" "}
-                <a
-                  className="underline"
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`${project.link}/edit/main/docs/pages${router.pathname}.mdx`}
-                >
-                  here
-                </a>
-                .
-              </p>
-            </Tabs.Tab>
-          )
+        // @ts-expect-error - Hacky dynamic child wrangling
+        return !!Object.keys(child?.props ?? {}).length ? (
+          child
+        ) : (
+          <Tabs.Tab key={f}>
+            <p className="p-6 font-semibold rounded-lg bg-slate-100">
+              {renderedFrameworks[f]} not documented yet. Help us by
+              contributing{" "}
+              <a
+                className="underline"
+                target="_blank"
+                href={`${project.link}/edit/main/docs/pages${router.pathname}.mdx`}
+              >
+                here
+              </a>
+              .
+            </p>
+          </Tabs.Tab>
         );
       })}
     </Tabs>

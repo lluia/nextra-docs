@@ -1,4 +1,5 @@
 import { Code } from "@/components/Code";
+import { Screenshot } from "@/components/Screenshot";
 
 # Custom sign in page
 
@@ -6,7 +7,9 @@ Auth.js comes by default with a set of pages that are presented to the user as t
 
 For example, in [the example app](https://github.com/nextauthjs/next-auth-example), if you click on "Sign in":
 
-<img src="/img/tutorials/example-app.png" />
+import ExampleApp from "../../../public/img/tutorials/example-app.webp"
+
+<Screenshot src={ExampleApp} alt="Example App" />
 
 or build your own button component which calls the `signIn` helper, and then click it:
 
@@ -24,9 +27,11 @@ export function SignInButton() {
 </Code.Next>
 </Code>
 
-you'll then be presented with <u>Auth.js built-in sign in page</u>:
+you'll then be presented with Auth.js built-in sign in page:
 
-<img src="/img/tutorials/sign-in-page.png" />
+import SignInPage from "../../../public/img/tutorials/sign-in-page.webp"
+
+<Screenshot src={SignInPage} alt="Sign-in Page" />
 
 In this case the app has been configured with [GithubProvider](/) and [CredentialsProvider](/) (so either sign in with Github or insert username and password), hence the sign in page shows both options.
 
@@ -107,7 +112,10 @@ export default async function SignInPage() {
 
 Then when clicking on "Sign in" on the app (calling `signIn`), our custom sign in page will appear with the available sign in options:
 
-<img
-  src="/img/tutorials/custom-sign-in-page.png"
+import CustomSignInPage from "../../../public/img/tutorials/custom-sign-in-page.webp"
+
+<Screenshot
+  src={CustomSignInPage}
+  alt="Custom Sign-in Page"
   className="w-full max-w-3xl"
 />

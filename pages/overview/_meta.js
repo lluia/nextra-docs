@@ -1,6 +1,6 @@
 export default {
   index: "Introduction",
-  "migrating-to-v5": "Migrate to NextAuth@5",
+  "migrating-to-v5": "Migrate to NextAuth.js v5",
   "-- Setup": {
     type: "separator",
     title: "Setup",
@@ -25,6 +25,15 @@ export default {
     type: "separator",
     title: "More",
   },
-  contributors: "Contributors",
-  sponsors: "Sponsors",
+  integrations: {
+    title: "Integrations",
+  },
+  contributors: {
+    hidden: "true",
+    title: "Contributors",
+  },
+  sponsors: {
+    hidden: "true",
+    title: "Sponsors",
+  },
 };

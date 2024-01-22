@@ -1,6 +1,7 @@
 import { Callout } from "nextra/components";
 import { ListDisclosure } from "@/components/ListDisclosure";
 import { Link } from "@/components/Link";
+import { Screenshot } from "@/components/Screenshot";
 import { DemoCards } from "@/components/DemoCards";
 import manifest from "@/data/manifest.json";
 
@@ -12,12 +13,15 @@ Auth.js is a complete open-source authentication solution for web applications.<
 
 Support for more frameworks are on the way, check [our roadmap](/reference#roadmap)!
 
-## NextAuth.js → Auth.js
+## What is Auth.js?
 
 NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and refactored the whole library to be an authentication layer which is framework agnostic.
 
-<img
-  src="/img/etc/authjs-architecture.png"
+import AuthArchitecture from "../../public/img/etc/authjs-architecture.webp";
+
+<Screenshot
+  src={AuthArchitecture}
+  alt="Auth.js Architecture"
   width="500"
   className="mx-auto mt-4"
 />
@@ -34,7 +38,7 @@ framework (using the specific package for the framework). [Have a look at our hi
 There are 3 ways to authenticate users with Auth.js:
 
 - [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- [Paswordless authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
+- [Token-based authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
 - [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs, Webauthn, etc..._ )
 
 Additionally, Auth.js can be integrated with an external database via Database adapters, in case you need or want to store user data.
@@ -46,7 +50,7 @@ Additionally, Auth.js can be integrated with an external database via Database a
     <Link
       href={`/reference/core/providers/${id}`}
       key={name}
-      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+      className="p-4 border border-solid dark:border-neutral-800 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
       <div className="text-sm text-center">{name}</div>
@@ -61,7 +65,7 @@ Additionally, Auth.js can be integrated with an external database via Database a
     <Link
       href={`/reference/adapter/${value}`}
       key={value}
-      className="p-4 border border-solid border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+      className="p-4 border border-solid dark:border-neutral-800 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <img src={`/img/adapters/${value}.svg`} className="h-12 mt-2" />
       <div className="text-sm text-center">{label}</div>
