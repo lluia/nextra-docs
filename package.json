@@ -50,7 +50,6 @@
     "typescript": "^5.2.2"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint",
-    "preserveUnused": true
+    "pre-commit": "pnpm lint"
   }
 }
