@@ -11,11 +11,14 @@ Auth.js is a complete open-source authentication solution for web applications.<
 
 <DemoCards />
 
-Support for more frameworks are on the way, check [our roadmap](/reference#roadmap)!
+Support for more frameworks are on the way, check the [integrations page](/overview/integrations)
+for all supported packages!
 
 ## What is Auth.js?
 
-NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and refactored the whole library to be an authentication layer which is framework agnostic.
+NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as
+an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and
+refactored the whole library to be an authentication layer which is framework agnostic.A
 
 <img
   src="/img/etc/authjs-architecture.webp"
@@ -37,11 +40,10 @@ There are 3 ways to authenticate users with Auth.js:
 
 - [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
 - [Token-based authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
-- [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs, Webauthn, etc..._ )
+- [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs,
+  WebAuthn, etc..._ )
 
-Additionally, Auth.js can be integrated with an external database via Database adapters, in case you need or want to store user data.
-
-### Official OAuth Providers
+### Official Providers
 
 <ListDisclosure limit={8}>
   {Object.entries(manifest.providers).map(([id, name]) => (
@@ -57,6 +59,8 @@ Additionally, Auth.js can be integrated with an external database via Database a
 </ListDisclosure>
 
 ### Supported Databases
+
+Optionally, Auth.js can be integrated with an external database via Database adapters, in case you need or want to store user data.
 
 <ListDisclosure limit={8}>
   {Object.entries(manifest.adapters).map(([value, label]) => (
