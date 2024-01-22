@@ -47,7 +47,7 @@ export function Code({ children }: ChildrenProps) {
     if (!tab) return 0;
     const foundKey = Object.values(renderedFrameworks).findIndex(
       // TODO: Maybe slugify for better results?
-      (f) => f.toLowerCase().replace(".", "") === tab
+      (f) => f.toLowerCase() === tab.toLowerCase()
     );
     return foundKey;
   };

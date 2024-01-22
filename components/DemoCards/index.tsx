@@ -29,21 +29,6 @@ export function DemoCards() {
           ),
         },
         {
-          href: "https://auth-solid.vercel.app/",
-          img: "/img/etc/solidstart.svg",
-          name: "SolidStart",
-          logoWidth: "45",
-          wip: true,
-          label: (
-            <>
-              Officially supported but not documented. Help us{" "}
-              <a href="https://github.com/nextauthjs/next-auth/issues">
-                document it.
-              </a>
-            </>
-          ),
-        },
-        {
           href: "https://authjs-express-dev-app.onrender.com/",
           img: "/img/etc/express.svg",
           name: "Express",
@@ -58,13 +43,28 @@ export function DemoCards() {
             </>
           ),
         },
+        {
+          href: "https://auth-solid.vercel.app/",
+          img: "/img/etc/solidstart.svg",
+          name: "SolidStart",
+          logoWidth: "45",
+          wip: true,
+          label: (
+            <>
+              Officially supported but not documented. Help us{" "}
+              <a href="https://github.com/nextauthjs/next-auth/issues">
+                document it.
+              </a>
+            </>
+          ),
+        },
       ].map(({ href, name, img, logoWidth, wip, label }) => {
+        console.log({ href, name, img, logoWidth, wip, label });
         const content = (
           <Link
-            href={href}
+            href={`/overview/installation?tab=${name.toLowerCase()}`}
             key={name}
             className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
-            target="_blank"
           >
             <img alt={name} src={img} width={logoWidth} />
             <div className="mt-3 text-sm">{name}</div>
