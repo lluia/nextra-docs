@@ -59,7 +59,6 @@ export function DemoCards() {
           ),
         },
       ].map(({ href, name, img, logoWidth, wip, label }) => {
-        console.log({ href, name, img, logoWidth, wip, label });
         const content = (
           <Link
             href={`/overview/installation?tab=${name.toLowerCase()}`}
