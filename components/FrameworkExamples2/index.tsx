@@ -29,7 +29,10 @@ export function FrameworkExamples() {
   const [example, setExample] = useState("");
 
   useEffect(() => {
-    renderNextJs(active).then((code) => setExample(code));
+    renderNextJs(active)
+      .then((code) => setExample(code))
+      // eslint-disable-next-line no-console
+      .catch((e) => console.error(e));
   }, [active]);
 
   function handleTabChange(value: Framework) {

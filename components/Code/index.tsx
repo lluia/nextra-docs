@@ -34,7 +34,7 @@ export function Code({ children }: ChildrenProps) {
   const { project } = useThemeConfig();
 
   const withNextJsPages = childs.some(
-    // @ts-expect-error
+    // @ts-expect-error: Hacky dynamic child wrangling
     (p) => p && p.type.name === NextPagesCode.name
   );
 
@@ -43,11 +43,11 @@ export function Code({ children }: ChildrenProps) {
   return (
     <Tabs items={Object.values(renderedFrameworks)}>
       {Object.keys(renderedFrameworks).map((f) => {
-        // @ts-expect-error - Hacky dynamic child wrangling
+        // @ts-expect-error: Hacky dynamic child wrangling
         const child = childs.find((c) => c?.type?.name === f);
 
-        // @ts-expect-error - Hacky dynamic child wrangling
-        return !!Object.keys(child?.props ?? {}).length ? (
+        // @ts-expect-error: Hacky dynamic child wrangling
+        return Object.keys(child?.props ?? {}).length ? (
           child
         ) : (
           <Tabs.Tab key={f}>
@@ -58,6 +58,7 @@ export function Code({ children }: ChildrenProps) {
                 className="underline"
                 target="_blank"
                 href={`${project.link}/edit/main/docs/pages${router.pathname}.mdx`}
+                rel="noreferrer"
               >
                 here
               </a>

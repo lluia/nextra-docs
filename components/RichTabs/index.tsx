@@ -9,7 +9,7 @@ import type {
 import cx from "classnames";
 import { useRouter } from "next/router";
 
-RichTabs.List = ({ className, ...rest }: TabsListProps) => {
+RichTabs.List = function TabsList({ className, ...rest }: TabsListProps) {
   return (
     <List
       {...rest}
@@ -18,11 +18,11 @@ RichTabs.List = ({ className, ...rest }: TabsListProps) => {
   );
 };
 
-RichTabs.Trigger = ({
+RichTabs.Trigger = function TabsTrigger({
   className,
   orientation = "horizontal",
   ...rest
-}: TabsTriggerProps & { orientation?: TabsProps["orientation"] }) => {
+}: TabsTriggerProps & { orientation?: TabsProps["orientation"] }) {
   return (
     <Trigger
       {...rest}
@@ -37,11 +37,11 @@ RichTabs.Trigger = ({
   );
 };
 
-RichTabs.Content = ({
+RichTabs.Content = function TabsContent({
   className,
   orientation = "horizontal",
   ...rest
-}: TabsContentProps & { orientation?: TabsProps["orientation"] }) => {
+}: TabsContentProps & { orientation?: TabsProps["orientation"] }) {
   return (
     <Content
       {...rest}
@@ -63,7 +63,7 @@ export function RichTabs({
   onTabChange,
   ...rest
 }: TabsProps & { onTabChange?: (value: string) => void }) {
-  let [tabValue, setTabValue] = useState(rest.defaultValue);
+  const [tabValue, setTabValue] = useState(rest.defaultValue);
   const router = useRouter();
   const {
     query: { tab },
