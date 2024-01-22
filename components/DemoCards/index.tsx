@@ -60,22 +60,30 @@ export function DemoCards() {
         },
       ].map(({ href, name, img, logoWidth, wip, label }) => {
         const content = (
-          <Link
-            href={`/overview/installation?tab=${name.toLowerCase()}`}
-            key={name}
-            className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
-          >
-            <img alt={name} src={img} width={logoWidth} />
-            <div className="mt-3 text-sm">{name}</div>
-            {wip ? (
-              <div
-                className="absolute py-1 px-3 text-sm font-semibold text-black bg-amber-300 rounded-full shadow-sm"
-                style={{ right: "-30px", top: "-15px" }}
-              >
-                Beta
-              </div>
-            ) : null}
-          </Link>
+          <div className="flex flex-col gap-2" key={name}>
+            <Link
+              href={`/overview/installation?tab=${name.toLowerCase()}`}
+              className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
+            >
+              <img alt={name} src={img} width={logoWidth} />
+              <div className="mt-3 text-sm">{name}</div>
+              {wip ? (
+                <div
+                  className="absolute py-1 px-3 text-sm font-semibold text-black bg-amber-300 rounded-full shadow-sm"
+                  style={{ right: "-30px", top: "-15px" }}
+                >
+                  Beta
+                </div>
+              ) : null}
+            </Link>
+            <a
+              href={href}
+              target="_blank"
+              className="flex justify-center p-2 w-full text-sm rounded-md bg-slate-100 dark:bg-neutral-900"
+            >
+              View Demo
+            </a>
+          </div>
         );
 
         return wip ? (
