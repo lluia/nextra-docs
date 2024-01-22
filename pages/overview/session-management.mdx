@@ -48,10 +48,6 @@ You're in charge of the building the UI for session management. Below we summari
 
 <RichTabs.Content className="p-8" value="login">
 
-<h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
-  Handling sign in
-</h3>
-
 For signing in users, assuming you have [already setup an authentication method](/overview/authentication), you only need to build a button that when pressed calls the `signIn` function exported in your Auth.js config:
 
 <Code>
@@ -63,10 +59,6 @@ import GitHub from "next-auth/providers/github";
 
 export const { signIn, auth } = NextAuth({
   providers: [GitHub],
-  pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
-  },
 });
 ```
 
@@ -96,26 +88,25 @@ import DefaultSignInPage from "../../public/img/getting-started/default-signin-p
 
 <Screenshot src={DefaultSignInPage} alt="Default Sign-in Page" />
 
-Once authenticated, the user will be redirected to your app (by default `/`). If you want the user to be redirected somewhere else after sign in (.i.e `/dashboard`), you can do so via the [`redirect`](/reference/core/types#redirect) callback:
+Once authenticated, the user will be redirected back to the page they started the signin from. If
+you want the user to be redirected somewhere else after sign in (.i.e `/dashboard`), you can do so
+by passing the target URL as `redirectTo` in the `signIn()` options.
 
 ```ts filename="./auth.ts"
-import NextAuth from "next-auth";
-// In this example we're using Github, if you're using another provider, for example, like Google, it'll be:
-// `import Google from "next-auth/providers/google"`
-import GitHub from "next-auth/providers/github";
+import { signIn } from "../../auth.ts";
 
-export const { signIn, auth } = NextAuth({
-  providers: [GitHub, Google],
-  callbacks: {
-    /**
-     * @url → the default configured callback URL
-     * @baseUrl → the baseUrl of the app
-     */
-    async redirect({ url, baseUrl }) {
-      return `${baseUrl}/dashboard`;
-    },
-  },
-});
+export function SignIn() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn("github", { redirectTo: "/dashboard" });
+      }}
+    >
+      <button type="submit">Sign in</button>
+    </form>
+  );
+}
 ```
 
 ### Handling sign out
@@ -126,7 +117,7 @@ Similarly, to sign out users, just build a button that calls the exported `signO
   
 <Code.Next>
 ```tsx
-export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
+export function SignOut() {
   return (
     <form
       action={async () => {
@@ -134,7 +125,7 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
         await signOut()
       }}
     >
-      <button type="submit" {...props}>
+      <button type="submit">
         Sign Out
       </button>
     </form>
@@ -149,20 +140,20 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
 
 <RichTabs.Content className="p-8" value="user-menu">
 
-Most commonly, once a user is logged in, you need to display the session by displaying the user's name and profile picture.
+Most commonly, once a user is logged in, you might want to display the session by displaying the user's name and profile picture.
 
-Doing this in Auth.js is easy enough, we just need to call the `auth()` helper exported from the Auth.js configuration file to get the available user session:
+In Auth.js we need to call the `auth()` helper exported from the Auth.js configuration file to get the available user session:
 
 <Code>
   
 <Code.Next>
 
 ```tsx filename="./components/UserAvatar"
-import { auth } from "../../../auth.ts";
+import { auth } from "@/auth.ts";
 import { Flex, Avatar, Text } from "@/components";
 
 export function UserAvatar(props) {
-  const { session } = await auth();
+  const session = await auth();
 
   if (!session) return null;
 
@@ -184,8 +175,7 @@ For Next.js, we recommend calling `auth()` in a server component. `auth()` shoul
 You can access the session server-side by calling [`auth()`](/) in [`getServerSideProps()`](/):
 
 ```tsx filename="./pages/hello.tsx"
-import { getServerSession } from "next-auth/next";
-import options from "./api/auth/[...nextauth]";
+import { auth } from "@/auth.ts";
 
 export default function HelloPage({ session }) {
   return <UserAvatar img={session.img}>{session.name}</UserAvatar>;
@@ -196,13 +186,14 @@ export async function getServerSideProps(ctx) {
 
   return {
     props: {
-      serverSession: session,
+      session,
     },
   };
 }
 ```
 
-You can also access the session client-wise using `useSession()` (deprecated) making sure `<SessionProvider />` (deprecated) is above on the tree:
+You can also access the session client-side using `useSession()`. Make sure `<SessionProvider />` is
+wrapping your application.
 
 ```tsx filename="./pages/_app.tsx"
 import type { AppProps } from "next/app";
@@ -221,14 +212,10 @@ export default function MyApp({
 ```
 
 ```tsx
-import { getServerSession } from "next-auth/next";
-import options from "./api/auth/[...nextauth]";
+import { useSession } from "next-auth/react";
 
 export default function HelloPage() {
-  // If you need to access the session on the client.
-  // It will only work if <SessionProvider /> is above on the React tree.
-  // Discouraged and might be deprecated on a next major release.
-  const session = await useSession();
+  const session = useSession();
 
   return <UserAvatar img={session.img}>{session.name}</UserAvatar>;
 }
@@ -279,6 +266,12 @@ export { default } from "next-auth/middleware";
 Otherwise, if you only want to protect a subset of pages, you could put it in a subdirectory as well, for example in `/app/admin/_middleware.ts` would protect all pages under the `/admin` route.
 
 For the time being, middleware only supports **jwt** as a session strategy, so it won't work with databases.
+
+</RichTabs.Content>
+
+<RichTabs.Content className="p-8" value="custom-pages">
+
+### Custom pages
 
 </RichTabs.Content>
 </RichTabs>

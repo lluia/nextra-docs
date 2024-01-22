@@ -16,7 +16,7 @@ export function DemoCards() {
         {
           href: "https://sveltekit-auth-example.vercel.app/",
           img: "/img/etc/sveltekit.svg",
-          name: "Sveltekit",
+          name: "SvelteKit",
           logoWidth: "35",
           wip: true,
           label: (

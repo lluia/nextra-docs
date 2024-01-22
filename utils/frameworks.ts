@@ -10,7 +10,7 @@ export enum Framework {
   NextJs = "nextjs",
   Svelte = "sveltekit",
   SolidStart = "solidstart",
-  // Express = "express",
+  Express = "express",
 }
 
 export const frameworkDetails: Record<Framework, Details> = {
@@ -35,6 +35,13 @@ export const frameworkDetails: Record<Framework, Details> = {
     logoW: "45",
     example: "https://auth-solid.vercel.app/",
   },
+  [Framework.Express]: {
+    title: "Express",
+    code: codeExpress(),
+    logo: "/img/etc/express.svg",
+    logoW: "45",
+    example: "https://express.vercel.app/",
+  },
 };
 
 /**
@@ -48,13 +55,11 @@ import GitHub from "next-auth/providers/github"
 export const { auth, handlers } = NextAuth({ providers: [ GitHub ] })
   
 // middleware.ts
-export { auth as default } from "auth"
+export { auth as default } from "@/auth"
   
-// app/api/auth/[...nextauth].ts
-import { handlers } from "auth"
-export const { GET, POST } = handlers
-export const runtime = "edge"
-`;
+// app/api/auth/[...nextauth]/route.ts
+import { handlers } from "@/auth"
+export const { GET, POST } = handlers`;
 }
 
 function codeSvelte() {
@@ -64,7 +69,7 @@ import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from '@auth/sveltekit/providers/github'
   
 export const handle = SvelteKitAuth({
-  providers: [GitHub()],
+  providers: [GitHub],
 })
 `;
 }
@@ -82,5 +87,14 @@ export const { GET, POST } = SolidAuth({
     })
   ]
 })
+`;
+}
+
+function codeExpress() {
+  return `
+import { SolidAuth } from "@auth/express"
+import GitHub from "@auth/express/providers/github"
+// TODO: Finish
+app.use("/api/auth/*", ExpressAuth(authConfig))
 `;
 }

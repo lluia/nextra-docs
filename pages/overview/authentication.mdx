@@ -9,11 +9,12 @@ import manifest from "@/data/manifest.json";
 
 # Authentication
 
-Before start setting up Auth.js, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
+At this point, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- **OAuth** (_Sign in with Google, Github, LinkedIn, etc..._)
-- **Token-based** (_Magic links, WebAuthn, etc..._)
-- **Credentials** (formerly known as CredentialProvider, _Integrating with external APIs, etc..._)
+- [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- [Token-based authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
+- [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs,
+  WebAuthn, etc..._ )
 
 <br />
 
@@ -114,7 +115,7 @@ You can find detailed instructions on registering an OAuth application with your
 In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
 ```
-[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+[origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
 ```
 
   </Code.Next>
@@ -127,7 +128,7 @@ In this case, given we want to try our application locally, it would be the prov
 In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
 ```
-[origin]/api/callback/[provider_name] → https://localhost:3000/api/callback/github
+[origin]/api/callback/[provider_name] → http://localhost:3000/api/callback/github
 ```
 
   </Code.Svelte>
@@ -140,7 +141,7 @@ In this case, given we want to try our application locally, it would be the prov
 In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
 ```
-[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+[origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
 ```
 
   </Code.Solid>
@@ -153,7 +154,7 @@ In this case, given we want to try our application locally, it would be the prov
 In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
 
 ```
-[origin]/api/auth/callback/[provider_name] → https://localhost:3000/api/auth/callback/github
+[origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
 ```
 
   </Code.Express>
@@ -168,7 +169,7 @@ AUTH_GITHUB_ID={CLIENT_ID}
 AUTH_GITHUB_SECRET={CLIENT_SECRET}
 ```
 
-Auth.js (with Next.js) will automatically pick up these. You can [also use a different name for the environment variables](/concepts/environment-variables#oauth-variables) if needed, but then you'll need to pass them to the provider manually. All other client libraries also require you to manually pass the environment variables to the provider.
+Auth.js will automatically pick up these if formatted like the example above. You can [also use a different name for the environment variables](/concepts/environment-variables#oauth-variables) if needed, but then you'll need to pass them to the provider manually. All other client libraries also require you to manually pass the environment variables to the provider.
 
 ### Setup Auth.js Provider
 
@@ -177,7 +178,7 @@ Let's enable Github as a sign in option in our Auth.js configuration. You'll hav
 <Code>
   <Code.Next>
 
-```ts filename="./auth.ts"
+```ts filename="@/auth.ts"
 import NextAuth from "next-auth";
 // In this example we're using Github, if you're using another provider, for example, like Google, it'll be:
 // `import Google from "next-auth/providers/google"`
@@ -260,17 +261,17 @@ Next, we can add a sign in button somewhere in your application like the Navbar.
 <Code.Next>
 
 ```tsx filename="./components/sign-in.tsx"
-import { signIn } from "../../auth.ts";
+import { signIn } from "@/auth.ts";
 
 export function SignIn() {
   return (
     <form
       action={async () => {
         "use server";
-        await signIn();
+        await signIn("github");
       }}
     >
-      <button type="submit">Sign In</button>
+      <button type="submit">Signin with GitHub</button>
     </form>
   );
 }
@@ -280,12 +281,6 @@ export function SignIn() {
 </Code>
 
 ### Ship it!
-
-Now you should be able to test signing in. Start your application, and visit `/api/auth/signin`. That route will load the default Auth.js signin page.
-
-import OAuthOptions from "../../public/img/getting-started/oauth-options.webp";
-
-<Screenshot src={OAuthOptions} alt="OAuth Options" />
 
 Click the "Sign in with GitHub" button and if all went well, you should be redirected to Github and once authenticated, redirected back to the app!
 

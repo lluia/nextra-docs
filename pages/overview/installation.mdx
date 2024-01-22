@@ -4,7 +4,7 @@ import { Code } from "@/components/Code";
 <Steps>
 ### Installing Auth.js
 
-Installing Auth.js is easy, you just need to run a single command and set one environment variable.
+Installing Auth.js is straightforward, you should only to need to run a single command and set one environment variable.
 
 Start by installing the appropriate package for your framework of choice:
 
@@ -38,6 +38,11 @@ Start by installing the appropriate package for your framework of choice:
   </Code.Express>
 </Code>
 
+<Callout type="info">
+  As a consumer of the library, you should never need to install the
+  `@auth/core` package
+</Callout>
+
 ### Setup Environment
 
 <Code>
@@ -63,8 +68,7 @@ or you can visit https://generate-secret.vercel.app/32 to generate one.
 ### Initialise Auth.js
 
 The most important part of your Auth.js project is the Auth.js config object. There you can control
-  the behaviour of the library and specify custom authentication logic, adapters, etc.
-
+the behaviour of the library and specify custom authentication logic, adapters, etc.
 
 <Code>
   <Code.Next>
@@ -89,11 +93,11 @@ export const { signIn, signOut, auth } = NextAuth({
   <Code.Svelte>
 
 ```ts filename="./src/hooks.server.ts"
-import { SvelteKitAuth } from "@auth/sveltekit"
+import { SvelteKitAuth } from "@auth/sveltekit";
 
 export const handle = SvelteKitAuth({
   providers: [],
-})
+});
 ```
 
   </Code.Svelte>
@@ -113,24 +117,24 @@ export const { GET, POST } = SolidAuth(authOpts)
   <Code.Express>
 
 ```ts filename="./src/routes/auth.route.ts"
-import { ExpressAuth } from "@auth/express"
-import express from "express"
+import { ExpressAuth } from "@auth/express";
+import express from "express";
 
-const app = express()
+const app = express();
 
 // Make sure to use these body parsers so Auth.js can receive data from the client
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
-app.use('trust proxy')
+app.use("trust proxy");
 
 app.use(
   "/api/auth/*",
   ExpressAuth({
     providers: [],
   })
-)
+);
 ```
 
   </Code.Express>
@@ -138,6 +142,7 @@ app.use(
 
 ### Setup Authentication Methods
 
-With that the basic setup is complete! Refer to the next section, [Authentication](/overview/authentication), to setup your first authentication method.
+With that the basic setup is complete! If you need a database go on to the next page, otherwise you
+can skip on to the next section, [Authentication](/overview/authentication), to setup your first authentication method.
 
 </Steps>

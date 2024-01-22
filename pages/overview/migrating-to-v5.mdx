@@ -2,16 +2,18 @@ import { Callout, Tabs } from "nextra/components";
 
 # Upgrade Guide (v5)
 
-<Callout>
-  **Auth.js version 5** is a complete rewrite of the package, but we made sure
-  to introduce as little breaking changes as possible. For anything else, we
-  summed up the necessary changes in this guide.
+**NextAuth.js version 5** is a major rewrite of the package, but we made
+sure to introduce as little breaking changes as possible. For anything else,
+we summed up the necessary changes in this guide.
+
+<Callout type="info">
+  This only applies to `next-auth` upgrades for users of Next.js
 </Callout>
 
-Get started by installing the latest version with the `beta` tag.
+Get started by installing the latest version with the `latest` tag.
 
 ```bash npm2yarn
-npm install next-auth@beta
+npm install next-auth@latest
 ```
 
 ## New Features
@@ -20,8 +22,10 @@ npm install next-auth@beta
 
 - App Router-first (`pages/` still supported).
 - OAuth support on preview deployments: [Read more](/getting-started/deployment#securing-a-preview-deployment).
-- Simplified set up (shared config, inferred [env variables](/reference/nextjs#environment-variable-inferrence)).
-- Fully Edge-compatible, thanks to rewriting on top of Auth.js. [Read more](/reference/core).
+- Simplified setup (shared config, inferred [env variables](/reference/nextjs#environment-variable-inferrence)).
+- Edge-compatible
+- There is a new `account()` callback on providers which allow you to pass in data from the
+  provider to save, see [`account()` docs](/reference/core/providers#account).
 
 #### Universal `auth()`
 
@@ -32,12 +36,9 @@ npm install next-auth@beta
 
 - Auth.js now builds on `@auth/core` with stricter [OAuth](https://www.ietf.org/rfc/rfc6749.html)/[OIDC](https://openid.net/specs/openid-connect-core-1_0.html) spec-compliance, which might break some existing OAuth providers. See our [open issues](https://github.com/nextauthjs/next-auth/issues?q=is%3Aopen+is%3Aissue+label%3Aproviders) for more details.
 - OAuth 1.0 support is deprecated.
-- Minimum required Next.js version is now [13.4](https://nextjs.org/13-4).
+- Minimum required Next.js version is now [14.0](https://nextjs.org/14).
 - The import `next-auth/next` is replaced. See [Authenticating server-side](#authenticating-server-side) for more details.
 - The import `next-auth/middleware` is replaced. See [Authenticating server-side](#authenticating-server-side) for more details.
-- The import `next-auth/jwt` is replaced. See [Authenticating server-side](#authenticating-server-side) for more details.
-- The import `next-auth/adapters` is replaced. See [Authenticating server-side](#authenticating-server-side) for more details.
-- If you are using a **database adapter** and passing it additional fields from your provider, the default behaviour has changed. We used to automatically pass on all fields from the provider to the adapter. **We no longer pass on all returned fields from your provider(s) to the adapter by default**. We listened to the community, and decided to revert this to a similar state as it was in v3. You must now manually pass on your chosen fields in the provider's `account` callback, if the default is not working for you. See: [`account()` docs](/reference/core/providers#account).
 
 ## Configuration
 
@@ -49,25 +50,20 @@ An example of the new configuration file format is as follows, as you can see it
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
-  providers: [GitHub],
-});
+export const { auth, handlers } = NextAuth({ providers: [GitHub] });
 ```
 
 This then allows you to import the functions exported from this file elsewhere in your codebase via import statements like one of the following.
 
 ```ts
-import { auth } from "../path-to-config/auth";
+import { auth } from "@/auth";
 ```
 
 The old configuration file, contained in the API Route (`pages/api/auth/[...nextauth].ts`), now becomes a 1-line handler for `GET` and `POST` requests for those paths.
 
 ```ts filename="app/api/auth/[...nextauth]/route.ts"
-export { GET, POST } from "./auth";
-export const runtime = "edge"; // optional
+import { handlers } from "@/auth"
+export const { GET, POST } = handlers`;
 ```
 
 ## Authenticating server-side
@@ -111,7 +107,7 @@ Instead of importing `getServerSession` from `next-auth/next` or `getToken` from
 - import { getServerSession } from "next-auth/next"
 - import { getToken } from "next-auth/jwt"
 - import { authOptions } from 'pages/api/auth/[...nextauth]'
-+ import { auth } from "../auth"
++ import { auth } from "@/auth"
 + import { NextApiRequest, NextApiResponse } from "next"
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -138,7 +134,7 @@ Instead of importing `getServerSession` from `next-auth/next` or `getToken` from
 - import { getServerSession } from "next-auth/next"
 - import { getToken } from "next-auth/jwt"
 - import { authOptions } from 'pages/api/auth/[...nextauth]'
-+ import { auth } from "../auth"
++ import { auth } from "@/auth"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 -  const session = await getServerSession(context.req, context.res, authOptions)
@@ -188,7 +184,7 @@ Auth.js v4 has supported reading the session in Server Components for a while vi
 ```diff filename="app/page.tsx"
 - import { authOptions } from 'pages/api/auth/[...nextauth]'
 - import { getServerSession } from "next-auth/next"
-+ import { auth } from "../auth"
++ import { auth } from "@/auth"
 
 export default async function Page() {
 -  const session = await getServerSession(authOptions)
@@ -203,12 +199,6 @@ export default async function Page() {
 Imports from `next-auth/react` are now marked with the `"use client"` directive. [Read more](https://nextjs.org/docs/getting-started/react-essentials#the-use-client-directive).
 
 If you have previously used `getSession()` or other imports server-side, you'll have to change it to use the [`auth()`](/reference/nextjs#auth) method instead.
-
-`getCsrfToken` and `getProviders` are still available as imports, but we plan to deprecate them in the future and introduce a new API to get this data server-side.
-
-Client-side: Instead of using these APIs, you can make a fetch request to the `/api/auth/providers` and `/api/auth/csrf` endpoints respectively.
-
-Server-side: Get the list of providers from your config's `providers` array.
 
 </Tabs.Tab>
 </Tabs>
@@ -252,13 +242,15 @@ This is because the - previously - Auth.js scoped [`@next-auth/*-adapter`](https
 
 Auth.js v5 does not introduce any breaking changes to the database schema. However, since OAuth 1.0 support is dropped, the already optional `oauth_token_secret` and `oauth_token` fields can be removed from the `account` table, if you are not using them.
 
-Furthermore, previously uncommon fields like GitHub's `refresh_token_expires_in` fields were required to be added to the `account` table. This is no longer the case, and you can remove it if you are not using it. If you do, make sure to return it via the new [`account()` callback](/reference/core/providers#account).
+Furthermore, previously uncommon fields like GitHub's `refresh_token_expires_in` fields were
+required to be added to the `account` table. This is no longer the case, and you can remove it if
+you are not using it. If you do use it, please make sure to return it via the new [`account()` callback](/reference/core/providers#account).
 
 ## Edge compatibility
 
 While Auth.js strictly uses standard Web APIs (and thus can run in any environments that supports that), some libraries/ORM packages that you rely on might not be ready yet. In this case, you can split the auth configuration into multiple files. The following is an example of how to do this with a database adapter.
 
-Auth.js supports two session strategies. When you are using an adapter, you can choose to save the session data into a database. Unless your database and its adapter is compatible with the Edge runtime/infrastructure, you will not be able to use a `"database"` session strategy.
+Auth.js supports two [session strategies](/concepts/session-strategies). When you are using an adapter, you can choose to save the session data into a database. Unless your database and its adapter is compatible with the Edge runtime/infrastructure, you will not be able to use a `"database"` session strategy.
 
 Most adapters rely on an ORM/library that is not yet compatible with the Edge runtime. So here is how you can work around it, by forcing a JWT session strategy:
 
@@ -312,7 +304,6 @@ Please follow up with your database/ORM's maintainer to see if they are planning
 ## TypeScript
 
 - `NextAuthOptions` is renamed to `NextAuthConfig`
-- `Adapter` from `next-auth/adapters` is moved to `@auth/core/adapters`. If you are creating a custom adapter, use `@auth/core` instead of `next-auth`.
 
 ## Summary
 
