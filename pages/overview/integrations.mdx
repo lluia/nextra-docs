@@ -19,32 +19,39 @@ In the following table you can see the _state_ of planned and released packages 
   agnostic.
 </Callout>
 
-### Planned releases
+## Integrations
 
-| Feature                | Status                                                                                                                                                                                 |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `next-auth`            | Released (stable). See [docs](/reference/nextjs)                                                                                                                                       |
-| `@auth/*-adapter`      | Released (stable). Fully compatible with `next-auth` and all `@auth/*` libraries.                                                                                                      |
-| `@next-auth/*-adapter` | Maintenance has stopped. Update to `@auth/*-adapter`. See above.                                                                                                                       |
-| `@auth/core`           | Released (experimental).                                                                                                                                                               |
-| `@auth/sveltekit`      | Released (experimental, [help needed](#help-needed)).                                                                                                                                  |
-| `@auth/solid-start`    | Released (experimental, [help needed](#help-needed)). Community package: [`@solid-mediakit/auth`](https://www.npmjs.com/package/@solid-mediakit/auth)                                  |
-| `@auth/express`        | [Planned](https://github.com/nextauthjs/next-auth/issues/8257).                                                                                                                        |
-| `@auth/remix`          | Planned, [help needed](#help-needed).                                                                                                                                                  |
-| `@auth/astro`          | Planned, [help needed](#help-needed).                                                                                                                                                  |
-| `@auth/nuxt`           | Planned, [help needed](#help-needed). Community packages: [`@sidebase/nuxt-auth`](https://github.com/sidebase/nuxt-auth), [`@hebilicious/authjs-nuxt`](https://authjs-nuxt.pages.dev/) |
+Here are the _state_ of planned and released integrations under the `@auth/*` and `@next-auth/*` scope, as well as `next-auth`. It also includes community created and maintained integrations. Integrations listed as "Planned" are something we'd love help with! See the [help needed](#help-needed) section below.
+
+| Feature                | Status                                                                           |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| `next-auth`            | Released (stable) - [docs](/reference/nextjs)                                    |
+| `@auth/*-adapter`      | Released (stable). Fully compatible with `next-auth` and all `@auth/*` libraries |
+| `@next-auth/*-adapter` | Maintenance has stopped. Update to `@auth/*-adapter`                             |
+| `@auth/core`           | Released (experimental)                                                          |
+| `@auth/sveltekit`      | Released (experimental) - [docs](https://sveltekit.authjs.dev)                   |
+| `@auth/express`        | Released (experimental) - [docs](https://express.authjs.dev)                     |
+| `@auth/solid-start`    | Released (experimental)                                                          |
+| `@auth/remix`          | Planned                                                                          |
+| `@auth/astro`          | Planned                                                                          |
+| `@auth/nuxt`           | Planned                                                                          |
 
 ### Community Integrations
 
-| Client  | Links                                                                                       |
-| ------- | ------------------------------------------------------------------------------------------- |
-| Hono.js | [Auth.js middleware](https://github.com/honojs/middleware/tree/main/packages/auth-js)       |
-| Rakkas  | [Auth.js Integration Example](https://github.com/rakkasjs/rakkasjs/tree/main/examples/auth) |
+The community has published some great integrations / client packages for various frameworks and
+libraries. We'd love to make some packages official in the future, if you're responsible for any of
+them and are interested in collaborating, please do not hesitate to reach out!
+
+| Client     | Links                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------- |
+| Hono.js    | [Auth.js middleware](https://github.com/honojs/middleware/tree/main/packages/auth-js)       |
+| Rakkas     | [Auth.js Integration Example](https://github.com/rakkasjs/rakkasjs/tree/main/examples/auth) |
+| Qwik       | [Qwik Auth.js Integration](https://qwik.builder.io/docs/integrations/authjs/)               |
+| SolidStart | [`@solid-mediakit/auth`](https://www.npmjs.com/package/@solid-mediakit/auth)                |
+| Astro      | [`auth-astro`](https://github.com/nowaythatworked/auth-astro)                               |
+| Nuxt       | [`@sidebase/nuxt-auth`](https://github.com/sidebase/nuxt-auth)                              |
+| Nuxt       | [`@hebilicious/authjs-nuxt`](https://authjs-nuxt.pages.dev/)                                |
 
 ### Help needed
 
 In case you are a maintainer of a package that uses `@auth/core`, feel free to [reach out to Balázs](https://twitter.com/balazsorban44), if you want to collaborate on making it an official package, maintained in our repository. If you are interested in bringing `@auth/core` support to your favorite framework, we would love to hear from you!
-
-#### Community Packages
-
-While we are migrating the documentation and working on stabilizing the core package, the community has been working on some packages that are already available. With collaboration, we hope to make these packages official in the future.
