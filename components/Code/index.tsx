@@ -30,6 +30,9 @@ const allFrameworks = {
 
 export function Code({ children }: ChildrenProps) {
   const router = useRouter();
+  const {
+    query: { tab },
+  } = router;
   const childs = Children.toArray(children);
   const { project } = useThemeConfig();
 
@@ -40,8 +43,20 @@ export function Code({ children }: ChildrenProps) {
 
   const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameworks;
 
+  const findIndexOfTab = (tab: string): number => {
+    if (!tab) return 0;
+    const foundKey = Object.values(renderedFrameworks).findIndex(
+      // TODO: Maybe slugify for better results?
+      (f) => f.toLowerCase().replace(".", "") === tab
+    );
+    return foundKey;
+  };
+
   return (
-    <Tabs items={Object.values(renderedFrameworks)}>
+    <Tabs
+      items={Object.values(renderedFrameworks)}
+      selectedIndex={findIndexOfTab(tab as string)}
+    >
       {Object.keys(renderedFrameworks).map((f) => {
         // @ts-expect-error: Hacky dynamic child wrangling
         const child = childs.find((c) => c?.type?.name === f);
@@ -51,7 +66,7 @@ export function Code({ children }: ChildrenProps) {
           child
         ) : (
           <Tabs.Tab key={f}>
-            <p className="p-6 font-semibold rounded-lg bg-slate-100">
+            <p className="p-6 font-semibold rounded-lg bg-slate-100 dark:bg-neutral-950">
               {renderedFrameworks[f]} not documented yet. Help us by
               contributing{" "}
               <a
