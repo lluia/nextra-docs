@@ -1,11 +1,15 @@
-validate-docs-links:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
-    - name: "Run link checker"
-      run: node ./.github/actions/validate-docs-links/dist
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+name: "Validate Docs Links"
+on: [push]
+
+jobs:
+  validate-docs-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: "Run link checker"
+        run: node ./.github/actions/validate-docs-links/dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
