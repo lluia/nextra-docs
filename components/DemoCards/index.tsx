@@ -62,7 +62,7 @@ export function DemoCards() {
         const content = (
           <div className="flex flex-col gap-2" key={name}>
             <Link
-              href={`/overview/installation?tab=${name.toLowerCase()}`}
+              href={`/overview/installation?framework=${name.toLowerCase()}`}
               className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
             >
               <img alt={name} src={img} width={logoWidth} />

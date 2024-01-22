@@ -40,7 +40,7 @@ const findTabIndex = (frameworks: Record<string, string>, tab: string) => {
 export function Code({ children }: ChildrenProps) {
   const router = useRouter();
   const {
-    query: { tab },
+    query: { framework },
   } = router;
   const childs = Children.toArray(children);
   const { project } = useThemeConfig();
@@ -57,16 +57,16 @@ export function Code({ children }: ChildrenProps) {
     const savedTabPreference = Number(
       window.localStorage.getItem(AUTHJS_TAB_KEY)
     );
-    if (tab) {
+    if (framework) {
       window.localStorage.setItem(
         AUTHJS_TAB_KEY,
-        String(findTabIndex(renderedFrameworks, tab as string))
+        String(findTabIndex(renderedFrameworks, framework as string))
       );
-      setTabIndex(findTabIndex(renderedFrameworks, tab as string));
+      setTabIndex(findTabIndex(renderedFrameworks, framework as string));
     } else if (savedTabPreference) {
       setTabIndex(savedTabPreference);
     }
-  }, [tab, renderedFrameworks]);
+  }, [framework, renderedFrameworks]);
 
   return (
     <Tabs
