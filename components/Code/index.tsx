@@ -16,8 +16,8 @@ Code.Express = ExpressCode;
 const baseFrameworks = {
   [NextCode.name]: "Next.js",
   [SvelteCode.name]: "SvelteKit",
-  [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
+  [SolidCode.name]: "SolidStart",
 };
 
 const allFrameworks = {
