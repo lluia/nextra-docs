@@ -14,6 +14,6 @@ To make changes:
 
 - Edit the `src/index.ts` file.
 - Navigate to the script folder `cd .github/actions/validate-docs-links`
-- Run `npm install` to install dependencies.
-- Run `npm run build` to compile code. This will create an updated `lib/index.js`.
+- Run `pnpm install` to install dependencies.
+- Run `pnpm run build` to compile code. This will create an updated `lib/index.js`.
 - Commit and push changes to GitHub.
