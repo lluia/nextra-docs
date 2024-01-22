@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import cx from "classnames";
 
-const kFormatter = (num: number) => {
+function kFormatter(num: number) {
   return (Math.sign(num) * (Math.abs(num) / 1000)).toFixed(1) + "k";
-};
+}
 
-const Footer = ({ className = "" }) => {
+export function Footer({ className = "" }) {
   useEffect(() => {
-    window
-      .fetch("https://api.github.com/repos/nextauthjs/next-auth")
+    fetch("https://api.github.com/repos/nextauthjs/next-auth")
       .then((res) => res.json())
       .then((data) => {
         const githubStat = document.querySelector(".github-counter");
         githubStat.innerHTML = kFormatter(data.stargazers_count);
-      });
+      })
+      // eslint-disable-next-line no-console
+      .catch((e) => console.error(e));
   }, []);
   return (
     <div
@@ -81,6 +82,6 @@ const Footer = ({ className = "" }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

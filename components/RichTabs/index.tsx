@@ -9,7 +9,7 @@ import type {
 import cx from "classnames";
 import { useRouter } from "next/router";
 
-RichTabs.List = ({ className, ...rest }: TabsListProps) => {
+RichTabs.List = function TabsList({ className, ...rest }: TabsListProps) {
   return (
     <List
       {...rest}
@@ -18,16 +18,16 @@ RichTabs.List = ({ className, ...rest }: TabsListProps) => {
   );
 };
 
-RichTabs.Trigger = ({
+RichTabs.Trigger = function TabsTrigger({
   className,
   orientation = "horizontal",
   ...rest
-}: TabsTriggerProps & { orientation?: TabsProps["orientation"] }) => {
+}: TabsTriggerProps & { orientation?: TabsProps["orientation"] }) {
   return (
     <Trigger
       {...rest}
       className={cx(
-        "relative font-semibold dark:bg-neutral-900 bg-slate-50 text-sm border-solid dark:border-neutral-800 border-slate-200  flex flex-col items-center justify-between w-48 h-28 dark:aria-selected:bg-neutral-700 transition-all duration-300 aria-selected:bg-white  ",
+        "relative font-semibold dark:bg-neutral-900 bg-slate-50 text-sm border-solid dark:border-neutral-800 border-slate-200  flex flex-col items-center justify-between w-48 h-24 dark:aria-selected:bg-neutral-700 transition-all duration-300 aria-selected:bg-white aria-selected:top-px",
         className,
         orientation === "horizontal"
           ? "aria-selected:border-b-white rounded-tl-lg rounded-tr-lg border-l border-t border-r "
@@ -37,11 +37,11 @@ RichTabs.Trigger = ({
   );
 };
 
-RichTabs.Content = ({
+RichTabs.Content = function TabsContent({
   className,
   orientation = "horizontal",
   ...rest
-}: TabsContentProps & { orientation?: TabsProps["orientation"] }) => {
+}: TabsContentProps & { orientation?: TabsProps["orientation"] }) {
   return (
     <Content
       {...rest}
@@ -63,7 +63,7 @@ export function RichTabs({
   onTabChange,
   ...rest
 }: TabsProps & { onTabChange?: (value: string) => void }) {
-  let [tabValue, setTabValue] = useState(rest.defaultValue);
+  const [tabValue, setTabValue] = useState(rest.defaultValue);
   const router = useRouter();
   const {
     query: { tab },

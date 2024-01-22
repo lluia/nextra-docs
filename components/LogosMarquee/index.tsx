@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import { join } from "path";
 
 /*
  the logos have a hover effect that increases their size slightly
@@ -10,11 +8,6 @@ import { join } from "path";
  */
 
 const logoSize = 96; // px
-const logoMagnifyBy = 1.1;
-const logosGap = 68; // px
-
-const extraSpace = logoSize * logoMagnifyBy - logoSize;
-const calculatedLogosGap = `${logosGap - extraSpace}px`;
 
 export function LogosMarquee() {
   return (
