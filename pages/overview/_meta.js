@@ -20,7 +20,7 @@ export default {
     },
   },
   deployment: "Deployment",
-  typescript: "Typescript",
+  typescript: "TypeScript",
   "-- More": {
     type: "separator",
     title: "More",
