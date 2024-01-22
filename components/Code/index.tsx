@@ -1,11 +1,13 @@
 import { useThemeConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import { Tabs } from "nextra/components";
-import React, { Children } from "react";
+import React, { Children, useEffect, useState } from "react";
 
 interface ChildrenProps {
   children: React.ReactElement;
 }
+
+const AUTHJS_TAB_KEY = "authjs.codeTab.framework";
 
 Code.Next = NextCode;
 Code.NextPages = NextPagesCode;
@@ -28,6 +30,13 @@ const allFrameworks = {
   [ExpressCode.name]: "Express",
 };
 
+const findTabIndex = (frameworks: Record<string, string>, tab: string) => {
+  return Object.values(frameworks).findIndex(
+    // TODO: Maybe slugify for better results?
+    (f) => f.toLowerCase() === tab.toLowerCase()
+  );
+};
+
 export function Code({ children }: ChildrenProps) {
   const router = useRouter();
   const {
@@ -42,20 +51,28 @@ export function Code({ children }: ChildrenProps) {
   );
 
   const renderedFrameworks = withNextJsPages ? allFrameworks : baseFrameworks;
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const findIndexOfTab = (tab: string): number => {
-    if (!tab) return 0;
-    const foundKey = Object.values(renderedFrameworks).findIndex(
-      // TODO: Maybe slugify for better results?
-      (f) => f.toLowerCase() === tab.toLowerCase()
+  useEffect(() => {
+    const savedTabPreference = Number(
+      window.localStorage.getItem(AUTHJS_TAB_KEY)
     );
-    return foundKey;
-  };
+    if (tab) {
+      window.localStorage.setItem(
+        AUTHJS_TAB_KEY,
+        String(findTabIndex(renderedFrameworks, tab as string))
+      );
+      setTabIndex(findTabIndex(renderedFrameworks, tab as string));
+    } else if (savedTabPreference) {
+      setTabIndex(savedTabPreference);
+    }
+  }, [tab, renderedFrameworks]);
 
   return (
     <Tabs
+      storageKey={AUTHJS_TAB_KEY}
       items={Object.values(renderedFrameworks)}
-      selectedIndex={findIndexOfTab(tab as string)}
+      selectedIndex={tabIndex}
     >
       {Object.keys(renderedFrameworks).map((f) => {
         // @ts-expect-error: Hacky dynamic child wrangling
