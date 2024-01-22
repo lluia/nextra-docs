@@ -78,6 +78,7 @@ export function DemoCards() {
             </Link>
             <a
               href={href}
+              rel="noreferrer"
               target="_blank"
               className="flex justify-center p-2 w-full text-sm rounded-md bg-slate-100 dark:bg-neutral-900"
             >
