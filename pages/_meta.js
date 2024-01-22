@@ -28,6 +28,5 @@ export default {
   },
   security: {
     title: "Security",
-    type: "page",
   },
 };
