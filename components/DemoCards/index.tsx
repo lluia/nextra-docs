@@ -21,7 +21,7 @@ export function DemoCards() {
           wip: true,
           label: (
             <>
-              Officially supported but not documented. Help us{" "}
+              Officially supported but not fully documented. Help us{" "}
               <a href="https://github.com/nextauthjs/next-auth/issues">
                 document it.
               </a>
@@ -36,7 +36,7 @@ export function DemoCards() {
           wip: true,
           label: (
             <>
-              Officially supported but not documented. Help us{" "}
+              Officially supported but not fully documented. Help us{" "}
               <a href="https://github.com/nextauthjs/next-auth/issues">
                 document it.
               </a>
@@ -51,7 +51,7 @@ export function DemoCards() {
           wip: true,
           label: (
             <>
-              Officially supported but not documented. Help us{" "}
+              Officially supported but not fully documented. Help us{" "}
               <a href="https://github.com/nextauthjs/next-auth/issues">
                 document it.
               </a>
