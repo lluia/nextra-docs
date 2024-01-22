@@ -51,8 +51,8 @@ interface Comment {
   id: number;
 }
 
-const DOCS_PATH = "/docs/";
-const ERRORS_PATH = "/errors/";
+const DOCS_PATH = "/pages/";
+// const ERRORS_PATH = "/errors/";
 const EXCLUDED_HASHES = ["top"];
 const COMMENT_TAG = "<!-- LINK_CHECKER_COMMENT -->";
 
@@ -130,15 +130,16 @@ const markdownProcessor = unified()
 
 // Github APIs returns `errors/*` and `docs/*` paths
 function normalizePath(filePath: string): string {
-  if (filePath.startsWith(ERRORS_PATH.substring(1))) {
-    return (
-      filePath
-        // Remap repository file path to the next-site url path
-        // e.g. `errors/example.mdx` -> `docs/messages/example`
-        .replace(ERRORS_PATH.substring(1), DOCS_PATH.substring(1) + "messages/")
-        .replace(".mdx", "")
-    );
-  }
+  // NOTE: Disabled since Auth.js doesn't have ERRORS_PATH
+  // if (filePath.startsWith(ERRORS_PATH.substring(1))) {
+  //   return (
+  //     filePath
+  //       // Remap repository file path to the next-site url path
+  //       // e.g. `errors/example.mdx` -> `docs/messages/example`
+  //       .replace(ERRORS_PATH.substring(1), DOCS_PATH.substring(1) + "messages/")
+  //       .replace(".mdx", "")
+  //   );
+  // }
 
   return (
     // Remap repository file path to the next-site url path without `/docs/`
@@ -344,7 +345,7 @@ const formatTableRow = (
   errorType: ErrorType,
   docPath: string
 ) => {
-  return `| ${link} | ${errorType} | [/${docPath}](https://github.com/vercel/next.js/blob/${sha}/${docPath}) | \n`;
+  return `| ${link} | ${errorType} | [/${docPath}](https://github.com/ubbe-xyz/nextra-docs/blob/${sha}/${docPath}) | \n`;
 };
 
 async function updateCheckStatus(
@@ -397,7 +398,7 @@ async function updateCheckStatus(
 // Main function that triggers link validation across .mdx files
 async function validateAllInternalLinks(): Promise<void> {
   try {
-    const allMdxFilePaths = await getAllMdxFilePaths([DOCS_PATH, ERRORS_PATH]);
+    const allMdxFilePaths = await getAllMdxFilePaths([DOCS_PATH]);
 
     documentMap = new Map(
       await Promise.all(allMdxFilePaths.map(prepareDocumentMapEntry))
