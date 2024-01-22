@@ -3,7 +3,7 @@ import { Link } from "@/components/Link";
 import { RichTabs } from "@/components/RichTabs";
 import { Code } from "@/components/Code";
 import { Screenshot } from "@/components/Screenshot";
-import { GitDiff, UserFocus, Password } from "@phosphor-icons/react";
+import { GitDiff, Password, ChatDots } from "@phosphor-icons/react";
 import { ListDisclosure } from "@/components/ListDisclosure";
 import manifest from "@/data/manifest.json";
 
@@ -47,21 +47,21 @@ Once you have decided how to authenticate users in your application (you can alw
 <RichTabs defaultValue="oauth">
   <RichTabs.List className="gap-2">
     <RichTabs.Trigger key="oauth" value="oauth">
-      <div className="flex flex-col justify-center items-center h-full">
-        <GitDiff fontSize="3rem" />
+      <div className="flex flex-col justify-center gap-1 items-center h-full">
+        <GitDiff fontSize="2.5rem" />
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Trigger>
     <RichTabs.Trigger key="passwordless" value="passwordless">
-      <div className="flex flex-col justify-center items-center h-full">
-        <UserFocus fontSize="3rem" />
-        <span>Setup Passwordless</span>
+      <div className="flex flex-col justify-center gap-1 items-center h-full">
+        <ChatDots fontSize="2.5rem" />
+        <span>Setup Token auth</span>
       </div>
     </RichTabs.Trigger>
     <RichTabs.Trigger key="external-auth" value="external-auth">
-      <div className="flex flex-col justify-center items-center h-full">
-        <Password fontSize="3rem" />
-        <span>Setup External Auth</span>
+      <div className="flex flex-col justify-center gap-1 items-center h-full">
+        <Password fontSize="2.5rem" />
+        <span>Setup Credentials</span>
       </div>
     </RichTabs.Trigger>
   </RichTabs.List>
