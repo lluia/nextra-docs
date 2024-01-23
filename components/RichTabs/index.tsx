@@ -44,6 +44,7 @@ RichTabs.Content = function TabsContent({
 }: TabsContentProps & { orientation?: TabsProps["orientation"] }) {
   return (
     <Content
+      forceMount
       {...rest}
       className={cx(
         "border border-solid dark:border-neutral-800 border-slate-200 shadow-sm",
