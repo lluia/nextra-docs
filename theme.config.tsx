@@ -59,22 +59,6 @@ const config: DocsThemeConfig = {
     extraContent: <span data-todo="potential spot for ad?"></span>,
     backToTop: true,
   },
-  banner: {
-    key: "authjs-rename",
-    content: (
-      <>
-        <a
-          className="text-violet-400"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://next-auth.js.org"
-        >
-          NextAuth.js
-        </a>{" "}
-        is now Auth.js! 🎉 Authentication for the Web. Everyone included.
-      </>
-    ),
-  },
   docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
     component: <Footer />,
