@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/passage
 
 <div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>

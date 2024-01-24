@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/apple
 
 <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>

@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/azure-ad
 
 <div style={{backgroundColor: "#0072c6", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>

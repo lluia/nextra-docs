@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/click-up
 
 <div style={{backgroundColor: "#24292f", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>

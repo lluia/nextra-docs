@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/credentials
 
 ## Interfaces

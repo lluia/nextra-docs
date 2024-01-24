@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # types
 
 This module contains public types and interfaces of the core package.

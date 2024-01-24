@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/authentik
 
 <div style={{backgroundColor: "#fd4b2d", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>

@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/atlassian
 
 <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>

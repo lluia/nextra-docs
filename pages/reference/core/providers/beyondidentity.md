@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/beyondidentity
 
 <div style={{backgroundColor: "#5077c5", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>

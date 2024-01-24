@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # jwt
 
 This module contains functions and types

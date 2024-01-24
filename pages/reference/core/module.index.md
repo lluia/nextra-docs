@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # index
 
 :::warning Experimental

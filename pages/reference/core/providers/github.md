@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/github
 
 <div style={{backgroundColor: "#24292f", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>

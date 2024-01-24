@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/yandex
 
 <div style={{backgroundColor: "#ffcc00", display: "flex", justifyContent: "space-between", color: "#000", padding: 16}}>

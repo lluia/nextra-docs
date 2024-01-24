@@ -27,6 +27,7 @@ module.exports = {
   excludeProtected: true,
   githubPages: false,
   gitRevision: "main",
+  hidePageHeader: true,
   hideBreadcrumbs: true,
   hideGenerator: true,
   kindSortOrder: [

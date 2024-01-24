@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/asgardeo
 
 <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>

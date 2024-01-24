@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # providers/42-school
 
 <div style={{backgroundColor: "#fff", display: "flex", justifyContent: "space-between", color: "#000", padding: 16}}>

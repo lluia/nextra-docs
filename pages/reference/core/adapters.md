@@ -1,7 +1,3 @@
-**@auth/core** • API
-
-***
-
 # adapters
 
 Auth.js can be integrated with _any_ data layer (database, ORM, or backend API, HTTP client)
