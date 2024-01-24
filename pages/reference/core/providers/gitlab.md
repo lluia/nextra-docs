@@ -1,0 +1,80 @@
+**@auth/core** • API
+
+***
+
+# providers/gitlab
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>GitLab</b> integration.</span>
+<a href="https://gitlab.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/gitlab.svg" height="48" width="48"/>
+</a>
+</div>
+
+## Functions
+
+### default()
+
+> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+
+Add GitLab login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/gitlab
+```
+
+#### Configuration
+```js
+import Auth from "@auth/core"
+import GitLab from "@auth/core/providers/gitlab"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [GitLab({ clientId: GITLAB_CLIENT_ID, clientSecret: GITLAB_CLIENT_SECRET })],
+})
+```
+
+### Resources
+
+ - [GitLab OAuth documentation](https://docs.gitlab.com/ee/api/oauth2.html)
+
+### Notes
+
+By default, Auth.js assumes that the GitLab provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+:::tip
+Enable the `read_user` option in scope if you want to save the users email address on sign up.
+:::
+
+:::tip
+
+The GitLab provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/gitlab.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
+
+:::
+
+:::info **Disclaimer**
+
+If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+
+:::
+
+#### Type parameters
+
+• **P** extends `GitLabProfile`
+
+#### Parameters
+
+• **options**: `OAuthUserConfig`\<`P`\>
+
+#### Returns
+
+`OAuthConfig`\<`P`\>

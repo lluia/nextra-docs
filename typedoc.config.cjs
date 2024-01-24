@@ -2,6 +2,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+// TODO: Fix when in the monorepo
 const core = "../next-auth/packages/core";
 // list providers entries from @auth/core/providers/*.ts
 const coreSrc = `${core}/src`;

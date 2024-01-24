@@ -1,0 +1,104 @@
+**@auth/core** • API
+
+***
+
+# providers/beyondidentity
+
+<div style={{backgroundColor: "#5077c5", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>Beyond Identity</b> integration.</span>
+<a href="https://www.beyondidentity.com/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/beyondidentity.svg" height="48" width="48"/>
+</a>
+</div>
+
+## Interfaces
+
+### BeyondIdentityProfile
+
+#### See
+
+[Beyond Identity Developer Docs](https://developer.beyondidentity.com/)
+
+#### Properties
+
+##### email
+
+> **email**: `string`
+
+The user's email address.
+
+##### name
+
+> **name**: `string`
+
+The user's full name.
+
+##### preferred\_username
+
+> **preferred\_username**: `string`
+
+The user's preferred username.
+
+##### sub
+
+> **sub**: `string`
+
+The user's unique identifier.
+
+## Functions
+
+### default()
+
+> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfig)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+
+Add Beyond Identity login to your page.
+
+#### Parameters
+
+• **config**: `OIDCUserConfig`\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+
+#### Returns
+
+[`OIDCConfig`](../providers.md#oidcconfig)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+
+#### Example
+
+```ts
+import { Auth } from "@auth/core"
+import BeyondIdentity from "@auth/core/providers/beyondidentity"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [BeyondIdentity({ clientId: BEYOND_IDENTITY_CLIENT_ID, clientSecret: BEYOND_IDENTITY_CLIENT_SECRET, issuer: BEYOND_IDENTITY_ISSUER })],
+})
+```
+
+---
+
+### Resources
+
+- [Beyond Identity Developer Docs](https://developer.beyondidentity.com/)
+
+---
+
+### Notes
+
+By default, Auth.js assumes that the BeyondIdentity provider is
+based on the [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) specification.
+
+:::tip
+
+The BeyondIdentity provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/beyondidentity.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
+
+:::
+
+:::info **Disclaimer**
+
+If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+
+:::
