@@ -1,15 +1,12 @@
+// @ts-check
+
+/** @type {import("eslint").ESLint.Options} */
 module.exports = {
+  parserOptions: { ecmaVersion: "latest" },
   root: true,
-  env: {
-    browser: true,
-    node: true,
-  },
-  globals: {
-    JSX: true,
-  },
-
+  env: { browser: true, node: true },
+  globals: { JSX: true },
   ignorePatterns: ["node_modules", "public", "**/*/_meta.js"],
-
   overrides: [
     {
       files: ["*.{ts,tsx}"],
@@ -23,12 +20,7 @@ module.exports = {
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
       ],
-
-      settings: {
-        react: {
-          version: "detect",
-        },
-      },
+      settings: { react: { version: "detect" } },
       // When adding a new rule or disabling a rule, please add a comment for why!
       rules: {
         // typescript does this already
@@ -36,12 +28,9 @@ module.exports = {
         // Unused things are fine if tagged with _
         "@typescript-eslint/no-unused-vars": [
           "error",
-          {
-            argsIgnorePattern: "^_",
-            varsIgnorePattern: "^_",
-          },
+          { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
         ],
-        // No consoles ha ha 
+        // No consoles ha ha
         "no-console": "error",
         // React does not have to be imported in the latest version of React
         "react/react-in-jsx-scope": "off",
