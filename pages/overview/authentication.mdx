@@ -1,5 +1,6 @@
 import { Steps, Callout, Tabs } from "nextra/components";
 import { Link } from "@/components/Link";
+import { SelectProvider } from "@/components/SelectProvider";
 import { RichTabs } from "@/components/RichTabs";
 import { Code } from "@/components/Code";
 import { Screenshot } from "@/components/Screenshot";
@@ -68,29 +69,7 @@ Once you have decided how to authenticate users in your application (you can alw
   </RichTabs.List>
   <RichTabs.Content className="p-8" key="oauth" value="oauth">
 
-Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
-
-<ListDisclosure limit={8}>
-  {Object.entries(manifest.providers).map(([id, name]) => (
-    <Link
-      href={`/reference/oauth-providers/${id}`}
-      key={name}
-      className="p-4 border border-solid dark:border-neutral-800 dark:bg-neutral-950 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
-    >
-      <div className="grid place-items-center flex-grow">
-        <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
-      </div>
-      <div className="text-sm text-center">{name}</div>
-    </Link>
-  ))}
-</ListDisclosure>
-
-<Callout type="info">
-  Can't find the OAuth provider you're looking for? In that case, you'll need to
-  build your own provider, which is easy. [Learn
-  how](/tutorials/deep-dive/oauth-github-setup). Auth.js can be setup with any
-  OAuth provider as long as they support **OAuth/OIDC**.
-</Callout>
+<SelectProvider />
 
 <Steps>
 

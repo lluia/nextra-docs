@@ -39,8 +39,8 @@ Start by installing the appropriate package for your framework of choice:
 </Code>
 
 <Callout type="info">
-  As a consumer of the library, you should never need to install the
-  `@auth/core` package
+  The `@auth/core` package is designed for new framework integrations. As a
+  consumer of the library, you should never need to install it.
 </Callout>
 
 ### Setup Environment
@@ -104,13 +104,13 @@ export const handle = SvelteKitAuth({
   <Code.Solid>
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
-import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
+import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start";
 
 export const authOpts: SolidAuthConfig = {
   providers: [],
-}
+};
 
-export const { GET, POST } = SolidAuth(authOpts)
+export const { GET, POST } = SolidAuth(authOpts);
 ```
 
   </Code.Solid>
