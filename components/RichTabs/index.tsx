@@ -47,7 +47,7 @@ RichTabs.Content = function TabsContent({
       forceMount
       {...rest}
       className={cx(
-        "border border-solid dark:border-neutral-800 border-slate-200 shadow-sm",
+        'data-[state="inactive"]:hidden border border-solid dark:border-neutral-800 border-slate-200 shadow-sm',
         className,
         orientation === "horizontal"
           ? "rounded-bl-lg rounded-br-lg rounded-tr-lg"

@@ -16,6 +16,15 @@ for all supported packages!
 
 ## What is Auth.js?
 
+<Callout type="info">
+  Note that because of preventing breaking changes on package imports,
+  `next-auth` is the only framework package that is not named following the
+  `@auth/*` convention. Auth.js was born out of `next-auth` but [over
+  the years has evolved](/overview/contributors#history) to be framework
+  agnostic. That means Next.js users will continue to install `next-auth` for now, while other
+  frameworks their are available at `@auth/[framework]`.
+</Callout>
+
 NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as
 an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and
 refactored the whole library to be an authentication layer which is framework agnostic.A
