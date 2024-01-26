@@ -23,7 +23,7 @@ export default {
   typescript: "TypeScript",
   "--": {
     type: "separator",
-    title: " ",
+    title: "Connections",
   },
   providers: {
     title: "Providers",
