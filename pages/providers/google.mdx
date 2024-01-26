@@ -30,27 +30,27 @@ https://example.com/api/auth/callback/google
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Google from "@auth/core/providers/google"
+```js
+import Auth from "@auth/core";
+import Google from "@auth/core/providers/google";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Google({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_CLIENT_SECRET })],
-})
-
-````
+  providers: [
+    Google({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_CLIENT_SECRET }),
+  ],
+});
+```
 
 ### Resources
 
- - [Google OAuth documentation](https://developers.google.com/identity/protocols/oauth2)
- - [Google OAuth Configuration](https://console.developers.google.com/apis/credentials)
+- [Google OAuth documentation](https://developers.google.com/identity/protocols/oauth2)
+- [Google OAuth Configuration](https://console.developers.google.com/apis/credentials)
 
 ### Notes
 
 By default, Auth.js assumes that the Google provider is
 based on the [Open ID Connect](https://openid.net/specs/openid-connect-core-1_0.html) specification.
-
 
 The "Authorized redirect URIs" used when creating the credentials must include your full domain and end in the callback path. For example;
 
@@ -67,7 +67,7 @@ Alternatively, you can also pass options in the `params` object of `authorizatio
 
 If you need access to the RefreshToken or AccessToken for a Google account and you are not using a database to persist user accounts, this may be something you need to do.
 
-```js title="pages/api/auth/[...nextauth].js"
+```js filename="pages/api/auth/[...nextauth].js"
 const options = {
   providers: [
     GoogleProvider({
@@ -77,13 +77,13 @@ const options = {
         params: {
           prompt: "consent",
           access_type: "offline",
-          response_type: "code"
-        }
-      }
-    })
+          response_type: "code",
+        },
+      },
+    }),
   ],
-}
-````
+};
+```
 
 :::
 

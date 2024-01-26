@@ -30,20 +30,21 @@ https://example.com/api/auth/callback/medium
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Medium from "@auth/core/providers/medium"
+```js
+import Auth from "@auth/core";
+import Medium from "@auth/core/providers/medium";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Medium({ clientId: MEDIUM_CLIENT_ID, clientSecret: MEDIUM_CLIENT_SECRET })],
-})
-
+  providers: [
+    Medium({ clientId: MEDIUM_CLIENT_ID, clientSecret: MEDIUM_CLIENT_SECRET }),
+  ],
+});
 ```
 
 ### Resources
 
- - [Medium OAuth documentation](https://example.com)
+- [Medium OAuth documentation](https://example.com)
 
 ### Notes
 
@@ -72,4 +73,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```

@@ -29,18 +29,23 @@ https://example.com/api/auth/callback/zitadel
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import ZITADEL from "@auth/core/providers/zitadel"
+```js
+import Auth from "@auth/core";
+import ZITADEL from "@auth/core/providers/zitadel";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [ZITADEL({ clientId: ZITADEL_CLIENT_ID, clientSecret: ZITADEL_CLIENT_SECRET })],
-})
-
-````
+  providers: [
+    ZITADEL({
+      clientId: ZITADEL_CLIENT_ID,
+      clientSecret: ZITADEL_CLIENT_SECRET,
+    }),
+  ],
+});
+```
 
 ### Resources
+
 - [ZITADEL OpenID Endpoints](https://zitadel.com/docs/apis/openidoauth/endpoints)
 - [ZITADEL recommended OAuth Flows](https://docs.zitadel.com/docs/guides/integrate/oauth-recommended-flows)
 
@@ -50,6 +55,7 @@ By default, Auth.js assumes that the ZITADEL provider is
 based on the [Open ID Connect](https://openid.net/specs/openid-connect-core-1_0.html) specification.
 
 The Redirect URIs used when creating the credentials must include your full domain and end in the callback path. For example:
+
 - For production: `https://{YOUR_DOMAIN}/api/auth/callback/zitadel`
 - For development: `http://localhost:3000/api/auth/callback/zitadel`
 
@@ -64,7 +70,8 @@ To override the defaults for your use case, check out [customizing a built-in OA
 :::tip
 
 ZITADEL also returns a email_verified boolean property in the profile. You can use this property to restrict access to people with verified accounts.
-```ts title=pages/api/auth/[...nextauth].js
+
+```ts filename=pages/api/auth/[...nextauth].js
 const options = {
   ...
   callbacks: {
@@ -77,7 +84,7 @@ const options = {
   }
   ...
 }
-````
+```
 
 :::
 

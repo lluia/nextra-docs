@@ -20,7 +20,7 @@
   </a>
 </div>
 
-### Setup
+## Setup
 
 #### Callback URL
 
@@ -30,15 +30,20 @@ https://example.com/api/auth/callback/authentik
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Authentik from "@auth/core/providers/authentik"
+```js
+import Auth from "@auth/core";
+import Authentik from "@auth/core/providers/authentik";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Authentik({ clientId: AUTHENTIK_CLIENT_ID, clientSecret: AUTHENTIK_CLIENT_SECRET, issuer: AUTHENTIK_ISSUER })],
-})
-
+  providers: [
+    Authentik({
+      clientId: AUTHENTIK_CLIENT_ID,
+      clientSecret: AUTHENTIK_CLIENT_SECRET,
+      issuer: AUTHENTIK_ISSUER,
+    }),
+  ],
+});
 ```
 
 :::note
@@ -47,7 +52,7 @@ issuer should include the slug without a trailing slash – e.g., https://my-aut
 
 ### Resources
 
- - [Authentik OAuth documentation](https://goauthentik.io/docs/providers/oauth2)
+- [Authentik OAuth documentation](https://goauthentik.io/docs/providers/oauth2)
 
 ### Notes
 
@@ -68,4 +73,3 @@ If you think you found a bug in the default configuration, you can [open an issu
 Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
 the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
-```

@@ -57,7 +57,7 @@ To override the defaults for your use case, check out [customizing a built-in OA
 By default the provider uses 5.126 version of the API. See https://vk.com/dev/versions for more info.
 If you want to use a different version, you can pass it to provider's options object:
 
-```js title="pages/api/auth/[...nextauth].js"
+```js filename="pages/api/auth/[...nextauth].js"
 const apiVersion = "5.126";
 providers: [
   VkProvider({

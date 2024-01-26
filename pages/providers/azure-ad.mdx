@@ -30,23 +30,25 @@ https://example.com/api/auth/callback/azure-ad
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import AzureAd from "@auth/core/providers/azure-ad"
+```js
+import Auth from "@auth/core";
+import AzureAd from "@auth/core/providers/azure-ad";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [AzureAd({ clientId: AZURE_AD_CLIENT_ID, clientSecret: AZURE_AD_CLIENT_SECRET })],
-})
-
+  providers: [
+    AzureAd({
+      clientId: AZURE_AD_CLIENT_ID,
+      clientSecret: AZURE_AD_CLIENT_SECRET,
+    }),
+  ],
+});
 ```
 
 ### Resources
 
- - [AzureAd OAuth documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow/)
- - [AzureAd OAuth apps](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app/)
-
-@example
+- [AzureAd OAuth documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow/)
+- [AzureAd OAuth apps](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app/)
 
 ### To allow specific Active Directory users access:
 
@@ -65,12 +67,10 @@ providers: [AzureAd({ clientId: AZURE_AD_CLIENT_ID, clientSecret: AZURE_AD_CLIEN
 In `.env.local` create the following entries:
 
 ```
-
-AZURE_AD_CLIENT_ID=<copy Application (client) ID here>
-AZURE_AD_CLIENT_SECRET=<copy generated client secret value here>
-AZURE_AD_TENANT_ID=<copy the tenant id here>
-
-````
+AUTH_AZURE_AD_CLIENT_ID=<copy Application (client) ID here>
+AUTH_AZURE_AD_CLIENT_SECRET=<copy generated client secret value here>
+AUTH_AZURE_AD_TENANT_ID=<copy the tenant id here>
+```
 
 That will default the tenant to use the `common` authorization endpoint. [For more details see here](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols#endpoints).
 
@@ -93,7 +93,7 @@ providers: [
 ]
 ...
 
-````
+```
 
 ### Notes
 

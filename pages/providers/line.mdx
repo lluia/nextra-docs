@@ -30,23 +30,25 @@ https://example.com/api/auth/callback/line
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import LINE from "@auth/core/providers/line"
+```js
+import Auth from "@auth/core";
+import LINE from "@auth/core/providers/line";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [LINE({ clientId: LINE_CLIENT_ID, clientSecret: LINE_CLIENT_SECRET })],
-})
-
+  providers: [
+    LINE({ clientId: LINE_CLIENT_ID, clientSecret: LINE_CLIENT_SECRET }),
+  ],
+});
 ```
 
 ### Resources
 
- - [LINE Login documentation](https://developers.line.biz/en/docs/line-login/integrate-line-login/)
- - [LINE app console](https://developers.line.biz/console/)
+- [LINE Login documentation](https://developers.line.biz/en/docs/line-login/integrate-line-login/)
+- [LINE app console](https://developers.line.biz/console/)
 
 ## Configuration
+
 Create a provider and a LINE login channel at https://developers.line.biz/console/. In the settings of the channel under LINE Login, activate web app and configure the following: Callback URL `http://localhost:3000/api/auth/callback/line`
 
 ### Notes
@@ -76,4 +78,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```

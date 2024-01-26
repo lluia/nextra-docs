@@ -29,15 +29,19 @@ https://example.com/api/auth/callback/wikimedia
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Wikimedia from "@auth/core/providers/wikimedia"
+```js
+import Auth from "@auth/core";
+import Wikimedia from "@auth/core/providers/wikimedia";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Wikimedia({ clientId: WIKIMEDIA_CLIENT_ID, clientSecret: WIKIMEDIA_CLIENT_SECRET })],
-})
-
+  providers: [
+    Wikimedia({
+      clientId: WIKIMEDIA_CLIENT_ID,
+      clientSecret: WIKIMEDIA_CLIENT_SECRET,
+    }),
+  ],
+});
 ```
 
 ### Resources
@@ -45,17 +49,20 @@ providers: [Wikimedia({ clientId: WIKIMEDIA_CLIENT_ID, clientSecret: WIKIMEDIA_C
 - [Wikimedia OAuth documentation](https://www.mediawiki.org/wiki/Extension:OAuth)
 
 ## Configuration steps
+
 - Go to and accept the Consumer Registration doc: https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration
 - Request a new OAuth 2.0 consumer to get the `clientId` and `clientSecret`: https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration/propose/oauth2
   - Add the following redirect URL into the console: `http://<your-next-app-url>/api/auth/callback/wikimedia`
-  - Do not check the box next to This consumer is only for __your username__
+  - Do not check the box next to This consumer is only for **your username**
   - Unless you explicitly need a larger scope, feel free to select the radio button labelled User identity verification only - no ability to read pages or act on the users behalf.
 
 After registration, you can initially test your application only with your own Wikimedia account.
 You may have to wait several days for the application to be approved for it to be used by everyone.
 
 ### Notes
+
 This provider also supports all Wikimedia projects:
+
 - Wikipedia
 - Wikidata
 - Wikibooks
@@ -83,4 +90,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```

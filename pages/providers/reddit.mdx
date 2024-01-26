@@ -29,21 +29,22 @@ https://example.com/api/auth/callback/reddit
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Reddit from "@auth/core/providers/reddit"
+```js
+import Auth from "@auth/core";
+import Reddit from "@auth/core/providers/reddit";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Reddit({ clientId: REDDIT_CLIENT_ID, clientSecret: REDDIT_CLIENT_SECRET })],
-})
-
+  providers: [
+    Reddit({ clientId: REDDIT_CLIENT_ID, clientSecret: REDDIT_CLIENT_SECRET }),
+  ],
+});
 ```
 
 ### Resources
 
 - [Reddit API documentation](https://www.reddit.com/dev/api/)
-- [Reddit app console](https://www.reddit.com/prefs/apps/ )
+- [Reddit app console](https://www.reddit.com/prefs/apps/)
 
 ### Notes
 
@@ -60,18 +61,19 @@ Only allows one callback URL per Client ID / Client Secret.
 :::tip
 
 This Provider template only has a one hour access token to it and only has the "identity" scope. If you want to get a refresh token as well you must follow this:
-``js title="pages/api/auth/[...nextauth].js"
+
+```js filename="pages/api/auth/[...nextauth].js"
 providers: [
- RedditProvider({
-   clientId: process.env.REDDIT_CLIENT_ID,
-   clientSecret: process.env.REDDIT_CLIENT_SECRET,
-   authorization: {
-     params: {
-       duration: 'permanent',
-     },
-   },
- }),
-]
+  RedditProvider({
+    clientId: process.env.REDDIT_CLIENT_ID,
+    clientSecret: process.env.REDDIT_CLIENT_SECRET,
+    authorization: {
+      params: {
+        duration: "permanent",
+      },
+    },
+  }),
+];
 ```
 
 :::
@@ -92,3 +94,7 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
+
+```
+
+```

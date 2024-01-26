@@ -30,23 +30,27 @@ https://example.com/api/auth/callback/duende-identity-server6
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import DuendeIdentityServer6 from "@auth/core/providers/duende-identity-server6"
+```js
+import Auth from "@auth/core";
+import DuendeIdentityServer6 from "@auth/core/providers/duende-identity-server6";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [DuendeIdentityServer6({ clientId: DIS6_CLIENT_ID, clientSecret: DIS6_CLIENT_SECRET, issuer: DIS6_ISSUER })],
-})
-
-````
+  providers: [
+    DuendeIdentityServer6({
+      clientId: DIS6_CLIENT_ID,
+      clientSecret: DIS6_CLIENT_SECRET,
+      issuer: DIS6_ISSUER,
+    }),
+  ],
+});
+```
 
 ### Resources
 
- - [DuendeIdentityServer6 documentation](https://docs.duendesoftware.com/identityserver/v6)
+- [DuendeIdentityServer6 documentation](https://docs.duendesoftware.com/identityserver/v6)
 
 ### Notes
-
 
 ## Demo IdentityServer
 
@@ -56,16 +60,16 @@ If you want to try it out, you can copy and paste the configuration below.
 
 You can sign in to the demo service with either <b>bob/bob</b> or <b>alice/alice</b>.
 
-```js title=pages/api/auth/[...nextauth].js
-import DuendeIDS6Provider from "next-auth/providers/duende-identity-server6"
+```js filename=pages/api/auth/[...nextauth].js
+import DuendeIDS6Provider from "next-auth/providers/duende-identity-server6";
 providers: [
   DuendeIDS6Provider({
     clientId: "interactive.confidential",
     clientSecret: "secret",
     issuer: "https://demo.duendesoftware.com",
-  })
-]
-````
+  }),
+];
+```
 
 By default, Auth.js assumes that the DuendeIdentityServer6 provider is
 based on the [Open ID Connect](https://openid.net/specs/openid-connect-core-1_0.html) specification.

@@ -29,15 +29,16 @@ https://example.com/api/auth/callback/trakt
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Trakt from "@auth/core/providers/trakt"
+```js
+import Auth from "@auth/core";
+import Trakt from "@auth/core/providers/trakt";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Trakt({ clientId: TRAKT_CLIENT_ID, clientSecret: TRAKT_CLIENT_SECRET })],
-})
-
+  providers: [
+    Trakt({ clientId: TRAKT_CLIENT_ID, clientSecret: TRAKT_CLIENT_SECRET }),
+  ],
+});
 ```
 
 ### Resources
@@ -76,4 +77,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```

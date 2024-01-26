@@ -30,27 +30,30 @@ https://example.com/api/auth/callback/instagram
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Instagram from "@auth/core/providers/instagram"
+```js
+import Auth from "@auth/core";
+import Instagram from "@auth/core/providers/instagram";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Instagram({ clientId: INSTAGRAM_CLIENT_ID, clientSecret: INSTAGRAM_CLIENT_SECRET })],
-})
-
+  providers: [
+    Instagram({
+      clientId: INSTAGRAM_CLIENT_ID,
+      clientSecret: INSTAGRAM_CLIENT_SECRET,
+    }),
+  ],
+});
 ```
 
 ### Resources
 
- - [Instagram OAuth documentation](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)
- - [Instagram OAuth apps](https://developers.facebook.com/apps/)
+- [Instagram OAuth documentation](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)
+- [Instagram OAuth apps](https://developers.facebook.com/apps/)
 
 ### Notes
 
 By default, Auth.js assumes that the Instagram provider is
 based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
-
 
 :::warning
 Email address is not returned by the Instagram API.
@@ -75,4 +78,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```

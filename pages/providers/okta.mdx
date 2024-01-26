@@ -29,20 +29,25 @@ https://example.com/api/auth/callback/okta
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Okta from "@auth/core/providers/okta"
+```js
+import Auth from "@auth/core";
+import Okta from "@auth/core/providers/okta";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Okta({ clientId: OKTA_CLIENT_ID, clientSecret: OKTA_CLIENT_SECRET, issuer: OKTA_ISSUER })],
-})
-
+  providers: [
+    Okta({
+      clientId: OKTA_CLIENT_ID,
+      clientSecret: OKTA_CLIENT_SECRET,
+      issuer: OKTA_ISSUER,
+    }),
+  ],
+});
 ```
 
 ### Resources
 
- - [Okta OAuth documentation](https://developer.okta.com/docs/reference/api/oidc)
+- [Okta OAuth documentation](https://developer.okta.com/docs/reference/api/oidc)
 
 ### Notes
 
@@ -65,4 +70,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```

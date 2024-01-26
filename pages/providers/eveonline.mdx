@@ -30,20 +30,24 @@ https://example.com/api/auth/callback/eveonline
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import EveOnline from "@auth/core/providers/eveonline"
+```js
+import Auth from "@auth/core";
+import EveOnline from "@auth/core/providers/eveonline";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [EveOnline({ clientId: EVEONLINE_CLIENT_ID, clientSecret: EVEONLINE_CLIENT_SECRET })],
-})
-
-````
+  providers: [
+    EveOnline({
+      clientId: EVEONLINE_CLIENT_ID,
+      clientSecret: EVEONLINE_CLIENT_SECRET,
+    }),
+  ],
+});
+```
 
 ### Resources
 
- - [EveOnline OAuth documentation](https://developers.eveonline.com/blog/article/sso-to-authenticated-calls)
+- [EveOnline OAuth documentation](https://developers.eveonline.com/blog/article/sso-to-authenticated-calls)
 
 ### Notes
 
@@ -53,6 +57,7 @@ When creating your application, make sure to select `Authentication Only` as the
 
 :::tip
 If using JWT for the session, you can add the `CharacterID` to the JWT and session. Example:
+
 ```js
 options: {
   jwt: {
@@ -65,7 +70,7 @@ options: {
     }
   }
 }
-````
+```
 
 :::
 By default, Auth.js assumes that the EveOnline provider is

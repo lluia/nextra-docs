@@ -30,22 +30,26 @@ https://example.com/api/auth/callback/dribbble
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Dribbble from "@auth/core/providers/dribbble"
+```js
+import Auth from "@auth/core";
+import Dribbble from "@auth/core/providers/dribbble";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Dribbble({ clientId: DRIBBBLE_CLIENT_ID, clientSecret: DRIBBBLE_CLIENT_SECRET })],
-})
-
+  providers: [
+    Dribbble({
+      clientId: DRIBBBLE_CLIENT_ID,
+      clientSecret: DRIBBBLE_CLIENT_SECRET,
+    }),
+  ],
+});
 ```
 
 ### Resources
 
- - [Dribbble API](https://developer.dribbble.com)
- - [Dribbble OAuth](https://developer.dribbble.com/v2/oauth/)
- - [Dribbble Applications](https://dribbble.com/account/applications/new)
+- [Dribbble API](https://developer.dribbble.com)
+- [Dribbble OAuth](https://developer.dribbble.com/v2/oauth/)
+- [Dribbble Applications](https://dribbble.com/account/applications/new)
 
 ### Notes
 
@@ -72,4 +76,3 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 :::tip
 You can optionally set the scope to `public upload` for more advanced scenarios. If omitted, the default `public` scope will be used for authentication purposes.
 :::
-```

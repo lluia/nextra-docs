@@ -29,22 +29,23 @@ https://example.com/api/auth/callback/tiktok
 
 #### Configuration
 
-``js
-import Auth from "@auth/core"
-import Tiktok from "@auth/core/providers/tiktok"
+```js
+import Auth from "@auth/core";
+import Tiktok from "@auth/core/providers/tiktok";
 
-const request = new Request(origin)
+const request = new Request(origin);
 const response = await Auth(request, {
-providers: [Tiktok({ clientId: TIKTOK_CLIENT_KEY, clientSecret: TIKTOK_CLIENT_SECRET })],
-})
-
+  providers: [
+    Tiktok({ clientId: TIKTOK_CLIENT_KEY, clientSecret: TIKTOK_CLIENT_SECRET }),
+  ],
+});
 ```
 
 ### Resources
- - [Tiktok app console](https://developers.tiktok.com/)
- - [Tiktok login kit documentation](https://developers.tiktok.com/doc/login-kit-web/)
- - [Avaliable Scopes](https://developers.tiktok.com/doc/tiktok-api-scopes/)
 
+- [Tiktok app console](https://developers.tiktok.com/)
+- [Tiktok login kit documentation](https://developers.tiktok.com/doc/login-kit-web/)
+- [Avaliable Scopes](https://developers.tiktok.com/doc/tiktok-api-scopes/)
 
 ### Notes
 
@@ -85,4 +86,3 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
-```
