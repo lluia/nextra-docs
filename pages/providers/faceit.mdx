@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 <div
   style={{
     backgroundColor: "#000",
@@ -53,14 +55,12 @@ Scopes to have basic infos (email, nickname, guid and avatar) : openid, email, p
 By default, Auth.js assumes that the FACEIT provider is
 based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
 
-:::tip
+<Callout>
 
 The FACEIT provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/faceit.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
-:::
-
-:::info **Disclaimer**
+</Callout>
 
 If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
 

@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 <div
   style={{
     backgroundColor: "#000",
@@ -51,25 +53,18 @@ const response = await Auth(request, {
 
 ### Notes
 
-:::tip
-Production applications cannot use localhost URLs to sign in with Facebook. You need to use a dedicated development application in Facebook to use localhost callback URLs.
-:::
-
-:::tip
-Email address may not be returned for accounts created on mobile.
-:::
+- Production applications cannot use localhost URLs to sign in with Facebook. You need to use a dedicated development application in Facebook to use localhost callback URLs.
+- Email address may not be returned for accounts created on mobile.
 
 By default, Auth.js assumes that the Facebook provider is
 based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
 
-:::tip
+<Callout>
 
 The Facebook provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/facebook.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
-:::
-
-:::info **Disclaimer**
+</Callout>
 
 If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
 

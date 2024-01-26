@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 <div
   style={{
     backgroundColor: "#000",
@@ -61,13 +63,12 @@ The Redirect URIs used when creating the credentials must include your full doma
 
 Make sure to enable dev mode in ZITADEL console to allow redirects for local development.
 
-:::tip
+<Callout>
 
 The ZITADEL provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/zitadel.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
-:::
-:::tip
+</Callout>
 
 ZITADEL also returns a email_verified boolean property in the profile. You can use this property to restrict access to people with verified accounts.
 
@@ -86,14 +87,8 @@ const options = {
 }
 ```
 
-:::
-
-:::info **Disclaimer**
-
 If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
 
 Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
 the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
-
-:::

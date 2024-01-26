@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 <div
   style={{
     backgroundColor: "#000",
@@ -52,13 +54,14 @@ const response = await Auth(request, {
 
 ## Configuration
 
-:::tip
-Bungie require all sites to run HTTPS (including local development instances).
-:::
+<Callout type="info">
+  Bungie require all sites to run HTTPS (including local development instances).
+</Callout>
 
-:::tip
-Bungie doesn't allow you to use localhost as the website URL, instead you need to use https://127.0.0.1:3000
-:::
+<Callout type="info">
+  Bungie doesn't allow you to use localhost as the website URL, instead you need
+  to use https://127.0.0.1:3000
+</Callout>
 
 Navigate to https://www.bungie.net/en/Application and fill in the required details:
 
@@ -102,7 +105,7 @@ openssl req -x509 -out localhost.crt -keyout localhost.key \
    printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
-:::tip
+<Callout type="info">
 **Windows**
 
 The OpenSSL executable is distributed with [Git](https://git-scm.com/download/win]9) for Windows.
@@ -116,7 +119,7 @@ Add environment variable `OPENSSL_CONF=C:/Program Files/Git/mingw64/ssl/openssl.
   -subj "/CN=localhost"
 ```
 
-:::
+</Callout>
 
 Create directory `certificates` and place `localhost.key` and `localhost.crt`
 
@@ -153,14 +156,12 @@ app.prepare().then(() => {
 By default, Auth.js assumes that the Bungie provider is
 based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
 
-:::tip
+<Callout type="info">
 
 The Bungie provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/bungie.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
-:::
-
-:::info **Disclaimer**
+</Callout>
 
 If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
 

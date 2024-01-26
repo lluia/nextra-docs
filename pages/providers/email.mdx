@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 ## Email Provider
 
 The Email Provider needs to be configured with an e-mail client.
@@ -27,9 +29,11 @@ On initial sign in, a **Verification Token** is sent to the email address provid
 
 If someone provides the email address of an _existing account_ when signing in, an email is sent and they are signed into the account associated with that email address when they follow the link in the email.
 
-:::tip
-The Email Provider can be used with both JSON Web Tokens and database sessions, but you **must** configure a database to use it. It is not possible to enable email sign in without using a database.
-:::
+<Callout type="info">
+  The Email Provider can be used with both JSON Web Tokens and database
+  sessions, but you **must** configure a database to use it. It is not possible
+  to enable email sign in without using a database.
+</Callout>
 
 ## Configuration
 
@@ -200,9 +204,10 @@ function text({ url, host }: { url: string, host: string }) {
 }
 ```
 
-:::tip
-If you want to generate great looking email client compatible HTML with React, check out https://mjml.io
-:::
+<Callout type="info">
+  If you want to generate great looking email client compatible HTML with React,
+  check out https://mjml.io
+</Callout>
 
 ## Customizing the Verification Token
 
@@ -243,6 +248,7 @@ EmailProvider({
 });
 ```
 
-:::warning
-Always make sure this returns a single e-mail address, even if multiple ones were passed in.
-:::
+<Callout type="warning">
+  Always make sure this returns a single e-mail address, even if multiple ones
+  were passed in.
+</Callout>

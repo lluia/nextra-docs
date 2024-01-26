@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 <div
   style={{
     backgroundColor: "#000",
@@ -51,21 +53,20 @@ const response = await Auth(request, {
 
 ### Notes
 
-:::tip
-This Provider template has a 2 hour access token to it. A refresh token is also returned.
-:::
+<Callout type="info">
+  This Provider template has a 2 hour access token to it. A refresh token is
+  also returned.
+</Callout>
 
 By default, Auth.js assumes that the Coinbase provider is
 based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
 
-:::tip
+<Callout type="info">
 
 The Coinbase provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/coinbase.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
-:::
-
-:::info **Disclaimer**
+</Callout>
 
 If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
 
