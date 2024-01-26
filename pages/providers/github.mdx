@@ -1,38 +1,20 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#24292f",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>GitHub</b> integration.
-  </span>
-  <a href="https://github.com">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/github.svg"
-      height="48"
-      width="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/github.svg" height="64" width="64" />
+
+# GitHub Provider
 
 Add GitHub login to your page and make requests to [GitHub APIs](https://docs.github.com/en/rest).
 
-### Setup
+## Setup
 
-#### Callback URL
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/github
 ```
 
-#### Configuration
+### Configuration
 
 ```ts
 import { Auth } from "@auth/core";

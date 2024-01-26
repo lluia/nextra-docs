@@ -1,40 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  }}
->
-  <span style={{ fontSize: "1.35rem" }}>
-    Built-in sign in with <b>Descope</b> integration.
-  </span>
-  <a
-    href="https://descope.com"
-    style={{
-      backgroundColor: "#000000",
-      padding: "12px",
-      borderRadius: "100%",
-    }}
-  >
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/descope.svg"
-      width="24"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/descope.svg" width="64" height="64" />
 
-### Setup
+# Descope Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/descope
 ```
 
-#### Configuration
+### Configuration
 
 Import the provider and configure it in your **Auth.js** initialization file:
 

@@ -1,36 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>Instagram</b> integration.
-  </span>
-  <a href="https://www.instagram.com/">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/instagram.svg"
-      height="48"
-      width="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/instagram.svg" height="64" width="64" />
 
-### Setup
+# Instagram Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/instagram
 ```
 
-#### Configuration
+### Configuration
 
 ```js
 import Auth from "@auth/core";

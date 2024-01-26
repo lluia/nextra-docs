@@ -1,36 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>Mailchimp</b> integration.
-  </span>
-  <a href="https://mailchimp.com">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/mailchimp.svg"
-      height="48"
-      width="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/mailchimp.svg" height="64" width="64" />
 
-### Setup
+# Mailchip Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/mailchimp
 ```
 
-#### Configuration
+### Configuration
 
 ```js
 import Auth from "@auth/core";

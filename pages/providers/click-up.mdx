@@ -1,35 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#24292f",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>ClickUp</b> integration.
-  </span>
-  <a href="https://clickup.com">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/click-up.svg"
-      height="48"
-      width="48"
-    />
-  </a>
-</div>
-### Setup
+<img align="right" src="/img/providers/clickup.svg" height="64" width="64" />
 
-#### Callback URL
+# Click-Up Provider
+
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/clickup
 ```
 
-#### Configuration
+### Configuration
 
 ```ts
 import { Auth } from "@auth/core";

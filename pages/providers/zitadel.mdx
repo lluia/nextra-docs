@@ -1,35 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>Zitadel</b> integration.
-  </span>
-  <a href="https://zitadel.com/">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/zitadel.svg"
-      height="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/zitadel.svg" height="64" width="64" />
 
-### Setup
+# Zitadel Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/zitadel
 ```
 
-#### Configuration
+### Configuration
 
 ```js
 import Auth from "@auth/core";

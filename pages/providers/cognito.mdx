@@ -1,36 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>Cognito</b> integration.
-  </span>
-  <a href="https://docs.aws.amazon.com/cognito">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/cognito.svg"
-      height="48"
-      width="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/cognito.svg" height="64" width="64" />
 
-### Setup
+# Cognito Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/cognito
 ```
 
-#### Configuration
+### Configuration
 
 ```js
 import Auth from "@auth/core";
@@ -57,11 +39,11 @@ const response = await Auth(request, {
 You need to select your AWS region to go the the Cognito dashboard.
 
 <Callout type="info">
-  The issuer is a URL, that looks like this: https://cognito-idp.{region}
-  .amazonaws.com/{PoolId}
-  `PoolId` is from General Settings in Cognito, not to be confused with the App Client
-  ID.
+  The issuer is a URL, that looks like this: `https://cognito-idp.{region}
+  .amazonaws.com/{PoolId}`, where `PoolId` is from General Settings in Cognito,
+  not to be confused with the App Client ID.
 </Callout>
+
 <Callout type="warning">
   Make sure you select all the appropriate client settings or the OAuth flow
   will not work.

@@ -1,35 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>Twitch</b> integration.
-  </span>
-  <a href="https://www.twitch.tv/">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/twitch.svg"
-      height="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/twitch.svg" height="64" width="64" />
 
-### Setup
+# Twitch Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/twitch
 ```
 
-#### Configuration
+### Configuration
 
 ```js
 import Auth from "@auth/core";

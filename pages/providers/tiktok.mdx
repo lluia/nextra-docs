@@ -1,35 +1,18 @@
 import { Callout } from "nextra/components";
 
-<div
-  style={{
-    backgroundColor: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    color: "#fff",
-    padding: 16,
-  }}
->
-  <span>
-    Built-in <b>Tiktok</b> integration.
-  </span>
-  <a href="https://www.tiktok.com/">
-    <img
-      style={{ display: "block" }}
-      src="/img/providers/tiktok.svg"
-      height="48"
-    />
-  </a>
-</div>
+<img align="right" src="/img/providers/tiktok.svg" height="64" width="64" />
 
-### Setup
+# TikTok Provider
 
-#### Callback URL
+## Setup
+
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/tiktok
 ```
 
-#### Configuration
+### Configuration
 
 ```js
 import Auth from "@auth/core";
