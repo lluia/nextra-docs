@@ -21,6 +21,16 @@ export default {
   },
   deployment: "Deployment",
   typescript: "TypeScript",
+  "--": {
+    type: "separator",
+    title: " ",
+  },
+  providers: {
+    title: "Providers",
+  },
+  adapters: {
+    title: "Adapters",
+  },
   "-- More": {
     type: "separator",
     title: "More",
