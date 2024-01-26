@@ -4,6 +4,7 @@ import {
   ShieldStar,
   Browser,
   GithubLogo,
+  ArrowRight,
 } from "@phosphor-icons/react";
 
 export function Guides() {
@@ -13,8 +14,12 @@ export function Guides() {
         <div className="flex flex-col flex-1 justify-start items-start">
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Popular Guides</h2>
-            <a href="/guides" className="text-[#289ef9]">
+            <a
+              href="/guides"
+              className="flex gap-2 items-center text-[#289ef9]"
+            >
               See all
+              <ArrowRight size={14} />
             </a>
           </div>
           <ul className="w-full list-none">
@@ -71,8 +76,9 @@ export function Guides() {
         <div className="flex flex-col flex-1 justify-start items-start">
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Example Apps</h2>
-            <a href="/example-apps" className="text-[#289ef9]">
+            <a href="#TODO" className="flex gap-2 items-center text-[#289ef9]">
               See all
+              <ArrowRight size={14} />
             </a>
           </div>
           <ul className="w-full list-none">
