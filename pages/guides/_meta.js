@@ -1,4 +1,5 @@
 export default {
+  index: "Guides",
   "configuring-oauth": "Customising OAuth Providers",
   "custom-oauth": "Custom OAuth Provider",
   "custom-adapter": "Custom Database adapter",
