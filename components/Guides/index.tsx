@@ -11,7 +11,7 @@ export function Guides() {
   return (
     <section className="flex overflow-hidden justify-center items-center pt-24 pb-12 bg-neutral-100 dark:bg-neutral-950">
       <div className="flex flex-col gap-10 justify-between items-center w-full max-w-5xl lg:flex-row lg:items-start">
-        <div className="flex flex-col flex-1 justify-start items-start">
+        <div className="flex flex-col flex-1 justify-start items-start px-8 w-full max-w-2xl lg:px-0">
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Popular Guides</h2>
             <a
@@ -73,7 +73,7 @@ export function Guides() {
             </a>
           </ul>
         </div>
-        <div className="flex flex-col flex-1 justify-start items-start">
+        <div className="flex flex-col flex-1 justify-start items-start px-8 w-full max-w-2xl lg:mx-0">
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Example Apps</h2>
             <a href="#TODO" className="flex gap-2 items-center text-[#289ef9]">
