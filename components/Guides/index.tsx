@@ -10,7 +10,7 @@ import {
 export function Guides() {
   return (
     <section className="flex overflow-hidden justify-center items-center pt-24 pb-12 bg-neutral-100 dark:bg-neutral-950">
-      <div className="flex gap-10 justify-between items-start w-full max-w-5xl">
+      <div className="flex flex-col gap-10 justify-between items-center w-full max-w-5xl lg:flex-row lg:items-start">
         <div className="flex flex-col flex-1 justify-start items-start">
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Popular Guides</h2>
@@ -83,7 +83,16 @@ export function Guides() {
           </div>
           <ul className="w-full list-none">
             <li className="flex justify-between items-center mb-8 w-full">
-              <div className="">Next.js App Router</div>
+              <div className="flex gap-2 items-center">
+                <img
+                  src="/img/etc/nextjs.svg"
+                  className="grayscale"
+                  height="32"
+                  width="32"
+                  alt="Next.js Logo"
+                />
+                Next.js App Router
+              </div>
               <div className="flex gap-4">
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
@@ -106,7 +115,16 @@ export function Guides() {
               </div>
             </li>
             <li className="flex justify-between items-center mb-8 w-full">
-              <div className="">Next.js Pages</div>
+              <div className="flex gap-2 items-center">
+                <img
+                  src="/img/etc/nextjs.svg"
+                  className="grayscale"
+                  height="32"
+                  width="32"
+                  alt="Next.js Logo"
+                />
+                Next.js Pages
+              </div>
               <div className="flex gap-4">
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
@@ -129,7 +147,16 @@ export function Guides() {
               </div>
             </li>
             <li className="flex justify-between items-center mb-8 w-full">
-              <div className="">SvelteKit</div>
+              <div className="flex gap-2 items-center">
+                <img
+                  src="/img/etc/sveltekit.svg"
+                  className="grayscale"
+                  height="32"
+                  width="32"
+                  alt="SvelteKit Logo"
+                />
+                SvelteKit
+              </div>
               <div className="flex gap-4">
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
@@ -152,7 +179,16 @@ export function Guides() {
               </div>
             </li>
             <li className="flex justify-between items-center mb-8 w-full">
-              <div className="">Express</div>
+              <div className="flex gap-2 items-center">
+                <img
+                  src="/img/etc/express.svg"
+                  className="grayscale"
+                  height="32"
+                  width="32"
+                  alt="Express Logo"
+                />
+                Express
+              </div>
               <div className="flex gap-4">
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
