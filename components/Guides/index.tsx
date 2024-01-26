@@ -8,7 +8,7 @@ import {
 
 export function Guides() {
   return (
-    <section className="flex overflow-hidden justify-center items-center pt-24 pb-12 bg-neutral-950">
+    <section className="flex overflow-hidden justify-center items-center pt-24 pb-12 bg-neutral-100 dark:bg-neutral-950">
       <div className="flex gap-10 justify-between items-start w-full max-w-5xl">
         <div className="flex flex-col flex-1 justify-start items-start">
           <div className="flex justify-between items-center mb-10 w-full">
@@ -24,7 +24,7 @@ export function Guides() {
                   <ShieldStar size={32} />
                   <div className="flex flex-col items-start">
                     Customizing OAuth Providers
-                    <span className="text-neutral-300 dark:text-neutral-700">
+                    <span className="text-neutral-400 dark:text-neutral-700">
                       Little description of the guide
                     </span>
                   </div>
@@ -40,7 +40,7 @@ export function Guides() {
                   <GithubLogo size={32} />
                   <div className="flex flex-col items-start">
                     OAuth with Github
-                    <span className="text-neutral-300 dark:text-neutral-700">
+                    <span className="text-neutral-400 dark:text-neutral-700">
                       Little description of the guide
                     </span>
                   </div>
@@ -56,7 +56,7 @@ export function Guides() {
                   <Browser size={32} />
                   <div className="flex flex-col items-start">
                     Custom Signin Page
-                    <span className="text-neutral-300 dark:text-neutral-700">
+                    <span className="text-neutral-400 dark:text-neutral-700">
                       Little description of the guide
                     </span>
                   </div>
@@ -70,7 +70,7 @@ export function Guides() {
         </div>
         <div className="flex flex-col flex-1 justify-start items-start">
           <div className="flex justify-between items-center mb-10 w-full">
-            <h2 className="text-2xl lg:text-3xl">Sample Apps</h2>
+            <h2 className="text-2xl lg:text-3xl">Example Apps</h2>
             <a href="/example-apps" className="text-[#289ef9]">
               See all
             </a>
@@ -82,7 +82,8 @@ export function Guides() {
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
                   target="_blank"
-                  href="https://next-auth-example.vercel.app" rel="noreferrer"
+                  href="https://next-auth-example.vercel.app"
+                  rel="noreferrer"
                 >
                   <Link size={28} />
                   Visit
@@ -90,7 +91,8 @@ export function Guides() {
                 <a
                   target="_blank"
                   href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/nextjs"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300" rel="noreferrer"
+                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
+                  rel="noreferrer"
                 >
                   <GithubLogo size={28} />
                   Clone
@@ -103,7 +105,8 @@ export function Guides() {
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
                   target="_blank"
-                  href="https://next-auth-example.vercel.app" rel="noreferrer"
+                  href="https://next-auth-example.vercel.app"
+                  rel="noreferrer"
                 >
                   <Link size={28} />
                   Visit
@@ -111,7 +114,8 @@ export function Guides() {
                 <a
                   target="_blank"
                   href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/nextjs"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300" rel="noreferrer"
+                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
+                  rel="noreferrer"
                 >
                   <GithubLogo size={28} />
                   Clone
@@ -124,7 +128,8 @@ export function Guides() {
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
                   target="_blank"
-                  href="https://sveltekit-auth-example.vercel.app" rel="noreferrer"
+                  href="https://sveltekit-auth-example.vercel.app"
+                  rel="noreferrer"
                 >
                   <Link size={28} />
                   Visit
@@ -132,7 +137,8 @@ export function Guides() {
                 <a
                   target="_blank"
                   href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/sveltekit"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300" rel="noreferrer"
+                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
+                  rel="noreferrer"
                 >
                   <GithubLogo size={28} />
                   Clone
@@ -145,7 +151,8 @@ export function Guides() {
                 <a
                   className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
                   target="_blank"
-                  href="https://authjs-express-dev-app.onrender.com/" rel="noreferrer"
+                  href="https://authjs-express-dev-app.onrender.com/"
+                  rel="noreferrer"
                 >
                   <Link size={28} />
                   Visit
@@ -153,7 +160,8 @@ export function Guides() {
                 <a
                   target="_blank"
                   href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/express"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300" rel="noreferrer"
+                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
+                  rel="noreferrer"
                 >
                   <GithubLogo size={28} />
                   Clone
