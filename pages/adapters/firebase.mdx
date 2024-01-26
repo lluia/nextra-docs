@@ -1,8 +1,10 @@
 import { Callout } from "nextra/components";
 
-Official **Firebase** adapter for Auth.js / NextAuth.js, using the [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup)
-and [Firestore](https://firebase.google.com/docs/firestore).
-[![Firestore logo](https://authjs.dev/img/adapters/firebase.svg)](https://firebase.google.com)
+<img align="right" src="/img/adapters/firebase.svg" height="64" width="64" />
+
+# <a href="https://firebase.google.com/docs/firestore">Firebase</a>{" "} Adapter for Auth.js
+
+> Using the [Firebase Admin SDK](https://firebase.google.com/docs/admin/setup) and [Firestore](https://firebase.google.com/docs/firestore).
 
 ## Installation
 
@@ -28,7 +30,6 @@ import { FirestoreAdapter } from "@auth/firebase-adapter";
 
 export default NextAuth({
   adapter: FirestoreAdapter(),
-  // ...
 });
 ```
 
@@ -51,7 +52,6 @@ export default NextAuth({
       privateKey: process.env.FIREBASE_PRIVATE_KEY,
     }),
   }),
-  // ...
 });
 ```
 
@@ -65,7 +65,8 @@ If you already have a Firestore instance, you can pass that to the adapter direc
 </Callout>
 
 <Callout type="info">
-You can use the {@link initFirestore} utility to initialize the app and get an instance safely.
+  You can use the `initFirestore` utility to initialize the app and get an
+  instance safely.
 </Callout>
 
 ```ts filename="pages/api/auth/[...nextauth].ts"
