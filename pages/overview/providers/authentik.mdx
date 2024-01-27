@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/authentik.svg" height="64" width="64" />
 
@@ -12,23 +13,66 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/authentik
 ```
 
-#### Configuration
+### Environment Variables
 
-```js
-import Auth from "@auth/core";
-import Authentik from "@auth/core/providers/authentik";
+```
+AUTH_AUTHENTIK_ID
+AUTH_AUTHENTIK_SECRET
+AUTH_AUTHENTIK_ISSUER
+```
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Authentik({
-      clientId: AUTHENTIK_CLIENT_ID,
-      clientSecret: AUTHENTIK_CLIENT_SECRET,
-      issuer: AUTHENTIK_ISSUER,
-    }),
-  ],
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Authentik from "next-auth/providers/authentik";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Authentik({
+    clientId: AUTH_AUTHENTIK_CLIENT_ID
+    clientSecret: AUTH_AUTHENTIK_CLIENT_SECRET
+    issuer: AUTH_AUTHENTIK_ISSUER
+  })]
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Authentik from "@auth/sveltekit/providers/authentik";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Authentik({
+    clientId: AUTH_AUTHENTIK_CLIENT_ID
+    clientSecret: AUTH_AUTHENTIK_CLIENT_SECRET
+    issuer: AUTH_AUTHENTIK_ISSUER
+  })]
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Authentik from "@auth/express/providers/authentik";
+
+app.use("/auth/*", ExpressAuth({
+  providers: [Authentik({
+    clientId: AUTH_AUTHENTIK_CLIENT_ID
+    clientSecret: AUTH_AUTHENTIK_CLIENT_SECRET
+    issuer: AUTH_AUTHENTIK_ISSUER
+  })]
+}));
+```
+
+  </Code.Express>
+</Code>
 
 <Callout>
   issuer should include the slug without a trailing slash – e.g.,

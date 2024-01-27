@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/asgardeo.svg" width="64" height="64" />
 
@@ -6,30 +7,60 @@ import { Callout } from "nextra/components";
 
 ## Setup
 
-#### Callback URL
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/asgardeo
 ```
 
-#### Configuration
+### Environment Variables
 
-Import the provider and configure it in your **Auth.js** initialization file:
+```
+AUTH_ASGARDEO_ID
+AUTH_ASGARDEO_SECRET
+```
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
 import NextAuth from "next-auth";
-import AsgardeoProvider from "next-auth/providers/asgardeo";
+import Asgardeo from "next-auth/providers/asgardeo";
 
-export default NextAuth({
-  providers: [
-    AsgardeoProvider({
-      clientId: process.env.ASGARDEO_CLIENT_ID,
-      clientSecret: process.env.ASGARDEO_CLIENT_SECRET,
-      issuer: process.env.ASGARDEO_ISSUER,
-    }),
-  ],
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Asgardeo],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Asgardeo from "@auth/sveltekit/providers/asgardeo";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Asgardeo],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Asgardeo from "@auth/express/providers/asgardeo";
+
+app.use("/auth/*", ExpressAuth({ providers: [Asgardeo] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Configuring Asgardeo
 
@@ -47,9 +78,9 @@ Follow these steps:
 Then, create a `.env` file in the project root add the following entries:
 
 ```
-ASGARDEO_CLIENT_ID="Copy client ID from protocol tab here"
-ASGARDEO_CLIENT_SECRET="Copy client from protocol tab here"
-ASGARDEO_ISSUER="Copy the issuer url from the info tab here"
+AUTH_ASGARDEO_CLIENT_ID="Copy client ID from protocol tab here"
+AUTH_ASGARDEO_CLIENT_SECRET="Copy client from protocol tab here"
+AUTH_ASGARDEO_ISSUER="Copy the issuer url from the info tab here"
 ```
 
 ### Resources

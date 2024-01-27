@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/coinbase.svg" height="64" width="128" />
 
@@ -12,22 +13,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/coinbase
 ```
 
+### Environment Variables
+
+```
+AUTH_COINBASE_ID
+AUTH_COINBASE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Coinbase from "@auth/core/providers/coinbase";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Coinbase({
-      clientId: COINBASE_CLIENT_ID,
-      clientSecret: COINBASE_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Coinbase from "next-auth/providers/coinbase";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Coinbase],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Coinbase from "@auth/sveltekit/providers/coinbase";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Coinbase],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Coinbase from "@auth/express/providers/coinbase";
+
+app.use("/auth/*", ExpressAuth({ providers: [Coinbase] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

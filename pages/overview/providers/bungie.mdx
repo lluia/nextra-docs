@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/bungie.svg" height="64" width="64" />
 
@@ -12,23 +13,75 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/bungie
 ```
 
+### Environment Variables
+
+```
+AUTH_BUNGIE_ID
+AUTH_BUNGIE_SECRET
+AUTH_BUNGIE_API_KEY
+```
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Bungie from "@auth/core/providers/bungie";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Bungie from "next-auth/providers/boxyhq-saml";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     Bungie({
-      clientId: BUNGIE_CLIENT_ID,
-      clientSecret: BUNGIE_CLIENT_SECRET,
-      headers: { "X-API-Key": BUNGIE_API_KEY },
+      clientId: AUTH_BUNGIE_ID
+      clientSecret: AUTH_BUNGIE_SECRET
+      headers: { "X-API-Key": AUTH_BUNGIE_API_KEY }
     }),
   ],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Bungie from "@auth/sveltekit/providers/boxyhq-saml";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [
+    Bungie({
+      clientId: AUTH_BUNGIE_ID
+      clientSecret: AUTH_BUNGIE_SECRET
+      headers: { "X-API-Key": AUTH_BUNGIE_API_KEY }
+    }),
+  ],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Bungie from "@auth/express/providers/boxyhq-saml";
+
+app.use(
+  "/auth/*",
+  ExpressAuth({
+    providers: [
+      Bungie({
+        clientId: AUTH_BUNGIE_ID
+        clientSecret: AUTH_BUNGIE_SECRET
+        headers: { "X-API-Key": AUTH_BUNGIE_API_KEY }
+      }),
+    ],
+  })
+);
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

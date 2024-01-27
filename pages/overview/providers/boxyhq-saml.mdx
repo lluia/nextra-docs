@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img
   align="right"
@@ -17,46 +18,96 @@ BoxyHQ SAML is an open source service that handles the SAML SSO login flow as an
 
 You can deploy BoxyHQ SAML as a separate service or embed it into your app using our NPM library. [Check out the documentation for more details](https://boxyhq.com/docs/jackson/deploy)
 
-#### Callback URL
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/boxyhq-saml
 ```
 
-#### Configuration
+### Environment Variables
 
-```js
-import Auth from "@auth/core";
-import BoxyHQ from "@auth/core/providers/boxyhq-saml";
+```
+AUTH_BOXYHQ_SAML_ID
+AUTH_BOXYHQ_SAML_SECRET
+AUTH_BOXYHQ_SAML_ISSUER
+```
 
-const request = new Request(origin);
-const response = await Auth(request, {
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import BoxyHQ from "next-auth/providers/boxyhq-saml";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     BoxyHQ({
       authorization: { params: { scope: "" } }, // This is needed for OAuth 2.0 flow, otherwise default to openid
-      clientId: BOXYHQ_SAML_CLIENT_ID,
-      clientSecret: BOXYHQ_SAML_CLIENT_SECRET,
-      issuer: BOXYHQ_SAML_ISSUER,
+      clientId: AUTH_BOXYHQ_SAML_ID,
+      clientSecret: AUTH_BOXYHQ_SAML_SECRET,
+      issuer: AUTH_BOXYHQ_SAML_ISSUER,
     }),
   ],
 });
 ```
 
-For OIDC Flow:
+  </Code.Next>
+  <Code.Svelte>
 
-```js
-import Auth from "@auth/core";
-import BoxyHQ from "@auth/core/providers/boxyhq-saml";
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import BoxyHQ from "@auth/sveltekit/providers/boxyhq-saml";
 
-const request = new Request(origin);
-const response = await Auth(request, {
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
   providers: [
     BoxyHQ({
-      clientId: BOXYHQ_SAML_CLIENT_ID,
-      clientSecret: BOXYHQ_SAML_CLIENT_SECRET,
-      issuer: BOXYHQ_SAML_ISSUER,
+      authorization: { params: { scope: "" } }, // This is needed for OAuth 2.0 flow, otherwise default to openid
+      clientId: AUTH_BOXYHQ_SAML_ID,
+      clientSecret: AUTH_BOXYHQ_SAML_SECRET,
+      issuer: AUTH_BOXYHQ_SAML_ISSUER,
     }),
   ],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import BoxyHQ from "@auth/express/providers/boxyhq-saml";
+
+app.use(
+  "/auth/*",
+  ExpressAuth({
+    providers: [
+      BoxyHQ({
+        authorization: { params: { scope: "" } }, // This is needed for OAuth 2.0 flow, otherwise default to openid
+        clientId: AUTH_BOXYHQ_SAML_ID,
+        clientSecret: AUTH_BOXYHQ_SAML_SECRET,
+        issuer: AUTH_BOXYHQ_SAML_ISSUER,
+      }),
+    ],
+  })
+);
+```
+
+  </Code.Express>
+</Code>
+
+### OIDC Flow
+
+Auth.js will automatically pick up the environment variables for `clientId`, `clientSecret` and
+`issuer` for OIDC providers, so your setup can look like this:
+
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import BoxyHQ from "next-auth/providers/boxyhq-saml";
+
+export const { handlers, signIn, signOut, auth } = await NextAuth(request, {
+  providers: [BoxyHQ],
 });
 ```
 

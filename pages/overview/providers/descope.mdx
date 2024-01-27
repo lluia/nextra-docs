@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/descope.svg" width="64" height="64" />
 
@@ -12,23 +13,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/descope
 ```
 
+### Environment Variables
+
+```
+AUTH_DESCOPE_ID
+AUTH_DESCOPE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-Import the provider and configure it in your **Auth.js** initialization file:
+<Code>
+  <Code.Next>
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+```ts filename="/auth.ts"
 import NextAuth from "next-auth";
-import DescopeProvider from "next-auth/providers/descope";
+import Descope from "next-auth/providers/descope";
 
-export default NextAuth({
-  providers: [
-    DescopeProvider({
-      clientId: process.env.DESCOPE_ID,
-      clientSecret: process.env.DESCOPE_SECRET,
-    }),
-  ],
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Descope],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Descope from "@auth/sveltekit/providers/descope";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Descope],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Descope from "@auth/express/providers/descope";
+
+app.use("/auth/*", ExpressAuth({ providers: [Descope] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Configuring Descope
 

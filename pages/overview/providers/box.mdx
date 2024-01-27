@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/box.svg" height="64" width="64" />
 
@@ -12,19 +13,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/box
 ```
 
+### Environment Variables
+
+```
+AUTH_BOX_CLIENT_ID
+AUTH_BOX_CLIENT_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Box from "@auth/core/providers/box";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Box({ clientId: BOX_CLIENT_ID, clientSecret: BOX_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Box from "next-auth/providers/box";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Box],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Box from "@auth/sveltekit/providers/box";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Box],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Box from "@auth/express/providers/box";
+
+app.use("/auth/*", ExpressAuth({ providers: [Box] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

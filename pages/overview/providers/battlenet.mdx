@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/battlenet.svg" height="64" width="64" />
 
@@ -12,16 +13,12 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/battlenet
 ```
 
-### Configuration
+### Environment Variables
 
-```js
-import Auth from "@auth/core"
-import BattleNet from "@auth/core/providers/battlenet"
-
-const request = new Request(origin)
-const response = await Auth(request, {
-providers: [BattleNet({ clientId: BATTLENET_CLIENT_ID, clientSecret: BATTLENET_CLIENT_SECRET. issuer: BATTLENET_ISSUER })],
-})
+```
+AUTH_BATTLENET_ID
+AUTH_BATTLENET_SECRET
+AUTH_BATTLENET_ISSUER
 ```
 
 issuer must be one of these values, based on the available regions:
@@ -34,6 +31,59 @@ type BattleNetIssuer =
 | "https://kr.battle.net/oauth"
 | "https://tw.battle.net/oauth"
 ```
+
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import BattleNet from "next-auth/providers/battlenet";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [BattleNet({
+    clientId: AUTH_BATTLENET_CLIENT_ID
+    clientSecret: AUTH_BATTLENET_CLIENT_SECRET
+    issuer: AUTH_BATTLENET_ISSUER
+  })]
+});
+```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import BattleNet from "@auth/sveltekit/providers/battlenet";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [BattleNet({
+    clientId: AUTH_BATTLENET_CLIENT_ID
+    clientSecret: AUTH_BATTLENET_CLIENT_SECRET
+    issuer: AUTH_BATTLENET_ISSUER
+  })]
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import BattleNet from "@auth/express/providers/battlenet";
+
+app.use("/auth/*", ExpressAuth({
+  providers: [BattleNet({
+    clientId: AUTH_BATTLENET_CLIENT_ID
+    clientSecret: AUTH_BATTLENET_CLIENT_SECRET
+    issuer: AUTH_BATTLENET_ISSUER
+  })]
+}));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

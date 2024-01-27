@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/cognito.svg" height="64" width="64" />
 
@@ -12,23 +13,60 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/cognito
 ```
 
+### Environment Variables
+
+```
+AUTH_COGNITO_ID
+AUTH_COGNITO_SECRET
+AUTH_COGNITO_ISSUER
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Cognito from "@auth/core/providers/cognito";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Cognito({
-      clientId: COGNITO_CLIENT_ID,
-      clientSecret: COGNITO_CLIENT_SECRET,
-      issuer: COGNITO_ISSUER,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Cognito from "next-auth/providers/cognito";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Cognito],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Cognito from "@auth/sveltekit/providers/cognito";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Cognito],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Cognito from "@auth/express/providers/cognito";
+
+app.use(
+  "/auth/*",
+  ExpressAuth({
+    providers: [Cognito],
+  })
+);
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 
@@ -40,8 +78,8 @@ You need to select your AWS region to go the the Cognito dashboard.
 
 <Callout type="info">
   The issuer is a URL, that looks like this: `https://cognito-idp.{region}
-  .amazonaws.com/{PoolId}`, where `PoolId` is from General Settings in Cognito,
-  not to be confused with the App Client ID.
+  .amazonaws.com/{PoolId}`, where `PoolId` is from General Settings in Cognito, not
+  to be confused with the App Client ID.
 </Callout>
 
 <Callout type="warning">

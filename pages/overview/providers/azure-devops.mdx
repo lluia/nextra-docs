@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img
   align="right"
@@ -21,24 +22,22 @@ import { Callout } from "nextra/components";
 
 Provide the required details:
 
-- Company name
-- Application name
-- Application website
-- Authorization callback URL
-  - `https://example.com/api/auth/callback/azure-devops` for production
-  - `https://localhost/api/auth/callback/azure-devops` for development
-- Authorized scopes
-  - Required minimum is `User profile (read)`
+1. Company name
+2. Application name
+3. Application website
+4. Authorization callback URL
+   - `https://example.com/api/auth/callback/azure-devops` for production
+   - `https://localhost/api/auth/callback/azure-devops` for development
+5. Authorized scopes
+   - Required minimum is `User profile (read)`
 
 Click ‘Create Application’
 
 <Callout type="warning">
-  You are required to use HTTPS even for the localhost
-</Callout>
+- You are required to use HTTPS even for the localhost
 
-<Callout type="warning">
-  You will have to delete and create a new application to change the scopes
-  later
+- You will have to delete and create a new application to change the scopes later
+
 </Callout>
 
 The following data is relevant for the next step:
@@ -47,7 +46,7 @@ The following data is relevant for the next step:
 - Client Secret (after clicking the ‘Show’ button, ignore App Secret entry above it)
 - Authorized Scopes
 
-### Set up the environment variables
+### Environment variables
 
 In `.env.local` create the following entries:
 
@@ -59,27 +58,70 @@ AZURE_DEVOPS_SCOPE=<copy space separated Authorized Scopes list here>
 
 ## Example
 
-```js filename="pages/api/auth/[...nextauth].js"
-import AzureDevOpsProvider from "next-auth/providers/azure-devops";
+<Code>
+  <Code.Next>
 
-providers: [
-  AzureDevOpsProvider({
-    clientId: process.env.AZURE_DEVOPS_APP_ID,
-    clientSecret: process.env.AZURE_DEVOPS_CLIENT_SECRET,
-    scope: process.env.AZURE_DEVOPS_SCOPE,
-  }),
-];
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import AzureDevOps from "next-auth/providers/azure-devops";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [AzureDevOps({
+    clientId: AUTH_AZURE_DEVOPS_APP_ID
+    clientSecret: AUTH_AZURE_DEVOPS_CLIENT_SECRET
+    scope: AUTH_AZURE_DEVOPS_SCOPE
+  })]
+});
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import AzureDevOps from "@auth/sveltekit/providers/azure-devops";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [AzureDevOps({
+    clientId: AUTH_AZURE_DEVOPS_APP_ID
+    clientSecret: AUTH_AZURE_DEVOPS_CLIENT_SECRET
+    scope: AUTH_AZURE_DEVOPS_SCOPE
+  })]
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import AzureDevOps from "@auth/express/providers/azure-devops";
+
+app.use("/auth/*", ExpressAuth({
+  providers: [AzureDevOps({
+    clientId: AUTH_AZURE_DEVOPS_APP_ID
+    clientSecret: AUTH_AZURE_DEVOPS_CLIENT_SECRET
+    scope: AUTH_AZURE_DEVOPS_SCOPE
+  })]
+}));
+```
+
+  </Code.Express>
+</Code>
 
 ### Refresh token rotation
 
 Use the [main guide](/guides/basics/refresh-token-rotation) as your starting point with the following considerations:
 
-```js filename="pages/api/auth/[...nextauth].js"
-async jwt({ token, user, account }) {
-  // The token has an absolute expiration time
-  const accessTokenExpires = account.expires_at * 1000
-}
+```ts filename="./auth.ts"
+export const { signIn, signOut, auth } = NextAuth({
+  callbacks: {
+    async jwt({ token, user, account }) {
+      // The token has an absolute expiration time
+      const accessTokenExpires = account.expires_at * 1000;
+    },
+  },
+});
 
 async function refreshAccessToken(token) {
   const response = await fetch(
@@ -97,9 +139,9 @@ async function refreshAccessToken(token) {
           process.env.NEXTAUTH_URL + "/api/auth/callback/azure-devops",
       }),
     }
-  )
-  ...
+  );
+
   // The refreshed token comes with a relative expiration time
-  const accessTokenExpires = Date.now() + newToken.expires_in * 1000
+  const accessTokenExpires = Date.now() + newToken.expires_in * 1000;
 }
 ```

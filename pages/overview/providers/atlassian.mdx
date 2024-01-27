@@ -1,32 +1,65 @@
+import { Code } from "@/components/Code";
+
 <img align="right" src="/img/providers/atlassian.svg" width="64" height="64" />
 
 # Atlassian Provider
 
 ## Setup
 
-#### Callback URL
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/atlassian
 ```
 
-#### Configuration
+### Environment Variables
 
-Import the provider and configure it in your **Auth.js** initialization file:
+```
+AUTH_ATLASSIAN_ID
+AUTH_ATLASSIAN_SECRET
+```
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
 import NextAuth from "next-auth";
-import AtlassianProvider from "next-auth/providers/atlassian";
+import Atlassian from "next-auth/providers/atlassian";
 
-export default NextAuth({
-  providers: [
-    AtlassianProvider({
-      clientId: process.env.ATLASSIAN_ID,
-      clientSecret: process.env.ATLASSIAN_SECRET,
-    }),
-  ],
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Atlassian],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Atlassian from "@auth/sveltekit/providers/atlassian";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Atlassian],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Atlassian from "@auth/express/providers/atlassian";
+
+app.use("/auth/*", ExpressAuth({ providers: [Atlassian] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

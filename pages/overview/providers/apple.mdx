@@ -1,32 +1,65 @@
+import { Code } from "@/components/Code";
+
 <img align="right" src="/img/providers/apple.svg" width="64" height="64" />
 
 # Apple Provider
 
 ## Setup
 
-#### Callback URL
+### Callback URL
 
 ```
 https://example.com/api/auth/callback/apple
 ```
 
-#### Configuration
+### Environment Variables
 
-Import the provider and configure it in your **Auth.js** initialization file:
+```
+AUTH_APPLE_ID
+AUTH_APPLE_SECRET
+```
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
-import AppleProvider from "next-auth/providers/apple";
+import Apple from "next-auth/providers/apple";
 
-export default NextAuth({
-  providers: [
-    AppleProvider({
-      clientId: process.env.APPLE_ID,
-      clientSecret: process.env.APPLE_SECRET,
-    }),
-  ],
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Apple],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="./auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Apple from "@auth/sveltekit/providers/apple";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Apple],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Apple from "@auth/express/providers/apple";
+
+app.use("/auth/*", ExpressAuth({ providers: [Apple] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

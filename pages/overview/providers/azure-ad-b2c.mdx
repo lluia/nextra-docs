@@ -1,4 +1,5 @@
 import { Callout } from "nextra/components";
+import { Code } from "@/components/Code";
 
 <img align="right" src="/img/providers/azure.svg" height="64" width="64" />
 
@@ -30,18 +31,66 @@ For the step "User attributes and token claims" set the following:
   - Identity Provider Access Token
   - User's Object ID
 
-@example
+### Environment Variables
 
-```ts
-import { Auth } from "@auth/core";
-import AzureADB2C from "@auth/core/providers/azure-ad-b2c";
+```
+AUTH_AZURE_AD_ID
+AUTH_AZURE_AD_SECRET
+AUTH_AZURE_AD_ISSUER
+```
 
-const request = new Request("https://example.com");
-const response = await AuthHandler(request, {
-  // optionally, you can pass `tenantId` and `primaryUserFlow` instead of `issuer`
-  providers: [AzureADB2C({ clientId: "", clientSecret: "", issuer: "" })],
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import AzureADB2C from "next-auth/providers/azure-ad-b2c";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [AzureADB2C({
+    clientId: AUTH_AZURE_AD_CLIENT_ID
+    clientSecret: AUTH_AZURE_AD_CLIENT_SECRET
+    issuer: AUTH_AZURE_AD_ISSUER
+  })]
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import AzureADB2C from "@auth/sveltekit/providers/azure-ad-b2c";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [AzureADB2C({
+    clientId: AUTH_AZURE_AD_CLIENT_ID
+    clientSecret: AUTH_AZURE_AD_CLIENT_SECRET
+    issuer: AUTH_AZURE_AD_ISSUER
+  })]
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import AzureADB2C from "@auth/express/providers/azure-ad-b2c";
+
+app.use("/auth/*", ExpressAuth({
+  providers: [AzureADB2C({
+    clientId: AUTH_AZURE_AD_CLIENT_ID
+    clientSecret: AUTH_AZURE_AD_CLIENT_SECRET
+    issuer: AUTH_AZURE_AD_ISSUER
+  })]
+}));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 
