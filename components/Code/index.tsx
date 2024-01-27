@@ -115,9 +115,9 @@ function SvelteCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;
 }
 
-function SolidCode({ children }: ChildrenProps) {
-  return <Tabs.Tab>{children}</Tabs.Tab>;
-}
+// function SolidCode({ children }: ChildrenProps) {
+//   return <Tabs.Tab>{children}</Tabs.Tab>;
+// }
 
 function ExpressCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;
