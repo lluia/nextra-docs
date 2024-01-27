@@ -132,7 +132,7 @@ In this case, given we want to try our application locally, it would be the prov
 ```
 
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
 
 ```
 [origin]/api/auth/callback/[provider]
@@ -144,7 +144,7 @@ In this case, given we want to try our application locally, it would be the prov
 [origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
 ```
 
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
 
 ```
@@ -202,7 +202,7 @@ export const handle = SvelteKitAuth({
 ```
 
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
 import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start";
@@ -220,7 +220,7 @@ export const authOpts: SolidAuthConfig = {
 export const { GET, POST } = SolidAuth(authOpts);
 ```
 
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
 
 ```ts filename="./src/routes/auth.route.ts"
@@ -394,7 +394,7 @@ providers: [
 
 <Callout>
   Check our deep-dive tutorial on how to setup [Auth.js magic links with
-  Sentry](/tutorials/deep-dive/passwordless-sentry-setup) for a better
+  SendGrid](/tutorials/deep-dive/passwordless-sendgrid-setup) for a better
   understanding on how to setup magic links end-to-end (including database
   setup).
 </Callout>
@@ -497,10 +497,7 @@ Next, lets initialise the `CredentialsProvider` in the Auth.js configuration fil
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
   providers: [
     Credentials({
       // `credentials` will usually contain the collected user's credentials

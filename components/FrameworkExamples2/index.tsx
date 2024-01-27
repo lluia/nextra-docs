@@ -4,7 +4,7 @@ import { Framework, frameworkDetails } from "utils/frameworks";
 import { RichTabs } from "@/components/RichTabs";
 import Image from "next/image";
 import SvelteKit from "../../public/img/etc/sveltekit.svg";
-import SolidStart from "../../public/img/etc/solidstart.svg";
+import Express from "../../public/img/etc/express.svg";
 import NextJs from "../../public/img/etc/nextjs.svg";
 
 async function renderNextJs(framework: Framework) {
@@ -67,12 +67,12 @@ export function FrameworkExamples() {
             </div>
           </RichTabs.Trigger>
           <RichTabs.Trigger
-            value="solidstart"
+            value="express"
             orientation="vertical"
             className="!border-0 aria-selected:!bg-violet-600/40 !h-32 !w-32 flex-1 p-4 rounded-md focus:outline-none transition-all duration-300"
           >
             <div className="flex flex-col justify-center items-center h-full">
-              <Image width="64" src={SolidStart} alt="Next.js Logo" />
+              <Image width="64" src={Express} alt="Next.js Logo" />
             </div>
           </RichTabs.Trigger>
         </RichTabs.List>
@@ -100,7 +100,7 @@ export function FrameworkExamples() {
             />
           </RichTabs.Content>
           <RichTabs.Content
-            value="solidstart"
+            value="express"
             className="h-full"
             tabIndex={-1}
             orientation="vertical"

@@ -22,13 +22,13 @@ Start by installing the appropriate package for your framework of choice:
     npm install @auth/sveltekit
     ```
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
   
     ```bash
     npm install @auth/solid-start
     ```
   
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
   
     ```bash
@@ -101,7 +101,7 @@ export const handle = SvelteKitAuth({
 ```
 
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
 import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
@@ -113,7 +113,7 @@ export const authOpts: SolidAuthConfig = {
 export const { GET, POST } = SolidAuth(authOpts)
 ```
 
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
 
 ```ts filename="./src/routes/auth.route.ts"
