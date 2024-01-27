@@ -77,6 +77,8 @@ to work out what was needed in the core library to support other frameworks and 
 The new default documentation page became [authjs.dev](authjs.dev) (the one you are reading right now), and the old NextAuth.js documentation at [next-auth.js.org](https://next-auth.js.org) was kept around
 to document NextAuth.js v4 and is kept only as a back reference.
 
+Database Adapters were moved from the `@next-auth/*-adapter` namespace to `@auth/*-adapter`, indicating that they are not NextAuth.js specific anymore.
+
 Community integrations started showing up, making it clear that the initial vision of Auth.js was shared by many.
 
 ### 2024 – Growing the Auth.js ecosystem
@@ -84,5 +86,7 @@ Community integrations started showing up, making it clear that the initial visi
 With the release of [NextAuth.js v5](/getting-started/migrating-to-v5), now all Auth.js libraries are based on the same core library.
 The name "NextAuth.js" designates only the Next.js integration, while Auth.js refers to the core library and our ecosystem as a whole.
 Other integrations will generally be refered to with their framework name + Auth, e.g. "SvelteKit Auth" or "Express Auth".
+
+All official integrations are distributed under the `@auth` scope except for NextAuth.js, which is distributed under `next-auth` to reduce migration overhead.
 
 </Steps>
