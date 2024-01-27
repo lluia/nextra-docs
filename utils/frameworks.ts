@@ -9,7 +9,7 @@ type Details = {
 export enum Framework {
   NextJs = "nextjs",
   Svelte = "sveltekit",
-  SolidStart = "solidstart",
+  // SolidStart = "solidstart",
   Express = "express",
 }
 
