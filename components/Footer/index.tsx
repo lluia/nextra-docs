@@ -72,8 +72,8 @@ export function Footer({ className = "" }) {
         <div className="flex flex-col">
           <h3 className="mb-4 text-lg font-black">Acknowledgements</h3>
           <ul className="flex flex-col gap-2">
-            <a href="/getting-started/contributors">Contributors</a>
-            <a href="/getting-started/sponsors">Sponsors</a>
+            <a href="/contributors">Contributors</a>
+            <a href="/sponsors">Sponsors</a>
           </ul>
         </div>
       </div>
