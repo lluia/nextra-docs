@@ -98,13 +98,13 @@ export function Guides() {
                 id: "sveltekit",
                 name: "SvelteKit",
                 demo: "https://sveltekit-auth-example.vercel.app",
-                src: "sveltekit-auth-example",
+                repo: "sveltekit-auth-example",
               },
               {
                 id: "express",
                 name: "Express",
                 demo: "https://express-auth-example.vercel.app",
-                src: "express-auth-example",
+                repo: "express-auth-example",
               },
             ].map((f) => (
               <li
