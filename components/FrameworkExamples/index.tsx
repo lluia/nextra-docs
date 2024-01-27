@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { addClassToHast, codeToHtml } from "shikiji";
 import { Framework, frameworkDetails } from "utils/frameworks";
-import { FileCode } from "@phosphor-icons/react";
-import styles from "./styles.module.css";
+import { RichTabs } from "@/components/RichTabs";
+import Image from "next/image";
+import SvelteKit from "../../public/img/etc/sveltekit.svg";
+import Express from "../../public/img/etc/express.svg";
+import NextJs from "../../public/img/etc/nextjs.svg";
 
 async function renderNextJs(framework: Framework) {
   return codeToHtml(frameworkDetails[framework].code, {
-    lang: "typescript",
-    theme: "material-theme-darker",
+    lang: "ts",
+    theme: "rose-pine",
     transformers: [
       {
         pre(node) {
-          addClassToHast(node, `!p-4 rounded-lg ${styles["example-height"]}`);
+          addClassToHast(
+            node,
+            "w-full h-full !px-2 !py-4 rounded-md overflow-x-scroll"
+          );
         },
       },
     ],
@@ -23,48 +29,89 @@ export function FrameworkExamples() {
   const [example, setExample] = useState("");
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    renderNextJs(active).then((code) => setExample(code)).catch(err => console.error(err));
+    renderNextJs(active)
+      .then((code) => setExample(code))
+      // eslint-disable-next-line no-console
+      .catch((e) => console.error(e));
   }, [active]);
 
+  function handleTabChange(value: Framework) {
+    setActive(value);
+  }
+
   return (
-    <div className="flex flex-row flex-wrap justify-between items-start w-full max-w-5xl h-">
-      <div className="flex flex-row flex-wrap gap-4 justify-start items-center m-0 mx-auto w-1/3">
-        {Object.keys(frameworkDetails).map((f: Framework) => {
-          const desc = frameworkDetails[f];
-          return (
-            <button
-              key={f}
-              onClick={() => setActive(f)}
-              className="flex flex-col flex-wrap gap-2 justify-center items-center p-4 w-32 h-32 rounded-lg border-4 border-solid border-slate-200 aria-selected:border-indigo-400"
-              aria-selected={f === active}
-            >
-              <img src={desc.logo} width={desc.logoW} />
-              <div className="m-0 text-sm font-bold">{desc.title}</div>
-            </button>
-          );
-        })}
-      </div>
-      <aside className="!w-2/3">
-        <div
-          className="m-0 mb-2 rounded-lg"
-          dangerouslySetInnerHTML={{ __html: example }}
-        />
-        <a
-          className="flex flex-row gap-2 justify-end items-center w-full cursor-pointer"
-          target="_blank"
-          href={frameworkDetails[active].example}
-          rel="noreferrer"
-        >
-          <FileCode fontSize="2rem" className="inline" />
-          <span>
-            Check the{" "}
-            <span className="font-medium text-purple-700 no-underline">
-              {frameworkDetails[active].title} example app
-            </span>
-          </span>
-        </a>
-      </aside>
+    <div className="flex justify-center w-full">
+      <RichTabs
+        onTabChange={handleTabChange}
+        orientation="vertical"
+        defaultValue="nextjs"
+        className="flex flex-col justify-center !pb-4 md:flex-row md:max-w-full w-[75vw]"
+      >
+        <RichTabs.List className="flex flex-row gap-2 justify-start p-2 mb-4 bg-white rounded-xl shadow-md md:flex-col md:mr-4 md:mb-0 dark:bg-neutral-950">
+          <RichTabs.Trigger
+            value="nextjs"
+            orientation="vertical"
+            className="!border-0 aria-selected:!bg-violet-600/40 !h-32 !w-32 flex-1 p-4 rounded-md focus:outline-none transition-all duration-300"
+          >
+            <div className="flex flex-col justify-center items-center h-full">
+              <Image width="64" src={NextJs} alt="Next.js Logo" />
+            </div>
+          </RichTabs.Trigger>
+          <RichTabs.Trigger
+            value="sveltekit"
+            orientation="vertical"
+            className="!border-0 aria-selected:!bg-violet-600/40 !h-32 !w-32 flex-1 p-4 rounded-md focus:outline-none transition-all duration-300"
+          >
+            <div className="flex flex-col justify-center items-center h-full">
+              <Image width="64" src={SvelteKit} alt="Next.js Logo" />
+            </div>
+          </RichTabs.Trigger>
+          <RichTabs.Trigger
+            value="express"
+            orientation="vertical"
+            className="!border-0 aria-selected:!bg-violet-600/40 !h-32 !w-32 flex-1 p-4 rounded-md focus:outline-none transition-all duration-300"
+          >
+            <div className="flex flex-col justify-center items-center h-full">
+              <Image width="64" src={Express} alt="Next.js Logo" />
+            </div>
+          </RichTabs.Trigger>
+        </RichTabs.List>
+        <div className="md:w-[clamp(20rem,_50vw,_45rem)] w-full p-2 dark:bg-neutral-950 bg-white rounded-xl shadow-md">
+          <RichTabs.Content
+            orientation="vertical"
+            value="nextjs"
+            className="h-full"
+            tabIndex={-1}
+          >
+            <div
+              className="w-full h-full"
+              dangerouslySetInnerHTML={{ __html: example }}
+            />
+          </RichTabs.Content>
+          <RichTabs.Content
+            value="sveltekit"
+            className="h-full"
+            tabIndex={-1}
+            orientation="vertical"
+          >
+            <div
+              className="w-full h-full"
+              dangerouslySetInnerHTML={{ __html: example }}
+            />
+          </RichTabs.Content>
+          <RichTabs.Content
+            value="express"
+            className="h-full"
+            tabIndex={-1}
+            orientation="vertical"
+          >
+            <div
+              className="w-full h-full"
+              dangerouslySetInnerHTML={{ __html: example }}
+            />
+          </RichTabs.Content>
+        </div>
+      </RichTabs>
     </div>
   );
 }

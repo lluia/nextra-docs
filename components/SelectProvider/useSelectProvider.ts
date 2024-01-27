@@ -7,13 +7,15 @@ const providerList = Object.entries(manifest.providers).map(([id, name]) => {
 
 export function useSelectProvider() {
   const [term, setTerm] = useState("");
+  const [selected, setSelected] = useState("");
 
   function handleSearchItem(term: string) {
     setTerm(term);
   }
 
-  function handleSelectOption(option: string) {
-    setTerm(option);
+  function handleSelectOption(item: { id: string; name: string }) {
+    setTerm(item.name);
+    setSelected(item.id);
   }
 
   return {
@@ -21,6 +23,7 @@ export function useSelectProvider() {
       item.name.toLowerCase().includes(term.toLowerCase())
     ),
     term,
+    selected,
     handleSearchItem,
     handleSelectOption,
   };
