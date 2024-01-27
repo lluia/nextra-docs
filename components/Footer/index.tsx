@@ -28,7 +28,7 @@ export function Footer({ className = "" }) {
           <h3 className="mb-4 text-lg font-black">About Auth.js</h3>
           <ul className="flex flex-col gap-2">
             <li>
-              <a href="/overview">Introduction</a>
+              <a href="/getting-started">Introduction</a>
             </li>
             <li>
               <a
@@ -72,8 +72,8 @@ export function Footer({ className = "" }) {
         <div className="flex flex-col">
           <h3 className="mb-4 text-lg font-black">Acknowledgements</h3>
           <ul className="flex flex-col gap-2">
-            <a href="/overview/contributors">Contributors</a>
-            <a href="/overview/sponsors">Sponsors</a>
+            <a href="/getting-started/contributors">Contributors</a>
+            <a href="/getting-started/sponsors">Sponsors</a>
           </ul>
         </div>
       </div>
