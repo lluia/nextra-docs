@@ -5,10 +5,10 @@ import { Callout } from "nextra/components";
 <Callout>
   You might not need to create a custom database adapter. Make sure you check
   the [list of our official
-  adapters](/overview/database-setup#official-adapters) before you create one.
+  adapters](/getting-started/database-setup#official-adapters) before you create one.
 </Callout>
 
-Custom adapters allow you to integrate with any (even multiple) database/back-end service, even if we don't have an [official package](/overview/database-setup#official-adapters) available yet. The only requirement is that your database can support the [models](/overview/database-setup#database-models) that Auth.js expects.
+Custom adapters allow you to integrate with any (even multiple) database/back-end service, even if we don't have an [official package](/getting-started/database-setup#official-adapters) available yet. The only requirement is that your database can support the [models](/getting-started/database-setup#database-models) that Auth.js expects.
 
 ## Example code
 
@@ -85,7 +85,7 @@ These methods are required for all sign-in flows:
 - `updateUser`
 
 These methods are required to support [Passwordless
-authentication](/overview/authentication#setup-passwordless):
+authentication](/getting-started/authentication#setup-passwordless):
 
 - `createVerificationToken`
 - `useVerificationToken`
