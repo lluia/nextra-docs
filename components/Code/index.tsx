@@ -12,21 +12,21 @@ const AUTHJS_TAB_KEY = "authjs.codeTab.framework";
 Code.Next = NextCode;
 Code.NextPages = NextPagesCode;
 Code.Svelte = SvelteCode;
-Code.Solid = SolidCode;
+// Code.Solid = SolidCode;
 Code.Express = ExpressCode;
 
 const baseFrameworks = {
   [NextCode.name]: "Next.js",
   [SvelteCode.name]: "SvelteKit",
   [ExpressCode.name]: "Express",
-  [SolidCode.name]: "SolidStart",
+  // [SolidCode.name]: "SolidStart",
 };
 
 const allFrameworks = {
   [NextCode.name]: "Next.js",
   [NextPagesCode.name]: "Next.js (Pages)",
   [SvelteCode.name]: "SvelteKit",
-  [SolidCode.name]: "SolidStart",
+  // [SolidCode.name]: "SolidStart",
   [ExpressCode.name]: "Express",
 };
 
@@ -115,9 +115,9 @@ function SvelteCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;
 }
 
-function SolidCode({ children }: ChildrenProps) {
-  return <Tabs.Tab>{children}</Tabs.Tab>;
-}
+// function SolidCode({ children }: ChildrenProps) {
+//   return <Tabs.Tab>{children}</Tabs.Tab>;
+// }
 
 function ExpressCode({ children }: ChildrenProps) {
   return <Tabs.Tab>{children}</Tabs.Tab>;

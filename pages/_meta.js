@@ -10,7 +10,7 @@ export default {
       layout: "raw",
     },
   },
-  overview: {
+  "getting-started": {
     title: "Getting started",
     type: "page",
   },

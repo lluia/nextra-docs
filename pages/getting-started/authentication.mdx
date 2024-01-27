@@ -111,7 +111,7 @@ In this case, given we want to try our application locally, it would be the prov
 ```
 
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
 
 ```
 [origin]/api/auth/callback/[provider]
@@ -123,7 +123,7 @@ In this case, given we want to try our application locally, it would be the prov
 [origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
 ```
 
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
 
 ```
@@ -181,7 +181,7 @@ export const handle = SvelteKitAuth({
 ```
 
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
 import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start";
@@ -199,7 +199,7 @@ export const authOpts: SolidAuthConfig = {
 export const { GET, POST } = SolidAuth(authOpts);
 ```
 
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
 
 ```ts filename="./src/routes/auth.route.ts"
@@ -265,7 +265,7 @@ Click the "Sign in with GitHub" button and if all went well, you should be redir
 
 <Callout>
   You can build your own Signin, Signout, etc. pages to match the style of your
-  application, check out [session management](/overview/session-management) for
+  application, check out [session management](/getting-started/session-management) for
   more details.
 </Callout>
 
@@ -308,7 +308,7 @@ You will need access to an SMTP server, ideally from one of [the services known 
 
 ### Database Adapter
 
-Please make sure you've [setup a database adapter](/overview/database-setup), as mentioned earlier,
+Please make sure you've [setup a database adapter](/getting-started/database-setup), as mentioned earlier,
 a database is required for passwordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
@@ -373,7 +373,7 @@ providers: [
 
 <Callout>
   Check our deep-dive tutorial on how to setup [Auth.js magic links with
-  Sentry](/tutorials/deep-dive/passwordless-sentry-setup) for a better
+  SendGrid](/tutorials/deep-dive/passwordless-sendgrid-setup) for a better
   understanding on how to setup magic links end-to-end (including database
   setup).
 </Callout>
@@ -476,10 +476,7 @@ Next, lets initialise the `CredentialsProvider` in the Auth.js configuration fil
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
   providers: [
     Credentials({
       // `credentials` will usually contain the collected user's credentials
@@ -541,5 +538,5 @@ import SessionWorking from "../../public/img/getting-started/session-working.web
 <Screenshot className="mb-12" src={SessionWorking} alt="Auth.js Session" />
 
 If you've gotten this far, you can be confident that your user is authenticated and
-your setup is working. See the next section, [Session management](/overview/session-management),
+your setup is working. See the next section, [Session management](/getting-started/session-management),
 to learn how to manage and display the user's session in your application.

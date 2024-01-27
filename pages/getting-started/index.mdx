@@ -5,39 +5,35 @@ import { Screenshot } from "@/components/Screenshot";
 import { DemoCards } from "@/components/DemoCards";
 import manifest from "@/data/manifest.json";
 
-# About Auth.js
+# What is Auth.js?
 
-Auth.js is a complete open-source authentication solution for web applications.<br />Check out the live demos of Auth.js in action:
+Auth.js is a runtime agnostic library based on standard Web APIs that deeply integrates with modern JavaScript frameworks via additional libraries that wrap the core functionality
+and tailor it to the framework's best practices.
 
 <DemoCards />
 
-Support for more frameworks are on the way, check the [integrations page](/overview/integrations)
-for all supported packages!
+Check the [integrations page](/getting-started/integrations) for all supported packages. We are working on supporting more frameworks, but you can create your or 
+help us create one for your favorite framework.
 
-## What is Auth.js?
-
-<Callout type="info">
-  Note that because of preventing breaking changes on package imports,
-  `next-auth` is the only framework package that is not named following the
-  `@auth/*` convention. Auth.js was born out of `next-auth` but [over the years
-  has evolved](/overview/contributors#history) to be framework agnostic. That
-  means Next.js users will continue to install `next-auth` for now, while other
-  frameworks their are available at `@auth/[framework]`.
-</Callout>
-
-NextAuth.js has been re-architected and rebranded as **Auth.js**. NextAuth.js was initially born as
-an authentication library for [Next.js](https://nextjs.org/). With v5 we took a step back and
-refactored the whole library to be an authentication layer which is framework agnostic.A
-
-<img
+{/* REVIEW: do we need this? */}
+{/* Needs to be mermaid or something editable */}
+{/* <img
   src="/img/etc/authjs-architecture.webp"
   alt="Auth.js Architecture"
   width="500"
   className="mx-auto mt-4"
-/>
+/> */}
 
-Auth.js stays as a core JS authentication layer which can be used in any
-framework (using the specific package for the framework). [Have a look at our history](/overview/contributors#history) on why NextAuth.js was rebranded to Auth.js.
+
+<Callout type="info">
+  To reduce migration overhead, NextAuth.js will continue to be released under the `next-auth` package name, instead of the
+  `@auth/*` convention. Auth.js was born out of `next-auth` but [over
+  the years has evolved](/getting-started/contributors#history) to be framework
+  agnostic.
+</Callout>
+
+<Callout typpe="info">
+Confused about Auth.js and NextAuth.js? Have a look at [our history](/getting-started/contributors#history).
 
 ## Authentication methods
 
