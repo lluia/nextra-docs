@@ -3,7 +3,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 
 export default function App({ Component, pageProps }) {
-  if (process.env.VERCEL_ENV !== "production") {
+  if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
     return <Component {...pageProps} />;
   }
   return (
