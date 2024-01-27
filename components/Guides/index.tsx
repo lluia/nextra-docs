@@ -1,11 +1,13 @@
 import {
   CaretRight,
-  Link,
+  Link as LinkIcon,
   ShieldStar,
   Browser,
   GithubLogo,
   ArrowRight,
 } from "@phosphor-icons/react";
+import Link from "next/link";
+import Image from "next/image";
 
 export function Guides() {
   return (
@@ -13,24 +15,24 @@ export function Guides() {
       <div className="flex flex-col gap-10 justify-between items-center w-full max-w-5xl lg:flex-row lg:items-start">
         <div className="flex flex-col flex-1 justify-start items-start px-8 w-full max-w-2xl lg:px-0">
           <div className="flex justify-between items-center mb-10 w-full">
-            <h2 className="text-2xl lg:text-3xl">Popular Guides</h2>
-            <a
+            <h2 className="text-2xl lg:text-3xl">Highlighted Guides</h2>
+            <Link
               href="/guides"
               className="flex gap-2 items-center text-[#289ef9]"
             >
               See all
               <ArrowRight size={14} />
-            </a>
+            </Link>
           </div>
           <ul className="w-full list-none">
-            <a href="/guides/configuring-oauth">
+            <Link href="/guides/configuring-oauth">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <ShieldStar size={32} />
                   <div className="flex flex-col items-start">
-                    Customizing OAuth Providers
+                    Configuring OAuth providers
                     <span className="text-neutral-400 dark:text-neutral-700">
-                      Little description of the guide
+                      Customize/contribute to a built-in one or set up your own.
                     </span>
                   </div>
                 </div>
@@ -38,15 +40,15 @@ export function Guides() {
                   <CaretRight size={32} className="" />
                 </div>
               </li>
-            </a>
-            <a href="/guides/deep-dive/oauth-github-setup">
+            </Link>
+            <Link href="/guides/deep-dive/oauth-github-setup">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <GithubLogo size={32} />
                   <div className="flex flex-col items-start">
                     OAuth with Github
                     <span className="text-neutral-400 dark:text-neutral-700">
-                      Little description of the guide
+                      Step-by-step guide to set up an OAuth provider.
                     </span>
                   </div>
                 </div>
@@ -54,15 +56,15 @@ export function Guides() {
                   <CaretRight size={32} className="" />
                 </div>
               </li>
-            </a>
-            <a href="/guides/custom-pages/custom-sign-in">
+            </Link>
+            <Link href="/guides/custom-pages/custom-sign-in">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <Browser size={32} />
                   <div className="flex flex-col items-start">
                     Custom Signin Page
                     <span className="text-neutral-400 dark:text-neutral-700">
-                      Little description of the guide
+                      Create a page that matches your app's design.
                     </span>
                   </div>
                 </div>
@@ -70,146 +72,76 @@ export function Guides() {
                   <CaretRight size={32} className="" />
                 </div>
               </li>
-            </a>
+            </Link>
           </ul>
         </div>
         <div className="flex flex-col flex-1 justify-start items-start px-8 w-full max-w-2xl lg:mx-0">
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Example Apps</h2>
-            <a href="#TODO" className="flex gap-2 items-center text-[#289ef9]">
+            {/* <Link
+              href="#TODO"
+              className="flex gap-2 items-center text-[#289ef9]"
+            >
               See all
               <ArrowRight size={14} />
-            </a>
+            </Link> */}
           </div>
           <ul className="w-full list-none">
-            <li className="flex justify-between items-center mb-8 w-full">
-              <div className="flex gap-2 items-center">
-                <img
-                  src="/img/etc/nextjs.svg"
-                  className="grayscale"
-                  height="32"
-                  width="32"
-                  alt="Next.js Logo"
-                />
-                Next.js App Router
-              </div>
-              <div className="flex gap-4">
-                <a
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  target="_blank"
-                  href="https://next-auth-example.vercel.app"
-                  rel="noreferrer"
-                >
-                  <Link size={28} />
-                  Visit
-                </a>
-                <a
-                  target="_blank"
-                  href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/nextjs"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  rel="noreferrer"
-                >
-                  <GithubLogo size={28} />
-                  Clone
-                </a>
-              </div>
-            </li>
-            <li className="flex justify-between items-center mb-8 w-full">
-              <div className="flex gap-2 items-center">
-                <img
-                  src="/img/etc/nextjs.svg"
-                  className="grayscale"
-                  height="32"
-                  width="32"
-                  alt="Next.js Logo"
-                />
-                Next.js Pages
-              </div>
-              <div className="flex gap-4">
-                <a
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  target="_blank"
-                  href="https://next-auth-example.vercel.app"
-                  rel="noreferrer"
-                >
-                  <Link size={28} />
-                  Visit
-                </a>
-                <a
-                  target="_blank"
-                  href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/nextjs"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  rel="noreferrer"
-                >
-                  <GithubLogo size={28} />
-                  Clone
-                </a>
-              </div>
-            </li>
-            <li className="flex justify-between items-center mb-8 w-full">
-              <div className="flex gap-2 items-center">
-                <img
-                  src="/img/etc/sveltekit.svg"
-                  className="grayscale"
-                  height="32"
-                  width="32"
-                  alt="SvelteKit Logo"
-                />
-                SvelteKit
-              </div>
-              <div className="flex gap-4">
-                <a
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  target="_blank"
-                  href="https://sveltekit-auth-example.vercel.app"
-                  rel="noreferrer"
-                >
-                  <Link size={28} />
-                  Visit
-                </a>
-                <a
-                  target="_blank"
-                  href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/sveltekit"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  rel="noreferrer"
-                >
-                  <GithubLogo size={28} />
-                  Clone
-                </a>
-              </div>
-            </li>
-            <li className="flex justify-between items-center mb-8 w-full">
-              <div className="flex gap-2 items-center">
-                <img
-                  src="/img/etc/express.svg"
-                  className="grayscale"
-                  height="32"
-                  width="32"
-                  alt="Express Logo"
-                />
-                Express
-              </div>
-              <div className="flex gap-4">
-                <a
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  target="_blank"
-                  href="https://authjs-express-dev-app.onrender.com/"
-                  rel="noreferrer"
-                >
-                  <Link size={28} />
-                  Visit
-                </a>
-                <a
-                  target="_blank"
-                  href="https://github.com/nextauthjs/next-auth/tree/main/apps/examples/express"
-                  className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
-                  rel="noreferrer"
-                >
-                  <GithubLogo size={28} />
-                  Clone
-                </a>
-              </div>
-            </li>
+            {[
+              {
+                id: "nextjs",
+                name: "Next.js",
+                demo: "https://next-auth-example.vercel.app",
+                repo: "next-auth-example",
+              },
+              {
+                id: "sveltekit",
+                name: "SvelteKit",
+                demo: "https://sveltekit-auth-example.vercel.app",
+                src: "sveltekit-auth-example",
+              },
+              {
+                id: "express",
+                name: "Express",
+                demo: "https://express-auth-example.vercel.app",
+                src: "express-auth-example",
+              },
+            ].map((f) => (
+              <li
+                key={f.id}
+                className="flex justify-between items-center mb-8 p-2 w-full grayscale hover:grayscale-0 transition duration-300"
+              >
+                <div className="flex gap-2 items-center">
+                  <Image
+                    src={`/img/etc/${f.id}.svg`}
+                    height="32"
+                    width="32"
+                    alt={`${f.name} Logo`}
+                  />
+                  {f.name}
+                </div>
+                <div className="flex gap-4">
+                  <Link
+                    className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
+                    target="_blank"
+                    href={f.demo}
+                    rel="noreferrer"
+                  >
+                    <LinkIcon size={28} />
+                    Visit
+                  </Link>
+                  <Link
+                    target="_blank"
+                    href={`https://github.com/nextauthjs/${f.repo}`}
+                    className="flex gap-2 items-center p-2 px-4 rounded-md transition duration-300 outline-none focus-visible:ring-2 bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700 hover:bg-neutral-300"
+                    rel="noreferrer"
+                  >
+                    <GithubLogo size={28} />
+                    Clone
+                  </Link>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
