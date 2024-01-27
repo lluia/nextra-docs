@@ -2,18 +2,13 @@ import Marquee from "react-fast-marquee";
 import Img from "next/image";
 import manifest from "../../pages/data/manifest.json";
 
-const logoSize = 72; // px
+const logoSize = 96; // px
 
-export function LogosMarquee({
-  direction = "right",
-}: {
-  direction?: "left" | "right";
-}) {
+export function LogosMarquee() {
   return (
     <div className="py-2 w-full">
       <Marquee
-        speed={Math.floor(Math.random() * (50 - 30 + 1)) + 30}
-        direction={direction}
+        direction="right"
         gradient={true}
         gradientWidth={300}
         gradientColor="#171717"
