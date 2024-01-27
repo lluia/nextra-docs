@@ -22,13 +22,13 @@ AUTH_SECRET="This is an example"
 
 </Code.Svelte>
 
-<Code.Solid>
+{/* <Code.Solid>
 
 ```bash filename=".env"
 AUTH_SECRET="This is an example"
 ```
 
-</Code.Solid>
+</Code.Solid> */}
 
 </Code>
 
@@ -82,10 +82,7 @@ import Google from "next-auth/providers/google";
 import Twitter from "next-auth/providers/twitter";
 import GitHub from "next-auth/providers/github";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
   providers: [Google, Twitter, GitHub],
 });
 ```
@@ -112,10 +109,7 @@ Then you will need to manually reference them in the config:
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,

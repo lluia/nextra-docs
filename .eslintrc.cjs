@@ -45,6 +45,7 @@ module.exports = {
         "prefer-arrow-callback": 2,
         // async things should be awaited 99.9% of the time
         "@typescript-eslint/no-floating-promises": "error",
+        "react/no-unescaped-entities": "off",
       },
     },
   ],
