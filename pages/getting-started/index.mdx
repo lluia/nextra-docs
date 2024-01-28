@@ -12,28 +12,30 @@ and tailor it to the framework's best practices.
 
 <DemoCards />
 
-Check the [integrations page](/getting-started/integrations) for all supported packages. We are working on supporting more frameworks, but you can create  own or 
+Check the [integrations page](/getting-started/integrations) for all supported packages. We are working on supporting more frameworks, but you can create own or
 help us create one for your favorite framework.
 
-{/* REVIEW: do we need this? */}
-{/* Needs to be mermaid or something editable */}
-{/* <img
-  src="/img/etc/authjs-architecture.webp"
-  alt="Auth.js Architecture"
-  width="500"
-  className="mx-auto mt-4"
-/> */}
-
+```mermaid
+mindmap
+  root((Auth.js))
+    SvelteKit
+      auth/sveltekit
+    Next.js
+      next-auth
+    Express
+      auth/express
+```
 
 <Callout type="info">
-  To reduce migration overhead, NextAuth.js will continue to be released under the `next-auth` package name, instead of the
-  `@auth/*` convention. Auth.js was born out of `next-auth` but [over
-  the years has evolved](/contributors#history) to be framework
-  agnostic.
+  To reduce migration overhead, NextAuth.js will continue to be released under
+  the `next-auth` package name, instead of the `@auth/*` convention. Auth.js was
+  born out of `next-auth` but [over the years has
+  evolved](/contributors#history) to be framework agnostic.
 </Callout>
 
 <Callout typpe="info">
-Confused about Auth.js and NextAuth.js? Have a look at [our history](/contributors#history).
+  Confused about Auth.js and NextAuth.js? Have a look at [our
+  history](/contributors#history).
 </Callout>
 
 ## Authentication methods
