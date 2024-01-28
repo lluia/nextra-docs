@@ -4,34 +4,32 @@ import { Code } from "@/components/Code";
 <Steps>
 ### Installing Auth.js
 
-Installing Auth.js is straightforward, you should only to need to run a single command and set one environment variable.
-
 Start by installing the appropriate package for your framework of choice:
 
 <Code>
   <Code.Next>
     
-    ```bash
+    ```bash npm2yarn
     npm install next-auth
     ```
 
   </Code.Next>
   <Code.Svelte>
   
-    ```bash
+    ```bash npm2yarn
     npm install @auth/sveltekit
     ```
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
   
-    ```bash
+    ```bash npm2yarn
     npm install @auth/solid-start
     ```
   
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
   
-    ```bash
+    ```bash npm2yarn
     npm install @auth/express
     ```
   
@@ -39,8 +37,7 @@ Start by installing the appropriate package for your framework of choice:
 </Code>
 
 <Callout type="info">
-  As a consumer of the library, you should never need to install the
-  `@auth/core` package
+  Installing `@auth/core` is not necessary.
 </Callout>
 
 ### Setup Environment
@@ -48,27 +45,24 @@ Start by installing the appropriate package for your framework of choice:
 <Code>
   <Code.Next>
 
-Create a `.env.local` file at the root of your application and add the `AUTH_SECRET` environment variable:
-
-```bash filename=".env.local"
-AUTH_SECRET="This is an example"
-```
-
-`AUTH_SECRET` is a random token used by the library to encrypt tokens and email verification hashes, and it's mandatory to keep things secure (See [Deployment](/overview/deployment) to learn more). On Unix based systems you can use this command:
+`AUTH_SECRET` is a mandatory, random value used by the library to encrypt tokens and email verification hashes. (See [Deployment](/getting-started/deployment) to learn more). You can generate one via running:
 
   </Code.Next>
 </Code>
 
 ```bash
-openssl rand -base64 32
+npx auth secret
 ```
 
-or you can visit https://generate-secret.vercel.app/32 to generate one.
+Then add it to your `.env.local` file:
 
-### Initialise Auth.js
+```bash filename=".env.local"
+AUTH_SECRET=secret
+```
 
-The most important part of your Auth.js project is the Auth.js config object. There you can control
-the behaviour of the library and specify custom authentication logic, adapters, etc.
+### Configure
+
+Next, create the Auth.js config object. This is where you can control the behaviour of the library and specify custom authentication logic, adapters, etc.
 
 <Code>
   <Code.Next>
@@ -77,7 +71,7 @@ Start by creating a new `auth.ts` file at the root of your app with the followin
 
 <Callout type="info">
   You can actually name the file however you want and place it wherever you
-  like. Make sure you place it's easy to reference via imports, as we'll be
+  like. Make sure you place so it's easy to reference via imports, as we'll be
   using its 3 main exports: `signIn`, `signOut` and `auth`.
 </Callout>
 
@@ -88,7 +82,6 @@ export const { signIn, signOut, auth } = NextAuth({
   providers: [],
 });
 ```
-
   </Code.Next>
   <Code.Svelte>
 
@@ -101,7 +94,7 @@ export const handle = SvelteKitAuth({
 ```
 
   </Code.Svelte>
-  <Code.Solid>
+  {/* <Code.Solid>
 
 ```ts filename="./routes/api/auth/[...solidauth].ts"
 import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start"
@@ -113,7 +106,7 @@ export const authOpts: SolidAuthConfig = {
 export const { GET, POST } = SolidAuth(authOpts)
 ```
 
-  </Code.Solid>
+  </Code.Solid> */}
   <Code.Express>
 
 ```ts filename="./src/routes/auth.route.ts"
@@ -122,19 +115,9 @@ import express from "express";
 
 const app = express();
 
-// Make sure to use these body parsers so Auth.js can receive data from the client
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 // If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
 app.use("trust proxy");
-
-app.use(
-  "/api/auth/*",
-  ExpressAuth({
-    providers: [],
-  })
-);
+app.use("/auth/*", ExpressAuth({ providers: [] }));
 ```
 
   </Code.Express>
@@ -142,7 +125,7 @@ app.use(
 
 ### Setup Authentication Methods
 
-With that the basic setup is complete! If you need a database go on to the next page, otherwise you
-can skip on to the next section, [Authentication](/overview/authentication), to setup your first authentication method.
+With that, the basic setup is complete! If you need a database, go on to the next page,
+otherwise you can skip on to the next section, [Authentication](/getting-started/authentication), to setup your first authentication method.
 
 </Steps>

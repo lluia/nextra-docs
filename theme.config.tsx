@@ -55,25 +55,24 @@ const config: DocsThemeConfig = {
       <meta property="og:description" content="Authentication for the Web" />
     </>
   ),
+  banner: {
+    content: (
+      <>
+        Migrating from NextAuth.js v4? Read{" "}
+        <a
+          style={{ textDecoration: "underline" }}
+          href="/getting-started/migrating-to-v5"
+        >
+          <b>our migration guide</b>
+        </a>
+        .
+      </>
+    ),
+    dismissible: true,
+  },
   toc: {
     extraContent: <span data-todo="potential spot for ad?"></span>,
     backToTop: true,
-  },
-  banner: {
-    key: "authjs-rename",
-    content: (
-      <>
-        <a
-          className="text-violet-400"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://next-auth.js.org"
-        >
-          NextAuth.js
-        </a>{" "}
-        is now Auth.js! 🎉 Authentication for the Web. Everyone included.
-      </>
-    ),
   },
   docsRepositoryBase: "https://github.com/nextauthjs/next-auth/docs",
   footer: {
