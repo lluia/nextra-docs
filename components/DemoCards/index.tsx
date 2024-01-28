@@ -66,7 +66,6 @@ export function DemoCards() {
         const content = (
           <div className="flex flex-col gap-2" key={name}>
             <Link
-              title={`Getting started with ${name}`}
               href={`/getting-started/installation?framework=${name.toLowerCase()}`}
               className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
             >
