@@ -70,7 +70,14 @@ export function DemoCards() {
               href={`/getting-started/installation?framework=${name.toLowerCase()}`}
               className="flex relative flex-col flex-wrap justify-between items-center p-4 w-28 bg-white rounded-lg border border-solid shadow-lg border-slate-200 dark:border-neutral-800 dark:bg-neutral-900"
             >
-              <img alt={name} src={img} width={logoWidth} />
+              <img
+                alt={name}
+                src={img}
+                width={logoWidth}
+                className={
+                  name === "Express" || name === "Next.js" ? "dark:invert" : ""
+                }
+              />
               <div className="mt-3 text-sm">{name}</div>
               {wip ? (
                 <div
