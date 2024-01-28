@@ -213,7 +213,7 @@ The CSRF protection performed on the callback endpoint.
 
 ##### Note
 
-When `redirectProxyUrl` or [AuthConfig.redirectProxyUrl](module.index.md#redirectproxyurl) is set,
+When `redirectProxyUrl` or [AuthConfig.redirectProxyUrl](@auth/core.md#redirectproxyurl) is set,
 `"state"` will be added to checks automatically.
 
 [RFC 7636 - Proof Key for Code Exchange by OAuth Public Clients (PKCE)](https://www.rfc-editor.org/rfc/rfc7636.html#section-4) |

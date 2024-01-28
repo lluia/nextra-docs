@@ -29,7 +29,7 @@ module.exports = {
   expandObjects: true,
   githubPages: false,
   gitRevision: "main",
-  entryFileName: "module.index.md",
+  entryFileName: "@auth/core.md",
   hidePageHeader: true,
   hideBreadcrumbs: true,
   hideGenerator: true,

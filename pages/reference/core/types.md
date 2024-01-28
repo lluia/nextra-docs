@@ -305,7 +305,7 @@ available when `trigger` is `"signIn"`.
 
 • **params\.session?**: `any`
 
-When using [AuthConfig.session](module.index.md#session) `strategy: "jwt"`, this is the data
+When using [AuthConfig.session](@auth/core.md#session) `strategy: "jwt"`, this is the data
 sent from the client via the [`useSession().update`](https://next-auth.js.org/getting-started/client#update-session) method.
 
 ⚠ Note, you should validate this data before using it.
@@ -314,7 +314,7 @@ sent from the client via the [`useSession().update`](https://next-auth.js.org/ge
 
 Check why was the jwt callback invoked. Possible reasons are:
 - user sign-in: First time the callback is invoked, `user`, `profile` and `account` will be present.
-- user sign-up: a user is created for the first time in the database (when [AuthConfig.session](module.index.md#session).strategy is set to `"database"`)
+- user sign-up: a user is created for the first time in the database (when [AuthConfig.session](@auth/core.md#session).strategy is set to `"database"`)
 - update event: Triggered by the [`useSession().update`](https://next-auth.js.org/getting-started/client#update-session) method.
 In case of the latter, `trigger` will be `undefined`.
 
