@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<ZoomProfile>
+function default(config): OAuthConfig<ZoomProfile>
 ```
 
 Add Zoom login to your page.

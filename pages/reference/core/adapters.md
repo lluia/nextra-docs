@@ -247,12 +247,7 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 #### deleteSession()?
 
 ```ts
-optional deleteSession(sessionToken): 
-  | undefined
-  | null
-  | AdapterSession
-  | Promise<void>
-| PromiseLike<undefined | null | AdapterSession>
+optional deleteSession(sessionToken): Promise<void> | Awaitable<undefined | null | AdapterSession>
 ```
 
 Deletes a session from the database. It is preferred that this method also
@@ -266,17 +261,12 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-   \| `undefined`   \| `null`   \| [`AdapterSession`](adapters.md#adaptersession)   \| `Promise`\<`void`\>   \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
 
 #### deleteUser()?
 
 ```ts
-optional deleteUser(userId): 
-  | undefined
-  | null
-  | AdapterUser
-  | Promise<void>
-| PromiseLike<undefined | null | AdapterUser>
+optional deleteUser(userId): Promise<void> | Awaitable<undefined | null | AdapterUser>
 ```
 
 ##### Parameters
@@ -285,7 +275,7 @@ optional deleteUser(userId):
 
 ##### Returns
 
-   \| `undefined`   \| `null`   \| [`AdapterUser`](adapters.md#adapteruser)   \| `Promise`\<`void`\>   \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
 
 ##### Todo
 
@@ -375,12 +365,7 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 #### linkAccount()?
 
 ```ts
-optional linkAccount(account): 
-  | undefined
-  | null
-  | AdapterAccount
-  | Promise<void>
-| PromiseLike<undefined | null | AdapterAccount>
+optional linkAccount(account): Promise<void> | Awaitable<undefined | null | AdapterAccount>
 ```
 
 This method is invoked internally (but optionally can be used for manual linking).
@@ -394,12 +379,12 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Returns
 
-   \| `undefined`   \| `null`   \| [`AdapterAccount`](adapters.md#adapteraccount)   \| `Promise`\<`void`\>   \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 #### unlinkAccount()?
 
 ```ts
-optional unlinkAccount(providerAccountId): undefined | AdapterAccount | Promise<void> | PromiseLike<undefined | AdapterAccount>
+optional unlinkAccount(providerAccountId): Promise<void> | Awaitable<undefined | AdapterAccount>
 ```
 
 ##### Parameters
@@ -408,7 +393,7 @@ optional unlinkAccount(providerAccountId): undefined | AdapterAccount | Promise<
 
 ##### Returns
 
-`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 ##### Todo
 
@@ -540,7 +525,7 @@ This value can be used for implementing token rotation together with [OAuth2Toke
 
 ##### Inherited from
 
-[`types.Account.expires_at`](types.md#expires-at)
+[`types.Account.expires_at`](types.md#expires_at)
 
 ***
 

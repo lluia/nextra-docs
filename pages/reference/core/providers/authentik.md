@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default<P>(options): OAuthConfig<P>
+function default<P>(options): OAuthConfig<P>
 ```
 
 Add Authentik login to your page.

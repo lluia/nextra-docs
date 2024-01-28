@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default<P>(config): OAuthConfig<P>
+function default<P>(config): OAuthConfig<P>
 ```
 
 Add Mattermost login to your page.

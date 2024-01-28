@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default<P>(options): OAuthConfig<P>
+function default<P>(options): OAuthConfig<P>
 ```
 
 Add Kakao login to your page.

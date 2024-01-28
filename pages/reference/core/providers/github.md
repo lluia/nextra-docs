@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<GitHubProfile>
+function default(config): OAuthConfig<GitHubProfile>
 ```
 
 Add GitHub login to your page and make requests to [GitHub APIs](https://docs.github.com/en/rest).

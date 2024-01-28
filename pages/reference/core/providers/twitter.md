@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<TwitterProfile>
+function default(config): OAuthConfig<TwitterProfile>
 ```
 
 Add Twitter login to your page.

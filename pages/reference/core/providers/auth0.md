@@ -12,7 +12,7 @@
 ## default()
 
 ```ts
-default(config): OIDCConfig<Auth0Profile>
+function default(config): OIDCConfig<Auth0Profile>
 ```
 
 ### Setup
@@ -62,7 +62,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`Auth0Profile`](auth0.md#auth0profile)\>
+[`OIDCConfig`](../providers.md#oidcconfig)\<[`Auth0Profile`](auth0.md#auth0profile)\>
 
 ***
 

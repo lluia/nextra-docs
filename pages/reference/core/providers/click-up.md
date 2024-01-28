@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<ClickUpProfile>
+function default(config): OAuthConfig<ClickUpProfile>
 ```
 
 Add ClickUp login to your page and make requests to [ClickUp APIs](https://clickup.com/api/).

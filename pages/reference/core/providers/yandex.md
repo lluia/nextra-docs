@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(options): OAuthConfig<YandexProfile>
+function default(options): OAuthConfig<YandexProfile>
 ```
 
 Add Yandex login to your page

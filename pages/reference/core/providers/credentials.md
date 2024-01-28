@@ -3,7 +3,7 @@
 ## default()
 
 ```ts
-default<CredentialsInputs>(config): CredentialsConfig
+function default<CredentialsInputs>(config): CredentialsConfig
 ```
 
 The Credentials provider allows you to handle signing in with arbitrary credentials,
@@ -48,11 +48,11 @@ callbacks: {
 
 ### Parameters
 
-• **config**: `Partial`\<[`CredentialsConfig`](credentials.md#credentialsconfigcredentialsinputs)\<`CredentialsInputs`\>\>
+• **config**: `Partial`\<[`CredentialsConfig`](credentials.md#credentialsconfig)\<`CredentialsInputs`\>\>
 
 ### Returns
 
-[`CredentialsConfig`](credentials.md#credentialsconfigcredentialsinputs)
+[`CredentialsConfig`](credentials.md#credentialsconfig)
 
 ### Example
 

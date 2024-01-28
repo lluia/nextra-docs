@@ -34,7 +34,7 @@ This module *will* be refactored/changed. We do not recommend relying on it righ
 ## decode()
 
 ```ts
-decode<Payload>(params): Promise<Payload | null>
+function decode<Payload>(params): Promise<Payload | null>
 ```
 
 Decodes a Auth.js issued JWT.
@@ -56,7 +56,7 @@ Decodes a Auth.js issued JWT.
 ## encode()
 
 ```ts
-encode<Payload>(params): Promise<string>
+function encode<Payload>(params): Promise<string>
 ```
 
 Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
@@ -78,7 +78,7 @@ Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 ## getToken()
 
 ```ts
-getToken<R>(params): Promise<R extends true ? string : JWT | null>
+function getToken<R>(params): Promise<R extends true ? string : JWT | null>
 ```
 
 Takes an Auth.js request (`req`) and returns either the Auth.js issued JWT's payload,

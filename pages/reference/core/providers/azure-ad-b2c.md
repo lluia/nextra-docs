@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(options): OIDCConfig<AzureADB2CProfile>
+function default(options): OIDCConfig<AzureADB2CProfile>
 ```
 
 Add Azure AD B2C login to your page.
@@ -50,7 +50,7 @@ For the step "User attributes and token claims" set the following:
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfig)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
 
 ### Example
 

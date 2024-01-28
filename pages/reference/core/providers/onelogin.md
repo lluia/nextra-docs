@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<Record<string, any>>
+function default(config): OAuthConfig<Record<string, any>>
 ```
 
 Add OneLogin login to your page.

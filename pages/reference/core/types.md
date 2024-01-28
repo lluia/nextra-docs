@@ -612,6 +612,6 @@ The shape of the returned object in the OAuth providers' `profile` callback,
 available in the `jwt` and `session` callbacks,
 or the second parameter of the `session` callback, when using a database.
 
-### Extended By
+### Extended by
 
 - [`AdapterUser`](adapters.md#adapteruser)

@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OIDCConfig<BeyondIdentityProfile>
+function default(config): OIDCConfig<BeyondIdentityProfile>
 ```
 
 Add Beyond Identity login to your page.
@@ -21,7 +21,7 @@ Add Beyond Identity login to your page.
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfig)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
 
 ### Example
 

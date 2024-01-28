@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<Record<string, any>>
+function default(config): OAuthConfig<Record<string, any>>
 ```
 
 Add Mailru login to your page.

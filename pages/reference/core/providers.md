@@ -46,10 +46,10 @@ Providers passed to Auth.js must define one of these types.
 
 Shared across all [ProviderType](providers.md#providertype)
 
-### Extended By
+### Extended by
 
-- [`CredentialsConfig`](providers/credentials.md#credentialsconfigcredentialsinputs)
-- [`OAuth2Config`](providers.md#oauth2configprofile)
+- [`CredentialsConfig`](providers/credentials.md#credentialsconfig)
+- [`OAuth2Config`](providers.md#oauth2config)
 
 ### Properties
 
@@ -235,7 +235,7 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 profile?: ProfileCallback<Profile>;
 ```
 
-Receives the full [Profile](providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
+Receives the full [Profile](providers.md#oauth2config) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
 
 Defaults to: `id`, `email`, `name`, `image`
@@ -262,7 +262,7 @@ options for advanced control.
 
 ## OIDCConfig\<Profile\>
 
-Extension of the [OAuth2Config](providers.md#oauth2configprofile).
+Extension of the [OAuth2Config](providers.md#oauth2config).
 
 ### See
 
@@ -270,7 +270,7 @@ https://openid.net/specs/openid-connect-core-1_0.html
 
 ### Extends
 
-- `Omit`\<[`OAuth2Config`](providers.md#oauth2configprofile)\<`Profile`\>, `"type"` \| `"checks"`\>
+- `Omit`\<[`OAuth2Config`](providers.md#oauth2config)\<`Profile`\>, `"type"` \| `"checks"`\>
 
 ### Type parameters
 
@@ -410,7 +410,7 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 profile?: ProfileCallback<Profile>;
 ```
 
-Receives the full [Profile](providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
+Receives the full [Profile](providers.md#oauth2config) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
 
 Defaults to: `id`, `email`, `name`, `image`

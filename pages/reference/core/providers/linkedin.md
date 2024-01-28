@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default<P>(options): OIDCConfig<P>
+function default<P>(options): OIDCConfig<P>
 ```
 
 Add LinkedIn login to your page.
@@ -70,7 +70,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
+[`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
 
 ***
 

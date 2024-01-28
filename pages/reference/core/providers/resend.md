@@ -3,7 +3,7 @@
 ## default()
 
 ```ts
-default(config): EmailConfig
+function default(config): EmailConfig
 ```
 
 ### Parameters

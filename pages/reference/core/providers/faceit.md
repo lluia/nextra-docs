@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(options): OAuthConfig<Record<string, any>>
+function default(options): OAuthConfig<Record<string, any>>
 ```
 
 Add FACEIT login to your page.

@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OAuthConfig<PassageProfile>
+function default(config): OAuthConfig<PassageProfile>
 ```
 
 Add Passage login to your page.

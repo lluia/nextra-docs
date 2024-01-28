@@ -10,7 +10,7 @@
 ## default()
 
 ```ts
-default(config): OIDCConfig<TwitchProfile>
+function default(config): OIDCConfig<TwitchProfile>
 ```
 
 Add Twitch login to your page.
@@ -67,4 +67,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfigprofile)\<`TwitchProfile`\>
+[`OIDCConfig`](../providers.md#oidcconfig)\<`TwitchProfile`\>

@@ -38,7 +38,7 @@ console.log(response instanceof Response) // true
 ### Auth(request, config)
 
 ```ts
-Auth(request, config): Promise<ResponseInternal>
+function Auth(request, config): Promise<ResponseInternal>
 ```
 
 Core functionality provided by Auth.js.
@@ -75,7 +75,7 @@ const response = await AuthHandler(request, {
 ### Auth(request, config)
 
 ```ts
-Auth(request, config): Promise<Response>
+function Auth(request, config): Promise<Response>
 ```
 
 Core functionality provided by Auth.js.
@@ -114,7 +114,7 @@ const response = await AuthHandler(request, {
 ## setEnvDefaults()
 
 ```ts
-setEnvDefaults(envObject, config): void
+function setEnvDefaults(envObject, config): void
 ```
 
 Set default env variables on the config object

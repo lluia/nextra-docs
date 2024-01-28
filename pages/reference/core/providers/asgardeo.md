@@ -12,7 +12,7 @@
 ## default()
 
 ```ts
-default(config): OIDCConfig<AsgardeoProfile>
+function default(config): OIDCConfig<AsgardeoProfile>
 ```
 
 ### Setup
@@ -89,7 +89,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfig)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
 
 ***
 
