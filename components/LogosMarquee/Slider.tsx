@@ -3,7 +3,8 @@ import Img from "next/image";
 import Marquee, { Motion, randomIntFromInterval } from "react-marquee-slider";
 import manifest from "../../pages/data/manifest.json";
 
-const clamp = (min, num, max) => Math.min(Math.max(num, min), max);
+const clamp = (min: number, num: number, max: number) =>
+  Math.min(Math.max(num, min), max);
 const logoSize = 96; // px
 
 function changeScale() {
@@ -20,7 +21,7 @@ function changeLogoCount() {
   }
 }
 
-export default memo(() => {
+export const ProviderMarquee = memo(() => {
   const [scale, setScale] = useState(changeScale);
   const [logoCount, setLogoCount] = useState(changeLogoCount);
 
@@ -75,3 +76,5 @@ export default memo(() => {
     </div>
   );
 });
+
+ProviderMarquee.displayName = "ProviderMarquee";
