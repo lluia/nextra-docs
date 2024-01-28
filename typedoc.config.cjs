@@ -30,7 +30,6 @@ module.exports = {
   githubPages: false,
   gitRevision: "main",
   hidePageHeader: true,
-  hideInPageTOC: true,
   hideBreadcrumbs: true,
   hideGenerator: true,
   hideParameterTypesInTitle: false,
