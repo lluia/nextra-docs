@@ -5,7 +5,7 @@ export default {
     type: "separator",
     title: "Setup",
   },
-  installation: "Installation",
+  installation: "Getting Started",
   database: "Database",
   authentication: {
     title: "Authentication",
@@ -14,7 +14,7 @@ export default {
     },
   },
   "session-management": {
-    title: "Session management",
+    title: "Session Management",
     theme: {
       toc: false,
     },
