@@ -1,6 +1,6 @@
 import { Link } from "@/components/Link";
 import { Tooltip } from "@/components/Tooltip";
-import { ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
+import { ArrowSquareOut, GithubLogo, Flask } from "@phosphor-icons/react";
 
 export function DemoCards() {
   return (
@@ -83,7 +83,7 @@ export function DemoCards() {
                   className="absolute py-1 px-3 text-sm font-semibold text-black bg-amber-300 rounded-full shadow-sm"
                   style={{ right: "-30px", top: "-15px" }}
                 >
-                  Beta
+                  <Flask size={24} />
                 </div>
               ) : null}
             </Link>
