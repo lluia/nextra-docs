@@ -15,26 +15,6 @@ and tailor it to the framework's best practices.
 Check the [integrations page](/getting-started/integrations) for all supported packages. We are working on supporting more frameworks, but you can create own or
 help us create one for your favorite framework.
 
-```mermaid
----
-title: Auth.js Repository Organisation
----
-%%{ init: { "fontFamily": "Inter, ui-sans-serif, system-ui, apple-system, Verdana, Arial", "flowchart": {
-%"htmlLabels": false }  } }%%
-flowchart TD
-    B(("fa:fa-twitter Auth.js\n<code>#64;auth/core</code>"))
-    B-->C(fa:fa-ban Next.js\n<code>next-auth</code>)
-    B-->D("fa:fa-spinner SvelteKit\n<code>#64;auth/sveltekit</code>")
-    B-->E(fa:fa-camera-retro Express\n<code>#64;auth/express</code>)
-subgraph "coming-soon" [Coming Soon]
-    direction TB
-    F("Nuxt.js <code>#64;auth/nuxt</code>")
-    F~~~G("Astro <code>#64;auth/astro</code>")
-    G~~~H("Remix <code>#64;auth/remix</code>")
-end
-class coming-soon comingClass
-```
-
 <Callout type="info">
   To reduce migration overhead, NextAuth.js will continue to be released under
   the `next-auth` package name, instead of the `@auth/*` convention. Auth.js was
