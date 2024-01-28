@@ -16,14 +16,23 @@ Check the [integrations page](/getting-started/integrations) for all supported p
 help us create one for your favorite framework.
 
 ```mermaid
-mindmap
-  root((Auth.js))
-    SvelteKit
-      auth/sveltekit
-    Next.js
-      next-auth
-    Express
-      auth/express
+---
+title: Auth.js Organisation
+---
+%%{ init: { "fontFamily": "Inter, ui-sans-serif, system-ui, apple-system, Verdana, Arial", "flowchart": {
+%"htmlLabels": false }  } }%%
+flowchart TD
+    B(("fa:fa-twitter Auth.js\n<code>#64;auth/core</code>"))
+    B-->C(fa:fa-ban Next.js\n<code>next-auth</code>)
+    B-->D("fa:fa-spinner SvelteKit\n<code>#64;auth/sveltekit</code>")
+    B-->E(fa:fa-camera-retro Express\n<code>#64;auth/express</code>)
+subgraph "coming-soon" [Coming Soon]
+    direction TB
+    F("Nuxt.js <code>#64;auth/nuxt</code>")
+    F~~~G("Astro <code>#64;auth/astro</code>")
+    G~~~H("Remix <code>#64;auth/remix</code>")
+end
+class coming-soon comingClass
 ```
 
 <Callout type="info">
