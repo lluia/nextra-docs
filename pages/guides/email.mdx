@@ -1,7 +1,9 @@
 import { Callout, Steps, Tabs } from "nextra/components";
 import { Screenshot } from "@/components/Screenshot"
 
-# Magic links authentication
+{/* Needs to be moved to under /getting-started/authentication token auth -> nodemailer */}
+
+# Magic links authentication with Nodemailer
 
 Thanks to Auth.js, aside from authenticating users in your app via [OAuth](/setup/oauth-authentication), you can also allow users to authenticate via "magic links".
 
@@ -75,7 +77,7 @@ What also need a [SMTP service](https://sendgrid.com/blog/what-is-an-smtp-server
 
 First, create an account in Sendgrid. Then login to Sendgrid's dashboard and navigate to **Settings** → **API Keys**. Lets create a new API key. Once created, store it in a safe place.
 
-import DashboardSmtp from "../../../public/img/magic-links/dashboard-smtp.webp"
+import DashboardSmtp from "../../public/img/magic-links/dashboard-smtp.webp"
 
 <Screenshot src={DashboardSmtp} alt="SendGrid Dashboard" />
 
@@ -101,10 +103,7 @@ Finally, we need to expose this configuration values to Auth.js `EmailProvider`,
 import NextAuth from "next-auth";
 import Email from "next-auth/providers/email";
  
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
   providers: [
     Email({
       server: {
@@ -130,10 +129,7 @@ export const runtime = "edge"; // optional
 import NextAuth from "next-auth";
 import Email from "next-auth/providers/email";
  
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
   providers: [
     Email({
       server: {
@@ -213,10 +209,7 @@ import Email from "next-auth/providers/email"
 + import { MongoDBAdapter } from "@auth/mongodb-adapter"
 + import { clientPromise } from "./lib/mongodb/client"
 
-export const {
-  handlers: { GET, POST },
-  auth,
-} = NextAuth({
+export const { handlers, auth } = NextAuth({
 + adapter: MongoDBAdapter(clientPromise),
   providers: [
     Email({
@@ -246,7 +239,7 @@ npm run next dev
 
 And navigate to [`http://localhost:3000`](http://localhost:3000). Click on "Sign in" and you should see the sign in page:
 
-import MagicLinkStart from "../../../public/img/magic-links/start.webp"
+import MagicLinkStart from "../../public/img/magic-links/start.webp"
 
 <Screenshot src={MagicLinkStart} alt="Screenshot of sign in page" />
 
@@ -257,13 +250,13 @@ import MagicLinkStart from "../../../public/img/magic-links/start.webp"
 
 Then insert the email address we want to sign in with in the "Email" section and click on "Sign in with Email". Auth.js will then display another page hinting us to check our email:
 
-import MagicLinkCheck from "../../../public/img/magic-links/check.webp"
+import MagicLinkCheck from "../../public/img/magic-links/check.webp"
 
 <Screenshot src={MagicLinkCheck} alt="Screenshot of check email page" />
 
 Lets go to our mailbox, and look for an email sent from Auth.hjs (check your spam folder 📁 just in case):
 
-import Mailbox from "../../../public/img/magic-links/mailbox.webp"
+import Mailbox from "../../public/img/magic-links/mailbox.webp"
 
 <Screenshot src={Mailbox} alt="Screenshot of mailbox" />
 
@@ -271,7 +264,7 @@ We got one from the sender specified in the `EMAIL_FROM` environment variable we
 
 Click on "Sign in", a new browser tab should open, landing in our application already authenticated:
 
-import Logged from "../../../public/img/magic-links/logged.webp"
+import Logged from "../../public/img/magic-links/logged.webp"
 
 <Screenshot src={Logged} alt="Screenshot of logged in" />
 

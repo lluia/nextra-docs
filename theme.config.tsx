@@ -55,6 +55,21 @@ const config: DocsThemeConfig = {
       <meta property="og:description" content="Authentication for the Web" />
     </>
   ),
+  banner: {
+    content: (
+      <>
+        Migrating from NextAuth.js v4? Read{" "}
+        <a
+          style={{ textDecoration: "underline" }}
+          href="/getting-started/migrating-to-v5"
+        >
+          <b>our migration guide</b>
+        </a>
+        .
+      </>
+    ),
+    dismissible: true,
+  },
   toc: {
     extraContent: <span data-todo="potential spot for ad?"></span>,
     backToTop: true,

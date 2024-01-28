@@ -38,12 +38,4 @@ export default {
   integrations: {
     title: "Integrations",
   },
-  contributors: {
-    hidden: "true",
-    title: "Contributors",
-  },
-  sponsors: {
-    hidden: "true",
-    title: "Sponsors",
-  },
 };
