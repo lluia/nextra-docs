@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](linkedin.md#interfaces)
+    - [LinkedInProfile](linkedin.md#linkedinprofile)
+- [Functions](linkedin.md#functions)
+    - [default](linkedin.md#default)
+
 ## Interfaces
 
 ### LinkedInProfile
@@ -23,7 +30,7 @@ https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign
 
 ### default()
 
-> **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
+> **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
 
 Add LinkedIn login to your page.
 
@@ -82,4 +89,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>

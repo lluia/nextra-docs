@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](gitlab.md#functions)
+    - [default](gitlab.md#default)
+
 ## Functions
 
 ### default()

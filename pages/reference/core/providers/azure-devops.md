@@ -1,5 +1,12 @@
 # providers/azure-devops
 
+## Contents
+
+- [Interfaces](azure-devops.md#interfaces)
+    - [AzureDevOpsProfile](azure-devops.md#azuredevopsprofile)
+- [Functions](azure-devops.md#functions)
+    - [default](azure-devops.md#default)
+
 ## Interfaces
 
 ### AzureDevOpsProfile

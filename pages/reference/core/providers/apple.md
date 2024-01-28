@@ -9,6 +9,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](apple.md#interfaces)
+    - [AppleProfile](apple.md#appleprofile)
+- [Functions](apple.md#functions)
+    - [default](apple.md#default)
+
 ## Interfaces
 
 ### AppleProfile

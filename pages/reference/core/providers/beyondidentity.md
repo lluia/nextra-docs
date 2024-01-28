@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](beyondidentity.md#interfaces)
+    - [BeyondIdentityProfile](beyondidentity.md#beyondidentityprofile)
+- [Functions](beyondidentity.md#functions)
+    - [default](beyondidentity.md#default)
+
 ## Interfaces
 
 ### BeyondIdentityProfile
@@ -45,7 +52,7 @@ The user's unique identifier.
 
 ### default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfig)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
 
 Add Beyond Identity login to your page.
 
@@ -55,7 +62,7 @@ Add Beyond Identity login to your page.
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
 
 #### Example
 

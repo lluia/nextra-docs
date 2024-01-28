@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](netlify.md#functions)
+    - [default](netlify.md#default)
+
 ## Functions
 
 ### default()

@@ -4,8 +4,8 @@ This module contains functions and types
 to encode and decode [JWT](https://authjs.dev/concepts/session-strategies#jwt)s
 issued and used by Auth.js.
 
-The JWT issued by Auth.js is _encrypted by default_, using the _A256GCM_ algorithm ([JWE](https://www.rfc-editor.org/rfc/rfc7516)).
-It uses the `AUTH_SECRET` environment variable to derive a sufficient encryption key.
+The JWT issued by Auth.js is _encrypted by default_, using the _A256CBC-HS512_ algorithm ([JWE](https://www.rfc-editor.org/rfc/rfc7518.html#section-5.2.5)).
+It uses the `AUTH_SECRET` environment variable or the passed `secret` propery to derive a suitable encryption key.
 
 :::info Note
 Auth.js JWTs are meant to be used by the same app that issued them.
@@ -30,6 +30,15 @@ This module *will* be refactored/changed. We do not recommend relying on it righ
 
 - [What is a JWT session strategy](https://authjs.dev/concepts/session-strategies#jwt)
 - [RFC7519 - JSON Web Token (JWT)](https://www.rfc-editor.org/rfc/rfc7519)
+
+## Contents
+
+- [Interfaces](jwt.md#interfaces)
+    - [JWT](jwt.md#jwt)
+- [Functions](jwt.md#functions)
+    - [decode](jwt.md#decode)
+    - [encode](jwt.md#encode)
+    - [getToken](jwt.md#gettoken)
 
 ## Interfaces
 
@@ -69,7 +78,7 @@ Decodes a Auth.js issued JWT.
 
 > **encode**\<`Payload`\>(`params`): `Promise`\<`string`\>
 
-Issues a JWT. By default, the JWT is encrypted using "A256GCM".
+Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 
 #### Type parameters
 

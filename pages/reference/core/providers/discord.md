@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](discord.md#interfaces)
+    - [DiscordProfile](discord.md#discordprofile)
+- [Functions](discord.md#functions)
+    - [default](discord.md#default)
+
 ## Interfaces
 
 ### DiscordProfile
@@ -58,7 +65,7 @@ select a custom banner color
 
 > **discriminator**: `string`
 
-the user's 4-digit discord-tag
+the user's Discord-tag
 
 ##### display\_name
 
@@ -78,6 +85,12 @@ the user's email
 
 the flags on a user's account:
 https://discord.com/developers/docs/resources/user#user-object-user-flags
+
+##### global\_name
+
+> **global\_name**: `null` \| `string`
+
+the user's display name, if it is set
 
 ##### id
 

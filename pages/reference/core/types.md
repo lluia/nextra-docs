@@ -53,6 +53,25 @@ We are advocates of TypeScript, as it will help you catch errors at build-time, 
 - [TypeScript - The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 - [Extending built-in types](https://authjs.dev/getting-started/typescript#module-augmentation)
 
+## Contents
+
+- [Interfaces](types.md#interfaces)
+    - [Account](types.md#account)
+    - [CallbacksOptions](types.md#callbacksoptionsp-a)
+    - [CookieOption](types.md#cookieoption)
+    - [CookiesOptions](types.md#cookiesoptions)
+    - [EventCallbacks](types.md#eventcallbacks)
+    - [LoggerInstance](types.md#loggerinstance)
+    - [Profile](types.md#profile)
+    - [Session](types.md#session-2)
+    - [Theme](types.md#theme)
+    - [User](types.md#user)
+- [Type Aliases](types.md#type-aliases)
+    - [AuthAction](types.md#authaction)
+    - [ErrorPageParam](types.md#errorpageparam)
+    - [SignInPageErrorParam](types.md#signinpageerrorparam)
+    - [TokenSet](types.md#tokenset)
+
 ## Interfaces
 
 ### Account
@@ -244,19 +263,7 @@ you have to explicitly forward it here to make it available to the client.
 
 ###### Parameters
 
-• **params**: `Object`
-
-• **params\.newSession**: `any`
-
-Available when using [AuthConfig.session](module.index.md#session) `strategy: "database"` and an update is triggered for the session.
-
-:::note
-You should validate this data before using it.
-:::
-
-• **params\.session**: [`Session`](types.md#session-2) \| `Object` & [`AdapterSession`](adapters.md#adaptersession)
-
-• **params\.trigger?**: `"update"`
+• **params**: `Object` & `Object` & `Object`
 
 ###### Returns
 
@@ -433,13 +440,7 @@ https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
 
 ### Session
 
-Returned by `useSession`, `getSession`, returned by the `session` callback
-and also the shape received as a prop on the `SessionProvider` React Context
-
-[`useSession`](https://authjs.devreference/nextjs/react/#usesession) |
-[`getSession`](https://authjs.dev/reference/utilities#getsession) |
-[`SessionProvider`](https://authjs.devreference/nextjs/react#sessionprovider) |
-[`session` callback](https://authjs.dev/guides/basics/callbacks#jwt-callback)
+The active session of the logged in user.
 
 #### Extends
 
@@ -462,12 +463,7 @@ The shape of the returned object in the OAuth providers' `profile` callback,
 available in the `jwt` and `session` callbacks,
 or the second parameter of the `session` callback, when using a database.
 
-[`signIn` callback](https://authjs.dev/guides/basics/callbacks#sign-in-callback) |
-[`session` callback](https://authjs.dev/guides/basics/callbacks#jwt-callback) |
-[`jwt` callback](https://authjs.dev/guides/basics/callbacks#jwt-callback) |
-[`profile` OAuth provider callback](https://authjs.dev/guides/providers/custom-provider)
-
-#### Extended by
+#### Extended By
 
 - [`AdapterUser`](adapters.md#adapteruser)
 

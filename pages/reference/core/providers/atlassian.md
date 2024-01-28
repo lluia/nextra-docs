@@ -9,6 +9,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](atlassian.md#interfaces)
+    - [AtlassianProfile](atlassian.md#atlassianprofile)
+- [Functions](atlassian.md#functions)
+    - [default](atlassian.md#default)
+
 ## Interfaces
 
 ### AtlassianProfile

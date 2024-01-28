@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](42-school.md#functions)
+    - [default](42-school.md#default)
+
 ## Functions
 
 ### default()

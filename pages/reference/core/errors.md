@@ -1,5 +1,37 @@
 # errors
 
+## Contents
+
+- [Classes](errors.md#classes)
+    - [AdapterError](errors.md#adaptererror)
+    - [AuthError](errors.md#autherror)
+    - [AuthorizedCallbackError](errors.md#authorizedcallbackerror)
+    - [CallbackRouteError](errors.md#callbackrouteerror)
+    - [CredentialsSignin](errors.md#credentialssignin)
+    - [EmailSignInError](errors.md#emailsigninerror)
+    - [ErrorPageLoop](errors.md#errorpageloop)
+    - [EventError](errors.md#eventerror)
+    - [InvalidCallbackUrl](errors.md#invalidcallbackurl)
+    - [InvalidCheck](errors.md#invalidcheck)
+    - [InvalidEndpoints](errors.md#invalidendpoints)
+    - [InvalidProvider](errors.md#invalidprovider)
+    - [JWTSessionError](errors.md#jwtsessionerror)
+    - [MissingAdapter](errors.md#missingadapter)
+    - [MissingAdapterMethods](errors.md#missingadaptermethods)
+    - [MissingAuthorize](errors.md#missingauthorize)
+    - [MissingCSRF](errors.md#missingcsrf)
+    - [MissingSecret](errors.md#missingsecret)
+    - [OAuthAccountNotLinked](errors.md#oauthaccountnotlinked)
+    - [OAuthCallbackError](errors.md#oauthcallbackerror)
+    - [OAuthProfileParseError](errors.md#oauthprofileparseerror)
+    - [OAuthSignInError](errors.md#oauthsigninerror)
+    - [SessionTokenError](errors.md#sessiontokenerror)
+    - [SignOutError](errors.md#signouterror)
+    - [UnknownAction](errors.md#unknownaction)
+    - [UnsupportedStrategy](errors.md#unsupportedstrategy)
+    - [UntrustedHost](errors.md#untrustedhost)
+    - [Verification](errors.md#verification)
+
 ## Classes
 
 ### AdapterError
@@ -484,18 +516,15 @@ The error type. Used to identify the error in the logs.
 
 ### MissingSecret
 
-Auth.js requires a secret to be set, but none was not found. This is used to encrypt cookies, JWTs and other sensitive data.
+Auth.js requires a secret or multiple secrets to be set, but none was not found. This is used to encrypt cookies, JWTs and other sensitive data.
 
 :::note
-If you are using a framework like Next.js, we try to automatically infer the secret from the `AUTH_SECRET` environment variable.
-Alternatively, you can also explicitly set the [`AuthConfig.secret`](https://authjs.dev/reference/core#secret).
+If you are using a framework like Next.js, we try to automatically infer the secret from the `AUTH_SECRET`, `AUTH_SECRET_1`, etc. environment variables.
+Alternatively, you can also explicitly set the [`AuthConfig.secret`](https://authjs.dev/reference/core#secret) option.
 :::
 
 :::tip
-You can generate a good secret value:
- - On Unix systems: type `openssl rand -hex 32` in the terminal
- - Or generate one [online](https://generate-secret.vercel.app/32)
-
+To generate a random string, you can use the Auth.js CLI: `npx auth secret`
 :::
 
 #### Extends

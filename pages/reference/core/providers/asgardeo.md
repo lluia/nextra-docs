@@ -9,6 +9,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](asgardeo.md#interfaces)
+    - [AsgardeoProfile](asgardeo.md#asgardeoprofile)
+- [Functions](asgardeo.md#functions)
+    - [default](asgardeo.md#default)
+
 ## Interfaces
 
 ### AsgardeoProfile
@@ -49,7 +56,7 @@ The user Asgardeo account ID
 
 ### default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfig)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
 
 ### Setup
 
@@ -125,4 +132,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>

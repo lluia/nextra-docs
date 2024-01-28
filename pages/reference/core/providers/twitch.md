@@ -7,11 +7,16 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](twitch.md#functions)
+    - [default](twitch.md#default)
+
 ## Functions
 
 ### default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfig)\<`TwitchProfile`\>
+> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`TwitchProfile`\>
 
 Add Twitch login to your page.
 
@@ -67,4 +72,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<`TwitchProfile`\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<`TwitchProfile`\>

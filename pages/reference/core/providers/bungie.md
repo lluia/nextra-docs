@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](bungie.md#functions)
+    - [default](bungie.md#default)
+
 ## Functions
 
 ### default()

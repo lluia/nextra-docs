@@ -1,5 +1,13 @@
 # providers/credentials
 
+## Contents
+
+- [Interfaces](credentials.md#interfaces)
+    - [CredentialInput](credentials.md#credentialinput)
+    - [CredentialsConfig](credentials.md#credentialsconfigcredentialsinputs)
+- [Functions](credentials.md#functions)
+    - [default](credentials.md#default)
+
 ## Interfaces
 
 ### CredentialInput
@@ -100,7 +108,7 @@ For example if it's "Google", the corresponding button will say:
 
 ### default()
 
-> **default**\<`CredentialsInputs`\>(`config`): [`CredentialsConfig`](credentials.md#credentialsconfig)
+> **default**\<`CredentialsInputs`\>(`config`): [`CredentialsConfig`](credentials.md#credentialsconfigcredentialsinputs)
 
 The Credentials provider allows you to handle signing in with arbitrary credentials,
 such as a username and password, domain, or two factor authentication or hardware device (e.g. YubiKey U2F / FIDO).
@@ -144,11 +152,11 @@ callbacks: {
 
 #### Parameters
 
-• **config**: `Partial`\<[`CredentialsConfig`](credentials.md#credentialsconfig)\<`CredentialsInputs`\>\>
+• **config**: `Partial`\<[`CredentialsConfig`](credentials.md#credentialsconfigcredentialsinputs)\<`CredentialsInputs`\>\>
 
 #### Returns
 
-[`CredentialsConfig`](credentials.md#credentialsconfig)
+[`CredentialsConfig`](credentials.md#credentialsconfigcredentialsinputs)
 
 #### Example
 

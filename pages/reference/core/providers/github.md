@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](github.md#interfaces)
+    - [GitHubProfile](github.md#githubprofile)
+- [Functions](github.md#functions)
+    - [default](github.md#default)
+
 ## Interfaces
 
 ### GitHubProfile

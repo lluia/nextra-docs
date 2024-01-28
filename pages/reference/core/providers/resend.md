@@ -1,9 +1,9 @@
-# providers/sendgrid
+# providers/resend
 
 ## Contents
 
-- [Functions](sendgrid.md#functions)
-    - [default](sendgrid.md#default)
+- [Functions](resend.md#functions)
+    - [default](resend.md#default)
 
 ## Functions
 

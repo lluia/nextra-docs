@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](passage.md#interfaces)
+    - [PassageProfile](passage.md#passageprofile)
+- [Functions](passage.md#functions)
+    - [default](passage.md#default)
+
 ## Interfaces
 
 ### PassageProfile

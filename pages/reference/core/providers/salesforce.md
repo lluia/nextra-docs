@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](salesforce.md#functions)
+    - [default](salesforce.md#default)
+
 ## Functions
 
 ### default()

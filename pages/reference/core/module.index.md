@@ -33,6 +33,17 @@ console.log(response instanceof Response) // true
 - [Getting started](https://authjs.dev/getting-started/introduction)
 - [Most common use case guides](https://authjs.dev/guides)
 
+## Contents
+
+- [Interfaces](module.index.md#interfaces)
+    - [AuthConfig](module.index.md#authconfig)
+- [Variables](module.index.md#variables)
+    - [raw](module.index.md#raw)
+    - [skipCSRFCheck](module.index.md#skipcsrfcheck)
+- [Functions](module.index.md#functions)
+    - [Auth](module.index.md#auth)
+    - [setEnvDefaults](module.index.md#setenvdefaults)
+
 ## Interfaces
 
 ### AuthConfig
@@ -58,7 +69,7 @@ const response = await AuthHandler(request, authConfig)
 
 ##### providers
 
-> **providers**: [`Provider`](providers.md#provider)[]
+> **providers**: [`Provider`](providers.md#providerp)[]
 
 List of authentication providers for signing in
 (e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order.
@@ -90,7 +101,7 @@ The base path of the Auth.js API endpoints.
 
 ##### callbacks?
 
-> **callbacks**?: `Partial`\<[`CallbacksOptions`](types.md#callbacksoptions)\<[`Profile`](types.md#profile), [`Account`](types.md#account)\>\>
+> **callbacks**?: `Partial`\<[`CallbacksOptions`](types.md#callbacksoptionsp-a)\<[`Profile`](types.md#profile), [`Account`](types.md#account)\>\>
 
 Callbacks are asynchronous functions you can use to control what happens when an action is performed.
 Callbacks are *extremely powerful*, especially in scenarios involving JSON Web Tokens
@@ -274,13 +285,17 @@ See also: [Guide: Securing a Preview Deployment](https://authjs.dev/getting-star
 
 ##### secret?
 
-> **secret**?: `string`
+> **secret**?: `string` \| `string`[]
 
 A random string used to hash tokens, sign cookies and generate cryptographic keys.
-To generate a random string, you can use the following command:
 
-- On Unix systems, type `openssl rand -hex 32` in the terminal
-- Or generate one [online](https://generate-secret.vercel.app/32)
+To generate a random string, you can use the Auth.js CLI: `npx auth secret`
+
+###### Note
+
+You can also pass an array of secrets, in which case the first secret that successfully
+decrypts the JWT will be used. This is useful for rotating secrets without invalidating existing sessions.
+The newer secret should be added to the start of the array, which will be used for all new sessions.
 
 ##### session?
 
@@ -481,3 +496,21 @@ const response = await AuthHandler(request, {
 ##### See
 
 [Documentation](https://authjs.dev)
+
+***
+
+### setEnvDefaults()
+
+> **setEnvDefaults**(`envObject`, `config`): `void`
+
+Set default env variables on the config object
+
+#### Parameters
+
+• **envObject**: `any`
+
+• **config**: [`AuthConfig`](module.index.md#authconfig)
+
+#### Returns
+
+`void`

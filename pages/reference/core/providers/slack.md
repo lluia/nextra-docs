@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](slack.md#functions)
+    - [default](slack.md#default)
+
 ## Functions
 
 ### default()

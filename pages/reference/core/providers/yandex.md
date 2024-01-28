@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](yandex.md#interfaces)
+    - [YandexProfile](yandex.md#yandexprofile)
+- [Functions](yandex.md#functions)
+    - [default](yandex.md#default)
+
 ## Interfaces
 
 ### YandexProfile

@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](zoom.md#interfaces)
+    - [ZoomProfile](zoom.md#zoomprofile)
+- [Functions](zoom.md#functions)
+    - [default](zoom.md#default)
+
 ## Interfaces
 
 ### ZoomProfile

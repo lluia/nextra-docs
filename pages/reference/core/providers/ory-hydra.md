@@ -1,55 +1,57 @@
-# providers/okta
+# providers/ory-hydra
 
 <div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
-<span>Built-in <b>Okta</b> integration.</span>
-<a href="https://okta.com/">
-  <img style={{display: "block"}} src="https://authjs.dev/img/providers/okta.svg" height="48" />
+<span>Built-in <b>Ory Hydra</b> integration.</span>
+<a href="https://www.ory.sh/hydra/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/ory.svg" height="48" />
 </a>
 </div>
 
 ## Contents
 
-- [Functions](okta.md#functions)
-    - [default](okta.md#default)
+- [Functions](ory-hydra.md#functions)
+    - [default](ory-hydra.md#default)
 
 ## Functions
 
 ### default()
 
-> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+> **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
 
-Add Okta login to your page.
+Add Ory Hydra login to your page.
 
 ### Setup
 
 #### Callback URL
 ```
-https://example.com/api/auth/callback/okta
+https://example.com/api/auth/callback/hydra
 ```
 
 #### Configuration
 ```js
 import Auth from "@auth/core"
-import Okta from "@auth/core/providers/okta"
+import OryHydra from "@auth/core/providers/ory-hydra"
 
 const request = new Request(origin)
 const response = await Auth(request, {
-  providers: [Okta({ clientId: OKTA_CLIENT_ID, clientSecret: OKTA_CLIENT_SECRET, issuer: OKTA_ISSUER })],
+  providers: [OryHydra({ clientId: ORY_HYDRA_CLIENT_ID, clientSecret: ORY_HYDRA_CLIENT_SECRET, issuer: ORY_HYDRA_ISSUER })],
 })
 ```
 
 ### Resources
 
- - [Okta OAuth documentation](https://developer.okta.com/docs/reference/api/oidc)
+ - [Ory Hydra documentation](https://www.ory.sh/docs/hydra/5min-tutorial)
 
 ### Notes
 
-By default, Auth.js assumes that the Okta provider is
+Ory Hydra can be setup using the default Ory Network setup or self hosted on your own
+infrastructure.
+By default, Auth.js assumes that the Ory Hydra provider is
 based on the [Open ID Connect](https://openid.net/specs/openid-connect-core-1_0.html) specification.
 
 :::tip
 
-The Okta provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/okta.ts).
+The Ory Hydra provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/ory-hydra.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
 :::
@@ -66,12 +68,12 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Type parameters
 
-• **P** extends `OktaProfile`
+• **P** extends `OryHydraProfile`
 
 #### Parameters
 
-• **options**: `OAuthUserConfig`\<`P`\>
+• **options**: `OIDCUserConfig`\<`P`\>
 
 #### Returns
 
-`OAuthConfig`\<`P`\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>

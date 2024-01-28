@@ -9,6 +9,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](descope.md#interfaces)
+    - [DescopeProfile](descope.md#descopeprofile)
+- [Functions](descope.md#functions)
+    - [default](descope.md#default)
+
 ## Interfaces
 
 ### DescopeProfile
@@ -68,7 +75,7 @@ The user's unique Descope ID
 
 ### default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfig)\<[`DescopeProfile`](descope.md#descopeprofile)\>
+> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`DescopeProfile`](descope.md#descopeprofile)\>
 
 ### Setup
 
@@ -137,4 +144,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`DescopeProfile`](descope.md#descopeprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`DescopeProfile`](descope.md#descopeprofile)\>

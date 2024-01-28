@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](spotify.md#functions)
+    - [default](spotify.md#default)
+
 ## Functions
 
 ### default()

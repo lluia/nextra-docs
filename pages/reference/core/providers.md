@@ -1,15 +1,25 @@
 # providers
 
+## Contents
+
+- [Interfaces](providers.md#interfaces)
+    - [CommonProviderOptions](providers.md#commonprovideroptions)
+    - [OAuth2Config](providers.md#oauth2configprofile)
+    - [OIDCConfig](providers.md#oidcconfigprofile)
+- [Type Aliases](providers.md#type-aliases)
+    - [Provider](providers.md#providerp)
+    - [ProviderType](providers.md#providertype)
+
 ## Interfaces
 
 ### CommonProviderOptions
 
 Shared across all [ProviderType](providers.md#providertype)
 
-#### Extended by
+#### Extended By
 
-- [`CredentialsConfig`](providers/credentials.md#credentialsconfig)
-- [`OAuth2Config`](providers.md#oauth2config)
+- [`CredentialsConfig`](providers/credentials.md#credentialsconfigcredentialsinputs)
+- [`OAuth2Config`](providers.md#oauth2configprofile)
 
 #### Properties
 
@@ -173,7 +183,7 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 
 > **profile**?: `ProfileCallback`\<`Profile`\>
 
-Receives the full [Profile](providers.md#oauth2config) returned by the OAuth provider, and returns a subset.
+Receives the full [Profile](providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
 
 Defaults to: `id`, `email`, `name`, `image`
@@ -198,7 +208,7 @@ options for advanced control.
 
 ### OIDCConfig\<Profile\>
 
-Extension of the [OAuth2Config](providers.md#oauth2config).
+Extension of the [OAuth2Config](providers.md#oauth2configprofile).
 
 #### See
 
@@ -206,7 +216,7 @@ https://openid.net/specs/openid-connect-core-1_0.html
 
 #### Extends
 
-- `Omit`\<[`OAuth2Config`](providers.md#oauth2config)\<`Profile`\>, `"type"` \| `"checks"`\>
+- `Omit`\<[`OAuth2Config`](providers.md#oauth2configprofile)\<`Profile`\>, `"type"` \| `"checks"`\>
 
 #### Type parameters
 
@@ -332,7 +342,7 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 
 > **profile**?: `ProfileCallback`\<`Profile`\>
 
-Receives the full [Profile](providers.md#oauth2config) returned by the OAuth provider, and returns a subset.
+Receives the full [Profile](providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
 
 Defaults to: `id`, `email`, `name`, `image`
@@ -365,7 +375,7 @@ options for advanced control.
 
 ### Provider\<P\>
 
-> **Provider**\<`P`\>: [`OIDCConfig`](providers.md#oidcconfig)\<`P`\> \| [`OAuth2Config`](providers.md#oauth2config)\<`P`\> \| `EmailConfig` \| [`CredentialsConfig`](providers/credentials.md#credentialsconfig) & `InternalProviderOptions` \| (...`args`) => [`OAuth2Config`](providers.md#oauth2config)\<`P`\> \| [`OIDCConfig`](providers.md#oidcconfig)\<`P`\> \| `EmailConfig` \| [`CredentialsConfig`](providers/credentials.md#credentialsconfig) & `InternalProviderOptions` & `InternalProviderOptions`
+> **Provider**\<`P`\>: [`OIDCConfig`](providers.md#oidcconfigprofile)\<`P`\> \| [`OAuth2Config`](providers.md#oauth2configprofile)\<`P`\> \| `EmailConfig` \| [`CredentialsConfig`](providers/credentials.md#credentialsconfigcredentialsinputs) & `InternalProviderOptions` \| (...`args`) => [`OAuth2Config`](providers.md#oauth2configprofile)\<`P`\> \| [`OIDCConfig`](providers.md#oidcconfigprofile)\<`P`\> \| `EmailConfig` \| [`CredentialsConfig`](providers/credentials.md#credentialsconfigcredentialsinputs) & `InternalProviderOptions` & `InternalProviderOptions`
 
 Must be a supported authentication provider config:
 - [OAuthConfig]([object Object])

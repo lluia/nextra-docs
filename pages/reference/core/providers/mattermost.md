@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](mattermost.md#interfaces)
+    - [MattermostProfile](mattermost.md#mattermostprofile)
+- [Functions](mattermost.md#functions)
+    - [default](mattermost.md#default)
+
 ## Interfaces
 
 ### MattermostProfile

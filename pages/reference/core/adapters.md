@@ -160,6 +160,15 @@ the user will still be signed in to Google, but they will be signed out of your 
 If your users might be using the application from a publicly shared computer (eg: library), you might want to implement federated logout.
 [This guide](https://authjs.dev/guides/providers/federated-logout) should provide the necessary steps.
 
+## Contents
+
+- [Interfaces](adapters.md#interfaces)
+    - [Adapter](adapters.md#adapter)
+    - [AdapterAccount](adapters.md#adapteraccount)
+    - [AdapterSession](adapters.md#adaptersession)
+    - [AdapterUser](adapters.md#adapteruser)
+    - [VerificationToken](adapters.md#verificationtoken)
+
 ## Interfaces
 
 ### Adapter
@@ -238,7 +247,7 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 ##### deleteSession()?
 
-> **`optional`** **deleteSession**(`sessionToken`): `Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+> **`optional`** **deleteSession**(`sessionToken`): `undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
 
 Deletes a session from the database. It is preferred that this method also
 returns the session that is being deleted for logging purposes.
@@ -251,11 +260,11 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ###### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
 
 ##### deleteUser()?
 
-> **`optional`** **deleteUser**(`userId`): `Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+> **`optional`** **deleteUser**(`userId`): `undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
 
 ###### Parameters
 
@@ -263,7 +272,7 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ###### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
 
 ###### Todo
 
@@ -341,7 +350,7 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 ##### linkAccount()?
 
-> **`optional`** **linkAccount**(`account`): `Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+> **`optional`** **linkAccount**(`account`): `undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 This method is invoked internally (but optionally can be used for manual linking).
 It creates an [Account](https://authjs.dev/reference/core/adapters#models) in the database.
@@ -354,11 +363,11 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ###### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 ##### unlinkAccount()?
 
-> **`optional`** **unlinkAccount**(`providerAccountId`): `Promise`\<`void`\> \| `Awaitable`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+> **`optional`** **unlinkAccount**(`providerAccountId`): `undefined` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 ###### Parameters
 
@@ -366,7 +375,7 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ###### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 ###### Todo
 
@@ -483,7 +492,7 @@ This value can be used for implementing token rotation together with [OAuth2Toke
 
 ###### Inherited from
 
-[`types.Account.expires_at`](types.md#expires_at)
+[`types.Account.expires_at`](types.md#expires-at)
 
 ***
 

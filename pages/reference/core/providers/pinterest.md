@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](pinterest.md#functions)
+    - [default](pinterest.md#default)
+
 ## Functions
 
 ### default()

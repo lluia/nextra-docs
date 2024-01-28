@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](trakt.md#functions)
+    - [default](trakt.md#default)
+
 ## Functions
 
 ### default()

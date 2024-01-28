@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](mailchimp.md#functions)
+    - [default](mailchimp.md#default)
+
 ## Functions
 
 ### default()

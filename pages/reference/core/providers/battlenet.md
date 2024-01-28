@@ -7,11 +7,18 @@
 </a>
 </div>
 
+## Contents
+
+- [Type Aliases](battlenet.md#type-aliases)
+    - [BattleNetIssuer](battlenet.md#battlenetissuer)
+- [Functions](battlenet.md#functions)
+    - [default](battlenet.md#default)
+
 ## Type Aliases
 
 ### BattleNetIssuer
 
-> **BattleNetIssuer**: `"https://www.battlenet.com.cn/oauth"` \| \`https://${"us" | "eu" | "kr" | "tw"}.battle.net/oauth\`
+> **BattleNetIssuer**: `"https://oauth.battle.net"` \| `"https://oauth.battlenet.com.cn"` \| `"https://www.battlenet.com.cn/oauth"` \| \`https://${"us" | "eu" | "kr" | "tw"}.battle.net/oauth\`
 
 See the [available regions](https://develop.battle.net/documentation/guides/regionality-and-apis)
 
@@ -43,6 +50,8 @@ const response = await Auth(request, {
 issuer must be one of these values, based on the available regions:
 ```
 type BattleNetIssuer =
+  | "https://oauth.battle.net"
+  | "https://oauth.battlenet.com.cn"
   | "https://www.battlenet.com.cn/oauth"
   | "https://us.battle.net/oauth"
   | "https://eu.battle.net/oauth"

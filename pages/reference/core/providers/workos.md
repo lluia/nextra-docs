@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](workos.md#interfaces)
+    - [WorkOSProfile](workos.md#workosprofile)
+- [Functions](workos.md#functions)
+    - [default](workos.md#default)
+
 ## Interfaces
 
 ### WorkOSProfile

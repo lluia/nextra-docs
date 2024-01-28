@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](reddit.md#functions)
+    - [default](reddit.md#default)
+
 ## Functions
 
 ### default()

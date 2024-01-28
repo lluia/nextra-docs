@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](fusionauth.md#interfaces)
+    - [FusionAuthProfile](fusionauth.md#fusionauthprofile)
+- [Functions](fusionauth.md#functions)
+    - [default](fusionauth.md#default)
+
 ## Interfaces
 
 ### FusionAuthProfile

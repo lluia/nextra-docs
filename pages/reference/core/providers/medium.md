@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](medium.md#functions)
+    - [default](medium.md#default)
+
 ## Functions
 
 ### default()

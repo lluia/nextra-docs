@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](osu.md#functions)
+    - [default](osu.md#default)
+
 ## Functions
 
 ### default()

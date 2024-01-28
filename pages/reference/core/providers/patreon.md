@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](patreon.md#functions)
+    - [default](patreon.md#default)
+
 ## Functions
 
 ### default()

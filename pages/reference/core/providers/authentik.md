@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](authentik.md#functions)
+    - [default](authentik.md#default)
+
 ## Functions
 
 ### default()

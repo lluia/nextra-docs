@@ -9,6 +9,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](auth0.md#interfaces)
+    - [Auth0Profile](auth0.md#auth0profile)
+- [Functions](auth0.md#functions)
+    - [default](auth0.md#default)
+
 ## Interfaces
 
 ### Auth0Profile
@@ -163,7 +170,7 @@ Custom fields that store info about a user that does not impact what they can or
 
 ### default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfig)\<[`Auth0Profile`](auth0.md#auth0profile)\>
+> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`Auth0Profile`](auth0.md#auth0profile)\>
 
 ### Setup
 
@@ -212,4 +219,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`Auth0Profile`](auth0.md#auth0profile)\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`Auth0Profile`](auth0.md#auth0profile)\>

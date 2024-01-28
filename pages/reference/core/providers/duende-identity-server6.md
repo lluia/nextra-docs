@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](duende-identity-server6.md#functions)
+    - [default](duende-identity-server6.md#default)
+
 ## Functions
 
 ### default()

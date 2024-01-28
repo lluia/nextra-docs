@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](hubspot.md#functions)
+    - [default](hubspot.md#default)
+
 ## Functions
 
 ### default()

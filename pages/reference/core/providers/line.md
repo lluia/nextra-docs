@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](line.md#functions)
+    - [default](line.md#default)
+
 ## Functions
 
 ### default()

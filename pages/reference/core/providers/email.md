@@ -1,6 +1,33 @@
 # providers/email
 
+## Contents
+
+- [Functions](email.md#functions)
+    - [default](email.md#default)
+    - [html](email.md#html)
+    - [text](email.md#text)
+
 ## Functions
+
+### ~~default()~~
+
+> **default**(`config`): `NodemailerConfig`
+
+#### Parameters
+
+• **config**: `NodemailerUserConfig`
+
+#### Returns
+
+`NodemailerConfig`
+
+#### Deprecated
+
+Import this provider from the `providers/nodemailer` submodule instead of `providers/email`.
+
+To log in with nodemailer, change `signIn("email")` to `signIn("nodemailer")`
+
+***
 
 ### html()
 

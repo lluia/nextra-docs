@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](zitadel.md#interfaces)
+    - [ZitadelProfile](zitadel.md#zitadelprofile)
+- [Functions](zitadel.md#functions)
+    - [default](zitadel.md#default)
+
 ## Interfaces
 
 ### ZitadelProfile
@@ -22,7 +29,7 @@ If you need access to ZITADEL APIs or need additional information, make sure to 
 
 ### default()
 
-> **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
+> **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
 
 Add ZITADEL login to your page.
 
@@ -105,4 +112,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>

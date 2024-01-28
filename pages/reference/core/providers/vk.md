@@ -7,6 +7,19 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](vk.md#interfaces)
+    - [VkProfile](vk.md#vkprofile)
+- [Functions](vk.md#functions)
+    - [default](vk.md#default)
+
+## Interfaces
+
+### VkProfile
+
+https://dev.vk.com/reference/objects/user
+
 ## Functions
 
 ### default()
@@ -81,7 +94,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### Type parameters
 
-• **P** extends `Record`\<`string`, `any`\> = `VkProfile`
+• **P** extends `Record`\<`string`, `any`\> = [`VkProfile`](vk.md#vkprofile)
 
 #### Parameters
 

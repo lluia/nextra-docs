@@ -7,6 +7,11 @@
 </a>
 </div>
 
+## Contents
+
+- [Functions](mailru.md#functions)
+    - [default](mailru.md#default)
+
 ## Functions
 
 ### default()

@@ -7,6 +7,13 @@
 </a>
 </div>
 
+## Contents
+
+- [Interfaces](azure-ad-b2c.md#interfaces)
+    - [AzureADB2CProfile](azure-ad-b2c.md#azureadb2cprofile)
+- [Functions](azure-ad-b2c.md#functions)
+    - [default](azure-ad-b2c.md#default)
+
 ## Interfaces
 
 ### AzureADB2CProfile
@@ -19,7 +26,7 @@
 
 ### default()
 
-> **default**(`options`): [`OIDCConfig`](../providers.md#oidcconfig)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
+> **default**(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
 
 Add Azure AD B2C login to your page.
 
@@ -55,7 +62,7 @@ For the step "User attributes and token claims" set the following:
 
 #### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
+[`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
 
 #### Example
 
