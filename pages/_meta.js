@@ -11,11 +11,7 @@ export default {
     },
   },
   "getting-started": {
-    title: "Documentation",
-    type: "page",
-  },
-  guides: {
-    title: "Guides",
+    title: "Docs",
     type: "page",
   },
   reference: {

@@ -1,11 +1,11 @@
 export default {
   index: "Introduction",
   "migrating-to-v5": "Migrate to NextAuth.js v5",
-  "-- Setup": {
+  "-- getting-started": {
     type: "separator",
-    title: "Setup",
+    title: "Getting Started",
   },
-  installation: "Getting Started",
+  installation: "Installation",
   database: "Database",
   authentication: {
     title: "Authentication",
@@ -21,7 +21,20 @@ export default {
   },
   deployment: "Deployment",
   typescript: "TypeScript",
-  "-- More": {
+  "-- guides": {
+    type: "separator",
+    title: "Guides",
+  },
+  "configuring-oauth": "Configuring OAuth",
+  "creating-a-database-adapter": "Creating a Database Adapter",
+  "role-based-access-control": "Role-Based Access Control",
+  testing: "Testing",
+  debugging: "Debugging",
+  email: "Email",
+  callbacks: "Callbacks",
+  "custom-pages": "Custom Pages",
+  "deep-dive": "Deep Dive",
+  "-- more": {
     type: "separator",
     title: "More",
   },
