@@ -32,7 +32,7 @@ export function Guides() {
                   <div className="flex flex-col items-start">
                     Configuring OAuth providers
                     <span className="text-neutral-400 dark:text-neutral-700">
-                      Customize/contribute to a built-in one or set up your own.
+                      Customize to a built-in one or set up your own.
                     </span>
                   </div>
                 </div>
@@ -109,11 +109,16 @@ export function Guides() {
             ].map((f) => (
               <li
                 key={f.id}
-                className="flex justify-between items-center mb-8 p-2 w-full grayscale hover:grayscale-0 transition duration-300"
+                className="flex justify-between items-center p-2 mb-8 w-full transition duration-300 grayscale hover:grayscale-0"
               >
                 <div className="flex gap-2 items-center">
                   <Image
                     src={`/img/etc/${f.id}.svg`}
+                    className={
+                      f.id === "express" || f.id === "nextjs"
+                        ? "dark:invert"
+                        : ""
+                    }
                     height="32"
                     width="32"
                     alt={`${f.name} Logo`}
