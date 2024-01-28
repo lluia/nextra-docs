@@ -1,5 +1,5 @@
-import { FrameworkExamples } from "@/components/FrameworkExamples2";
-import { LogosMarquee } from "@/components/LogosMarquee";
+import { FrameworkExamples } from "@/components/FrameworkExamples";
+import LogosMarquee from "@/components/LogosMarquee/Slider";
 import { Blur } from "@/components/Blur";
 import { Guides } from "@/components/Guides";
 import Footer from "@/components/Footer";
@@ -64,10 +64,16 @@ import Footer from "@/components/Footer";
     <FrameworkExamples />
   </section>
   <Guides />
-  <section className="flex flex-col justify-between items-center pt-24 pb-12 bg-neutral-900 overflow-hidden">
-    <div className="flex flex-row gap-4 justify-start items-start max-w-3xl text-2xl font-bold text-center text-white lg:text-4xl">
-      <div className="leading-normal text-slate-200 pb-12">
-        Seamlessly add authentication providers to your app
+  <section
+    className="flex relative h-[40rem] flex-col justify-between items-center pt-24 pb-12
+    bg-neutral-200 dark:bg-neutral-900 overflow-hidden"
+  >
+    <div
+      className="z-10 flex gap-4 justify-start items-center text-2xl md:text-3xl font-bold
+      text-center text-white lg:text-4xl h-full"
+    >
+      <div className="leading-normal text-slate-800 dark:text-slate-200 pb-12">
+        Supports a wide range of OAuth providers
       </div>
     </div>
     <LogosMarquee />
