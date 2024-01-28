@@ -63,7 +63,9 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **options**: `Omit`\<`OAuthUserConfig`\<`P`\>, `"clientSecret"`\> & `Object`
+• **options**: `Omit`\<`OAuthUserConfig`\<`P`\>, `"clientSecret"`\> & \{
+  `clientSecret`: `string`;
+  }
 
 ### Returns
 

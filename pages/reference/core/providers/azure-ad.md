@@ -42,7 +42,10 @@ const response = await Auth(request, {
 
 ### Parameters
 
-• **options**: `OAuthUserConfig`\<`P`\> & `Object`
+• **options**: `OAuthUserConfig`\<`P`\> & \{
+  `profilePhotoSize`: `64` \| `48` \| `96` \| `120` \| `240` \| `360` \| `432` \| `504` \| `648`;
+  `tenantId`: `string`;
+  }
 
 ### Returns
 

@@ -103,7 +103,9 @@ TODO: Check if all these are used/correct
 
 ## TokenSet
 
-> **TokenSet**: `Partial`\<`OAuth2TokenEndpointResponse` \| `OpenIDTokenEndpointResponse`\> & `Object`
+> **TokenSet**: `Partial`\<`OAuth2TokenEndpointResponse` \| `OpenIDTokenEndpointResponse`\> & \{
+  `expires_at`: `number`;
+  }
 
 Different tokens returned by OAuth Providers.
 Some of them are available with different casing,
@@ -212,7 +214,15 @@ The JWT is encrypted by default.
 
 ##### Parameters
 
-• **params**: `Object`
+• **params**: \{
+  `account`: `null` \| `A`;
+  `token`: [`JWT`](jwt.md#jwt);
+  `user`: [`User`](types.md#user) \| [`AdapterUser`](adapters.md#adapteruser);
+  `isNewUser`: `boolean`;
+  `profile`: `P`;
+  `session`: `any`;
+  `trigger`: `"signIn"` \| `"signUp"` \| `"update"`;
+  }
 
 • **params\.account**: `null` \| `A`
 
@@ -284,7 +294,10 @@ you can use this callback to customise that behaviour.
 
 ##### Parameters
 
-• **params**: `Object`
+• **params**: \{
+  `baseUrl`: `string`;
+  `url`: `string`;
+  }
 
 • **params\.baseUrl**: `string`
 
@@ -313,7 +326,18 @@ you have to explicitly forward it here to make it available to the client.
 
 ##### Parameters
 
-• **params**: `Object` & `Object` & `Object`
+• **params**: \{
+  `session`: \{
+     `user`: [`AdapterUser`](adapters.md#adapteruser);
+  } & [`AdapterSession`](adapters.md#adaptersession);
+  `user`: [`AdapterUser`](adapters.md#adapteruser);
+  } & \{
+  `session`: [`Session`](types.md#session-2);
+  `token`: [`JWT`](jwt.md#jwt);
+  } & \{
+  `newSession`: `any`;
+  `trigger`: `"update"`;
+  }
 
 ##### Returns
 
@@ -335,7 +359,15 @@ Unhandled errors will throw an `AuthorizedCallbackError` with the message set to
 
 ##### Parameters
 
-• **params**: `Object`
+• **params**: \{
+  `account`: `null` \| `A`;
+  `user`: [`User`](types.md#user) \| [`AdapterUser`](adapters.md#adapteruser);
+  `credentials`: `Record`\<`string`, [`CredentialInput`](providers/credentials.md#credentialinput)\>;
+  `email`: \{
+     `verificationRequest`: `boolean`;
+  };
+  `profile`: `P`;
+  }
 
 • **params\.account**: `null` \| `A`
 
@@ -345,7 +377,9 @@ Unhandled errors will throw an `AuthorizedCallbackError` with the message set to
 
 If Credentials provider is used, it contains the user credentials
 
-• **params\.email?**: `Object`
+• **params\.email?**: \{
+  `verificationRequest`: `boolean`;
+  }
 
 If Email provider is used, on the first call, it contains a
 `verificationRequest: true` property to indicate it is being triggered in the verification request flow.
@@ -412,7 +446,10 @@ if you use JWT or database persisted sessions:
 
 ##### Parameters
 
-• **message**: `Object`
+• **message**: \{
+  `session`: [`Session`](types.md#session-2);
+  `token`: [`JWT`](jwt.md#jwt);
+  }
 
 • **message\.session**: [`Session`](types.md#session-2)
 
@@ -433,7 +470,12 @@ and an indicator if the user was new to your Adapter.
 
 ##### Parameters
 
-• **message**: `Object`
+• **message**: \{
+  `account`: `null` \| [`Account`](types.md#account);
+  `user`: [`User`](types.md#user);
+  `isNewUser`: `boolean`;
+  `profile`: [`Profile`](types.md#profile);
+  }
 
 • **message\.account**: `null` \| [`Account`](types.md#account)
 
@@ -458,7 +500,11 @@ if you use JWT or database persisted sessions:
 
 ##### Parameters
 
-• **message**: `Object` \| `Object`
+• **message**: \{
+  `session`: `undefined` \| `null` \| `void` \| [`AdapterSession`](adapters.md#adaptersession);
+  } \| \{
+  `token`: `null` \| [`JWT`](jwt.md#jwt);
+  }
 
 ##### Returns
 

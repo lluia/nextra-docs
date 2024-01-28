@@ -71,7 +71,9 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<`P`\> & `Object`
+• **config**: `OAuthUserConfig`\<`P`\> & \{
+  `issuer`: `string`;
+  }
 
 ### Returns
 

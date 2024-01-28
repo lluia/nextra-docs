@@ -378,7 +378,12 @@ The newer secret should be added to the start of the array, which will be used f
 
 #### session?
 
-> **session**?: `Object`
+> **session**?: \{
+  `generateSessionToken`: () => `string`;
+  `maxAge`: `number`;
+  `strategy`: `"jwt"` \| `"database"`;
+  `updateAge`: `number`;
+  }
 
 Configure your session like if you want to use JWT or a database,
 how long until an idle session expires, or to throttle write operations in case you are using a database.

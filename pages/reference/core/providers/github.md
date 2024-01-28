@@ -63,7 +63,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<[`GitHubProfile`](github.md#githubprofile)\> & `Object`
+• **config**: `OAuthUserConfig`\<[`GitHubProfile`](github.md#githubprofile)\> & \{
+  `enterprise`: \{
+     `baseUrl`: `string`;
+  };
+  }
 
 ### Returns
 

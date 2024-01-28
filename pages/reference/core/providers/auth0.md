@@ -118,7 +118,13 @@ The user's given name.
 
 #### identities
 
-> **identities**: `Object`[]
+> **identities**: \{
+`[key: string]`: `any`;   `connection`: `string`;
+  `isSocial`: `boolean`;
+  `profileData`: `object`;
+  `provider`: `string`;
+  `user_id`: `string`;
+  }[]
 
 Contains info retrieved from the identity provider with which the user originally authenticates. Users may also link their profile to multiple identity providers; those identities will then also appear in this array. The contents of an individual identity provider object varies by provider. In some cases, it will also include an API Access Token to be used with the provider.
 

@@ -190,7 +190,11 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Parameters
 
-• **session**: `Object`
+• **session**: \{
+  `expires`: `Date`;
+  `sessionToken`: `string`;
+  `userId`: `string`;
+  }
 
 • **session\.expires**: `Date`
 
@@ -271,7 +275,10 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 #### getSessionAndUser()?
 
-> **`optional`** **getSessionAndUser**(`sessionToken`): `Awaitable`\<`null` \| `Object`\>
+> **`optional`** **getSessionAndUser**(`sessionToken`): `Awaitable`\<`null` \| \{
+  `session`: [`AdapterSession`](adapters.md#adaptersession);
+  `user`: [`AdapterUser`](adapters.md#adapteruser);
+  }\>
 
 Returns a session and a userfrom the database in one go.
 
@@ -287,7 +294,7 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-`Awaitable`\<`null` \| `Object`\>
+`Awaitable`\<`null` \| \{   `session`: [`AdapterSession`](adapters.md#adaptersession);   `user`: [`AdapterUser`](adapters.md#adapteruser);   }\>
 
 #### getUser()?
 
@@ -413,7 +420,10 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 ##### Parameters
 
-• **params**: `Object`
+• **params**: \{
+  `identifier`: `string`;
+  `token`: `string`;
+  }
 
 • **params\.identifier**: `string`
 

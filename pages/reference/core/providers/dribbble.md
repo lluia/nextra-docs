@@ -69,7 +69,9 @@ You can optionally set the scope to `public upload` for more advanced scenarios.
 
 ### Parameters
 
-• **options**: `OAuthUserConfig`\<`P`\> & `Object`
+• **options**: `OAuthUserConfig`\<`P`\> & \{
+  `scope`: `"public"` \| `"public upload"`;
+  }
 
 ### Returns
 

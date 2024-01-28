@@ -63,7 +63,9 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **options**: `OAuthUserConfig`\<`Record`\<`string`, `any`\>\> & `Object`
+• **options**: `OAuthUserConfig`\<`Record`\<`string`, `any`\>\> & \{
+  `apiVersion`: `string`;
+  }
 
 ### Returns
 

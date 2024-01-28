@@ -132,7 +132,10 @@ The default email address for contacting the user.
 
 #### default\_phone?
 
-> **default\_phone**?: `Object`
+> **default\_phone**?: \{
+  `id`: `number`;
+  `number`: `string`;
+  }
 
 The default phone number for contacting the user.
 The API can exclude the user's phone number from the response at its discretion.

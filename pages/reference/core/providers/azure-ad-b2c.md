@@ -41,7 +41,10 @@ For the step "User attributes and token claims" set the following:
 
 ### Parameters
 
-• **options**: `OIDCUserConfig`\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\> & `Object`
+• **options**: `OIDCUserConfig`\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\> & \{
+  `primaryUserFlow`: `string`;
+  `tenantId`: `string`;
+  }
 
 ### Returns
 

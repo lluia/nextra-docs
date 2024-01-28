@@ -111,7 +111,9 @@ async function refreshAccessToken(token) {
 
 ### Parameters
 
-• **options**: `OAuthUserConfig`\<`P`\> & `Object`
+• **options**: `OAuthUserConfig`\<`P`\> & \{
+  `scope`: `string`;
+  }
 
 ### Returns
 

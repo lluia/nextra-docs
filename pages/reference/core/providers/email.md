@@ -31,7 +31,11 @@ like they are supposed to click on it to sign in.
 
 ### Parameters
 
-• **params**: `Object`
+• **params**: \{
+  `host`: `string`;
+  `theme`: [`Theme`](../types.md#theme);
+  `url`: `string`;
+  }
 
 • **params\.host**: `string`
 
@@ -57,7 +61,10 @@ Email Text body (fallback for email clients that don't render HTML, e.g. feature
 
 ### Parameters
 
-• **\_\_namedParameters**: `Object`
+• **\_\_namedParameters**: \{
+  `host`: `string`;
+  `url`: `string`;
+  }
 
 • **\_\_namedParameters\.host**: `string`
 

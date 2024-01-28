@@ -83,7 +83,9 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **options**: `OAuthUserConfig`\<`P`\> & `Object`
+• **options**: `OAuthUserConfig`\<`P`\> & \{
+  `tenantId`: `string`;
+  }
 
 ### Returns
 
