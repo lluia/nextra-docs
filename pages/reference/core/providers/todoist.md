@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](todoist.md#functions)
-    - [default](todoist.md#default)
-
 ## Functions
 
 ### default()

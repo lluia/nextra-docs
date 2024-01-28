@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](twitter.md#interfaces)
-    - [TwitterProfile](twitter.md#twitterprofile)
-- [Functions](twitter.md#functions)
-    - [default](twitter.md#default)
-
 ## Interfaces
 
 ### TwitterProfile

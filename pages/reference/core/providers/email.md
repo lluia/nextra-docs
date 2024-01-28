@@ -1,12 +1,5 @@
 # providers/email
 
-## Contents
-
-- [Functions](email.md#functions)
-    - [default](email.md#default)
-    - [html](email.md#html)
-    - [text](email.md#text)
-
 ## Functions
 
 ### ~~default()~~

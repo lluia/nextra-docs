@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](faceit.md#functions)
-    - [default](faceit.md#default)
-
 ## Functions
 
 ### default()

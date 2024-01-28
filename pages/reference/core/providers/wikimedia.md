@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](wikimedia.md#functions)
-    - [default](wikimedia.md#default)
-
 ## Functions
 
 ### default()

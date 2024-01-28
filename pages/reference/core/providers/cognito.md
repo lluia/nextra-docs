@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](cognito.md#functions)
-    - [default](cognito.md#default)
-
 ## Functions
 
 ### default()

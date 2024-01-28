@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Type Aliases](battlenet.md#type-aliases)
-    - [BattleNetIssuer](battlenet.md#battlenetissuer)
-- [Functions](battlenet.md#functions)
-    - [default](battlenet.md#default)
-
 ## Type Aliases
 
 ### BattleNetIssuer

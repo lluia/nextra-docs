@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](instagram.md#functions)
-    - [default](instagram.md#default)
-
 ## Functions
 
 ### default()

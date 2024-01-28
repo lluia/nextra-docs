@@ -9,13 +9,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](asgardeo.md#interfaces)
-    - [AsgardeoProfile](asgardeo.md#asgardeoprofile)
-- [Functions](asgardeo.md#functions)
-    - [default](asgardeo.md#default)
-
 ## Interfaces
 
 ### AsgardeoProfile

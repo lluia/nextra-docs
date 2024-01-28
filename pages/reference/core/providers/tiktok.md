@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](tiktok.md#interfaces)
-    - [TiktokProfile](tiktok.md#tiktokprofile)
-- [Functions](tiktok.md#functions)
-    - [default](tiktok.md#default)
-
 ## Interfaces
 
 ### TiktokProfile

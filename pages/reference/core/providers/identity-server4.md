@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](identity-server4.md#functions)
-    - [default](identity-server4.md#default)
-
 ## Functions
 
 ### default()

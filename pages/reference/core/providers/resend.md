@@ -1,10 +1,5 @@
 # providers/resend
 
-## Contents
-
-- [Functions](resend.md#functions)
-    - [default](resend.md#default)
-
 ## Functions
 
 ### default()

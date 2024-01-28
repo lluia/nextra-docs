@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](discord.md#interfaces)
-    - [DiscordProfile](discord.md#discordprofile)
-- [Functions](discord.md#functions)
-    - [default](discord.md#default)
-
 ## Interfaces
 
 ### DiscordProfile

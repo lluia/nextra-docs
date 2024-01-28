@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](freshbooks.md#functions)
-    - [default](freshbooks.md#default)
-
 ## Functions
 
 ### default()

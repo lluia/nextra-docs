@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](notion.md#functions)
-    - [default](notion.md#default)
-
 ## Functions
 
 ### default()

@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](boxyhq-saml.md#functions)
-    - [default](boxyhq-saml.md#default)
-
 ## Functions
 
 ### default()

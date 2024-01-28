@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](zoho.md#functions)
-    - [default](zoho.md#default)
-
 ## Functions
 
 ### default()

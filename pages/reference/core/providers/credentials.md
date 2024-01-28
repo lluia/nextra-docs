@@ -1,13 +1,5 @@
 # providers/credentials
 
-## Contents
-
-- [Interfaces](credentials.md#interfaces)
-    - [CredentialInput](credentials.md#credentialinput)
-    - [CredentialsConfig](credentials.md#credentialsconfigcredentialsinputs)
-- [Functions](credentials.md#functions)
-    - [default](credentials.md#default)
-
 ## Interfaces
 
 ### CredentialInput

@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](osso.md#functions)
-    - [default](osso.md#default)
-
 ## Functions
 
 ### default()

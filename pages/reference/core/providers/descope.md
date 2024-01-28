@@ -9,13 +9,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](descope.md#interfaces)
-    - [DescopeProfile](descope.md#descopeprofile)
-- [Functions](descope.md#functions)
-    - [default](descope.md#default)
-
 ## Interfaces
 
 ### DescopeProfile

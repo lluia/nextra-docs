@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](vk.md#interfaces)
-    - [VkProfile](vk.md#vkprofile)
-- [Functions](vk.md#functions)
-    - [default](vk.md#default)
-
 ## Interfaces
 
 ### VkProfile

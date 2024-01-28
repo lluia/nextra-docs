@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](linkedin.md#interfaces)
-    - [LinkedInProfile](linkedin.md#linkedinprofile)
-- [Functions](linkedin.md#functions)
-    - [default](linkedin.md#default)
-
 ## Interfaces
 
 ### LinkedInProfile

@@ -1,15 +1,5 @@
 # providers
 
-## Contents
-
-- [Interfaces](providers.md#interfaces)
-    - [CommonProviderOptions](providers.md#commonprovideroptions)
-    - [OAuth2Config](providers.md#oauth2configprofile)
-    - [OIDCConfig](providers.md#oidcconfigprofile)
-- [Type Aliases](providers.md#type-aliases)
-    - [Provider](providers.md#providerp)
-    - [ProviderType](providers.md#providertype)
-
 ## Interfaces
 
 ### CommonProviderOptions

@@ -53,25 +53,6 @@ We are advocates of TypeScript, as it will help you catch errors at build-time, 
 - [TypeScript - The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 - [Extending built-in types](https://authjs.dev/getting-started/typescript#module-augmentation)
 
-## Contents
-
-- [Interfaces](types.md#interfaces)
-    - [Account](types.md#account)
-    - [CallbacksOptions](types.md#callbacksoptionsp-a)
-    - [CookieOption](types.md#cookieoption)
-    - [CookiesOptions](types.md#cookiesoptions)
-    - [EventCallbacks](types.md#eventcallbacks)
-    - [LoggerInstance](types.md#loggerinstance)
-    - [Profile](types.md#profile)
-    - [Session](types.md#session-2)
-    - [Theme](types.md#theme)
-    - [User](types.md#user)
-- [Type Aliases](types.md#type-aliases)
-    - [AuthAction](types.md#authaction)
-    - [ErrorPageParam](types.md#errorpageparam)
-    - [SignInPageErrorParam](types.md#signinpageerrorparam)
-    - [TokenSet](types.md#tokenset)
-
 ## Interfaces
 
 ### Account

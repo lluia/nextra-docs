@@ -31,15 +31,6 @@ This module *will* be refactored/changed. We do not recommend relying on it righ
 - [What is a JWT session strategy](https://authjs.dev/concepts/session-strategies#jwt)
 - [RFC7519 - JSON Web Token (JWT)](https://www.rfc-editor.org/rfc/rfc7519)
 
-## Contents
-
-- [Interfaces](jwt.md#interfaces)
-    - [JWT](jwt.md#jwt)
-- [Functions](jwt.md#functions)
-    - [decode](jwt.md#decode)
-    - [encode](jwt.md#encode)
-    - [getToken](jwt.md#gettoken)
-
 ## Interfaces
 
 ### JWT

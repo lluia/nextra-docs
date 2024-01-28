@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](ory-hydra.md#functions)
-    - [default](ory-hydra.md#default)
-
 ## Functions
 
 ### default()

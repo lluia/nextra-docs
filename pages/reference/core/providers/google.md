@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](google.md#functions)
-    - [default](google.md#default)
-
 ## Functions
 
 ### default()

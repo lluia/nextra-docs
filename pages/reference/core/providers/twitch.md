@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](twitch.md#functions)
-    - [default](twitch.md#default)
-
 ## Functions
 
 ### default()

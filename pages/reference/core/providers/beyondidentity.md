@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](beyondidentity.md#interfaces)
-    - [BeyondIdentityProfile](beyondidentity.md#beyondidentityprofile)
-- [Functions](beyondidentity.md#functions)
-    - [default](beyondidentity.md#default)
-
 ## Interfaces
 
 ### BeyondIdentityProfile

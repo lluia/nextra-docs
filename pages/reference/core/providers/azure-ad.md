@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](azure-ad.md#functions)
-    - [default](azure-ad.md#default)
-
 ## Functions
 
 ### default()

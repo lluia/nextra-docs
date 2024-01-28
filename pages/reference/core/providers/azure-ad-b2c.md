@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](azure-ad-b2c.md#interfaces)
-    - [AzureADB2CProfile](azure-ad-b2c.md#azureadb2cprofile)
-- [Functions](azure-ad-b2c.md#functions)
-    - [default](azure-ad-b2c.md#default)
-
 ## Interfaces
 
 ### AzureADB2CProfile

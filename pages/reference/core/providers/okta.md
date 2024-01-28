@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](okta.md#functions)
-    - [default](okta.md#default)
-
 ## Functions
 
 ### default()

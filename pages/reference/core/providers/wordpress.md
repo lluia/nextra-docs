@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](wordpress.md#functions)
-    - [default](wordpress.md#default)
-
 ## Functions
 
 ### default()

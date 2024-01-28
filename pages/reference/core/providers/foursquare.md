@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](foursquare.md#functions)
-    - [default](foursquare.md#default)
-
 ## Functions
 
 ### default()

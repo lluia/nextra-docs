@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](onelogin.md#functions)
-    - [default](onelogin.md#default)
-
 ## Functions
 
 ### default()

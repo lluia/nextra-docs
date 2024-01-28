@@ -1,37 +1,5 @@
 # errors
 
-## Contents
-
-- [Classes](errors.md#classes)
-    - [AdapterError](errors.md#adaptererror)
-    - [AuthError](errors.md#autherror)
-    - [AuthorizedCallbackError](errors.md#authorizedcallbackerror)
-    - [CallbackRouteError](errors.md#callbackrouteerror)
-    - [CredentialsSignin](errors.md#credentialssignin)
-    - [EmailSignInError](errors.md#emailsigninerror)
-    - [ErrorPageLoop](errors.md#errorpageloop)
-    - [EventError](errors.md#eventerror)
-    - [InvalidCallbackUrl](errors.md#invalidcallbackurl)
-    - [InvalidCheck](errors.md#invalidcheck)
-    - [InvalidEndpoints](errors.md#invalidendpoints)
-    - [InvalidProvider](errors.md#invalidprovider)
-    - [JWTSessionError](errors.md#jwtsessionerror)
-    - [MissingAdapter](errors.md#missingadapter)
-    - [MissingAdapterMethods](errors.md#missingadaptermethods)
-    - [MissingAuthorize](errors.md#missingauthorize)
-    - [MissingCSRF](errors.md#missingcsrf)
-    - [MissingSecret](errors.md#missingsecret)
-    - [OAuthAccountNotLinked](errors.md#oauthaccountnotlinked)
-    - [OAuthCallbackError](errors.md#oauthcallbackerror)
-    - [OAuthProfileParseError](errors.md#oauthprofileparseerror)
-    - [OAuthSignInError](errors.md#oauthsigninerror)
-    - [SessionTokenError](errors.md#sessiontokenerror)
-    - [SignOutError](errors.md#signouterror)
-    - [UnknownAction](errors.md#unknownaction)
-    - [UnsupportedStrategy](errors.md#unsupportedstrategy)
-    - [UntrustedHost](errors.md#untrustedhost)
-    - [Verification](errors.md#verification)
-
 ## Classes
 
 ### AdapterError

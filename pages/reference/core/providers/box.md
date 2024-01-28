@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](box.md#functions)
-    - [default](box.md#default)
-
 ## Functions
 
 ### default()

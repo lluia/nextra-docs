@@ -33,17 +33,6 @@ console.log(response instanceof Response) // true
 - [Getting started](https://authjs.dev/getting-started/introduction)
 - [Most common use case guides](https://authjs.dev/guides)
 
-## Contents
-
-- [Interfaces](module.index.md#interfaces)
-    - [AuthConfig](module.index.md#authconfig)
-- [Variables](module.index.md#variables)
-    - [raw](module.index.md#raw)
-    - [skipCSRFCheck](module.index.md#skipcsrfcheck)
-- [Functions](module.index.md#functions)
-    - [Auth](module.index.md#auth)
-    - [setEnvDefaults](module.index.md#setenvdefaults)
-
 ## Interfaces
 
 ### AuthConfig

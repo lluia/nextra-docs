@@ -1,10 +1,5 @@
 # providers/sendgrid
 
-## Contents
-
-- [Functions](sendgrid.md#functions)
-    - [default](sendgrid.md#default)
-
 ## Functions
 
 ### default()

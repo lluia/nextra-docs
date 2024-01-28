@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](mastodon.md#functions)
-    - [default](mastodon.md#default)
-
 ## Functions
 
 ### default()

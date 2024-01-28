@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](click-up.md#interfaces)
-    - [ClickUpProfile](click-up.md#clickupprofile)
-- [Functions](click-up.md#functions)
-    - [default](click-up.md#default)
-
 ## Interfaces
 
 ### ClickUpProfile

@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](keycloak.md#functions)
-    - [default](keycloak.md#default)
-
 ## Functions
 
 ### default()

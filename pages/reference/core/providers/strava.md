@@ -7,11 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Functions](strava.md#functions)
-    - [default](strava.md#default)
-
 ## Functions
 
 ### default()

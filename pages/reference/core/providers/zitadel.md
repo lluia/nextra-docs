@@ -7,13 +7,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](zitadel.md#interfaces)
-    - [ZitadelProfile](zitadel.md#zitadelprofile)
-- [Functions](zitadel.md#functions)
-    - [default](zitadel.md#default)
-
 ## Interfaces
 
 ### ZitadelProfile

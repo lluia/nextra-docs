@@ -160,15 +160,6 @@ the user will still be signed in to Google, but they will be signed out of your 
 If your users might be using the application from a publicly shared computer (eg: library), you might want to implement federated logout.
 [This guide](https://authjs.dev/guides/providers/federated-logout) should provide the necessary steps.
 
-## Contents
-
-- [Interfaces](adapters.md#interfaces)
-    - [Adapter](adapters.md#adapter)
-    - [AdapterAccount](adapters.md#adapteraccount)
-    - [AdapterSession](adapters.md#adaptersession)
-    - [AdapterUser](adapters.md#adapteruser)
-    - [VerificationToken](adapters.md#verificationtoken)
-
 ## Interfaces
 
 ### Adapter

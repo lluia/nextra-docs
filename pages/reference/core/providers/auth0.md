@@ -9,13 +9,6 @@
 </a>
 </div>
 
-## Contents
-
-- [Interfaces](auth0.md#interfaces)
-    - [Auth0Profile](auth0.md#auth0profile)
-- [Functions](auth0.md#functions)
-    - [default](auth0.md#default)
-
 ## Interfaces
 
 ### Auth0Profile
