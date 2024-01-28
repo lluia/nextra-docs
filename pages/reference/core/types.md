@@ -394,12 +394,13 @@ you have to explicitly forward it here to make it available to the client.
 #### signIn
 
 ```ts
-signIn: (params) => Awaitable<boolean>;
+signIn: (params) => Awaitable<string | boolean>;
 ```
 
 Controls whether a user is allowed to sign in or not.
-Returning `true` continues the sign-in flow, while
-returning `false` throws an `AuthorizedCallbackError` with the message `"AccessDenied"`.
+Returning `true` continues the sign-in flow.
+Returning `false` or throwing an error will stop the sign-in flow and redirect the user to the error page.
+Returning a string will redirect the user to the specified URL.
 
 Unhandled errors will throw an `AuthorizedCallbackError` with the message set to the original error.
 
@@ -443,7 +444,7 @@ OAuth profile returned by your provider.
 
 ##### Returns
 
-`Awaitable`\<`boolean`\>
+`Awaitable`\<`string` \| `boolean`\>
 
 ##### See
 
