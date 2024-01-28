@@ -7,17 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### GitHubProfile
-
-#### See
-
-[Get the authenticated user](https://docs.github.com/en/rest/users/users#get-the-authenticated-user)
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): `OAuthConfig`\<[`GitHubProfile`](github.md#githubprofile)\>
 
@@ -71,10 +61,18 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **config**: `OAuthUserConfig`\<[`GitHubProfile`](github.md#githubprofile)\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<[`GitHubProfile`](github.md#githubprofile)\>
+
+***
+
+## GitHubProfile
+
+### See
+
+[Get the authenticated user](https://docs.github.com/en/rest/users/users#get-the-authenticated-user)

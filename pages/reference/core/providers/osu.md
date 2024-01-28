@@ -7,9 +7,7 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -66,14 +64,14 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends `OsuProfile`
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>

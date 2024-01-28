@@ -1,19 +1,17 @@
 # providers/resend
 
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): `EmailConfig`
 
-#### Parameters
+### Parameters
 
 • **config**: `EmailUserConfig`
 
-#### Returns
+### Returns
 
 `EmailConfig`
 
-#### Todo
+### Todo
 
 Document this

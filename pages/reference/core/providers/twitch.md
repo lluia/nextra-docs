@@ -7,9 +7,7 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`TwitchProfile`\>
 
@@ -61,10 +59,10 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **config**: `OIDCUserConfig`\<`TwitchProfile`\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`TwitchProfile`\>

@@ -7,20 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### KakaoProfile
-
-https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#req-user-info
-type from : https://gist.github.com/ziponia/cdce1ebd88f979b2a6f3f53416b56a77
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -101,14 +88,25 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`KakaoProfile`](kakao.md#kakaoprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## KakaoProfile
+
+https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#req-user-info
+type from : https://gist.github.com/ziponia/cdce1ebd88f979b2a6f3f53416b56a77
+
+### Extends
+
+- `Record`\<`string`, `any`\>

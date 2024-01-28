@@ -7,19 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### TiktokProfile
-
-[More info](https://developers.tiktok.com/doc/tiktok-api-v2-get-user-info/)
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -88,14 +76,24 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`TiktokProfile`](tiktok.md#tiktokprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## TiktokProfile
+
+[More info](https://developers.tiktok.com/doc/tiktok-api-v2-get-user-info/)
+
+### Extends
+
+- `Record`\<`string`, `any`\>

@@ -7,17 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### AzureADB2CProfile
-
-#### See
-
-[Claims](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview#claims)
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
 
@@ -49,15 +39,15 @@ For the step "User attributes and token claims" set the following:
   - Identity Provider Access Token
   - User's Object ID
 
-#### Parameters
+### Parameters
 
 • **options**: `OIDCUserConfig`\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\> & `Object`
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
 
-#### Example
+### Example
 
 ```ts
 import { Auth } from "@auth/core"
@@ -99,3 +89,11 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
+
+***
+
+## AzureADB2CProfile
+
+### See
+
+[Claims](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview#claims)

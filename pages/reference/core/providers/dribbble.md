@@ -7,9 +7,7 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -65,14 +63,14 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 You can optionally set the scope to `public upload` for more advanced scenarios. If omitted, the default `public` scope will be used for authentication purposes.
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends `DribbbleProfile`
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>

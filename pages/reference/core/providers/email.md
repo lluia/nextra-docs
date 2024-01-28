@@ -1,20 +1,18 @@
 # providers/email
 
-## Functions
-
-### ~~default()~~
+## ~~default()~~
 
 > **default**(`config`): `NodemailerConfig`
 
-#### Parameters
+### Parameters
 
 • **config**: `NodemailerUserConfig`
 
-#### Returns
+### Returns
 
 `NodemailerConfig`
 
-#### Deprecated
+### Deprecated
 
 Import this provider from the `providers/nodemailer` submodule instead of `providers/email`.
 
@@ -22,7 +20,7 @@ To log in with nodemailer, change `signIn("email")` to `signIn("nodemailer")`
 
 ***
 
-### html()
+## html()
 
 > **html**(`params`): `string`
 
@@ -31,7 +29,7 @@ Insert invisible space into domains from being turned into a hyperlink by email
 clients like Outlook and Apple mail, as this is confusing because it seems
 like they are supposed to click on it to sign in.
 
-#### Parameters
+### Parameters
 
 • **params**: `Object`
 
@@ -41,23 +39,23 @@ like they are supposed to click on it to sign in.
 
 • **params\.url**: `string`
 
-#### Returns
+### Returns
 
 `string`
 
-#### Note
+### Note
 
 We don't add the email address to avoid needing to escape it, if you do, remember to sanitize it!
 
 ***
 
-### text()
+## text()
 
 > **text**(`__namedParameters`): `string`
 
 Email Text body (fallback for email clients that don't render HTML, e.g. feature phones)
 
-#### Parameters
+### Parameters
 
 • **\_\_namedParameters**: `Object`
 
@@ -65,6 +63,6 @@ Email Text body (fallback for email clients that don't render HTML, e.g. feature
 
 • **\_\_namedParameters\.url**: `string`
 
-#### Returns
+### Returns
 
 `string`

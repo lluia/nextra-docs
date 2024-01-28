@@ -1,20 +1,6 @@
 # providers/azure-devops
 
-## Interfaces
-
-### AzureDevOpsProfile
-
-#### See
-
-[Azure DevOps Services REST API 7.0 · Profiles · Get](https://learn.microsoft.com/en-us/rest/api/azure/devops/profile/profiles/get?view=azure-devops-rest-7.0&tabs=HTTP#examples)
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -119,14 +105,26 @@ async function refreshAccessToken(token) {
 }
 ```
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`AzureDevOpsProfile`](azure-devops.md#azuredevopsprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## AzureDevOpsProfile
+
+### See
+
+[Azure DevOps Services REST API 7.0 · Profiles · Get](https://learn.microsoft.com/en-us/rest/api/azure/devops/profile/profiles/get?view=azure-devops-rest-7.0&tabs=HTTP#examples)
+
+### Extends
+
+- `Record`\<`string`, `any`\>

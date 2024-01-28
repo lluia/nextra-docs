@@ -7,17 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### ClickUpProfile
-
-#### See
-
-[Get the authenticated user](https://clickup.com/api/clickupreference/operation/GetAuthorizedUser/)
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): `OAuthConfig`\<[`ClickUpProfile`](click-up.md#clickupprofile)\>
 
@@ -68,10 +58,18 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **config**: `OAuthUserConfig`\<[`ClickUpProfile`](click-up.md#clickupprofile)\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<[`ClickUpProfile`](click-up.md#clickupprofile)\>
+
+***
+
+## ClickUpProfile
+
+### See
+
+[Get the authenticated user](https://clickup.com/api/clickupreference/operation/GetAuthorizedUser/)

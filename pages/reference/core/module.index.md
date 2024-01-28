@@ -33,13 +33,103 @@ console.log(response instanceof Response) // true
 - [Getting started](https://authjs.dev/getting-started/introduction)
 - [Most common use case guides](https://authjs.dev/guides)
 
-## Interfaces
+## Auth()
 
-### AuthConfig
+### Auth(request, config)
+
+> **Auth**(`request`, `config`): `Promise`\<`ResponseInternal`\>
+
+Core functionality provided by Auth.js.
+
+Receives a standard [Request]([object Object]) and returns a [Response]([object Object]).
+
+#### Parameters
+
+• **request**: [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
+
+• **config**: [`AuthConfig`](module.index.md#authconfig)
+
+#### Returns
+
+`Promise`\<`ResponseInternal`\>
+
+#### Example
+
+```ts
+import Auth from "@auth/core"
+
+const request = new Request("https://example.com")
+const response = await AuthHandler(request, {
+  providers: [...],
+  secret: "...",
+  trustHost: true,
+})
+```
+
+#### See
+
+[Documentation](https://authjs.dev)
+
+### Auth(request, config)
+
+> **Auth**(`request`, `config`): `Promise`\<[`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
+
+Core functionality provided by Auth.js.
+
+Receives a standard [Request]([object Object]) and returns a [Response]([object Object]).
+
+#### Parameters
+
+• **request**: [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
+
+• **config**: `Omit`\<[`AuthConfig`](module.index.md#authconfig), `"raw"`\>
+
+#### Returns
+
+`Promise`\<[`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
+
+#### Example
+
+```ts
+import Auth from "@auth/core"
+
+const request = new Request("https://example.com")
+const response = await AuthHandler(request, {
+  providers: [...],
+  secret: "...",
+  trustHost: true,
+})
+```
+
+#### See
+
+[Documentation](https://authjs.dev)
+
+***
+
+## setEnvDefaults()
+
+> **setEnvDefaults**(`envObject`, `config`): `void`
+
+Set default env variables on the config object
+
+### Parameters
+
+• **envObject**: `any`
+
+• **config**: [`AuthConfig`](module.index.md#authconfig)
+
+### Returns
+
+`void`
+
+***
+
+## AuthConfig
 
 Configure the [Auth](module.index.md#auth) method.
 
-#### Example
+### Example
 
 ```ts
 import Auth, { type AuthConfig } from "@auth/core"
@@ -50,13 +140,13 @@ const request = new Request("https://example.com")
 const response = await AuthHandler(request, authConfig)
 ```
 
-#### See
+### See
 
 [Initialization](https://authjs.dev/reference/configuration/auth-options)
 
-#### Properties
+### Properties
 
-##### providers
+#### providers
 
 > **providers**: [`Provider`](providers.md#providerp)[]
 
@@ -64,31 +154,31 @@ List of authentication providers for signing in
 (e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order.
 This can be one of the built-in providers or an object with a custom provider.
 
-###### Default
+##### Default
 
 ```ts
 []
 ```
 
-##### adapter?
+#### adapter?
 
 > **adapter**?: [`Adapter`](adapters.md#adapter)
 
 You can use the adapter option to pass in your database adapter.
 
-##### basePath?
+#### basePath?
 
 > **basePath**?: `string`
 
 The base path of the Auth.js API endpoints.
 
-###### Default
+##### Default
 
 ```ts
 "/auth"
 ```
 
-##### callbacks?
+#### callbacks?
 
 > **callbacks**?: `Partial`\<[`CallbacksOptions`](types.md#callbacksoptionsp-a)\<[`Profile`](types.md#profile), [`Account`](types.md#account)\>\>
 
@@ -96,7 +186,7 @@ Callbacks are asynchronous functions you can use to control what happens when an
 Callbacks are *extremely powerful*, especially in scenarios involving JSON Web Tokens
 as they **allow you to implement access controls without a database** and to **integrate with external databases or APIs**.
 
-##### cookies?
+#### cookies?
 
 > **cookies**?: `Partial`\<[`CookiesOptions`](types.md#cookiesoptions)\>
 
@@ -111,13 +201,13 @@ as you will be opting out of the built-in dynamic policy.
 but **may have complex implications** or side effects.
 You should **try to avoid using advanced options** unless you are very comfortable using them.
 
-###### Default
+##### Default
 
 ```ts
 {}
 ```
 
-##### debug?
+#### debug?
 
 > **debug**?: `boolean`
 
@@ -125,13 +215,13 @@ Set debug to true to enable debug messages for authentication and database opera
 
 - ⚠ If you added a custom [AuthConfig.logger](module.index.md#logger), this setting is ignored.
 
-###### Default
+##### Default
 
 ```ts
 false
 ```
 
-##### events?
+#### events?
 
 > **events**?: `Partial`\<[`EventCallbacks`](types.md#eventcallbacks)\>
 
@@ -142,44 +232,44 @@ The content of the message object varies depending on the flow
 but typically contains a user object and/or contents of the JSON Web Token
 and other information relevant to the event.
 
-###### Default
+##### Default
 
 ```ts
 {}
 ```
 
-##### experimental?
+#### experimental?
 
 > **experimental**?: `Record`\<`string`, `boolean`\>
 
 Use this option to enable experimental features.
 When enabled, it will print a warning message to the console.
 
-###### Note
+##### Note
 
 Experimental features are not guaranteed to be stable and may change or be removed without notice. Please use with caution.
 
-###### Default
+##### Default
 
 ```ts
 {}
 ```
 
-##### jwt?
+#### jwt?
 
 > **jwt**?: `Partial`\<`JWTOptions`\>
 
 JSON Web Tokens are enabled by default if you have not specified an [AuthConfig.adapter](module.index.md#adapter).
 JSON Web Tokens are encrypted (JWE) by default. We recommend you keep this behaviour.
 
-##### logger?
+#### logger?
 
 > **logger**?: `Partial`\<[`LoggerInstance`](types.md#loggerinstance)\>
 
 Override any of the logger levels (`undefined` levels will use the built-in logger),
 and intercept logs in NextAuth. You can use this option to send NextAuth logs to a third-party logging service.
 
-###### Example
+##### Example
 
 ```ts
 // /pages/api/auth/[...nextauth].js
@@ -201,26 +291,26 @@ export default NextAuth({
 
 - ⚠ When set, the [AuthConfig.debug](module.index.md#debug) option is ignored
 
-###### Default
+##### Default
 
 ```ts
 console
 ```
 
-##### pages?
+#### pages?
 
 > **pages**?: `Partial`\<`PagesOptions`\>
 
 Specify URLs to be used if you want to create custom sign in, sign out and error pages.
 Pages specified will override the corresponding built-in page.
 
-###### Default
+##### Default
 
 ```ts
 {}
 ```
 
-###### Example
+##### Example
 
 ```ts
   pages: {
@@ -232,7 +322,7 @@ Pages specified will override the corresponding built-in page.
   }
 ```
 
-##### redirectProxyUrl?
+#### redirectProxyUrl?
 
 > **redirectProxyUrl**?: `string`
 
@@ -245,11 +335,11 @@ or you want to use OAuth on preview URLs (like Vercel), where you don't know the
 
 The url needs to include the full path up to where Auth.js is initialized.
 
-###### Note
+##### Note
 
 This will auto-enable the `state` OAuth2Config.checks on the provider.
 
-###### Example
+##### Example
 
 ```
 "https://authjs.example.com/api/auth"
@@ -257,7 +347,7 @@ This will auto-enable the `state` OAuth2Config.checks on the provider.
 
 You can also override this individually for each provider.
 
-###### Example
+##### Example
 
 ```ts
 GitHub({
@@ -266,13 +356,13 @@ GitHub({
 })
 ```
 
-###### Default
+##### Default
 
 `AUTH_REDIRECT_PROXY_URL` environment variable
 
 See also: [Guide: Securing a Preview Deployment](https://authjs.dev/getting-started/deployment#securing-a-preview-deployment)
 
-##### secret?
+#### secret?
 
 > **secret**?: `string` \| `string`[]
 
@@ -280,20 +370,20 @@ A random string used to hash tokens, sign cookies and generate cryptographic key
 
 To generate a random string, you can use the Auth.js CLI: `npx auth secret`
 
-###### Note
+##### Note
 
 You can also pass an array of secrets, in which case the first secret that successfully
 decrypts the JWT will be used. This is useful for rotating secrets without invalidating existing sessions.
 The newer secret should be added to the start of the array, which will be used for all new sessions.
 
-##### session?
+#### session?
 
 > **session**?: `Object`
 
 Configure your session like if you want to use JWT or a database,
 how long until an idle session expires, or to throttle write operations in case you are using a database.
 
-###### Type declaration
+##### Type declaration
 
 ###### generateSessionToken?
 
@@ -351,13 +441,13 @@ If set to `0`, session is updated every time.
 86400 // 1 day
 ```
 
-##### theme?
+#### theme?
 
 > **theme**?: [`Theme`](types.md#theme)
 
 Changes the theme of built-in [AuthConfig.pages](module.index.md#pages).
 
-##### trustHost?
+#### trustHost?
 
 > **trustHost**?: `boolean`
 
@@ -369,7 +459,7 @@ Make sure that your deployment platform sets the `host` header safely.
 Official Auth.js-based libraries will attempt to set this value automatically for some deployment platforms (eg.: Vercel) that are known to set the `host` header safely.
 :::
 
-##### useSecureCookies?
+#### useSecureCookies?
 
 > **useSecureCookies**?: `boolean`
 
@@ -384,9 +474,9 @@ You should **try to avoid using advanced options** unless you are very comfortab
 
 The default is `false` HTTP and `true` for HTTPS sites.
 
-## Variables
+***
 
-### raw
+## raw
 
 > **`const`** **raw**: *typeof* [`raw`](module.index.md#raw)
 
@@ -400,7 +490,7 @@ by passing this value to [AuthConfig.raw]([object Object]).
 
 ***
 
-### skipCSRFCheck
+## skipCSRFCheck
 
 > **`const`** **skipCSRFCheck**: *typeof* [`skipCSRFCheck`](module.index.md#skipcsrfcheck)
 
@@ -411,95 +501,3 @@ This option is intended for framework authors.
 Auth.js comes with built-in [CSRF](https://authjs.dev/concepts/security#csrf) protection, but
 if you are implementing a framework that is already protected against CSRF attacks, you can skip this check by
 passing this value to [AuthConfig.skipCSRFCheck]([object Object]).
-
-## Functions
-
-### Auth()
-
-#### Auth(request, config)
-
-> **Auth**(`request`, `config`): `Promise`\<`ResponseInternal`\>
-
-Core functionality provided by Auth.js.
-
-Receives a standard [Request]([object Object]) and returns a [Response]([object Object]).
-
-##### Parameters
-
-• **request**: [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
-
-• **config**: [`AuthConfig`](module.index.md#authconfig)
-
-##### Returns
-
-`Promise`\<`ResponseInternal`\>
-
-##### Example
-
-```ts
-import Auth from "@auth/core"
-
-const request = new Request("https://example.com")
-const response = await AuthHandler(request, {
-  providers: [...],
-  secret: "...",
-  trustHost: true,
-})
-```
-
-##### See
-
-[Documentation](https://authjs.dev)
-
-#### Auth(request, config)
-
-> **Auth**(`request`, `config`): `Promise`\<[`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
-
-Core functionality provided by Auth.js.
-
-Receives a standard [Request]([object Object]) and returns a [Response]([object Object]).
-
-##### Parameters
-
-• **request**: [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
-
-• **config**: `Omit`\<[`AuthConfig`](module.index.md#authconfig), `"raw"`\>
-
-##### Returns
-
-`Promise`\<[`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
-
-##### Example
-
-```ts
-import Auth from "@auth/core"
-
-const request = new Request("https://example.com")
-const response = await AuthHandler(request, {
-  providers: [...],
-  secret: "...",
-  trustHost: true,
-})
-```
-
-##### See
-
-[Documentation](https://authjs.dev)
-
-***
-
-### setEnvDefaults()
-
-> **setEnvDefaults**(`envObject`, `config`): `void`
-
-Set default env variables on the config object
-
-#### Parameters
-
-• **envObject**: `any`
-
-• **config**: [`AuthConfig`](module.index.md#authconfig)
-
-#### Returns
-
-`void`

@@ -31,6 +31,8 @@ module.exports = {
   hideInPageTOC: true,
   hideBreadcrumbs: true,
   hideGenerator: true,
+  hideParameterTypesInTitle: false,
+  excludeGroups: true,
   kindSortOrder: [
     "Function",
     "TypeAlias",

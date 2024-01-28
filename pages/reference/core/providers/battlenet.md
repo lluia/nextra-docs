@@ -7,17 +7,7 @@
 </a>
 </div>
 
-## Type Aliases
-
-### BattleNetIssuer
-
-> **BattleNetIssuer**: `"https://oauth.battle.net"` \| `"https://oauth.battlenet.com.cn"` \| `"https://www.battlenet.com.cn/oauth"` \| \`https://${"us" | "eu" | "kr" | "tw"}.battle.net/oauth\`
-
-See the [available regions](https://develop.battle.net/documentation/guides/regionality-and-apis)
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -78,14 +68,22 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends `BattleNetProfile`
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## BattleNetIssuer
+
+> **BattleNetIssuer**: `"https://oauth.battle.net"` \| `"https://oauth.battlenet.com.cn"` \| `"https://www.battlenet.com.cn/oauth"` \| \`https://${"us" | "eu" | "kr" | "tw"}.battle.net/oauth\`
+
+See the [available regions](https://develop.battle.net/documentation/guides/regionality-and-apis)

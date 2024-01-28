@@ -7,15 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### TwitterProfile
-
-[Users lookup](https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me)
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): `OAuthConfig`\<[`TwitterProfile`](twitter.md#twitterprofile)\>
 
@@ -91,10 +83,16 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **config**: `OAuthUserConfig`\<[`TwitterProfile`](twitter.md#twitterprofile)\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<[`TwitterProfile`](twitter.md#twitterprofile)\>
+
+***
+
+## TwitterProfile
+
+[Users lookup](https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me)

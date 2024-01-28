@@ -7,9 +7,7 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
 
@@ -61,14 +59,14 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends `OryHydraProfile`
 
-#### Parameters
+### Parameters
 
 • **options**: `OIDCUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>

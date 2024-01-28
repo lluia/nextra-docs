@@ -7,47 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### MattermostProfile
-
-[Get a user](https://api.mattermost.com/#tag/users/operation/GetUser)
-
-#### Properties
-
-##### create\_at
-
-> **create\_at**: `number`
-
-The time in milliseconds a user was created
-
-##### delete\_at
-
-> **delete\_at**: `number`
-
-The time in milliseconds a user was deleted
-
-##### update\_at
-
-> **update\_at**: `number`
-
-The time in milliseconds a user was last updated
-
-##### terms\_of\_service\_create\_at?
-
-> **terms\_of\_service\_create\_at**?: `number`
-
-The time in milliseconds the user accepted the terms of service
-
-##### terms\_of\_service\_id?
-
-> **terms\_of\_service\_id**?: `string`
-
-ID of accepted terms of service, if any. This field is not present if empty.
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`config`): `OAuthConfig`\<`P`\>
 
@@ -105,14 +65,52 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`MattermostProfile`](mattermost.md#mattermostprofile)
 
-#### Parameters
+### Parameters
 
 • **config**: `OAuthUserConfig`\<`P`\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## MattermostProfile
+
+[Get a user](https://api.mattermost.com/#tag/users/operation/GetUser)
+
+### Properties
+
+#### create\_at
+
+> **create\_at**: `number`
+
+The time in milliseconds a user was created
+
+#### delete\_at
+
+> **delete\_at**: `number`
+
+The time in milliseconds a user was deleted
+
+#### update\_at
+
+> **update\_at**: `number`
+
+The time in milliseconds a user was last updated
+
+#### terms\_of\_service\_create\_at?
+
+> **terms\_of\_service\_create\_at**?: `number`
+
+The time in milliseconds the user accepted the terms of service
+
+#### terms\_of\_service\_id?
+
+> **terms\_of\_service\_id**?: `string`
+
+ID of accepted terms of service, if any. This field is not present if empty.

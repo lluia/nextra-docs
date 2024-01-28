@@ -53,26 +53,95 @@ We are advocates of TypeScript, as it will help you catch errors at build-time, 
 - [TypeScript - The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 - [Extending built-in types](https://authjs.dev/getting-started/typescript#module-augmentation)
 
-## Interfaces
+## AuthAction
 
-### Account
+> **AuthAction**: `"callback"` \| `"csrf"` \| `"error"` \| `"providers"` \| `"session"` \| `"signin"` \| `"signout"` \| `"verify-request"`
+
+Supported actions by Auth.js. Each action map to a REST API endpoint.
+Some actions have a `GET` and `POST` variant, depending on if the action
+changes the state of the server.
+
+- **`"callback"`**:
+  - **`GET`**: Handles the callback from an [OAuth provider](https://authjs.dev/reference/core/providers/oauth).
+  - **`POST`**: Handles the callback from a [Credentials provider](https://authjs.dev/reference/core/providers/credentials).
+- **`"csrf"`**: Returns the raw CSRF token, which is saved in a cookie (encrypted).
+It is used for CSRF protection, implementing the [double submit cookie](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#double-submit-cookie) technique.
+:::note
+Some frameworks have built-in CSRF protection and can therefore disable this action. In this case, the corresponding endpoint will return a 404 response. Read more at [`skipCSRFCheck`](https://authjs.dev/reference/core#skipcsrfcheck).
+_⚠ We don't recommend manually disabling CSRF protection, unless you know what you're doing._
+:::
+- **`"error"`**: Renders the built-in error page.
+- **`"providers"`**: Returns a client-safe list of all configured providers.
+- **`"session"`**:
+  - **`GET**`: Returns the user's session if it exists, otherwise `null`.
+  - **`POST**`: Updates the user's session and returns the updated session.
+- **`"signin"`**:
+  - **`GET`**: Renders the built-in sign-in page.
+  - **`POST`**: Initiates the sign-in flow.
+- **`"signout"`**:
+  - **`GET`**: Renders the built-in sign-out page.
+  - **`POST`**: Initiates the sign-out flow. This will invalidate the user's session (deleting the cookie, and if there is a session in the database, it will be deleted as well).
+- **`"verify-request"`**: Renders the built-in verification request page.
+
+***
+
+## ErrorPageParam
+
+> **ErrorPageParam**: `"Configuration"` \| `"AccessDenied"` \| `"Verification"`
+
+TODO: Check if all these are used/correct
+
+***
+
+## SignInPageErrorParam
+
+> **SignInPageErrorParam**: `"Signin"` \| `"OAuthSignin"` \| `"OAuthCallbackError"` \| `"OAuthCreateAccount"` \| `"EmailCreateAccount"` \| `"Callback"` \| `"OAuthAccountNotLinked"` \| `"EmailSignin"` \| `"CredentialsSignin"` \| `"SessionRequired"`
+
+TODO: Check if all these are used/correct
+
+***
+
+## TokenSet
+
+> **TokenSet**: `Partial`\<`OAuth2TokenEndpointResponse` \| `OpenIDTokenEndpointResponse`\> & `Object`
+
+Different tokens returned by OAuth Providers.
+Some of them are available with different casing,
+but they refer to the same value.
+
+### Type declaration
+
+#### expires\_at?
+
+> **expires\_at**?: `number`
+
+Date of when the `access_token` expires in seconds.
+This value is calculated from the `expires_in` value.
+
+##### See
+
+https://www.ietf.org/rfc/rfc6749.html#section-4.2.2
+
+***
+
+## Account
 
 Usually contains information about the provider being used
 and also extends `TokenSet`, which is different tokens returned by OAuth Providers.
 
-#### Extends
+### Extends
 
 - `Partial`\<`OpenIDTokenEndpointResponse`\>
 
-#### Properties
+### Properties
 
-##### provider
+#### provider
 
 > **provider**: `string`
 
 Provider's id for this account. Eg.: "google"
 
-##### providerAccountId
+#### providerAccountId
 
 > **providerAccountId**: `string`
 
@@ -81,13 +150,13 @@ This value depends on the type of the provider being used to create the account.
 - email: The user's email address.
 - credentials: `id` returned from the `authorize()` callback
 
-##### type
+#### type
 
 > **type**: [`ProviderType`](providers.md#providertype)
 
 Provider's type for this account
 
-##### expires\_at?
+#### expires\_at?
 
 > **expires\_at**?: `number`
 
@@ -97,36 +166,36 @@ It is the absolute timestamp (in seconds) when the [OAuth2TokenEndpointResponse.
 
 This value can be used for implementing token rotation together with [OAuth2TokenEndpointResponse.refresh_token]([object Object]).
 
-###### See
+##### See
 
  - https://authjs.dev/guides/basics/refresh-token-rotation#database-strategy
  - https://www.rfc-editor.org/rfc/rfc6749#section-5.1
 
-##### userId?
+#### userId?
 
 > **userId**?: `string`
 
 id of the user this account belongs to
 
-###### See
+##### See
 
 https://authjs.dev/reference/core/adapters#user
 
 ***
 
-### CallbacksOptions\<P, A\>
+## CallbacksOptions\<P, A\>
 
 Override the default session creation flow of Auth.js
 
-#### Type parameters
+### Type parameters
 
 • **P** = [`Profile`](types.md#profile)
 
 • **A** = [`Account`](types.md#account)
 
-#### Properties
+### Properties
 
-##### jwt
+#### jwt
 
 > **jwt**: (`params`) => `Awaitable`\<`null` \| [`JWT`](jwt.md#jwt)\>
 
@@ -141,7 +210,7 @@ The JWT is encrypted by default.
 [Documentation](https://next-auth.js.org/configuration/callbacks#jwt-callback) |
 [`session` callback](https://next-auth.js.org/configuration/callbacks#session-callback)
 
-###### Parameters
+##### Parameters
 
 • **params**: `Object`
 
@@ -199,11 +268,11 @@ Check why was the jwt callback invoked. Possible reasons are:
 - update event: Triggered by the [`useSession().update`](https://next-auth.js.org/getting-started/client#update-session) method.
 In case of the latter, `trigger` will be `undefined`.
 
-###### Returns
+##### Returns
 
 `Awaitable`\<`null` \| [`JWT`](jwt.md#jwt)\>
 
-##### redirect
+#### redirect
 
 > **redirect**: (`params`) => `Awaitable`\<`string`\>
 
@@ -213,7 +282,7 @@ you can use this callback to customise that behaviour.
 
 [Documentation](https://authjs.dev/guides/basics/callbacks#redirect-callback)
 
-###### Parameters
+##### Parameters
 
 • **params**: `Object`
 
@@ -225,11 +294,11 @@ Default base URL of site (can be used as fallback)
 
 URL provided as callback URL by the client
 
-###### Returns
+##### Returns
 
 `Awaitable`\<`string`\>
 
-##### session
+#### session
 
 > **session**: (`params`) => `Awaitable`\<[`Session`](types.md#session-2) \| `DefaultSession`\>
 
@@ -242,19 +311,19 @@ of the token is returned for increased security.
 If you want to make something available you added to the token through the `jwt` callback,
 you have to explicitly forward it here to make it available to the client.
 
-###### Parameters
+##### Parameters
 
 • **params**: `Object` & `Object` & `Object`
 
-###### Returns
+##### Returns
 
 `Awaitable`\<[`Session`](types.md#session-2) \| `DefaultSession`\>
 
-###### See
+##### See
 
 [`jwt` callback](https://authjs.dev/reference/core/types#jwt)
 
-##### signIn
+#### signIn
 
 > **signIn**: (`params`) => `Awaitable`\<`boolean`\>
 
@@ -264,7 +333,7 @@ returning `false` throws an `AuthorizedCallbackError` with the message `"AccessD
 
 Unhandled errors will throw an `AuthorizedCallbackError` with the message set to the original error.
 
-###### Parameters
+##### Parameters
 
 • **params**: `Object`
 
@@ -292,15 +361,15 @@ for email address in an allow list.
 If OAuth provider is used, it contains the full
 OAuth profile returned by your provider.
 
-###### Returns
+##### Returns
 
 `Awaitable`\<`boolean`\>
 
-###### See
+##### See
 
 [`AuthorizedCallbackError`](https://authjs.dev/reference/errors#authorizedcallbackerror)
 
-###### Example
+##### Example
 
 ```ts
 callbacks: {
@@ -312,27 +381,27 @@ callbacks: {
 
 ***
 
-### CookieOption
+## CookieOption
 
 [Documentation](https://authjs.dev/reference/core#cookies)
 
 ***
 
-### CookiesOptions
+## CookiesOptions
 
 [Documentation](https://authjs.dev/reference/core#cookies)
 
 ***
 
-### EventCallbacks
+## EventCallbacks
 
 The various event callbacks you can register for from next-auth
 
 [Documentation](https://authjs.dev/guides/basics/events)
 
-#### Properties
+### Properties
 
-##### session
+#### session
 
 > **session**: (`message`) => `Awaitable`\<`void`\>
 
@@ -341,7 +410,7 @@ if you use JWT or database persisted sessions:
 - `token`: The JWT for this session.
 - `session`: The session object from your adapter.
 
-###### Parameters
+##### Parameters
 
 • **message**: `Object`
 
@@ -349,11 +418,11 @@ if you use JWT or database persisted sessions:
 
 • **message\.token**: [`JWT`](jwt.md#jwt)
 
-###### Returns
+##### Returns
 
 `Awaitable`\<`void`\>
 
-##### signIn
+#### signIn
 
 > **signIn**: (`message`) => `Awaitable`\<`void`\>
 
@@ -362,7 +431,7 @@ credential provider.
 For other providers, you'll get the User object from your adapter, the account,
 and an indicator if the user was new to your Adapter.
 
-###### Parameters
+##### Parameters
 
 • **message**: `Object`
 
@@ -374,11 +443,11 @@ and an indicator if the user was new to your Adapter.
 
 • **message\.profile?**: [`Profile`](types.md#profile)
 
-###### Returns
+##### Returns
 
 `Awaitable`\<`void`\>
 
-##### signOut
+#### signOut
 
 > **signOut**: (`message`) => `Awaitable`\<`void`\>
 
@@ -387,49 +456,49 @@ if you use JWT or database persisted sessions:
 - `token`: The JWT for this session.
 - `session`: The session object from your adapter that is being ended.
 
-###### Parameters
+##### Parameters
 
 • **message**: `Object` \| `Object`
 
-###### Returns
+##### Returns
 
 `Awaitable`\<`void`\>
 
 ***
 
-### LoggerInstance
+## LoggerInstance
 
 Override any of the methods, and the rest will use the default logger.
 
 [Documentation](https://authjs.dev/reference/core#authconfig#logger)
 
-#### Extends
+### Extends
 
 - `Record`\<`string`, `Function`\>
 
 ***
 
-### Profile
+## Profile
 
 The user info returned from your OAuth provider.
 
-#### See
+### See
 
 https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
 
 ***
 
-### Session
+## Session
 
 The active session of the logged in user.
 
-#### Extends
+### Extends
 
 - `DefaultSession`
 
 ***
 
-### Theme
+## Theme
 
 Change the theme of the built-in pages.
 
@@ -438,83 +507,12 @@ Change the theme of the built-in pages.
 
 ***
 
-### User
+## User
 
 The shape of the returned object in the OAuth providers' `profile` callback,
 available in the `jwt` and `session` callbacks,
 or the second parameter of the `session` callback, when using a database.
 
-#### Extended By
+### Extended By
 
 - [`AdapterUser`](adapters.md#adapteruser)
-
-## Type Aliases
-
-### AuthAction
-
-> **AuthAction**: `"callback"` \| `"csrf"` \| `"error"` \| `"providers"` \| `"session"` \| `"signin"` \| `"signout"` \| `"verify-request"`
-
-Supported actions by Auth.js. Each action map to a REST API endpoint.
-Some actions have a `GET` and `POST` variant, depending on if the action
-changes the state of the server.
-
-- **`"callback"`**:
-  - **`GET`**: Handles the callback from an [OAuth provider](https://authjs.dev/reference/core/providers/oauth).
-  - **`POST`**: Handles the callback from a [Credentials provider](https://authjs.dev/reference/core/providers/credentials).
-- **`"csrf"`**: Returns the raw CSRF token, which is saved in a cookie (encrypted).
-It is used for CSRF protection, implementing the [double submit cookie](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#double-submit-cookie) technique.
-:::note
-Some frameworks have built-in CSRF protection and can therefore disable this action. In this case, the corresponding endpoint will return a 404 response. Read more at [`skipCSRFCheck`](https://authjs.dev/reference/core#skipcsrfcheck).
-_⚠ We don't recommend manually disabling CSRF protection, unless you know what you're doing._
-:::
-- **`"error"`**: Renders the built-in error page.
-- **`"providers"`**: Returns a client-safe list of all configured providers.
-- **`"session"`**:
-  - **`GET**`: Returns the user's session if it exists, otherwise `null`.
-  - **`POST**`: Updates the user's session and returns the updated session.
-- **`"signin"`**:
-  - **`GET`**: Renders the built-in sign-in page.
-  - **`POST`**: Initiates the sign-in flow.
-- **`"signout"`**:
-  - **`GET`**: Renders the built-in sign-out page.
-  - **`POST`**: Initiates the sign-out flow. This will invalidate the user's session (deleting the cookie, and if there is a session in the database, it will be deleted as well).
-- **`"verify-request"`**: Renders the built-in verification request page.
-
-***
-
-### ErrorPageParam
-
-> **ErrorPageParam**: `"Configuration"` \| `"AccessDenied"` \| `"Verification"`
-
-TODO: Check if all these are used/correct
-
-***
-
-### SignInPageErrorParam
-
-> **SignInPageErrorParam**: `"Signin"` \| `"OAuthSignin"` \| `"OAuthCallbackError"` \| `"OAuthCreateAccount"` \| `"EmailCreateAccount"` \| `"Callback"` \| `"OAuthAccountNotLinked"` \| `"EmailSignin"` \| `"CredentialsSignin"` \| `"SessionRequired"`
-
-TODO: Check if all these are used/correct
-
-***
-
-### TokenSet
-
-> **TokenSet**: `Partial`\<`OAuth2TokenEndpointResponse` \| `OpenIDTokenEndpointResponse`\> & `Object`
-
-Different tokens returned by OAuth Providers.
-Some of them are available with different casing,
-but they refer to the same value.
-
-#### Type declaration
-
-##### expires\_at?
-
-> **expires\_at**?: `number`
-
-Date of when the `access_token` expires in seconds.
-This value is calculated from the `expires_in` value.
-
-###### See
-
-https://www.ietf.org/rfc/rfc6749.html#section-4.2.2

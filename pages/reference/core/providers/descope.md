@@ -9,64 +9,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### DescopeProfile
-
-The returned user profile from Descope when using the profile callback.
-[See Load User](https://docs.descope.com/api/openapi/usermanagement/operation/LoadUser/)
-
-#### Indexable
-
- \[`claim`: `string`\]: `unknown`
-
-#### Properties
-
-##### email
-
-> **email**: `string`
-
-The user's email
-
-##### email\_verified
-
-> **email\_verified**: `boolean`
-
-A boolean indicating if the user's email is verified
-
-##### name
-
-> **name**: `string`
-
-The user's name
-
-##### phone\_number
-
-> **phone\_number**: `string`
-
-The user's phone number
-
-##### phone\_number\_verified
-
-> **phone\_number\_verified**: `boolean`
-
-A boolean indicating if the user's phone number is verified
-
-##### picture
-
-> **picture**: `string`
-
-The user's picture
-
-##### sub
-
-> **sub**: `string`
-
-The user's unique Descope ID
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`DescopeProfile`](descope.md#descopeprofile)\>
 
@@ -131,10 +74,65 @@ Auth.js strictly adheres to the specification and it cannot take responsibility 
 the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
-#### Parameters
+### Parameters
 
 • **config**: `OIDCUserConfig`\<[`DescopeProfile`](descope.md#descopeprofile)\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`DescopeProfile`](descope.md#descopeprofile)\>
+
+***
+
+## DescopeProfile
+
+The returned user profile from Descope when using the profile callback.
+[See Load User](https://docs.descope.com/api/openapi/usermanagement/operation/LoadUser/)
+
+### Indexable
+
+ \[`claim`: `string`\]: `unknown`
+
+### Properties
+
+#### email
+
+> **email**: `string`
+
+The user's email
+
+#### email\_verified
+
+> **email\_verified**: `boolean`
+
+A boolean indicating if the user's email is verified
+
+#### name
+
+> **name**: `string`
+
+The user's name
+
+#### phone\_number
+
+> **phone\_number**: `string`
+
+The user's phone number
+
+#### phone\_number\_verified
+
+> **phone\_number\_verified**: `boolean`
+
+A boolean indicating if the user's phone number is verified
+
+#### picture
+
+> **picture**: `string`
+
+The user's picture
+
+#### sub
+
+> **sub**: `string`
+
+The user's unique Descope ID

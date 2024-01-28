@@ -7,19 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### NaverProfile
-
-https://developers.naver.com/docs/login/profile/profile.md
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -70,14 +58,24 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`NaverProfile`](naver.md#naverprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## NaverProfile
+
+https://developers.naver.com/docs/login/profile/profile.md
+
+### Extends
+
+- `Record`\<`string`, `any`\>

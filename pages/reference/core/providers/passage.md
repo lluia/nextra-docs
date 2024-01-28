@@ -7,49 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### PassageProfile
-
-#### See
-
-[Supported Scopes](https://docs.passage.id/hosted-login/oidc-client-configuration#supported-scopes)
-
-#### Properties
-
-##### email
-
-> **email**: `string`
-
-The user's email address
-
-##### email\_verified
-
-> **email\_verified**: `boolean`
-
-Whether the user has verified their email address
-
-##### phone
-
-> **phone**: `string`
-
-The user's phone number
-
-##### phone\_number\_verified
-
-> **phone\_number\_verified**: `boolean`
-
-Whether the user has verified their phone number
-
-##### sub
-
-> **sub**: `string`
-
-Unique identifer in Passage for the user
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): `OAuthConfig`\<[`PassageProfile`](passage.md#passageprofile)\>
 
@@ -99,10 +57,50 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **config**: `OAuthUserConfig`\<[`PassageProfile`](passage.md#passageprofile)\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<[`PassageProfile`](passage.md#passageprofile)\>
+
+***
+
+## PassageProfile
+
+### See
+
+[Supported Scopes](https://docs.passage.id/hosted-login/oidc-client-configuration#supported-scopes)
+
+### Properties
+
+#### email
+
+> **email**: `string`
+
+The user's email address
+
+#### email\_verified
+
+> **email\_verified**: `boolean`
+
+Whether the user has verified their email address
+
+#### phone
+
+> **phone**: `string`
+
+The user's phone number
+
+#### phone\_number\_verified
+
+> **phone\_number\_verified**: `boolean`
+
+Whether the user has verified their phone number
+
+#### sub
+
+> **sub**: `string`
+
+Unique identifer in Passage for the user

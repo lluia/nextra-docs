@@ -7,9 +7,7 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**(`options`): `OAuthConfig`\<`Record`\<`string`, `any`\>\>
 
@@ -62,10 +60,10 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`Record`\<`string`, `any`\>\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`Record`\<`string`, `any`\>\>

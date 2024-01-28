@@ -9,45 +9,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### AtlassianProfile
-
-The returned user profile from Atlassian when using the profile callback.
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-#### Properties
-
-##### account\_id
-
-> **account\_id**: `string`
-
-The user's atlassian account ID
-
-##### email
-
-> **email**: `string`
-
-The user's email
-
-##### name
-
-> **name**: `string`
-
-The user name
-
-##### picture
-
-> **picture**: `string`
-
-The user's profile picture
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -92,14 +54,50 @@ Auth.js strictly adheres to the specification and it cannot take responsibility 
 the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`AtlassianProfile`](atlassian.md#atlassianprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## AtlassianProfile
+
+The returned user profile from Atlassian when using the profile callback.
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### account\_id
+
+> **account\_id**: `string`
+
+The user's atlassian account ID
+
+#### email
+
+> **email**: `string`
+
+The user's email
+
+#### name
+
+> **name**: `string`
+
+The user name
+
+#### picture
+
+> **picture**: `string`
+
+The user's profile picture

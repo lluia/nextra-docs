@@ -1,8 +1,6 @@
 # errors
 
-## Classes
-
-### AdapterError
+## AdapterError
 
 One of the database [`Adapter` methods](https://authjs.dev/reference/core/adapters#methods)
 failed during execution.
@@ -10,7 +8,7 @@ failed during execution.
 :::tip
 If `debug: true` is set, you can check out `[auth][debug]` in the logs to learn more about the failed adapter method execution.
 
-#### Example
+### Example
 
 ```sh
 [auth][debug]: adapter_getUserByEmail
@@ -18,37 +16,37 @@ If `debug: true` is set, you can check out `[auth][debug]` in the logs to learn 
 ```
 :::
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### AuthError
+## AuthError
 
 Base error class for all Auth.js errors.
 It's optimized to be printed in the server logs in a nicely formatted way
 via the [`logger.error`](https://authjs.dev/reference/core#logger) option.
 
-#### Extends
+### Extends
 
 - `Error`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
@@ -56,30 +54,30 @@ The error type. Used to identify the error in the logs.
 
 ***
 
-### AuthorizedCallbackError
+## AuthorizedCallbackError
 
 Thrown when the execution of the [`signIn` callback](https://authjs.dev/reference/core/types#signin) fails
 or if it returns `false`.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### CallbackRouteError
+## CallbackRouteError
 
 This error occurs when the user cannot finish login.
 Depending on the provider type, this could have happened for multiple reasons.
@@ -87,7 +85,7 @@ Depending on the provider type, this could have happened for multiple reasons.
 :::tip
 Check out `[auth][details]` in the logs to know which provider failed.
 
-#### Example
+### Example
 
 ```sh
 [auth][details]: { "provider": "github" }
@@ -121,48 +119,48 @@ Check out `[auth][cause]` in the error message for more details.
 It will show the original stack trace.
 :::
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### CredentialsSignin
+## CredentialsSignin
 
 The `authorize` callback returned `null` in the [Credentials provider](https://authjs.dev/getting-started/providers/credentials-tutorial).
 We don't recommend providing information about which part of the credentials were wrong, as it might be abused by malicious hackers.
 
-#### Extends
+### Extends
 
 - `SignInError`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 `SignInError.type`
 
 ***
 
-### EmailSignInError
+## EmailSignInError
 
 Happens when the login by an [Email provider](https://authjs.dev/getting-started/providers/email-tutorial) could not be started.
 
@@ -173,25 +171,25 @@ Possible causes are:
 - There was an error with the database:
   Check the database logs.
 
-#### Extends
+### Extends
 
 - `SignInError`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 `SignInError.type`
 
 ***
 
-### ErrorPageLoop
+## ErrorPageLoop
 
 Thrown when Auth.js is misconfigured and accidentally tried to require authentication on a custom error page.
 To prevent an infinite loop, Auth.js will instead render its default error page.
@@ -200,25 +198,25 @@ To fix this, make sure that the `error` page does not require authentication.
 
 Learn more at [Guide: Error pages](https://authjs.dev/guides/basics/pages)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### EventError
+## EventError
 
 One of the [`events` methods](https://authjs.dev/reference/core/types#eventcallbacks)
 failed during execution.
@@ -227,25 +225,25 @@ Make sure that the `events` methods are implemented correctly and uncaught error
 
 Learn more at [`events`](https://authjs.dev/reference/core/types#eventcallbacks)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### InvalidCallbackUrl
+## InvalidCallbackUrl
 
 Thrown when Auth.js is unable to verify a `callbackUrl` value.
 The browser either disabled cookies or the `callbackUrl` is not a valid URL.
@@ -256,97 +254,97 @@ To prevent this, Auth.js checks if the callback URL is valid and throws this err
 
 There is no action required, but it might be an indicator that somebody is trying to attack your application.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### InvalidCheck
+## InvalidCheck
 
 Thrown when a PKCE, state or nonce OAuth check could not be performed.
 This could happen if the OAuth provider is configured incorrectly or if the browser is blocking cookies.
 
 Learn more at [`checks`](https://authjs.dev/reference/core/providers#checks)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### InvalidEndpoints
+## InvalidEndpoints
 
 One of the configured OAuth or OIDC providers is missing the `authorization`, `token` or `userinfo`, or `issuer` configuration.
 To perform OAuth or OIDC sign in, at least one of these endpoints is required.
 
 Learn more at [`OAuth2Config`](https://authjs.dev/reference/core/providers#oauth2configprofile) or [Guide: OAuth Provider](https://authjs.dev/guides/providers/custom-provider)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### InvalidProvider
+## InvalidProvider
 
 Thrown when the callback endpoint was incorrectly called without a provider.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### JWTSessionError
+## JWTSessionError
 
 Logged on the server when Auth.js could not decode or encode a JWT-based (`strategy: "jwt"`) session.
 
@@ -358,25 +356,25 @@ When this error is logged, the session cookie is destroyed.
 
 Learn more at [`secret`](https://authjs.dev/reference/core#secret), [`jwt.encode`](https://authjs.dev/reference/core/jwt#encode) or [`jwt.decode`](https://authjs.dev/reference/core/jwt#decode) for more information.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### MissingAdapter
+## MissingAdapter
 
 Thrown if Auth.js is misonfigured. This could happen if you configured an Email provider but did not set up a database adapter,
 or tried using a `strategy: "database"` session without a database adapter.
@@ -384,25 +382,25 @@ In both cases, make sure you either remove the configuration or add the missing 
 
 Learn more at [Database Adapters](https://authjs.dev/getting-started/adapters), [Email provider](https://authjs.dev/reference/core/providers/email) or [Concept: Database session strategy](https://authjs.dev/concepts/session-strategies#database)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### MissingAdapterMethods
+## MissingAdapterMethods
 
 Thrown similarily to [`MissingAdapter`](https://authjs.dev/reference/core/errors#missingadapter), but only some required methods were missing.
 
@@ -410,50 +408,50 @@ Make sure you either remove the configuration or add the missing methods to the 
 
 Learn more at [Database Adapters](https://authjs.dev/reference/core/adapters)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### MissingAuthorize
+## MissingAuthorize
 
 Thrown when a Credentials provider is missing the `authorize` configuration.
 To perform credentials sign in, the `authorize` method is required.
 
 Learn more at [Credentials provider](https://authjs.dev/reference/core/providers/credentials)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### MissingCSRF
+## MissingCSRF
 
 Error for missing CSRF tokens in client-side actions (`signIn`, `signOut`, `useSession#update`).
 Thrown when actions lack the double submit cookie, essential for CSRF protection.
@@ -464,25 +462,25 @@ is an attack leveraging authenticated user credentials for unauthorized actions.
 Double submit cookie pattern, a CSRF defense, requires matching values in a cookie
 and request parameter. More on this at [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/CSRF).
 
-#### Extends
+### Extends
 
 - `SignInError`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 `SignInError.type`
 
 ***
 
-### MissingSecret
+## MissingSecret
 
 Auth.js requires a secret or multiple secrets to be set, but none was not found. This is used to encrypt cookies, JWTs and other sensitive data.
 
@@ -495,25 +493,25 @@ Alternatively, you can also explicitly set the [`AuthConfig.secret`](https://aut
 To generate a random string, you can use the Auth.js CLI: `npx auth secret`
 :::
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### OAuthAccountNotLinked
+## OAuthAccountNotLinked
 
 Thrown when an Email address is already associated with an account
 but the user is trying an OAuth account that is not linked to it.
@@ -526,74 +524,74 @@ you can enable automatic account linking by setting [`allowDangerousEmailAccount
 in the provider configuration.
 :::
 
-#### Extends
+### Extends
 
 - `SignInError`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 `SignInError.type`
 
 ***
 
-### OAuthCallbackError
+## OAuthCallbackError
 
 Thrown when an OAuth provider returns an error during the sign in process.
 This could happen for example if the user denied access to the application or there was a configuration error.
 
 For a full list of possible reasons, check out the specification [Authorization Code Grant: Error Response](https://www.rfc-editor.org/rfc/rfc6749#section-4.1.2.1)
 
-#### Extends
+### Extends
 
 - `SignInError`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 `SignInError.type`
 
 ***
 
-### OAuthProfileParseError
+## OAuthProfileParseError
 
 This error occurs during an OAuth sign in attempt when the provider's
 response could not be parsed. This could for example happen if the provider's API
 changed, or the [`OAuth2Config.profile`](https://authjs.dev/reference/core/providers/oauth#profile) method is not implemented correctly.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### OAuthSignInError
+## OAuthSignInError
 
 Happens when login by [OAuth](https://authjs.dev/getting-started/providers/oauth-tutorial) could not be started.
 
@@ -604,32 +602,32 @@ Possible causes are:
 :::tip
 Check out `[auth][details]` in the logs to know which provider failed.
 
-#### Example
+### Example
 
 ```sh
 [auth][details]: { "provider": "github" }
 ```
 :::
 
-#### Extends
+### Extends
 
 - `SignInError`
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 `SignInError.type`
 
 ***
 
-### SessionTokenError
+## SessionTokenError
 
 Logged on the server when Auth.js could not retrieve a session from the database (`strategy: "database"`).
 
@@ -637,25 +635,25 @@ The database adapter might be misconfigured or the database is not reachable.
 
 Learn more at [Concept: Database session strategy](https://authjs.dev/concepts/session-strategies#database)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### SignOutError
+## SignOutError
 
 Represents an error that occurs during the sign-out process. This error
 is logged when there are issues in terminating a user's session, either
@@ -665,73 +663,73 @@ process, such as emitting sign-out events or clearing session cookies.
 
 The session cookie(s) are emptied even if this error is logged.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### UnknownAction
+## UnknownAction
 
 Auth.js was requested to handle an operation that it does not support.
 
 See [`AuthAction`](https://authjs.dev/reference/core/types#authaction) for the supported actions.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### UnsupportedStrategy
+## UnsupportedStrategy
 
 Thrown when a Credentials provider is present but the JWT strategy (`strategy: "jwt"`) is not enabled.
 
 Learn more at [`strategy`](https://authjs.dev/reference/core#strategy) or [Credentials provider](https://authjs.dev/reference/core/providers/credentials)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### UntrustedHost
+## UntrustedHost
 
 Thrown when the `trustHost` option was not set to `true`.
 
@@ -743,42 +741,42 @@ Official Auth.js libraries might attempt to automatically set the `trustHost` op
 
 Learn more at [`trustHost`](https://authjs.dev/reference/core#trusthost) or [Guide: Deployment](https://authjs.dev/getting-started/deployment)
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)
 
 ***
 
-### Verification
+## Verification
 
 The user's email/token combination was invalid.
 This could be because the email/token combination was not found in the database,
 or because the token has expired. Ask the user to log in again.
 
-#### Extends
+### Extends
 
 - [`AuthError`](errors.md#autherror)
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `ErrorType`
 
 The error type. Used to identify the error in the logs.
 
-###### Inherited from
+##### Inherited from
 
 [`errors.AuthError.type`](errors.md#type-1)

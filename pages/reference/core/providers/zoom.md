@@ -7,19 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### ZoomProfile
-
-See: https://developers.zoom.us/docs/integrations/oauth/#using-an-access-token
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): `OAuthConfig`\<[`ZoomProfile`](zoom.md#zoomprofile)\>
 
@@ -69,10 +57,20 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Parameters
+### Parameters
 
 • **config**: `OAuthUserConfig`\<[`ZoomProfile`](zoom.md#zoomprofile)\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<[`ZoomProfile`](zoom.md#zoomprofile)\>
+
+***
+
+## ZoomProfile
+
+See: https://developers.zoom.us/docs/integrations/oauth/#using-an-access-token
+
+### Extends
+
+- `Record`\<`string`, `any`\>

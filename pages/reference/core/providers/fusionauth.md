@@ -7,20 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### FusionAuthProfile
-
-This is the default openid signature returned from FusionAuth
-it can be customized using [lambda functions](https://fusionauth.io/docs/v1/tech/lambdas)
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -90,14 +77,25 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`FusionAuthProfile`](fusionauth.md#fusionauthprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## FusionAuthProfile
+
+This is the default openid signature returned from FusionAuth
+it can be customized using [lambda functions](https://fusionauth.io/docs/v1/tech/lambdas)
+
+### Extends
+
+- `Record`\<`string`, `any`\>

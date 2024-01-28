@@ -7,21 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### LinkedInProfile
-
-#### See
-
-https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2#response-body-schema
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
 
@@ -72,14 +58,26 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`LinkedInProfile`](linkedin.md#linkedinprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OIDCUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
+
+***
+
+## LinkedInProfile
+
+### See
+
+https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2#response-body-schema
+
+### Extends
+
+- `Record`\<`string`, `any`\>

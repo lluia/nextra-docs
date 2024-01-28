@@ -7,19 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### WorkOSProfile
-
-- [The returned profile object](https://workos.com/docs/reference/sso/profile)
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -134,14 +122,24 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`WorkOSProfile`](workos.md#workosprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
+
+***
+
+## WorkOSProfile
+
+- [The returned profile object](https://workos.com/docs/reference/sso/profile)
+
+### Extends
+
+- `Record`\<`string`, `any`\>

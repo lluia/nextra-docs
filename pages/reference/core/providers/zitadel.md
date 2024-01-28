@@ -7,20 +7,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### ZitadelProfile
-
-The returned user profile from ZITADEL when using the profile callback. See the standard claims reference [here](https://zitadel.com/docs/apis/openidoauth/claims#standard-claims).
-If you need access to ZITADEL APIs or need additional information, make sure to add the corresponding scopes.
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
 
@@ -95,14 +82,25 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 :::
 
-#### Type parameters
+### Type parameters
 
 • **P** extends [`ZitadelProfile`](zitadel.md#zitadelprofile)
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
+
+***
+
+## ZitadelProfile
+
+The returned user profile from ZITADEL when using the profile callback. See the standard claims reference [here](https://zitadel.com/docs/apis/openidoauth/claims#standard-claims).
+If you need access to ZITADEL APIs or need additional information, make sure to add the corresponding scopes.
+
+### Extends
+
+- `Record`\<`string`, `any`\>

@@ -31,75 +31,73 @@ This module *will* be refactored/changed. We do not recommend relying on it righ
 - [What is a JWT session strategy](https://authjs.dev/concepts/session-strategies#jwt)
 - [RFC7519 - JSON Web Token (JWT)](https://www.rfc-editor.org/rfc/rfc7519)
 
-## Interfaces
-
-### JWT
-
-Returned by the `jwt` callback and `getToken`, when using JWT sessions
-
-[`jwt` callback](https://next-auth.js.org/configuration/callbacks#jwt-callback) | [`getToken`](https://next-auth.js.org/tutorials/securing-pages-and-api-routes#using-gettoken)
-
-#### Extends
-
-- `Record`\<`string`, `unknown`\>.`DefaultJWT`
-
-## Functions
-
-### decode()
+## decode()
 
 > **decode**\<`Payload`\>(`params`): `Promise`\<`Payload` \| `null`\>
 
 Decodes a Auth.js issued JWT.
 
-#### Type parameters
+### Type parameters
 
 • **Payload** = [`JWT`](jwt.md#jwt)
 
-#### Parameters
+### Parameters
 
 • **params**: `JWTDecodeParams`
 
-#### Returns
+### Returns
 
 `Promise`\<`Payload` \| `null`\>
 
 ***
 
-### encode()
+## encode()
 
 > **encode**\<`Payload`\>(`params`): `Promise`\<`string`\>
 
 Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 
-#### Type parameters
+### Type parameters
 
 • **Payload** = [`JWT`](jwt.md#jwt)
 
-#### Parameters
+### Parameters
 
 • **params**: `JWTEncodeParams`\<`Payload`\>
 
-#### Returns
+### Returns
 
 `Promise`\<`string`\>
 
 ***
 
-### getToken()
+## getToken()
 
 > **getToken**\<`R`\>(`params`): `Promise`\<`R` extends `true` ? `string` : [`JWT`](jwt.md#jwt) \| `null`\>
 
 Takes an Auth.js request (`req`) and returns either the Auth.js issued JWT's payload,
 or the raw JWT string. We look for the JWT in the either the cookies, or the `Authorization` header.
 
-#### Type parameters
+### Type parameters
 
 • **R** extends `boolean` = `false`
 
-#### Parameters
+### Parameters
 
 • **params**: `GetTokenParams`\<`R`\>
 
-#### Returns
+### Returns
 
 `Promise`\<`R` extends `true` ? `string` : [`JWT`](jwt.md#jwt) \| `null`\>
+
+***
+
+## JWT
+
+Returned by the `jwt` callback and `getToken`, when using JWT sessions
+
+[`jwt` callback](https://next-auth.js.org/configuration/callbacks#jwt-callback) | [`getToken`](https://next-auth.js.org/tutorials/securing-pages-and-api-routes#using-gettoken)
+
+### Extends
+
+- `Record`\<`string`, `unknown`\>.`DefaultJWT`

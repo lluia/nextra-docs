@@ -7,27 +7,25 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
 Add Notion login to your page.
 
-#### Type parameters
+### Type parameters
 
 • **P** extends `NotionProfile`
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & `AdditionalConfig`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
 
-#### Example
+### Example
 
 ```ts
 import { Auth } from "@auth/core"

@@ -7,9 +7,7 @@
 </a>
 </div>
 
-## Functions
-
-### default()
+## default()
 
 > **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
 
@@ -38,19 +36,19 @@ const response = await Auth(request, {
  - [AzureAd OAuth documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow/)
  - [AzureAd OAuth apps](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app/)
 
-#### Type parameters
+### Type parameters
 
 • **P** extends `AzureADProfile`
 
-#### Parameters
+### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & `Object`
 
-#### Returns
+### Returns
 
 `OAuthConfig`\<`P`\>
 
-#### Example
+### Example
 
 ### To allow specific Active Directory users access:
 

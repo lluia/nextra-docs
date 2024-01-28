@@ -9,45 +9,7 @@
 </a>
 </div>
 
-## Interfaces
-
-### AsgardeoProfile
-
-The returned user profile from Asgardeo when using the profile callback.
-
-#### Extends
-
-- `Record`\<`string`, `any`\>
-
-#### Properties
-
-##### email
-
-> **email**: `string`
-
-The user email
-
-##### given\_name
-
-> **given\_name**: `string`
-
-The user name
-
-##### picture
-
-> **picture**: `string`
-
-The user profile picture
-
-##### sub
-
-> **sub**: `string`
-
-The user Asgardeo account ID
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
 
@@ -119,10 +81,46 @@ Auth.js strictly adheres to the specification and it cannot take responsibility 
 the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
-#### Parameters
+### Parameters
 
 • **config**: `OIDCUserConfig`\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+
+***
+
+## AsgardeoProfile
+
+The returned user profile from Asgardeo when using the profile callback.
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### email
+
+> **email**: `string`
+
+The user email
+
+#### given\_name
+
+> **given\_name**: `string`
+
+The user name
+
+#### picture
+
+> **picture**: `string`
+
+The user profile picture
+
+#### sub
+
+> **sub**: `string`
+
+The user Asgardeo account ID

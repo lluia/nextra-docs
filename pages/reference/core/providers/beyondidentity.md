@@ -7,57 +7,21 @@
 </a>
 </div>
 
-## Interfaces
-
-### BeyondIdentityProfile
-
-#### See
-
-[Beyond Identity Developer Docs](https://developer.beyondidentity.com/)
-
-#### Properties
-
-##### email
-
-> **email**: `string`
-
-The user's email address.
-
-##### name
-
-> **name**: `string`
-
-The user's full name.
-
-##### preferred\_username
-
-> **preferred\_username**: `string`
-
-The user's preferred username.
-
-##### sub
-
-> **sub**: `string`
-
-The user's unique identifier.
-
-## Functions
-
-### default()
+## default()
 
 > **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
 
 Add Beyond Identity login to your page.
 
-#### Parameters
+### Parameters
 
 • **config**: `OIDCUserConfig`\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
 
-#### Returns
+### Returns
 
 [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
 
-#### Example
+### Example
 
 ```ts
 import { Auth } from "@auth/core"
@@ -98,3 +62,37 @@ the spec by the provider. You can open an issue, but if the problem is non-compl
 we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
 
 :::
+
+***
+
+## BeyondIdentityProfile
+
+### See
+
+[Beyond Identity Developer Docs](https://developer.beyondidentity.com/)
+
+### Properties
+
+#### email
+
+> **email**: `string`
+
+The user's email address.
+
+#### name
+
+> **name**: `string`
+
+The user's full name.
+
+#### preferred\_username
+
+> **preferred\_username**: `string`
+
+The user's preferred username.
+
+#### sub
+
+> **sub**: `string`
+
+The user's unique identifier.
