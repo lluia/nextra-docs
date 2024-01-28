@@ -1,4 +1,4 @@
-# index
+# @auth/core
 
 :::warning Experimental
 `@auth/core` is under active development.
