@@ -8,9 +8,11 @@ import Express from "../../public/img/etc/express.svg";
 import NextJs from "../../public/img/etc/nextjs.svg";
 
 async function renderNextJs(framework: Framework) {
+  const tailwindDarkMode = document.documentElement.classList.contains("dark");
+
   return codeToHtml(frameworkDetails[framework].code, {
     lang: "ts",
-    theme: "rose-pine",
+    theme: tailwindDarkMode ? "rose-pine" : "rose-pine-moon",
     transformers: [
       {
         pre(node) {
