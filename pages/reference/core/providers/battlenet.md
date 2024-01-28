@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+```ts
+default<P>(options): OAuthConfig<P>
+```
 
 Add Battle.net login to your page.
 
@@ -86,6 +88,8 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ## BattleNetIssuer
 
-> **BattleNetIssuer**: `"https://oauth.battle.net"` \| `"https://oauth.battlenet.com.cn"` \| `"https://www.battlenet.com.cn/oauth"` \| \`https://${"us" | "eu" | "kr" | "tw"}.battle.net/oauth\`
+```ts
+type BattleNetIssuer: "https://oauth.battle.net" | "https://oauth.battlenet.com.cn" | "https://www.battlenet.com.cn/oauth" | \https://${"us" | "eu" | "kr" | "tw"}.battle.net/oauth\;
+```
 
 See the [available regions](https://develop.battle.net/documentation/guides/regionality-and-apis)

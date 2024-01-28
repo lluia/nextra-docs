@@ -11,7 +11,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+```ts
+default<P>(options): OAuthConfig<P>
+```
 
 ### Setup
 
@@ -80,24 +82,32 @@ The returned user profile from Atlassian when using the profile callback.
 
 #### account\_id
 
-> **account\_id**: `string`
+```ts
+account_id: string;
+```
 
 The user's atlassian account ID
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 The user's email
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The user name
 
 #### picture
 
-> **picture**: `string`
+```ts
+picture: string;
+```
 
 The user's profile picture

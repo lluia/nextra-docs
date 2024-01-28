@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+```ts
+default<P>(options): OAuthConfig<P>
+```
 
 Add osu! login to your page.
 

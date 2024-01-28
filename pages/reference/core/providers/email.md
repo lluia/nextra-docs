@@ -2,7 +2,9 @@
 
 ## ~~default()~~
 
-> **default**(`config`): `NodemailerConfig`
+```ts
+default(config): NodemailerConfig
+```
 
 ### Parameters
 
@@ -22,7 +24,9 @@ To log in with nodemailer, change `signIn("email")` to `signIn("nodemailer")`
 
 ## html()
 
-> **html**(`params`): `string`
+```ts
+html(params): string
+```
 
 Email HTML body
 Insert invisible space into domains from being turned into a hyperlink by email
@@ -55,7 +59,9 @@ We don't add the email address to avoid needing to escape it, if you do, remembe
 
 ## text()
 
-> **text**(`__namedParameters`): `string`
+```ts
+text(__namedParameters): string
+```
 
 Email Text body (fallback for email clients that don't render HTML, e.g. feature phones)
 

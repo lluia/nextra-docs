@@ -55,7 +55,17 @@ We are advocates of TypeScript, as it will help you catch errors at build-time, 
 
 ## AuthAction
 
-> **AuthAction**: `"callback"` \| `"csrf"` \| `"error"` \| `"providers"` \| `"session"` \| `"signin"` \| `"signout"` \| `"verify-request"`
+```ts
+type AuthAction: 
+  | "callback"
+  | "csrf"
+  | "error"
+  | "providers"
+  | "session"
+  | "signin"
+  | "signout"
+  | "verify-request";
+```
 
 Supported actions by Auth.js. Each action map to a REST API endpoint.
 Some actions have a `GET` and `POST` variant, depending on if the action
@@ -87,7 +97,9 @@ _⚠ We don't recommend manually disabling CSRF protection, unless you know what
 
 ## ErrorPageParam
 
-> **ErrorPageParam**: `"Configuration"` \| `"AccessDenied"` \| `"Verification"`
+```ts
+type ErrorPageParam: "Configuration" | "AccessDenied" | "Verification";
+```
 
 TODO: Check if all these are used/correct
 
@@ -95,7 +107,19 @@ TODO: Check if all these are used/correct
 
 ## SignInPageErrorParam
 
-> **SignInPageErrorParam**: `"Signin"` \| `"OAuthSignin"` \| `"OAuthCallbackError"` \| `"OAuthCreateAccount"` \| `"EmailCreateAccount"` \| `"Callback"` \| `"OAuthAccountNotLinked"` \| `"EmailSignin"` \| `"CredentialsSignin"` \| `"SessionRequired"`
+```ts
+type SignInPageErrorParam: 
+  | "Signin"
+  | "OAuthSignin"
+  | "OAuthCallbackError"
+  | "OAuthCreateAccount"
+  | "EmailCreateAccount"
+  | "Callback"
+  | "OAuthAccountNotLinked"
+  | "EmailSignin"
+  | "CredentialsSignin"
+  | "SessionRequired";
+```
 
 TODO: Check if all these are used/correct
 
@@ -103,9 +127,11 @@ TODO: Check if all these are used/correct
 
 ## TokenSet
 
-> **TokenSet**: `Partial`\<`OAuth2TokenEndpointResponse` \| `OpenIDTokenEndpointResponse`\> & \{
-  `expires_at`: `number`;
-  }
+```ts
+type TokenSet: Partial<OAuth2TokenEndpointResponse | OpenIDTokenEndpointResponse> & {
+  expires_at: number;
+};
+```
 
 Different tokens returned by OAuth Providers.
 Some of them are available with different casing,
@@ -115,7 +141,9 @@ but they refer to the same value.
 
 #### expires\_at?
 
-> **expires\_at**?: `number`
+```ts
+expires_at?: number;
+```
 
 Date of when the `access_token` expires in seconds.
 This value is calculated from the `expires_in` value.
@@ -139,13 +167,17 @@ and also extends `TokenSet`, which is different tokens returned by OAuth Provide
 
 #### provider
 
-> **provider**: `string`
+```ts
+provider: string;
+```
 
 Provider's id for this account. Eg.: "google"
 
 #### providerAccountId
 
-> **providerAccountId**: `string`
+```ts
+providerAccountId: string;
+```
 
 This value depends on the type of the provider being used to create the account.
 - oauth/oidc: The OAuth account's id, returned from the `profile()` callback.
@@ -154,13 +186,17 @@ This value depends on the type of the provider being used to create the account.
 
 #### type
 
-> **type**: [`ProviderType`](providers.md#providertype)
+```ts
+type: ProviderType;
+```
 
 Provider's type for this account
 
 #### expires\_at?
 
-> **expires\_at**?: `number`
+```ts
+expires_at?: number;
+```
 
 Calculated value based on [OAuth2TokenEndpointResponse.expires_in]([object Object]).
 
@@ -175,7 +211,9 @@ This value can be used for implementing token rotation together with [OAuth2Toke
 
 #### userId?
 
-> **userId**?: `string`
+```ts
+userId?: string;
+```
 
 id of the user this account belongs to
 
@@ -199,7 +237,9 @@ Override the default session creation flow of Auth.js
 
 #### jwt
 
-> **jwt**: (`params`) => `Awaitable`\<`null` \| [`JWT`](jwt.md#jwt)\>
+```ts
+jwt: (params) => Awaitable<null | JWT>;
+```
 
 This callback is called whenever a JSON Web Token is created (i.e. at sign in)
 or updated (i.e whenever a session is accessed in the client).
@@ -284,7 +324,9 @@ In case of the latter, `trigger` will be `undefined`.
 
 #### redirect
 
-> **redirect**: (`params`) => `Awaitable`\<`string`\>
+```ts
+redirect: (params) => Awaitable<string>;
+```
 
 This callback is called anytime the user is redirected to a callback URL (e.g. on signin or signout).
 By default only URLs on the same URL as the site are allowed,
@@ -313,7 +355,9 @@ URL provided as callback URL by the client
 
 #### session
 
-> **session**: (`params`) => `Awaitable`\<[`Session`](types.md#session-2) \| `DefaultSession`\>
+```ts
+session: (params) => Awaitable<Session | DefaultSession>;
+```
 
 This callback is called whenever a session is checked.
 (Eg.: invoking the `/api/session` endpoint, using `useSession` or `getSession`)
@@ -349,7 +393,9 @@ you have to explicitly forward it here to make it available to the client.
 
 #### signIn
 
-> **signIn**: (`params`) => `Awaitable`\<`boolean`\>
+```ts
+signIn: (params) => Awaitable<boolean>;
+```
 
 Controls whether a user is allowed to sign in or not.
 Returning `true` continues the sign-in flow, while
@@ -437,7 +483,9 @@ The various event callbacks you can register for from next-auth
 
 #### session
 
-> **session**: (`message`) => `Awaitable`\<`void`\>
+```ts
+session: (message) => Awaitable<void>;
+```
 
 The message object will contain one of these depending on
 if you use JWT or database persisted sessions:
@@ -461,7 +509,9 @@ if you use JWT or database persisted sessions:
 
 #### signIn
 
-> **signIn**: (`message`) => `Awaitable`\<`void`\>
+```ts
+signIn: (message) => Awaitable<void>;
+```
 
 If using a `credentials` type auth, the user is the raw response from your
 credential provider.
@@ -491,7 +541,9 @@ and an indicator if the user was new to your Adapter.
 
 #### signOut
 
-> **signOut**: (`message`) => `Awaitable`\<`void`\>
+```ts
+signOut: (message) => Awaitable<void>;
+```
 
 The message object will contain one of these depending on
 if you use JWT or database persisted sessions:

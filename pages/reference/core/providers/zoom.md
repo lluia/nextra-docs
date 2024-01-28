@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<[`ZoomProfile`](zoom.md#zoomprofile)\>
+```ts
+default(config): OAuthConfig<ZoomProfile>
+```
 
 Add Zoom login to your page.
 

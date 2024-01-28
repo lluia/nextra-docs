@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`options`): `OAuthConfig`\<`Record`\<`string`, `any`\>\>
+```ts
+default(options): OAuthConfig<Record<string, any>>
+```
 
 Add Dropbox login to your page.
 

@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+```ts
+default(config): OIDCConfig<BeyondIdentityProfile>
+```
 
 Add Beyond Identity login to your page.
 
@@ -75,24 +77,32 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 The user's email address.
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The user's full name.
 
 #### preferred\_username
 
-> **preferred\_username**: `string`
+```ts
+preferred_username: string;
+```
 
 The user's preferred username.
 
 #### sub
 
-> **sub**: `string`
+```ts
+sub: string;
+```
 
 The user's unique identifier.

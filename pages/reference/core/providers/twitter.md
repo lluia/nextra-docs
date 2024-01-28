@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<[`TwitterProfile`](twitter.md#twitterprofile)\>
+```ts
+default(config): OAuthConfig<TwitterProfile>
+```
 
 Add Twitter login to your page.
 

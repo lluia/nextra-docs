@@ -11,7 +11,9 @@
 
 ## default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`Auth0Profile`](auth0.md#auth0profile)\>
+```ts
+default(config): OIDCConfig<Auth0Profile>
+```
 
 ### Setup
 
@@ -76,144 +78,190 @@ The returned user profile from Auth0 when using the profile callback. [Reference
 
 #### app\_metadata
 
-> **app\_metadata**: `object`
+```ts
+app_metadata: object;
+```
 
 Custom fields that store info about a user that influences the user's access, such as support plan, security roles (if not using the Authorization Core feature set), or access control groups. To learn more, read Metadata Overview.
 
 #### blocked
 
-> **blocked**: `boolean`
+```ts
+blocked: boolean;
+```
 
 Indicates whether the user has been blocked. Importing enables subscribers to ensure that users remain blocked when migrating to Auth0.
 
 #### created\_at
 
-> **created\_at**: `Date`
+```ts
+created_at: Date;
+```
 
 Timestamp indicating when the user profile was first created.
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 (unique) The user's email address.
 
 #### email\_verified
 
-> **email\_verified**: `boolean`
+```ts
+email_verified: boolean;
+```
 
 Indicates whether the user has verified their email address.
 
 #### family\_name
 
-> **family\_name**: `string`
+```ts
+family_name: string;
+```
 
 The user's family name.
 
 #### given\_name
 
-> **given\_name**: `string`
+```ts
+given_name: string;
+```
 
 The user's given name.
 
 #### identities
 
-> **identities**: \{
-`[key: string]`: `any`;   `connection`: `string`;
-  `isSocial`: `boolean`;
-  `profileData`: `object`;
-  `provider`: `string`;
-  `user_id`: `string`;
-  }[]
+```ts
+identities: {
+[key: string]: any;   connection: string;
+  isSocial: boolean;
+  profileData: object;
+  provider: string;
+  user_id: string;
+  }[];
+```
 
 Contains info retrieved from the identity provider with which the user originally authenticates. Users may also link their profile to multiple identity providers; those identities will then also appear in this array. The contents of an individual identity provider object varies by provider. In some cases, it will also include an API Access Token to be used with the provider.
 
 #### last\_ip
 
-> **last\_ip**: `string`
+```ts
+last_ip: string;
+```
 
 IP address associated with the user's last login.
 
 #### last\_login
 
-> **last\_login**: `Date`
+```ts
+last_login: Date;
+```
 
 Timestamp indicating when the user last logged in. If a user is blocked and logs in, the blocked session updates last_login. If you are using this property from inside a Rule using the user< object, its value will be associated with the login that triggered the rule; this is because rules execute after login.
 
 #### last\_password\_reset
 
-> **last\_password\_reset**: `Date`
+```ts
+last_password_reset: Date;
+```
 
 Timestamp indicating the last time the user's password was reset/changed. At user creation, this field does not exist. This property is only available for Database connections.
 
 #### logins\_count
 
-> **logins\_count**: `number`
+```ts
+logins_count: number;
+```
 
 Number of times the user has logged in. If a user is blocked and logs in, the blocked session is counted in logins_count.
 
 #### multifactor
 
-> **multifactor**: `string`
+```ts
+multifactor: string;
+```
 
 List of multi-factor providers with which the user is enrolled.
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The user's full name.
 
 #### nickname
 
-> **nickname**: `string`
+```ts
+nickname: string;
+```
 
 The user's nickname.
 
 #### phone\_number
 
-> **phone\_number**: `string`
+```ts
+phone_number: string;
+```
 
 The user's phone number. Only valid for users with SMS connections.
 
 #### phone\_verified
 
-> **phone\_verified**: `boolean`
+```ts
+phone_verified: boolean;
+```
 
 Indicates whether the user has been verified their phone number. Only valid for users with SMS connections.
 
 #### picture
 
-> **picture**: `string`
+```ts
+picture: string;
+```
 
 URL pointing to the user's profile picture.
 
 #### sub
 
-> **sub**: `string`
+```ts
+sub: string;
+```
 
 The user's unique identifier.
 
 #### updated\_at
 
-> **updated\_at**: `Date`
+```ts
+updated_at: Date;
+```
 
 Timestamp indicating when the user's profile was last updated/modified. Changes to last_login are considered updates, so most of the time, updated_at will match last_login.
 
 #### user\_id
 
-> **user\_id**: `string`
+```ts
+user_id: string;
+```
 
 (unique) The user's identifier. Importing allows user records to be synchronized across multiple systems without using mapping tables.
 
 #### user\_metadata
 
-> **user\_metadata**: `object`
+```ts
+user_metadata: object;
+```
 
 Custom fields that store info about a user that does not impact what they can or cannot access, such as work address, home address, or user preferences. To learn more, read Metadata Overview.
 
 #### username
 
-> **username**: `string`
+```ts
+username: string;
+```
 
 (unique) The user's username.

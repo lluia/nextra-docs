@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<`Record`\<`string`, `any`\>\>
+```ts
+default(config): OAuthConfig<Record<string, any>>
+```
 
 Add Netlify login to your page.
 

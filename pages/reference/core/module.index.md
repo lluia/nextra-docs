@@ -37,7 +37,9 @@ console.log(response instanceof Response) // true
 
 ### Auth(request, config)
 
-> **Auth**(`request`, `config`): `Promise`\<`ResponseInternal`\>
+```ts
+Auth(request, config): Promise<ResponseInternal>
+```
 
 Core functionality provided by Auth.js.
 
@@ -72,7 +74,9 @@ const response = await AuthHandler(request, {
 
 ### Auth(request, config)
 
-> **Auth**(`request`, `config`): `Promise`\<[`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
+```ts
+Auth(request, config): Promise<Response>
+```
 
 Core functionality provided by Auth.js.
 
@@ -109,7 +113,9 @@ const response = await AuthHandler(request, {
 
 ## setEnvDefaults()
 
-> **setEnvDefaults**(`envObject`, `config`): `void`
+```ts
+setEnvDefaults(envObject, config): void
+```
 
 Set default env variables on the config object
 
@@ -148,7 +154,9 @@ const response = await AuthHandler(request, authConfig)
 
 #### providers
 
-> **providers**: [`Provider`](providers.md#providerp)[]
+```ts
+providers: Provider[];
+```
 
 List of authentication providers for signing in
 (e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order.
@@ -162,13 +170,17 @@ This can be one of the built-in providers or an object with a custom provider.
 
 #### adapter?
 
-> **adapter**?: [`Adapter`](adapters.md#adapter)
+```ts
+adapter?: Adapter;
+```
 
 You can use the adapter option to pass in your database adapter.
 
 #### basePath?
 
-> **basePath**?: `string`
+```ts
+basePath?: string;
+```
 
 The base path of the Auth.js API endpoints.
 
@@ -180,7 +192,9 @@ The base path of the Auth.js API endpoints.
 
 #### callbacks?
 
-> **callbacks**?: `Partial`\<[`CallbacksOptions`](types.md#callbacksoptionsp-a)\<[`Profile`](types.md#profile), [`Account`](types.md#account)\>\>
+```ts
+callbacks?: Partial<CallbacksOptions<Profile, Account>>;
+```
 
 Callbacks are asynchronous functions you can use to control what happens when an action is performed.
 Callbacks are *extremely powerful*, especially in scenarios involving JSON Web Tokens
@@ -188,7 +202,9 @@ as they **allow you to implement access controls without a database** and to **i
 
 #### cookies?
 
-> **cookies**?: `Partial`\<[`CookiesOptions`](types.md#cookiesoptions)\>
+```ts
+cookies?: Partial<CookiesOptions>;
+```
 
 You can override the default cookie names and options for any of the cookies used by Auth.js.
 You can specify one or more cookies with custom properties
@@ -209,7 +225,9 @@ You should **try to avoid using advanced options** unless you are very comfortab
 
 #### debug?
 
-> **debug**?: `boolean`
+```ts
+debug?: boolean;
+```
 
 Set debug to true to enable debug messages for authentication and database operations.
 
@@ -223,7 +241,9 @@ false
 
 #### events?
 
-> **events**?: `Partial`\<[`EventCallbacks`](types.md#eventcallbacks)\>
+```ts
+events?: Partial<EventCallbacks>;
+```
 
 Events are asynchronous functions that do not return a response, they are useful for audit logging.
 You can specify a handler for any of these events below - e.g. for debugging or to create an audit log.
@@ -240,7 +260,9 @@ and other information relevant to the event.
 
 #### experimental?
 
-> **experimental**?: `Record`\<`string`, `boolean`\>
+```ts
+experimental?: Record<string, boolean>;
+```
 
 Use this option to enable experimental features.
 When enabled, it will print a warning message to the console.
@@ -257,14 +279,18 @@ Experimental features are not guaranteed to be stable and may change or be remov
 
 #### jwt?
 
-> **jwt**?: `Partial`\<`JWTOptions`\>
+```ts
+jwt?: Partial<JWTOptions>;
+```
 
 JSON Web Tokens are enabled by default if you have not specified an [AuthConfig.adapter](module.index.md#adapter).
 JSON Web Tokens are encrypted (JWE) by default. We recommend you keep this behaviour.
 
 #### logger?
 
-> **logger**?: `Partial`\<[`LoggerInstance`](types.md#loggerinstance)\>
+```ts
+logger?: Partial<LoggerInstance>;
+```
 
 Override any of the logger levels (`undefined` levels will use the built-in logger),
 and intercept logs in NextAuth. You can use this option to send NextAuth logs to a third-party logging service.
@@ -299,7 +325,9 @@ console
 
 #### pages?
 
-> **pages**?: `Partial`\<`PagesOptions`\>
+```ts
+pages?: Partial<PagesOptions>;
+```
 
 Specify URLs to be used if you want to create custom sign in, sign out and error pages.
 Pages specified will override the corresponding built-in page.
@@ -324,7 +352,9 @@ Pages specified will override the corresponding built-in page.
 
 #### redirectProxyUrl?
 
-> **redirectProxyUrl**?: `string`
+```ts
+redirectProxyUrl?: string;
+```
 
 When set, during an OAuth sign-in flow,
 the `redirect_uri` of the authorization request
@@ -364,7 +394,9 @@ See also: [Guide: Securing a Preview Deployment](https://authjs.dev/getting-star
 
 #### secret?
 
-> **secret**?: `string` \| `string`[]
+```ts
+secret?: string | string[];
+```
 
 A random string used to hash tokens, sign cookies and generate cryptographic keys.
 
@@ -378,12 +410,14 @@ The newer secret should be added to the start of the array, which will be used f
 
 #### session?
 
-> **session**?: \{
-  `generateSessionToken`: () => `string`;
-  `maxAge`: `number`;
-  `strategy`: `"jwt"` \| `"database"`;
-  `updateAge`: `number`;
-  }
+```ts
+session?: {
+  generateSessionToken: () => string;
+  maxAge: number;
+  strategy: "jwt" | "database";
+  updateAge: number;
+};
+```
 
 Configure your session like if you want to use JWT or a database,
 how long until an idle session expires, or to throttle write operations in case you are using a database.
@@ -392,7 +426,9 @@ how long until an idle session expires, or to throttle write operations in case 
 
 ###### generateSessionToken?
 
-> **generateSessionToken**?: () => `string`
+```ts
+generateSessionToken?: () => string;
+```
 
 Generate a custom session token for database-based sessions.
 By default, a random UUID or string is generated depending on the Node.js version.
@@ -408,7 +444,9 @@ However, you can specify your own custom string (such as CUID) to be used.
 
 ###### maxAge?
 
-> **maxAge**?: `number`
+```ts
+maxAge?: number;
+```
 
 Relative time from now in seconds when to expire the session
 
@@ -420,7 +458,9 @@ Relative time from now in seconds when to expire the session
 
 ###### strategy?
 
-> **strategy**?: `"jwt"` \| `"database"`
+```ts
+strategy?: "jwt" | "database";
+```
 
 Choose how you want to save the user session.
 The default is `"jwt"`, an encrypted JWT (JWE) in the session cookie.
@@ -435,7 +475,9 @@ which is used to look up the session in the database.
 
 ###### updateAge?
 
-> **updateAge**?: `number`
+```ts
+updateAge?: number;
+```
 
 How often the session should be updated in seconds.
 If set to `0`, session is updated every time.
@@ -448,13 +490,17 @@ If set to `0`, session is updated every time.
 
 #### theme?
 
-> **theme**?: [`Theme`](types.md#theme)
+```ts
+theme?: Theme;
+```
 
 Changes the theme of built-in [AuthConfig.pages](module.index.md#pages).
 
 #### trustHost?
 
-> **trustHost**?: `boolean`
+```ts
+trustHost?: boolean;
+```
 
 Auth.js relies on the incoming request's `host` header to function correctly. For this reason this property needs to be set to `true`.
 
@@ -466,7 +512,9 @@ Official Auth.js-based libraries will attempt to set this value automatically fo
 
 #### useSecureCookies?
 
-> **useSecureCookies**?: `boolean`
+```ts
+useSecureCookies?: boolean;
+```
 
 When set to `true` then all cookies set by NextAuth.js will only be accessible from HTTPS URLs.
 This option defaults to `false` on URLs that start with `http://` (e.g. http://localhost:3000) for developer convenience.
@@ -483,7 +531,9 @@ The default is `false` HTTP and `true` for HTTPS sites.
 
 ## raw
 
-> **`const`** **raw**: *typeof* [`raw`](module.index.md#raw)
+```ts
+const raw: *typeof* raw;
+```
 
 :::danger
 This option is intended for framework authors.
@@ -497,7 +547,9 @@ by passing this value to [AuthConfig.raw]([object Object]).
 
 ## skipCSRFCheck
 
-> **`const`** **skipCSRFCheck**: *typeof* [`skipCSRFCheck`](module.index.md#skipcsrfcheck)
+```ts
+const skipCSRFCheck: *typeof* skipCSRFCheck;
+```
 
 :::danger
 This option is intended for framework authors.

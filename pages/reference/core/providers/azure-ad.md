@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+```ts
+default<P>(options): OAuthConfig<P>
+```
 
 Add AzureAd login to your page.
 
@@ -43,7 +45,15 @@ const response = await Auth(request, {
 ### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & \{
-  `profilePhotoSize`: `64` \| `48` \| `96` \| `120` \| `240` \| `360` \| `432` \| `504` \| `648`;
+  `profilePhotoSize`:   \| `64`
+     \| `48`
+     \| `96`
+     \| `120`
+     \| `240`
+     \| `360`
+     \| `432`
+     \| `504`
+     \| `648`;
   `tenantId`: `string`;
   }
 

@@ -11,7 +11,9 @@
 
 ## default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+```ts
+default(config): OIDCConfig<AsgardeoProfile>
+```
 
 ### Setup
 
@@ -103,24 +105,32 @@ The returned user profile from Asgardeo when using the profile callback.
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 The user email
 
 #### given\_name
 
-> **given\_name**: `string`
+```ts
+given_name: string;
+```
 
 The user name
 
 #### picture
 
-> **picture**: `string`
+```ts
+picture: string;
+```
 
 The user profile picture
 
 #### sub
 
-> **sub**: `string`
+```ts
+sub: string;
+```
 
 The user Asgardeo account ID

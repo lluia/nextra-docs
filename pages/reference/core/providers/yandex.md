@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`options`): `OAuthConfig`\<[`YandexProfile`](yandex.md#yandexprofile)\>
+```ts
+default(options): OAuthConfig<YandexProfile>
+```
 
 Add Yandex login to your page
 
@@ -69,32 +71,42 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### client\_id
 
-> **client\_id**: `string`
+```ts
+client_id: string;
+```
 
 The ID of the app the OAuth token in the request was issued for.
 Available in the [app properties](https://oauth.yandex.com/). To open properties, click the app name.
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 Yandex user's unique ID.
 
 #### login
 
-> **login**: `string`
+```ts
+login: string;
+```
 
 User's Yandex login.
 
 #### psuid
 
-> **psuid**: `string`
+```ts
+psuid: string;
+```
 
 Authorized Yandex user ID. It is formed on the Yandex side based on the `client_id` and `user_id` pair.
 
 #### birthday?
 
-> **birthday**?: `null` \| `string`
+```ts
+birthday?: null | string;
+```
 
 The user's date of birth in YYYY-MM-DD format.
 Unknown elements of the date are filled in with zeros, such as: `0000-12-23`.
@@ -102,7 +114,9 @@ If the user's date of birth is unknow, birthday will be `null`
 
 #### default\_avatar\_id?
 
-> **default\_avatar\_id**?: `string`
+```ts
+default_avatar_id?: string;
+```
 
 ID of the Yandex user's profile picture.
 Format for downloading user avatars: `https://avatars.yandex.net/get-yapic/<default_avatar_id>/<size>`
@@ -126,16 +140,20 @@ Available sizes:
 
 #### default\_email?
 
-> **default\_email**?: `string`
+```ts
+default_email?: string;
+```
 
 The default email address for contacting the user.
 
 #### default\_phone?
 
-> **default\_phone**?: \{
-  `id`: `number`;
-  `number`: `string`;
-  }
+```ts
+default_phone?: {
+  id: number;
+  number: string;
+};
+```
 
 The default phone number for contacting the user.
 The API can exclude the user's phone number from the response at its discretion.
@@ -147,34 +165,46 @@ number: The user's phone number.
 
 ###### id
 
-> **id**: `number`
+```ts
+id: number;
+```
 
 ###### number
 
-> **number**: `string`
+```ts
+number: string;
+```
 
 #### emails?
 
-> **emails**?: `string`[]
+```ts
+emails?: string[];
+```
 
 An array of the user's email addresses. Currently only includes the default email address.
 
 #### is\_avatar\_empty?
 
-> **is\_avatar\_empty**?: `boolean`
+```ts
+is_avatar_empty?: boolean;
+```
 
 Indicates that the stub (profile picture that is automatically assigned when registering in Yandex)
 ID is specified in the `default_avatar_id` field.
 
 #### real\_name?
 
-> **real\_name**?: `string`
+```ts
+real_name?: string;
+```
 
 The first and last name that the user specified in Yandex ID.
 Non-Latin characters of the first and last names are presented in Unicode format.
 
 #### sex?
 
-> **sex**?: `null` \| `"female"` \| `"male"`
+```ts
+sex?: null | "female" | "male";
+```
 
 User's gender. `null` Stands for unknown or unspecified gender. Will be `undefined` if not provided by Yandex.

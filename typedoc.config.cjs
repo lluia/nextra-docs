@@ -11,14 +11,14 @@ const providers = fs
   .filter((file) => file.endsWith(".ts") && !file.startsWith("oauth"))
   .map((p) => `${coreSrc}/providers/${p}`);
 
-/** @type {import('typedoc').TypeDocOptions & import('typedoc-plugin-markdown').PluginOptions} */
+/** @type {import('typedoc-plugin-markdown').PluginOptions} */
 module.exports = {
-  outputFileStrategy: "modules",
   cleanOutputDir: true,
   disableSources: true,
   entryPoints: ["index.ts", "adapters.ts", "errors.ts", "jwt.ts", "types.ts"]
     .map((e) => `${coreSrc}/${e}`)
     .concat(providers),
+  entryModule: `${core}/src/index.ts`,
   entryPointStrategy: "expand",
   excludeExternals: true,
   excludeGroups: true,
@@ -64,5 +64,7 @@ module.exports = {
   readme: "none",
   sort: ["kind", "static-first", "required-first", "alphabetical"],
   tsconfig: `${core}/tsconfig.json`,
+  useCodeBlocks: true,
   out: "pages/reference/core",
+  outputFileStrategy: "modules",
 };

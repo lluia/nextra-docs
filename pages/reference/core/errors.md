@@ -24,7 +24,9 @@ If `debug: true` is set, you can check out `[auth][debug]` in the logs to learn 
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -48,7 +50,9 @@ via the [`logger.error`](https://authjs.dev/reference/core#logger) option.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -67,7 +71,9 @@ or if it returns `false`.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -127,7 +133,9 @@ It will show the original stack trace.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -150,7 +158,9 @@ We don't recommend providing information about which part of the credentials wer
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -179,7 +189,9 @@ Possible causes are:
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -206,7 +218,9 @@ Learn more at [Guide: Error pages](https://authjs.dev/guides/basics/pages)
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -233,7 +247,9 @@ Learn more at [`events`](https://authjs.dev/reference/core/types#eventcallbacks)
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -262,7 +278,9 @@ There is no action required, but it might be an indicator that somebody is tryin
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -287,7 +305,9 @@ Learn more at [`checks`](https://authjs.dev/reference/core/providers#checks)
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -312,7 +332,9 @@ Learn more at [`OAuth2Config`](https://authjs.dev/reference/core/providers#oauth
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -334,7 +356,9 @@ Thrown when the callback endpoint was incorrectly called without a provider.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -364,7 +388,9 @@ Learn more at [`secret`](https://authjs.dev/reference/core#secret), [`jwt.encode
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -390,7 +416,9 @@ Learn more at [Database Adapters](https://authjs.dev/getting-started/adapters), 
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -416,7 +444,9 @@ Learn more at [Database Adapters](https://authjs.dev/reference/core/adapters)
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -441,7 +471,9 @@ Learn more at [Credentials provider](https://authjs.dev/reference/core/providers
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -470,7 +502,9 @@ and request parameter. More on this at [MDN Web Docs](https://developer.mozilla.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -501,7 +535,9 @@ To generate a random string, you can use the Auth.js CLI: `npx auth secret`
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -532,7 +568,9 @@ in the provider configuration.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -557,7 +595,9 @@ For a full list of possible reasons, check out the specification [Authorization 
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -581,7 +621,9 @@ changed, or the [`OAuth2Config.profile`](https://authjs.dev/reference/core/provi
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -617,7 +659,9 @@ Check out `[auth][details]` in the logs to know which provider failed.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -643,7 +687,9 @@ Learn more at [Concept: Database session strategy](https://authjs.dev/concepts/s
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -671,7 +717,9 @@ The session cookie(s) are emptied even if this error is logged.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -695,7 +743,9 @@ See [`AuthAction`](https://authjs.dev/reference/core/types#authaction) for the s
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -719,7 +769,9 @@ Learn more at [`strategy`](https://authjs.dev/reference/core#strategy) or [Crede
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -749,7 +801,9 @@ Learn more at [`trustHost`](https://authjs.dev/reference/core#trusthost) or [Gui
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 
@@ -773,7 +827,9 @@ or because the token has expired. Ask the user to log in again.
 
 #### type
 
-> **type**: `ErrorType`
+```ts
+type: ErrorType;
+```
 
 The error type. Used to identify the error in the logs.
 

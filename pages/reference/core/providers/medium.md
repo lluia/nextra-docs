@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<`Record`\<`string`, `any`\>\>
+```ts
+default(config): OAuthConfig<Record<string, any>>
+```
 
 Add Medium login to your page.
 

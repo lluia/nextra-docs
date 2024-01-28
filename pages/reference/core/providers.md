@@ -2,7 +2,9 @@
 
 ## Provider\<P\>
 
-> **Provider**\<`P`\>: [`OIDCConfig`](providers.md#oidcconfigprofile)\<`P`\> \| [`OAuth2Config`](providers.md#oauth2configprofile)\<`P`\> \| `EmailConfig` \| [`CredentialsConfig`](providers/credentials.md#credentialsconfigcredentialsinputs) & `InternalProviderOptions` \| (...`args`) => [`OAuth2Config`](providers.md#oauth2configprofile)\<`P`\> \| [`OIDCConfig`](providers.md#oidcconfigprofile)\<`P`\> \| `EmailConfig` \| [`CredentialsConfig`](providers/credentials.md#credentialsconfigcredentialsinputs) & `InternalProviderOptions` & `InternalProviderOptions`
+```ts
+type Provider<P>: OIDCConfig<P> | OAuth2Config<P> | EmailConfig | CredentialsConfig & InternalProviderOptions | (...args) => OAuth2Config<P> | OIDCConfig<P> | EmailConfig | CredentialsConfig & InternalProviderOptions & InternalProviderOptions;
+```
 
 Must be a supported authentication provider config:
 - [OAuthConfig]([object Object])
@@ -25,7 +27,9 @@ For more information, see the guides:
 
 ## ProviderType
 
-> **ProviderType**: `"oidc"` \| `"oauth"` \| `"email"` \| `"credentials"`
+```ts
+type ProviderType: "oidc" | "oauth" | "email" | "credentials";
+```
 
 Providers passed to Auth.js must define one of these types.
 
@@ -51,14 +55,18 @@ Shared across all [ProviderType](providers.md#providertype)
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 Uniquely identifies the provider in AuthConfig.providers
 It's also part of the URL
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The provider name used on the default sign-in page's sign-in button.
 For example if it's "Google", the corresponding button will say:
@@ -66,7 +74,9 @@ For example if it's "Google", the corresponding button will say:
 
 #### type
 
-> **type**: [`ProviderType`](providers.md#providertype)
+```ts
+type: ProviderType;
+```
 
 See [ProviderType](providers.md#providertype)
 
@@ -88,7 +98,9 @@ TODO: Document
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 Identifies the provider when you want to sign in to
 a specific provider.
@@ -105,7 +117,9 @@ signIn('github') // "github" is the provider ID
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The name of the provider. shown on the default sign in page.
 
@@ -115,7 +129,9 @@ The name of the provider. shown on the default sign in page.
 
 #### account?
 
-> **account**?: `AccountCallback`
+```ts
+account?: AccountCallback;
+```
 
 Receives the full [TokenSet](types.md#tokenset) returned by the OAuth provider, and returns a subset.
 It is used to create the account associated with a user in the database.
@@ -155,7 +171,9 @@ GitHub({
 
 #### allowDangerousEmailAccountLinking?
 
-> **allowDangerousEmailAccountLinking**?: `boolean`
+```ts
+allowDangerousEmailAccountLinking?: boolean;
+```
 
 Normally, when you sign in with an OAuth provider and another account
 with the same email address already exists,
@@ -171,7 +189,9 @@ to enable automatic account linking.
 
 #### authorization?
 
-> **authorization**?: `string` \| `AuthorizationEndpointHandler`
+```ts
+authorization?: string | AuthorizationEndpointHandler;
+```
 
 The login process will be initiated by sending the user to this URL.
 
@@ -179,7 +199,9 @@ The login process will be initiated by sending the user to this URL.
 
 #### checks?
 
-> **checks**?: (`"none"` \| `"state"` \| `"pkce"`)[]
+```ts
+checks?: ("none" | "state" | "pkce")[];
+```
 
 The CSRF protection performed on the callback endpoint.
 
@@ -200,14 +222,18 @@ When `redirectProxyUrl` or [AuthConfig.redirectProxyUrl](module.index.md#redirec
 
 #### client?
 
-> **client**?: `Partial`\<`Client`\>
+```ts
+client?: Partial<Client>;
+```
 
 Pass overrides to the underlying OAuth library.
 See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs/interfaces/Client.md) for details.
 
 #### profile?
 
-> **profile**?: `ProfileCallback`\<`Profile`\>
+```ts
+profile?: ProfileCallback<Profile>;
+```
 
 Receives the full [Profile](providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
@@ -220,7 +246,9 @@ Defaults to: `id`, `email`, `name`, `image`
 
 #### wellKnown?
 
-> **wellKnown**?: `string`
+```ts
+wellKnown?: string;
+```
 
 OpenID Connect (OIDC) compliant providers can configure
 this instead of `authorize`/`token`/`userinfo` options
@@ -252,7 +280,9 @@ https://openid.net/specs/openid-connect-core-1_0.html
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 Identifies the provider when you want to sign in to
 a specific provider.
@@ -269,7 +299,9 @@ signIn('github') // "github" is the provider ID
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The name of the provider. shown on the default sign in page.
 
@@ -279,7 +311,9 @@ The name of the provider. shown on the default sign in page.
 
 #### account?
 
-> **account**?: `AccountCallback`
+```ts
+account?: AccountCallback;
+```
 
 Receives the full [TokenSet](types.md#tokenset) returned by the OAuth provider, and returns a subset.
 It is used to create the account associated with a user in the database.
@@ -323,7 +357,9 @@ GitHub({
 
 #### allowDangerousEmailAccountLinking?
 
-> **allowDangerousEmailAccountLinking**?: `boolean`
+```ts
+allowDangerousEmailAccountLinking?: boolean;
+```
 
 Normally, when you sign in with an OAuth provider and another account
 with the same email address already exists,
@@ -343,7 +379,9 @@ to enable automatic account linking.
 
 #### authorization?
 
-> **authorization**?: `string` \| `AuthorizationEndpointHandler`
+```ts
+authorization?: string | AuthorizationEndpointHandler;
+```
 
 The login process will be initiated by sending the user to this URL.
 
@@ -355,7 +393,9 @@ The login process will be initiated by sending the user to this URL.
 
 #### client?
 
-> **client**?: `Partial`\<`Client`\>
+```ts
+client?: Partial<Client>;
+```
 
 Pass overrides to the underlying OAuth library.
 See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs/interfaces/Client.md) for details.
@@ -366,7 +406,9 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 
 #### profile?
 
-> **profile**?: `ProfileCallback`\<`Profile`\>
+```ts
+profile?: ProfileCallback<Profile>;
+```
 
 Receives the full [Profile](providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
@@ -383,7 +425,9 @@ Defaults to: `id`, `email`, `name`, `image`
 
 #### wellKnown?
 
-> **wellKnown**?: `string`
+```ts
+wellKnown?: string;
+```
 
 OpenID Connect (OIDC) compliant providers can configure
 this instead of `authorize`/`token`/`userinfo` options

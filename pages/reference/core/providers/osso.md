@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<`Record`\<`string`, `any`\>\>
+```ts
+default(config): OAuthConfig<Record<string, any>>
+```
 
 Add Osso login to your page.
 

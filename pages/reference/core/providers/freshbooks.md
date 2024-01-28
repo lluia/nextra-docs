@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`options`): `OAuthConfig`\<`Record`\<`string`, `any`\>\>
+```ts
+default(options): OAuthConfig<Record<string, any>>
+```
 
 Add FreshBooks login to your page.
 

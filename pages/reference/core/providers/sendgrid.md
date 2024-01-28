@@ -2,7 +2,9 @@
 
 ## default()
 
-> **default**(`config`): `EmailConfig`
+```ts
+default(config): EmailConfig
+```
 
 ### Parameters
 

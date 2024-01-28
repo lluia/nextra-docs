@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`config`): `OAuthConfig`\<`P`\>
+```ts
+default<P>(config): OAuthConfig<P>
+```
 
 Add Mattermost login to your page.
 
@@ -89,30 +91,40 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### create\_at
 
-> **create\_at**: `number`
+```ts
+create_at: number;
+```
 
 The time in milliseconds a user was created
 
 #### delete\_at
 
-> **delete\_at**: `number`
+```ts
+delete_at: number;
+```
 
 The time in milliseconds a user was deleted
 
 #### update\_at
 
-> **update\_at**: `number`
+```ts
+update_at: number;
+```
 
 The time in milliseconds a user was last updated
 
 #### terms\_of\_service\_create\_at?
 
-> **terms\_of\_service\_create\_at**?: `number`
+```ts
+terms_of_service_create_at?: number;
+```
 
 The time in milliseconds the user accepted the terms of service
 
 #### terms\_of\_service\_id?
 
-> **terms\_of\_service\_id**?: `string`
+```ts
+terms_of_service_id?: string;
+```
 
 ID of accepted terms of service, if any. This field is not present if empty.

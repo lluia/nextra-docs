@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`AzureADB2CProfile`](azure-ad-b2c.md#azureadb2cprofile)\>
+```ts
+default(options): OIDCConfig<AzureADB2CProfile>
+```
 
 Add Azure AD B2C login to your page.
 

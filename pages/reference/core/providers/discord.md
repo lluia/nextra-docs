@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`options`): `OAuthConfig`\<`P`\>
+```ts
+default<P>(options): OAuthConfig<P>
+```
 
 Add Discord login to your page.
 
@@ -85,129 +87,169 @@ https://discord.com/developers/docs/resources/user#user-object-user-structure
 
 #### accent\_color
 
-> **accent\_color**: `null` \| `number`
+```ts
+accent_color: null | number;
+```
 
 the user's banner color encoded as an integer representation of hexadecimal color code
 
 #### avatar
 
-> **avatar**: `null` \| `string`
+```ts
+avatar: null | string;
+```
 
 the user's avatar hash:
 https://discord.com/developers/docs/reference#image-formatting
 
 #### avatar\_decoration
 
-> **avatar\_decoration**: `null` \| `string`
+```ts
+avatar_decoration: null | string;
+```
 
 undocumented field; corresponds to the Discord feature where you can e.g.
 put your avatar inside of an ice cube
 
 #### banner
 
-> **banner**: `null` \| `string`
+```ts
+banner: null | string;
+```
 
 the user's banner hash:
 https://discord.com/developers/docs/reference#image-formatting
 
 #### banner\_color
 
-> **banner\_color**: `null` \| `string`
+```ts
+banner_color: null | string;
+```
 
 undocumented field; corresponds to the premium feature where you can
 select a custom banner color
 
 #### discriminator
 
-> **discriminator**: `string`
+```ts
+discriminator: string;
+```
 
 the user's Discord-tag
 
 #### display\_name
 
-> **display\_name**: `null` \| `string`
+```ts
+display_name: null | string;
+```
 
 undocumented field; corresponds to the user's custom nickname
 
 #### email
 
-> **email**: `null` \| `string`
+```ts
+email: null | string;
+```
 
 the user's email
 
 #### flags
 
-> **flags**: `number`
+```ts
+flags: number;
+```
 
 the flags on a user's account:
 https://discord.com/developers/docs/resources/user#user-object-user-flags
 
 #### global\_name
 
-> **global\_name**: `null` \| `string`
+```ts
+global_name: null | string;
+```
 
 the user's display name, if it is set
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 the user's id (i.e. the numerical snowflake)
 
 #### image\_url
 
-> **image\_url**: `string`
+```ts
+image_url: string;
+```
 
 undocumented field; the CDN URL of their profile picture
 
 #### locale
 
-> **locale**: `string`
+```ts
+locale: string;
+```
 
 the user's chosen language option:
 https://discord.com/developers/docs/reference#locales
 
 #### mfa\_enabled
 
-> **mfa\_enabled**: `boolean`
+```ts
+mfa_enabled: boolean;
+```
 
 whether the user has two factor enabled on their account
 
 #### premium\_type
 
-> **premium\_type**: `number`
+```ts
+premium_type: number;
+```
 
 the type of Nitro subscription on a user's account:
 https://discord.com/developers/docs/resources/user#user-object-premium-types
 
 #### public\_flags
 
-> **public\_flags**: `number`
+```ts
+public_flags: number;
+```
 
 the public flags on a user's account:
 https://discord.com/developers/docs/resources/user#user-object-user-flags
 
 #### username
 
-> **username**: `string`
+```ts
+username: string;
+```
 
 the user's username, not unique across the platform
 
 #### verified
 
-> **verified**: `boolean`
+```ts
+verified: boolean;
+```
 
 whether the email on this account has been verified
 
 #### bot?
 
-> **bot**?: `boolean`
+```ts
+bot?: boolean;
+```
 
 whether the user belongs to an OAuth2 application
 
 #### system?
 
-> **system**?: `boolean`
+```ts
+system?: boolean;
+```
 
 whether the user is an Official Discord System user (part of the urgent
 message system)

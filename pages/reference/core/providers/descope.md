@@ -11,7 +11,9 @@
 
 ## default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<[`DescopeProfile`](descope.md#descopeprofile)\>
+```ts
+default(config): OIDCConfig<DescopeProfile>
+```
 
 ### Setup
 
@@ -97,42 +99,56 @@ The returned user profile from Descope when using the profile callback.
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 The user's email
 
 #### email\_verified
 
-> **email\_verified**: `boolean`
+```ts
+email_verified: boolean;
+```
 
 A boolean indicating if the user's email is verified
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The user's name
 
 #### phone\_number
 
-> **phone\_number**: `string`
+```ts
+phone_number: string;
+```
 
 The user's phone number
 
 #### phone\_number\_verified
 
-> **phone\_number\_verified**: `boolean`
+```ts
+phone_number_verified: boolean;
+```
 
 A boolean indicating if the user's phone number is verified
 
 #### picture
 
-> **picture**: `string`
+```ts
+picture: string;
+```
 
 The user's picture
 
 #### sub
 
-> **sub**: `string`
+```ts
+sub: string;
+```
 
 The user's unique Descope ID

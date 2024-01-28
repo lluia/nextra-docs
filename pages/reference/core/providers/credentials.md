@@ -2,7 +2,9 @@
 
 ## default()
 
-> **default**\<`CredentialsInputs`\>(`config`): [`CredentialsConfig`](credentials.md#credentialsconfigcredentialsinputs)
+```ts
+default<CredentialsInputs>(config): CredentialsConfig
+```
 
 The Credentials provider allows you to handle signing in with arbitrary credentials,
 such as a username and password, domain, or two factor authentication or hardware device (e.g. YubiKey U2F / FIDO).
@@ -113,7 +115,9 @@ The Credentials Provider needs to be configured.
 
 #### authorize
 
-> **authorize**: (`credentials`, `request`) => `Awaitable`\<`null` \| [`User`](../types.md#user)\>
+```ts
+authorize: (credentials, request) => Awaitable<null | User>;
+```
 
 Gives full control over how you handle the credentials received from the user.
 
@@ -158,7 +162,9 @@ async authorize(credentials, request) {
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 Uniquely identifies the provider in AuthConfig.providers
 It's also part of the URL
@@ -169,7 +175,9 @@ It's also part of the URL
 
 #### name
 
-> **name**: `string`
+```ts
+name: string;
+```
 
 The provider name used on the default sign-in page's sign-in button.
 For example if it's "Google", the corresponding button will say:

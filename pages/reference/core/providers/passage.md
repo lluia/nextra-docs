@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<[`PassageProfile`](passage.md#passageprofile)\>
+```ts
+default(config): OAuthConfig<PassageProfile>
+```
 
 Add Passage login to your page.
 
@@ -77,30 +79,40 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 The user's email address
 
 #### email\_verified
 
-> **email\_verified**: `boolean`
+```ts
+email_verified: boolean;
+```
 
 Whether the user has verified their email address
 
 #### phone
 
-> **phone**: `string`
+```ts
+phone: string;
+```
 
 The user's phone number
 
 #### phone\_number\_verified
 
-> **phone\_number\_verified**: `boolean`
+```ts
+phone_number_verified: boolean;
+```
 
 Whether the user has verified their phone number
 
 #### sub
 
-> **sub**: `string`
+```ts
+sub: string;
+```
 
 Unique identifer in Passage for the user

@@ -182,7 +182,9 @@ an error will be shown to the user and the operation will fail.
 
 #### createSession()?
 
-> **`optional`** **createSession**(`session`): `Awaitable`\<[`AdapterSession`](adapters.md#adaptersession)\>
+```ts
+optional createSession(session): Awaitable<AdapterSession>
+```
 
 Creates a session for the user and returns it.
 
@@ -208,7 +210,9 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 #### createUser()?
 
-> **`optional`** **createUser**(`user`): `Awaitable`\<[`AdapterUser`](adapters.md#adapteruser)\>
+```ts
+optional createUser(user): Awaitable<AdapterUser>
+```
 
 Creates a user in the database and returns it.
 
@@ -224,7 +228,9 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 #### createVerificationToken()?
 
-> **`optional`** **createVerificationToken**(`verificationToken`): `Awaitable`\<`undefined` \| `null` \| [`VerificationToken`](adapters.md#verificationtoken)\>
+```ts
+optional createVerificationToken(verificationToken): Awaitable<undefined | null | VerificationToken>
+```
 
 Creates a verification token and returns it.
 
@@ -240,7 +246,14 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 #### deleteSession()?
 
-> **`optional`** **deleteSession**(`sessionToken`): `undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+```ts
+optional deleteSession(sessionToken): 
+  | undefined
+  | null
+  | AdapterSession
+  | Promise<void>
+| PromiseLike<undefined | null | AdapterSession>
+```
 
 Deletes a session from the database. It is preferred that this method also
 returns the session that is being deleted for logging purposes.
@@ -253,11 +266,18 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+   \| `undefined`   \| `null`   \| [`AdapterSession`](adapters.md#adaptersession)   \| `Promise`\<`void`\>   \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
 
 #### deleteUser()?
 
-> **`optional`** **deleteUser**(`userId`): `undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+```ts
+optional deleteUser(userId): 
+  | undefined
+  | null
+  | AdapterUser
+  | Promise<void>
+| PromiseLike<undefined | null | AdapterUser>
+```
 
 ##### Parameters
 
@@ -265,7 +285,7 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+   \| `undefined`   \| `null`   \| [`AdapterUser`](adapters.md#adapteruser)   \| `Promise`\<`void`\>   \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
 
 ##### Todo
 
@@ -275,10 +295,12 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 #### getSessionAndUser()?
 
-> **`optional`** **getSessionAndUser**(`sessionToken`): `Awaitable`\<`null` \| \{
-  `session`: [`AdapterSession`](adapters.md#adaptersession);
-  `user`: [`AdapterUser`](adapters.md#adapteruser);
-  }\>
+```ts
+optional getSessionAndUser(sessionToken): Awaitable<null | {
+  session: AdapterSession;
+  user: AdapterUser;
+}>
+```
 
 Returns a session and a userfrom the database in one go.
 
@@ -298,7 +320,9 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 #### getUser()?
 
-> **`optional`** **getUser**(`id`): `Awaitable`\<`null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+```ts
+optional getUser(id): Awaitable<null | AdapterUser>
+```
 
 Returns a user from the database via the user id.
 
@@ -314,7 +338,9 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 #### getUserByAccount()?
 
-> **`optional`** **getUserByAccount**(`providerAccountId`): `Awaitable`\<`null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+```ts
+optional getUserByAccount(providerAccountId): Awaitable<null | AdapterUser>
+```
 
 Using the provider id and the id of the user for a specific account, get the user.
 
@@ -330,7 +356,9 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 #### getUserByEmail()?
 
-> **`optional`** **getUserByEmail**(`email`): `Awaitable`\<`null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+```ts
+optional getUserByEmail(email): Awaitable<null | AdapterUser>
+```
 
 Returns a user from the database via the user's email address.
 
@@ -346,7 +374,14 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 #### linkAccount()?
 
-> **`optional`** **linkAccount**(`account`): `undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+```ts
+optional linkAccount(account): 
+  | undefined
+  | null
+  | AdapterAccount
+  | Promise<void>
+| PromiseLike<undefined | null | AdapterAccount>
+```
 
 This method is invoked internally (but optionally can be used for manual linking).
 It creates an [Account](https://authjs.dev/reference/core/adapters#models) in the database.
@@ -359,11 +394,13 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Returns
 
-`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+   \| `undefined`   \| `null`   \| [`AdapterAccount`](adapters.md#adapteraccount)   \| `Promise`\<`void`\>   \| `PromiseLike`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
 
 #### unlinkAccount()?
 
-> **`optional`** **unlinkAccount**(`providerAccountId`): `undefined` \| [`AdapterAccount`](adapters.md#adapteraccount) \| `Promise`\<`void`\> \| `PromiseLike`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+```ts
+optional unlinkAccount(providerAccountId): undefined | AdapterAccount | Promise<void> | PromiseLike<undefined | AdapterAccount>
+```
 
 ##### Parameters
 
@@ -379,7 +416,9 @@ This method is currently not invoked yet.
 
 #### updateSession()?
 
-> **`optional`** **updateSession**(`session`): `Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+```ts
+optional updateSession(session): Awaitable<undefined | null | AdapterSession>
+```
 
 Updates a session in the database and returns it.
 
@@ -395,7 +434,9 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 #### updateUser()?
 
-> **`optional`** **updateUser**(`user`): `Awaitable`\<[`AdapterUser`](adapters.md#adapteruser)\>
+```ts
+optional updateUser(user): Awaitable<AdapterUser>
+```
 
 Updates a user in the database and returns it.
 
@@ -411,7 +452,9 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 #### useVerificationToken()?
 
-> **`optional`** **useVerificationToken**(`params`): `Awaitable`\<`null` \| [`VerificationToken`](adapters.md#verificationtoken)\>
+```ts
+optional useVerificationToken(params): Awaitable<null | VerificationToken>
+```
 
 Return verification token from the database and deletes it
 so it can only be used once.
@@ -453,7 +496,9 @@ One user can have multiple accounts.
 
 #### provider
 
-> **provider**: `string`
+```ts
+provider: string;
+```
 
 Provider's id for this account. Eg.: "google"
 
@@ -463,7 +508,9 @@ Provider's id for this account. Eg.: "google"
 
 #### providerAccountId
 
-> **providerAccountId**: `string`
+```ts
+providerAccountId: string;
+```
 
 This value depends on the type of the provider being used to create the account.
 - oauth/oidc: The OAuth account's id, returned from the `profile()` callback.
@@ -476,7 +523,9 @@ This value depends on the type of the provider being used to create the account.
 
 #### expires\_at?
 
-> **expires\_at**?: `number`
+```ts
+expires_at?: number;
+```
 
 Calculated value based on [OAuth2TokenEndpointResponse.expires_in]([object Object]).
 
@@ -503,7 +552,9 @@ A session holds information about a user's current signin state.
 
 #### expires
 
-> **expires**: `Date`
+```ts
+expires: Date;
+```
 
 The absolute date when the session expires.
 
@@ -516,7 +567,9 @@ it will be removed from the database to clean up inactive sessions.
 
 #### sessionToken
 
-> **sessionToken**: `string`
+```ts
+sessionToken: string;
+```
 
 A randomly generated value that is used to look up the session in the database
 when using `"database"` `AuthConfig.strategy` option.
@@ -524,7 +577,9 @@ This value is saved in a secure, HTTP-Only cookie on the client.
 
 #### userId
 
-> **userId**: `string`
+```ts
+userId: string;
+```
 
 Connects the active session to a user in the database
 
@@ -545,7 +600,9 @@ A corresponding account is also created and linked to the user.
 
 #### email
 
-> **email**: `string`
+```ts
+email: string;
+```
 
 The user's email address.
 
@@ -555,14 +612,18 @@ The user's email address.
 
 #### emailVerified
 
-> **emailVerified**: `null` \| `Date`
+```ts
+emailVerified: null | Date;
+```
 
 Whether the user has verified their email address via an [Email provider](https://authjs.dev/reference/core/providers/email).
 It is `null` if the user has not signed in with the Email provider yet, or the date of the first successful signin.
 
 #### id
 
-> **id**: `string`
+```ts
+id: string;
+```
 
 A unique identifier for the user.
 
@@ -585,18 +646,24 @@ The token is then deleted from the database.
 
 #### expires
 
-> **expires**: `Date`
+```ts
+expires: Date;
+```
 
 The absolute date when the token expires.
 
 #### identifier
 
-> **identifier**: `string`
+```ts
+identifier: string;
+```
 
 The user's email address.
 
 #### token
 
-> **token**: `string`
+```ts
+token: string;
+```
 
 A [hashed](https://authjs.dev/concepts/hashing) token, using the `AuthConfig.secret` value.

@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<[`ClickUpProfile`](click-up.md#clickupprofile)\>
+```ts
+default(config): OAuthConfig<ClickUpProfile>
+```
 
 Add ClickUp login to your page and make requests to [ClickUp APIs](https://clickup.com/api/).
 

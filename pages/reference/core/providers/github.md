@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): `OAuthConfig`\<[`GitHubProfile`](github.md#githubprofile)\>
+```ts
+default(config): OAuthConfig<GitHubProfile>
+```
 
 Add GitHub login to your page and make requests to [GitHub APIs](https://docs.github.com/en/rest).
 

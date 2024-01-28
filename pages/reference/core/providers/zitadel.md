@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**\<`P`\>(`options`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`P`\>
+```ts
+default<P>(options): OIDCConfig<P>
+```
 
 Add ZITADEL login to your page.
 

@@ -33,7 +33,9 @@ This module *will* be refactored/changed. We do not recommend relying on it righ
 
 ## decode()
 
-> **decode**\<`Payload`\>(`params`): `Promise`\<`Payload` \| `null`\>
+```ts
+decode<Payload>(params): Promise<Payload | null>
+```
 
 Decodes a Auth.js issued JWT.
 
@@ -53,7 +55,9 @@ Decodes a Auth.js issued JWT.
 
 ## encode()
 
-> **encode**\<`Payload`\>(`params`): `Promise`\<`string`\>
+```ts
+encode<Payload>(params): Promise<string>
+```
 
 Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 
@@ -73,7 +77,9 @@ Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 
 ## getToken()
 
-> **getToken**\<`R`\>(`params`): `Promise`\<`R` extends `true` ? `string` : [`JWT`](jwt.md#jwt) \| `null`\>
+```ts
+getToken<R>(params): Promise<R extends true ? string : JWT | null>
+```
 
 Takes an Auth.js request (`req`) and returns either the Auth.js issued JWT's payload,
 or the raw JWT string. We look for the JWT in the either the cookies, or the `Authorization` header.

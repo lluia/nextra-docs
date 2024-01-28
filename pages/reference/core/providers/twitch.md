@@ -9,7 +9,9 @@
 
 ## default()
 
-> **default**(`config`): [`OIDCConfig`](../providers.md#oidcconfigprofile)\<`TwitchProfile`\>
+```ts
+default(config): OIDCConfig<TwitchProfile>
+```
 
 Add Twitch login to your page.
 
