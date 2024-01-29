@@ -1,5 +1,4 @@
 import { Link } from "@/components/Link";
-import { Tooltip } from "@/components/Tooltip";
 import { Plus, ArrowSquareOut, GithubLogo, Flask } from "@phosphor-icons/react";
 
 export function DemoCards() {
