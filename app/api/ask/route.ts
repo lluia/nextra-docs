@@ -98,3 +98,5 @@ function assertQuery(value: unknown): asserts value is Query {
   if (typeof value.query !== "string")
     throw new TypeError("Query must be a string");
 }
+
+export const runtime = "edge";
