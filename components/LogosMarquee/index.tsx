@@ -10,7 +10,7 @@ export function LogosMarquee() {
       <Marquee
         direction="right"
         gradient={true}
-        gradientWidth={300}
+        gradientWidth={200}
         gradientColor="#171717"
         autoFill
       >
@@ -20,7 +20,7 @@ export function LogosMarquee() {
             <div
               key={key}
               style={{ width: logoSize, height: logoSize }}
-              className="flex p-3 select-none mr-4 bg-white dark:bg-gray-400 rounded-3xl shadow-lg shadow-neutral-950"
+              className="flex p-3 mr-4 bg-white rounded-3xl shadow-lg select-none dark:bg-gray-400 shadow-neutral-950"
             >
               <Img
                 className="drop-shadow-lg"
