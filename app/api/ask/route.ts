@@ -7,6 +7,9 @@ export async function POST(request: Request): Promise<Response | void> {
     const body: unknown = await request.json();
     assertBody(body);
 
+    // TODO: Retrieve answer
+    // and format for sending back to the CLI
+
     return new Response(body.query);
   } catch (error) {
     return new Response(error, { status: 500 });
