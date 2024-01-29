@@ -10,7 +10,7 @@ export default {
       layout: "raw",
     },
   },
-  "getting-started": {
+  docs: {
     title: "Docs",
     type: "page",
   },
