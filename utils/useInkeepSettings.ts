@@ -2,6 +2,7 @@ import type {
   InkeepAIChatSettings,
   InkeepWidgetBaseSettings,
   InkeepModalSettings,
+  AIChatDisclaimerSettings,
 } from "@inkeep/widgets";
 import { useTheme } from "nextra-theme-docs";
 
@@ -31,6 +32,13 @@ const useInkeepSettings = (): InkeepSharedSettings => {
     switchToChatMessage: "Switch to chat",
   };
 
+  const disclaimerSettings: AIChatDisclaimerSettings = {
+    isDisclaimerEnabled: true,
+    disclaimerLabel: "Usage policy",
+    disclaimerTooltip:
+      "Your data is <b>never used to train the underlying LLM models</b>. Information provided by this AI assistant is <b>not guaranteed to be accurate or comprehensive</b>. Please consult Auth.js's documentation and GitHub repository for <b>authoritative results</b>. More information about how this data is used can be found in InKeep's <a href='https://docs.inkeep.com/overview/privacy'>privacy page</a>.",
+  };
+
   const aiChatSettings: InkeepAIChatSettings = {
     botAvatarSrcUrl: "/img/etc/logo-sm.webp",
     quickQuestions: [
@@ -38,6 +46,7 @@ const useInkeepSettings = (): InkeepSharedSettings => {
       "How do I save extra fields from a provider's user profile response?",
       "How do I access the session object in SvelteKit?",
     ],
+    disclaimerSettings,
   };
 
   return { baseSettings, aiChatSettings, modalSettings };
