@@ -34,6 +34,9 @@ const config: DocsThemeConfig = {
       </div>
     ),
   },
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
+  },
   head: (
     <>
       <link
