@@ -26,4 +26,10 @@ export default {
     title: "Security",
     type: "page",
   },
+  contributors: {
+    type: "hidden",
+  },
+  sponsors: {
+    type: "hidden",
+  },
 };
