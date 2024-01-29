@@ -1,13 +1,12 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { InkeepCustomTrigger, InkeepCustomTriggerProps } from "@inkeep/widgets";
 import useInkeepSettings from "@/utils/useInkeepSettings";
 import { Sparkle } from "@phosphor-icons/react";
 
-export const InkeepTrigger: React.FC = () => {
+export function InkeepTrigger() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = useCallback(() => {
-    console.log("Modal closed");
     setIsOpen(false);
   }, []);
 
@@ -35,4 +34,4 @@ export const InkeepTrigger: React.FC = () => {
       <InkeepCustomTrigger {...inkeepCustomTriggerProps} />
     </div>
   );
-};
+}
