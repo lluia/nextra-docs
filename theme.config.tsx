@@ -43,7 +43,7 @@ const config: DocsThemeConfig = {
         <div className="relative">
           <Link
             className="p-2"
-            href="https://github.com/next-auth/nextauthjs"
+            href="https://github.com/nextauthjs/next-auth"
             target="_blank"
           >
             <svg

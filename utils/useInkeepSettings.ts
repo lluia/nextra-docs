@@ -28,6 +28,7 @@ const useInkeepSettings = (): InkeepSharedSettings => {
 
   const modalSettings: InkeepModalSettings = {
     defaultView: "AI_CHAT",
+    switchToChatMessage: "Switch to chat",
   };
 
   const aiChatSettings: InkeepAIChatSettings = {
