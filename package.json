@@ -24,6 +24,7 @@
   "homepage": "https://github.com/ubbe-xyz/nextra-docs#readme",
   "dependencies": {
     "@ark-ui/react": "^1.1.0",
+    "@inkeep/widgets": "^0.2.258",
     "@next/third-parties": "^14.1.0",
     "@phosphor-icons/react": "^2.0.15",
     "@radix-ui/react-tabs": "^1.0.4",
