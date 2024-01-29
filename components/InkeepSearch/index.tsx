@@ -10,15 +10,13 @@ export function InkeepTrigger() {
     setIsOpen(false);
   }, []);
 
-  const { baseSettings, aiChatSettings, searchSettings, modalSettings } =
-    useInkeepSettings();
+  const { baseSettings, aiChatSettings, modalSettings } = useInkeepSettings();
 
   const inkeepCustomTriggerProps: InkeepCustomTriggerProps = {
     isOpen,
     onClose: handleClose,
     baseSettings,
     aiChatSettings,
-    searchSettings,
     modalSettings,
   };
 

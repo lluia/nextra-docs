@@ -1,6 +1,5 @@
 import type {
   InkeepAIChatSettings,
-  InkeepSearchSettings,
   InkeepWidgetBaseSettings,
   InkeepModalSettings,
 } from "@inkeep/widgets";
@@ -9,7 +8,6 @@ import { useTheme } from "nextra-theme-docs";
 type InkeepSharedSettings = {
   baseSettings: InkeepWidgetBaseSettings;
   aiChatSettings: InkeepAIChatSettings;
-  searchSettings: InkeepSearchSettings;
   modalSettings: InkeepModalSettings;
 };
 
@@ -29,15 +27,10 @@ const useInkeepSettings = (): InkeepSharedSettings => {
   };
 
   const modalSettings: InkeepModalSettings = {
-    // optional settings
-  };
-
-  const searchSettings: InkeepSearchSettings = {
-    // optional settings
+    defaultView: "AI_CHAT",
   };
 
   const aiChatSettings: InkeepAIChatSettings = {
-    // optional settings
     botAvatarSrcUrl: "/img/etc/logo-sm.webp",
     quickQuestions: [
       "Example question 1?",
@@ -46,7 +39,7 @@ const useInkeepSettings = (): InkeepSharedSettings => {
     ],
   };
 
-  return { baseSettings, aiChatSettings, searchSettings, modalSettings };
+  return { baseSettings, aiChatSettings, modalSettings };
 };
 
 export default useInkeepSettings;
