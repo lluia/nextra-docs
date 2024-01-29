@@ -36,7 +36,7 @@ const useInkeepSettings = (): InkeepSharedSettings => {
     isDisclaimerEnabled: true,
     disclaimerLabel: "Usage policy",
     disclaimerTooltip:
-      "Your data is <b>never used to train the underlying LLM models</b>. Information provided by this AI assistant is <b>not guaranteed to be accurate or comprehensive</b>. Please consult Auth.js's documentation and GitHub repository for <b>authoritative results</b>. More information about how this data is used can be found in InKeep's <a href='https://docs.inkeep.com/overview/privacy'>privacy page</a>.",
+      "Your data is <b>never used to train the underlying LLM models</b>. Information provided by this AI assistant is <b>not guaranteed to be accurate or comprehensive</b>. Please consult Auth.js's documentation and GitHub repository for <b>authoritative results</b> if you are unsure. More information about how this data is used can be found in InKeep's <a href='https://docs.inkeep.com/overview/privacy'>privacy page</a>.",
   };
 
   const aiChatSettings: InkeepAIChatSettings = {
