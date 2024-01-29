@@ -34,9 +34,9 @@ const useInkeepSettings = (): InkeepSharedSettings => {
   const aiChatSettings: InkeepAIChatSettings = {
     botAvatarSrcUrl: "/img/etc/logo-sm.webp",
     quickQuestions: [
-      "Example question 1?",
-      "Example question 2?",
-      "Example question 3?",
+      "How do I migrate my Next.js app from v4 to v5?",
+      "How do I save extra fields from a provider's user profile response?",
+      "How do I access the session object in SvelteKit?",
     ],
   };
 
