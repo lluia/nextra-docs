@@ -17,7 +17,7 @@ export function Guides() {
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Highlighted Guides</h2>
             <Link
-              href="/guides"
+              href="/docs"
               className="flex gap-2 items-center text-[#289ef9]"
             >
               See all
@@ -25,7 +25,7 @@ export function Guides() {
             </Link>
           </div>
           <ul className="w-full list-none">
-            <Link href="/guides/configuring-oauth">
+            <Link href="/docs/configuring-oauth">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <ShieldStar size={32} />
@@ -41,7 +41,7 @@ export function Guides() {
                 </div>
               </li>
             </Link>
-            <Link href="/guides/deep-dive/oauth-github-setup">
+            <Link href="/docs/deep-dive/oauth-github-setup">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <GithubLogo size={32} />
