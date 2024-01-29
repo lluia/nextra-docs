@@ -1,4 +1,4 @@
-import {Callout} from "nextra/components"
+import { Callout } from "nextra/components";
 
 # Creating a database adapter
 
@@ -42,14 +42,21 @@ Auth.js differentiates between users and accounts. A user can have multiple acco
   ```
 </div>
 
-See also: [User](/getting-started/adapters#user) and [Account](/getting-started/adapters#account) models.
+See also: [User](/docs/adapters#user) and [Account](/docs/adapters#account) models.
 
 <Callout type="info">
-Although Auth.js doesn't require it, for basic display purposes, we recommend adding the following columns to the `User` table as well: `name`, `email`, `image`. You can configure the columns via the [`profile()` provider method](/reference/core/providers#profile). If you don't need to save these properties, create an empty `profile() {}` method.
+  Although Auth.js doesn't require it, for basic display purposes, we recommend
+  adding the following columns to the `User` table as well: `name`, `email`,
+  `image`. You can configure the columns via the [`profile()` provider
+  method](/reference/core/providers#profile). If you don't need to save these
+  properties, create an empty `profile() {}` method.
 </Callout>
 
 <Callout type="info">
-Although Auth.js doesn't require it, the `Account` table typically saves tokens retrieved from the provider. You can configure the columns via the [`account()` provider method](/reference/core/providers#account). If you don't need to save tokens, create an empty `account() {}` method.
+  Although Auth.js doesn't require it, the `Account` table typically saves
+  tokens retrieved from the provider. You can configure the columns via the
+  [`account()` provider method](/reference/core/providers#account). If you don't
+  need to save tokens, create an empty `account() {}` method.
 </Callout>
 
 ## Database session management
@@ -91,7 +98,7 @@ If you want to use database sessions, you will need to implement the following m
 
 To add database session management, you will need to expand your database tables/columns as follows:
 
-See also: [Session](/getting-started/adapters#session) models.
+See also: [Session](/docs/adapters#session) models.
 
 ## Verification tokens
 
@@ -127,12 +134,13 @@ When you want to support email/passwordless login, Auth.js uses a database to st
   ```
 </div>
 
-See also: [Verification Token](/getting-started/adapters#verification-token) models.
+See also: [Verification Token](/docs/adapters#verification-token) models.
 
 ## Official adapter guidelines
 
 <Callout type="info">
-When all of the below steps are done, you are ready to submit a PR to our [repository](https://github.com/nextauthjs/next-auth).
+  When all of the below steps are done, you are ready to submit a PR to our
+  [repository](https://github.com/nextauthjs/next-auth).
 </Callout>
 
 If you created an adapter and want us to distribute it as an official package, please make sure it meets the following requirements. Check out this [existing adapter](https://github.com/nextauthjs/next-auth/tree/main/packages/adapter-prisma) to learn about the package structure, required files, test setup, config, etc.
@@ -167,29 +175,29 @@ If you created an adapter and want us to distribute it as an official package, p
 ```ts
 // https://github.com/honeinc/is-iso-date/blob/8831e79b5b5ee615920dcb350a355ffc5cbf7aed/index.js#L5
 const isoDateRE =
-  /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/
+  /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/;
 
 const isDate = (val: any): val is ConstructorParameters<typeof Date>[0] =>
-  !!(val && isoDateRE.test(val) && !isNaN(Date.parse(val)))
+  !!(val && isoDateRE.test(val) && !isNaN(Date.parse(val)));
 
 export const format = {
   /** Takes an object that's coming from a database and converts it to plain JavaScript. */
   from<T>(object: Record<string, any> = {}): T {
-    const newObject: Record<string, unknown> = {}
+    const newObject: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(object))
-      if (isDate(value)) newObject[key] = new Date(value)
-      else newObject[key] = value
-    return newObject as T
+      if (isDate(value)) newObject[key] = new Date(value);
+      else newObject[key] = value;
+    return newObject as T;
   },
   /** Takes an object that's coming from Auth.js and prepares it to be written to the database. */
   to<T>(object: Record<string, any>): T {
-    const newObject: Record<string, unknown> = {}
+    const newObject: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(object))
-      if (value instanceof Date) newObject[key] = value.toISOString()
-      else newObject[key] = value
-    return newObject as T
+      if (value instanceof Date) newObject[key] = value.toISOString();
+      else newObject[key] = value;
+    return newObject as T;
   },
-}
+};
 ```
 
 ## Useful resources

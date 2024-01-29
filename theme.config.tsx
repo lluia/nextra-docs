@@ -59,10 +59,7 @@ const config: DocsThemeConfig = {
     content: (
       <>
         Migrating from NextAuth.js v4? Read{" "}
-        <a
-          style={{ textDecoration: "underline" }}
-          href="/getting-started/migrating-to-v5"
-        >
+        <a style={{ textDecoration: "underline" }} href="/docs/migrating-to-v5">
           <b>our migration guide</b>
         </a>
         .
