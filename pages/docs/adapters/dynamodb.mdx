@@ -18,11 +18,12 @@ You can find the full schema in the table structure section below.
 You need to pass `DynamoDBDocument` client from the modular [`aws-sdk`](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/dynamodb-example-dynamodb-utilities.html) v3 to the adapter.
 The default table name is `next-auth`, but you can customise that by passing `{ tableName: 'your-table-name' }` as the second parameter in the adapter.
 
-```javascript filename="pages/api/auth/[...nextauth].js"
+```javascript filename="./auth.js"
+import NextAuth from "next-auth";
+import GitHub from "next-auth/providers/github";
+import Email from "next-auth/providers/nodemailer";
 import { DynamoDB, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
 import { DynamoDBAdapter } from "@auth/dynamodb-adapter";
 
 const config: DynamoDBClientConfig = {
@@ -41,7 +42,7 @@ const client = DynamoDBDocument.from(new DynamoDB(config), {
   },
 });
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // Configure one or more authentication providers
   providers: [
     Providers.GitHub({
@@ -76,7 +77,7 @@ The table respects the single table design pattern. This has many advantages:
 
 You can create this table with infrastructure as code using [`aws-cdk`](https://github.com/aws/aws-cdk) with the following table definition:
 
-```javascript filename=stack.ts
+```js filename="stack.js"
 new dynamodb.Table(this, `NextAuthTable`, {
   tableName: "next-auth",
   partitionKey: { name: "pk", type: dynamodb.AttributeType.STRING },
@@ -91,7 +92,7 @@ new dynamodb.Table(this, `NextAuthTable`, {
 
 Alternatively, you can use this cloudformation template:
 
-```yaml filename=cloudformation.yaml
+```yaml filename="cloudformation.yaml"
 NextAuthTable:
   Type: "AWS::DynamoDB::Table"
   Properties:
@@ -128,7 +129,7 @@ NextAuthTable:
 
 You can configure your custom table schema by passing the `options` key to the adapter constructor:
 
-```javascript
+```js filename="./auth.js"
 const adapter = DynamoDBAdapter(client, {
   tableName: "custom-table-name",
   partitionKey: "custom-pk",

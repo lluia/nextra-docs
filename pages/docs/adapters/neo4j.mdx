@@ -10,9 +10,10 @@ npm install @auth/neo4j-adapter neo4j-driver
 
 ## Setup
 
-Add this adapter to your `pages/api/[...nextauth].js` Auth.js configuration object.
+Add this adapter to your `./auth.js` Auth.js configuration object.
 
-```javascript filename="pages/api/auth/[...nextauth].js"
+```js filename="auth.js"
+import NextAuth from "next-auth";
 import neo4j from "neo4j-driver";
 import { Neo4jAdapter } from "@auth/neo4j-adapter";
 
@@ -25,18 +26,16 @@ const neo4jSession = driver.session();
 
 // For more information on each option (and a full list of options) go to
 // https://authjs.dev/reference/configuration/auth-options
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // https://authjs.dev/reference/core/providers
   providers: [],
   adapter: Neo4jAdapter(neo4jSession),
 });
 ```
 
-## Advanced usage
+## Schema
 
-### Schema
-
-#### Node labels
+### Node labels
 
 The following node labels are used.
 
@@ -45,18 +44,18 @@ The following node labels are used.
 - Session
 - VerificationToken
 
-#### Relationships
+### Relationships
 
 The following relationships and relationship labels are used.
 
-- (:User)-[:HAS_ACCOUNT]->(:Account)
-- (:User)-[:HAS_SESSION]->(:Session)
+- `(:User)-[:HAS_ACCOUNT]->(:Account)`
+- `(:User)-[:HAS_SESSION]->(:Session)`
 
-#### Properties
+### Properties
 
 This schema is adapted for use in Neo4J and is based upon our main [models](https://authjs.dev/reference/core/adapters#models). Please check there for the node properties. Relationships have no properties.
 
-#### Indexes
+### Indexes
 
 Optimum indexes will vary on your edition of Neo4j i.e. community or enterprise, and in case you have your own additional data on the nodes. Below are basic suggested indexes.
 

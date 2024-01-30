@@ -13,20 +13,20 @@ npm install prisma --save-dev
 
 ## Setup
 
-Add this adapter to your `pages/api/auth/[...nextauth].js` next-auth configuration object:
+Add this adapter to your `auth.js` next-auth configuration file.
 
-```js filename="pages/api/auth/[...nextauth].js"
+```js filename="./auth.js"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
@@ -34,11 +34,12 @@ export default NextAuth({
 });
 ```
 
-### Create the Prisma schema from scratch
+### Schema
 
 You need to use at least Prisma 2.26.0. Create a schema file in `prisma/schema.prisma` similar to this one:
 
-> This schema is adapted for use in Prisma and based upon our main [schema](https://authjs.dev/reference/core/adapters#models)
+> This schema is adapted for use in Prisma and based upon our main
+> [schema](https://authjs.dev/docs/database)
 
 ```json filename="schema.prisma"
 datasource db {
@@ -106,7 +107,7 @@ model VerificationToken {
   using the `Text` type with `@db.Text`.
 </Callout>
 
-### Create the Prisma schema with `prisma migrate`
+### Apply Schema
 
 This will create an SQL migration file and execute it:
 
@@ -118,7 +119,7 @@ Note that you will need to specify your database connection string in the enviro
 
 To learn more about [Prisma Migrate](https://www.prisma.io/migrate), check out the [Migrate docs](https://www.prisma.io/docs/concepts/components/prisma-migrate).
 
-### Generating the Prisma Client
+### Generate Prisma Client
 
 Once you have saved your schema, use the Prisma CLI to generate the Prisma Client:
 
@@ -126,7 +127,9 @@ Once you have saved your schema, use the Prisma CLI to generate the Prisma Clien
 npx prisma generate
 ```
 
-To configure your database to use the new schema (i.e. create tables and columns) use the `prisma migrate` command:
+When you're working on your application and making changes to your database schema, you'll need to
+run the migrate command again every time in order to (1) generate a migration file and (2)
+regenerate the Prisma client in your project with the latest types.
 
 ```
 npx prisma migrate dev

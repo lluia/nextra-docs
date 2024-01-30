@@ -19,9 +19,9 @@ npm install next-auth @auth/sequelize-adapter sequelize
 
 ### Configuring Auth.js
 
-Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.
+Add this adapter to your `./auth.js` Auth.js configuration file.
 
-```javascript filename="pages/api/auth/[...nextauth].js"
+```js filename="./auth.js"
 import NextAuth from "next-auth";
 import SequelizeAdapter from "@auth/sequelize-adapter";
 import { Sequelize } from "sequelize";
@@ -31,20 +31,21 @@ const sequelize = new Sequelize("yourconnectionstring");
 
 // For more information on each option (and a full list of options) go to
 // https://authjs.dev/reference/core#authconfig
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // https://authjs.dev/reference/providers/
   providers: [],
   adapter: SequelizeAdapter(sequelize),
 });
 ```
 
-### Updating the database schema
+### Schema
 
 By default, the sequelize adapter will not create tables in your database. In production, best practice is to create the [required tables](https://authjs.dev/reference/core/adapters/models) in your database via [migrations](https://sequelize.org/master/manual/migrations.html). In development, you are able to call [`sequelize.sync()`](https://sequelize.org/master/manual/model-basics.html#model-synchronization) to have sequelize create the necessary tables, foreign keys and indexes:
 
-> This schema is adapted for use in Sequelize and based upon our main [schema](https://authjs.dev/reference/core/adapters#models)
+> This schema is adapted for use in Sequelize and based upon our main
+> [schema](https://authjs.dev/docs/database)
 
-```ts
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import SequelizeAdapter from "@auth/sequelize-adapter";
 import Sequelize from "sequelize";
@@ -55,7 +56,7 @@ const adapter = SequelizeAdapter(sequelize);
 // Calling sync() is not recommended in production
 sequelize.sync();
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter,
 });
 ```
@@ -66,14 +67,14 @@ export default NextAuth({
 
 Sequelize models are option to customization like so:
 
-```ts
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import SequelizeAdapter, { models } from "@auth/sequelize-adapter";
 import Sequelize, { DataTypes } from "sequelize";
 
 const sequelize = new Sequelize("sqlite::memory:");
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // https://authjs.dev/reference/providers/
   providers: [],
   adapter: SequelizeAdapter(sequelize, {

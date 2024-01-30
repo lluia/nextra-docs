@@ -46,22 +46,20 @@ This process will spin up an EdgeDB instance and [“link”](https://www.edgedb
 
 ## Setup
 
-### NextAuth.js configuration
+### Configuration
 
-Configure your NextAuth.js to use the EdgeDB Adapter:
-
-```javascript filename="pages/api/auth/[...nextauth].js"
+```js filename="./auth.js"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import { EdgeDBAdapter } from "@auth/edgedb-adapter";
 import { createClient } from "edgedb";
 
 const client = createClient();
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: EdgeDBAdapter(client),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
@@ -69,7 +67,7 @@ export default NextAuth({
 });
 ```
 
-### Create the EdgeDB schema
+### Schema
 
 Replace the contents of the auto-generated file in `dbschema/default.esdl` with the following:
 
@@ -149,7 +147,7 @@ module default {
 using future nonrecursive_access_policies;
 ```
 
-### Migrate the database schema
+### Migration
 
 Create a migration
 
@@ -165,7 +163,7 @@ edgedb migrate
 
 To learn more about [EdgeDB migrations](https://www.edgedb.com/docs/intro/migrations#generate-a-migration), check out the [Migrations docs](https://www.edgedb.com/docs/intro/migrations).
 
-### Generate the query builder
+### Generate
 
 ```npm2yarn
 npx @edgedb/generate edgeql-js
@@ -222,19 +220,19 @@ EDGEDB_DSN=edgedb://johndoe:supersecure@myhost.com:420
 
 ### Update the client
 
-```diff filename="pages/api/auth/[...nextauth].js"
+```diff filename="./auth.js"
 import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
+import Google from "next-auth/providers/google"
 import { EdgeDBAdapter } from "@auth/edgedb-adapter"
 import { createClient } from "edgedb"
 
 - const client = createClient()
 + const client = createClient({ dsn: process.env.EDGEDB_DSN })
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: EdgeDBAdapter(client),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),

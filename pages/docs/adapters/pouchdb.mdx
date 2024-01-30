@@ -23,11 +23,11 @@ npm install pouchdb pouchdb-find @auth/pouchdb-adapter
   internally by the adapter to build and manage indexes
 </Callout>
 
-Add this adapter to your `pages/api/auth/[...nextauth].js` next-auth configuration object:
+Add this adapter to your `auth.js` next-auth configuration file.
 
-```javascript filename="pages/api/auth/[...nextauth].js"
+```js filename="./auth.js"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import { PouchDBAdapter } from "@auth/pouchdb-adapter";
 import PouchDB from "pouchdb";
 
@@ -39,10 +39,10 @@ const pouchdb = new PouchDB("auth_db", { adapter: "leveldb" });
 
 // For more information on each option (and a full list of options) go to
 // https://authjs.dev/reference/configuration/auth-options
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // https://authjs.dev/reference/providers/
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),

@@ -16,7 +16,7 @@ You can find the Fauna schema and seed information in the docs at [authjs.dev/re
 
 ### Configure Auth.js
 
-```javascript filename="pages/api/auth/[...nextauth].js"
+```js filename="./auth.js"
 import NextAuth from "next-auth";
 import { Client as FaunaClient } from "faunadb";
 import { FaunaAdapter } from "@auth/fauna-adapter";
@@ -28,9 +28,7 @@ const client = new FaunaClient({
   port: 8443,
 });
 
-// For more information on each option (and a full list of options) go to
-// https://authjs.dev/reference/configuration/auth-options
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // https://authjs.dev/reference/providers/
   providers: [],
   adapter: FaunaAdapter(client),

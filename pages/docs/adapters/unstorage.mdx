@@ -12,18 +12,18 @@ npm install unstorage @auth/unstorage-adapter
 
 Configure Auth.js to use the Unstorage Adapter:
 
-```ts filename="pages/api/auth/[...nextauth].js"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import { UnstorageAdapter } from "@auth/unstorage-adapter";
 import { createStorage } from "unstorage";
 
 const storage = createStorage();
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: UnstorageAdapter(storage),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
@@ -56,15 +56,19 @@ const defaultOptions = {
 
 Usually changing the `baseKeyPrefix` should be enough for this scenario, but for more custom setups, you can also change the prefixes of every single key.
 
-Example:
-
 ```ts
-export default NextAuth({
+import NextAuth from "next-auth";
+import { UnstorageAdapter } from "@auth/unstorage-adapter";
+import { createStorage } from "unstorage";
+
+const storage = createStorage();
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: UnstorageAdapter(storage, { baseKeyPrefix: "app2:" }),
 });
 ```
 
-### Using getItemRaw/setItemRaw instead of getItem/setItem
+### Using `getItemRaw`/`setItemRaw` instead of `getItem`/`setItem`
 
 If you are using storage that supports JSON, you can make it use `getItemRaw/setItemRaw` instead of `getItem/setItem`.
 
@@ -72,10 +76,8 @@ This is an experimental feature. Please check [unjs/unstorage#142](https://githu
 
 You can enable this functionality by passing `useItemRaw: true` (default: false) in the `options` object as the second argument to the adapter factory function.
 
-Example:
-
 ```ts
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: UnstorageAdapter(storage, { useItemRaw: true }),
 });
 ```

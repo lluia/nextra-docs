@@ -19,16 +19,16 @@ npm install pg
 npm install --save-dev @types/pg
 ```
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import { KyselyAdapter } from "@auth/kysely-adapter";
 import { db } from "../../../db";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: KyselyAdapter(db),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),

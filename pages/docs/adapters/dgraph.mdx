@@ -18,7 +18,7 @@ Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration ob
 import NextAuth from "next-auth";
 import { DgraphAdapter } from "@auth/dgraph-adapter";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [],
   adapter: DgraphAdapter({
     endpoint: process.env.DGRAPH_GRAPHQL_ENDPOINT,
@@ -209,7 +209,6 @@ type VerificationRequest
     query: { rule: "{$nextAuth: { eq: true } }" },
     update: { rule: "{$nextAuth: { eq: true } }" }
   ) {
- ...
 }
 ```
 
@@ -219,9 +218,11 @@ Dgraph only works with HS256 or RS256 algorithms. If you want to use session jwt
 database you must customize next-auth `encode` and `decode` functions, as the default algorithm is HS512. You can
 further customize the jwt with roles if you want to implement [`RBAC logic`](https://dgraph.io/docs/graphql/authorization/directive/#role-based-access-control).
 
-```js
+```js filename="./auth.js"
+import NextAuth from "next-auth";
 import * as jwt from "jsonwebtoken";
-export default NextAuth({
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
   session: {
     strategy: "jwt",
   },

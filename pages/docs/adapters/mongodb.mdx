@@ -14,7 +14,7 @@ The MongoDB adapter does not handle connections automatically, so you will have 
 
 ### Add the MongoDB client
 
-```ts
+```ts filename="lib/db.ts"
 // This approach is taken from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 import { MongoClient } from "mongodb";
 
@@ -49,14 +49,14 @@ export default clientPromise;
 
 ### Configure Auth.js
 
-```js
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "../../../lib/mongodb";
+import clientPromise from "./lib/db";
 
 // For more information on each option (and a full list of options) go to
 // https://authjs.dev/reference/providers/oauth
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: MongoDBAdapter(clientPromise),
 });
 ```

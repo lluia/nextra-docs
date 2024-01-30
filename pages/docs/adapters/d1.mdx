@@ -2,10 +2,12 @@
 
 # <a href="https://developers.cloudflare.com/d1/">Cloudflare D1</a> Adapter for Auth.js
 
-## Warning
-
-This adapter is not developed or maintained by Cloudflare and they haven't declared the D1 api stable. The author will make an effort to keep this adapter up to date.
-The adapter is compatible with the D1 api as of March 22, 2023.
+<Callout type="warning">
+  This adapter is not developed or maintained by Cloudflare and they haven't
+  declared the D1 api stable. The author will make an effort to keep this
+  adapter up to date. The adapter is compatible with the D1 api as of March 22,
+  2023.
+</Callout>
 
 ## Installation
 
@@ -15,17 +17,18 @@ npm install next-auth @auth/d1-adapter
 
 ## Setup
 
-This is the D1 Adapter for [`next-auth`](https://authjs.dev). This package can only be used in conjunction with the primary `next-auth` package. It is not a standalone package.
+This is the D1 Adapter for [`next-auth`](https://authjs.dev). This package can only be used in
+conjunction with the Auth.js client packages, like `next-auth` and `@auth/sveltekit`. It is not a standalone package.
 
 ### Configure Auth.js
 
-```js filename="pages/api/auth/[...nextauth].js"
+```js filename="./auth.js"
 import NextAuth from "next-auth";
 import { D1Adapter, up } from "@auth/d1-adapter";
 
 // For more information on each option (and a full list of options) go to
 // https://authjs.dev/reference/configuration/auth-options
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   // https://authjs.dev/reference/providers/
   providers: [],
   adapter: D1Adapter(env.db),

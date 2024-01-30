@@ -8,9 +8,10 @@
 npm install next-auth @auth/pg-adapter pg
 ```
 
-## Setup
+## Schema
 
-The SQL schema for the tables used by this adapter is as follows. Learn more about the models at our doc page on [Database Models](https://authjs.dev/getting-started/adapters#models).
+The SQL schema for the tables used by this adapter is as follows. Learn more about the models at our
+doc page on [Database Models](https://authjs.dev/docs/database).
 
 ```sql
 CREATE TABLE verification_token
@@ -63,9 +64,11 @@ CREATE TABLE users
 
 ```
 
+## Configuration
+
 ```ts filename="auth.ts"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import PostgresAdapter from "@auth/pg-adapter";
 import { Pool } from "pg";
 
@@ -77,10 +80,10 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PostgresAdapter(pool),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),

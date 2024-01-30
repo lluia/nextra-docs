@@ -17,9 +17,9 @@ npm install @upstash/redis @auth/upstash-redis-adapter
 
 Configure Auth.js to use the Upstash Redis Adapter:
 
-```ts filename="pages/api/auth/[...nextauth].js"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import Google from "next-auth/providers/google";
 import { UpstashRedisAdapter } from "@auth/upstash-redis-adapter";
 import upstashRedisClient from "@upstash/redis";
 
@@ -28,10 +28,10 @@ const redis = upstashRedisClient(
   process.env.UPSTASH_REDIS_TOKEN
 );
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: UpstashRedisAdapter(redis),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),

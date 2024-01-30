@@ -24,11 +24,11 @@ Now you have a few options to authenticate with the Firebase Admin SDK in your a
 - Add [`GOOGLE_APPLICATION_CREDENTIALS`](https://cloud.google.com/docs/authentication/application-default-credentials#GAC) to your environment variables and point it to the service account key file.
 - The adapter will automatically pick up the environment variable and use it to authenticate with the Firebase Admin SDK.
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import { FirestoreAdapter } from "@auth/firebase-adapter";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: FirestoreAdapter(),
 });
 ```
@@ -39,12 +39,12 @@ export default NextAuth({
 - Add the following environment variables to your project: `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`.
 - Pass the config to the adapter, using the environment variables as shown in the example below.
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import { FirestoreAdapter } from "@auth/firebase-adapter";
 import { cert } from "firebase-admin/app";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: FirestoreAdapter({
     credential: cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
@@ -69,12 +69,12 @@ If you already have a Firestore instance, you can pass that to the adapter direc
   instance safely.
 </Callout>
 
-```ts filename="pages/api/auth/[...nextauth].ts"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import { FirestoreAdapter } from "@auth/firebase-adapter";
 import { firestore } from "lib/firestore";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: FirestoreAdapter(firestore),
   // ...
 });

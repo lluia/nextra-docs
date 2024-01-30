@@ -14,11 +14,11 @@ npm install @auth/typeorm-adapter typeorm
 
 Configure Auth.js to use the TypeORM Adapter:
 
-```ts filename="pages/api/auth/[...nextauth].js"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import { TypeORMAdapter } from "@auth/typeorm-adapter";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: TypeORMAdapter("yourconnectionstring"),
 });
 ```
@@ -33,7 +33,8 @@ The TypeORM adapter uses [`Entity` classes](https://github.com/typeorm/typeorm/b
 
 If you want to override the default entities (for example to add a `role` field to your `UserEntity`), you will have to do the following:
 
-> This schema is adapted for use in TypeORM and based upon our main [schema](https://authjs.dev/reference/core/adapters#models)
+> This schema is adapted for use in TypeORM and based upon our main
+> [schema](https://authjs.dev/docs/database)
 
 1. Create a file containing your modified entities:
 
@@ -177,15 +178,14 @@ export class VerificationTokenEntity {
 
 2. Pass them to `TypeORMAdapter`
 
-```ts filename="pages/api/auth/[...nextauth].js"
-import NextAuth from "next-auth"
-import { TypeORMAdapter } from "@auth/typeorm-adapter"
-import * as entities from "lib/entities"
+```ts filename="./auth.ts"
+import NextAuth from "next-auth";
+import { TypeORMAdapter } from "@auth/typeorm-adapter";
+import * as entities from "lib/entities";
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: TypeORMAdapter("yourconnectionstring", { entities }),
-  ...
-})
+});
 ```
 
 <Callout type="info">
@@ -207,7 +207,7 @@ If mixed snake_case and camelCase column names are an issue for you and/or your 
 
 For example, you can add the naming convention option to the connection object in your NextAuth config.
 
-```ts filename="pages/api/auth/[...nextauth].js"
+```ts filename="./auth.ts"
 import NextAuth from "next-auth";
 import { TypeORMAdapter } from "@auth/typeorm-adapter";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
@@ -223,7 +223,7 @@ const connection: ConnectionOptions = {
   namingStrategy: new SnakeNamingStrategy(),
 };
 
-export default NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: TypeORMAdapter(connection),
 });
 ```
