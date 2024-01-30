@@ -13,11 +13,11 @@ import TypesDocumentation from "../../public/img/etc/types-documentation.webp";
 
 ## Philosophy
 
-We have chosen [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) over [generics](https://www.typescriptlang.org/docs/handbook/2/generics.html) as the main technique to type Auth.js resources across your application in case you extend them.
+We have chosen [module augmentation](https://www.typescriptlang.org/getting-started/handbook/declaration-merging.html#module-augmentation) over [generics](https://www.typescriptlang.org/getting-started/handbook/2/generics.html) as the main technique to type Auth.js resources across your application in case you extend them.
 
 <details>
 <summary>
-<b>Why not use <a href="https://www.typescriptlang.org/docs/handbook/2/generics.html">generics</a>?</b>
+<b>Why not use <a href="https://www.typescriptlang.org/getting-started/handbook/2/generics.html">generics</a>?</b>
 </summary>
 The interfaces that are shared across submodules are not passed to Auth.js library functions as generics.
 
@@ -31,7 +31,7 @@ With module augmentation, you defined the types once, and you can be sure that t
 
 Auth.js libraries come with certain interfaces that are shared across submodules and different Auth.js libraries (For example: `next-auth` and `@auth/prisma-adapter` will rely on types from `@auth/core`).
 
-Good examples of such interfaces are `Session` or `User`. You can use TypeScript's [Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) to extend these types to add your own properties across Auth.js without having to pass generic all over the place.
+Good examples of such interfaces are `Session` or `User`. You can use TypeScript's [Module Augmentation](https://www.typescriptlang.org/getting-started/handbook/declaration-merging.html#module-augmentation) to extend these types to add your own properties across Auth.js without having to pass generic all over the place.
 
 Let's look at `Session` for example:
 
@@ -125,6 +125,6 @@ function MyAdapter() {
 
 ## Useful links
 
-1. [TypeScript documentation: Module Augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)
+1. [TypeScript documentation: Module Augmentation](https://www.typescriptlang.org/getting-started/handbook/declaration-merging.html#module-augmentation)
 2. [Digital Ocean: Module Augmentation in TypeScript](https://www.digitalocean.com/community/tutorials/typescript-module-augmentation)
 3. [Creating a Database Adapter](#TODO)

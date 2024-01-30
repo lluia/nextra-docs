@@ -42,7 +42,7 @@ Auth.js differentiates between users and accounts. A user can have multiple acco
   ```
 </div>
 
-See also: [User](/docs/adapters#user) and [Account](/docs/adapters#account) models.
+See also: [User](/getting-started/adapters#user) and [Account](/getting-started/adapters#account) models.
 
 <Callout type="info">
   Although Auth.js doesn't require it, for basic display purposes, we recommend
@@ -98,7 +98,7 @@ If you want to use database sessions, you will need to implement the following m
 
 To add database session management, you will need to expand your database tables/columns as follows:
 
-See also: [Session](/docs/adapters#session) models.
+See also: [Session](/getting-started/adapters#session) models.
 
 ## Verification tokens
 
@@ -134,7 +134,7 @@ When you want to support email/passwordless login, Auth.js uses a database to st
   ```
 </div>
 
-See also: [Verification Token](/docs/adapters#verification-token) models.
+See also: [Verification Token](/getting-started/adapters#verification-token) models.
 
 ## Official adapter guidelines
 
@@ -159,8 +159,8 @@ If you created an adapter and want us to distribute it as an official package, p
 
 1. Configure the monorepo to help us maintain the package
 
-   - Add the Adapter to our documentation generator [file](https://github.com/nextauthjs/next-auth/blob/9ac0f98b73d6e52a8cb3a859f203915b994d6d19/docs/scripts/generate-manifest.mjs#L68)
-   - Add a (preferably `.svg`) logo to [this directory](https://github.com/nextauthjs/next-auth/tree/main/docs/static/img/adapters)
+   - Add the Adapter to our documentation generator [file](https://github.com/nextauthjs/next-auth/blob/9ac0f98b73d6e52a8cb3a859f203915b994d6d19/getting-started/scripts/generate-manifest.mjs#L68)
+   - Add a (preferably `.svg`) logo to [this directory](https://github.com/nextauthjs/next-auth/tree/main/getting-started/static/img/adapters)
    - Add the Adapter to our GitHub workflow files [here](https://github.com/nextauthjs/next-auth/blob/9ac0f98b73d6e52a8cb3a859f203915b994d6d19/.github/workflows/release.yml#L12) and [here](https://github.com/nextauthjs/next-auth/blob/main/.github/pr-labeler.yml)
    - Make sure to [`.gitignore` generated files](https://github.com/nextauthjs/next-auth/blob/9ac0f98b73d6e52a8cb3a859f203915b994d6d19/.gitignore#L58) if any
 

@@ -20,7 +20,7 @@ npm install next-auth@latest
 #### Main changes
 
 - App Router-first (`pages/` still supported).
-- OAuth support on preview deployments: [Read more](/docs/deployment#securing-a-preview-deployment).
+- OAuth support on preview deployments: [Read more](/getting-started/deployment#securing-a-preview-deployment).
 - Simplified setup (shared config, inferred [env variables](/reference/nextjs#environment-variable-inferrence)).
 - Edge-compatible
 - There is a new `account()` callback on providers which allows you to pass in data from the
@@ -185,7 +185,7 @@ export default async function Page() {
 </Tabs.Tab>
 <Tabs.Tab>
 
-Imports from `next-auth/react` are now marked with the `"use client"` directive. [Read more](https://nextjs.org/docs/getting-started/react-essentials#the-use-client-directive).
+Imports from `next-auth/react` are now marked with the `"use client"` directive. [Read more](https://nextjs.org/getting-started/getting-started/react-essentials#the-use-client-directive).
 
 If you have previously used `getSession()` or other imports server-side, you'll have to change it to use the [`auth()`](/reference/nextjs#auth) method instead.
 

@@ -1,7 +1,7 @@
 import { Callout, Steps, Tabs } from "nextra/components";
 import { Screenshot } from "@/components/Screenshot";
 
-{/** Needs to be moved to under /docs/authentication token auth -> nodemailer **/}
+{/** Needs to be moved to under /getting-started/authentication token auth -> nodemailer **/}
 
 # Magic links authentication with Nodemailer
 
@@ -21,7 +21,7 @@ On initial sign in, a **Verification Token** is sent to the email address provid
 
 <Callout type="info">
   The Email Provider can be used with both JSON Web Tokens and database
-  sessions, but you [must configure a database adapter](/docs/database) to use
+  sessions, but you [must configure a database adapter](/getting-started/database) to use
   it. It is not possible to enable email sign in without using a database.
 </Callout>
 
@@ -82,7 +82,7 @@ import DashboardSmtp from "../../public/img/magic-links/dashboard-smtp.webp";
 
 ### Configuring Auth.js
 
-Next, as [per Sendgrid documentation](https://docs.sendgrid.com/for-developers/sending-email/integrating-with-the-smtp-api), let's add the following [environment variables](https://Next.js.org/docs/basic-features/environment-variables) in our Next.js app:
+Next, as [per Sendgrid documentation](https://docs.sendgrid.com/for-developers/sending-email/integrating-with-the-smtp-api), let's add the following [environment variables](https://Next.js.org/getting-started/basic-features/environment-variables) in our Next.js app:
 
 ```bash filename=".env.local"
 SMTP_USER=apikey
