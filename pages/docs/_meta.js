@@ -21,13 +21,11 @@ export default {
   },
   deployment: "Deployment",
   typescript: "TypeScript",
-  integrations: {
-    type: "hidden",
+  "-- more": {
+    type: "separator",
+    title: "More",
   },
-  contributors: {
-    type: "hidden",
-  },
-  sponsors: {
-    type: "hidden",
-  },
+  integrations: "Integrations",
+  contributors: "Contributors",
+  sponsors: "Sponsors",
 };
