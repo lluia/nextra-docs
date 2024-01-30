@@ -12,24 +12,85 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/fusionauth
 ```
 
+### Environment Variables
+
+```
+AUTH_FUSIONAUTH_ID
+AUTH_FUSIONAUTH_SECRET
+AUTH_FUSIONAUTH_TENANT_ID
+AUTH_FUSIONAUTH_ISSUER
+```
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import FusionAuth from "@auth/core/providers/fusionauth";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import FusionAuth from "next-auth/providers/fusionauth";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     FusionAuth({
-      clientId: FUSIONAUTH_CLIENT_ID,
-      clientSecret: FUSIONAUTH_CLIENT_SECRET,
-      tenantId: FUSIONAUTH_TENANT_ID,
-      issuer: FUSIONAUTH_ISSUER,
+      clientId: process.env.AUTH_FUSIONAUTH_ID,
+      clientSecret: process.env.AUTH_FUSIONAUTH_SECRET,
+      tenantId: process.env.AUTH_FUSIONAUTH_TENANT_ID,
+      issuer: process.env.AUTH_FUSIONAUTH_ISSUER,
     }),
   ],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import FusionAuth from "@auth/sveltekit/providers/fusionauth";
+import {
+  AUTH_FUSIONAUTH_ID,
+  AUTH_FUSIONAUTH_SECRET,
+  AUTH_FUSIONAUTH_TENANT_ID,
+  AUTH_FUSIONAUTH_ISSUER,
+} from "$env/static/private";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [
+    FusionAuth({
+      clientId: AUTH_FUSIONAUTH_ID,
+      clientSecret: AUTH_FUSIONAUTH_SECRET,
+      tenantId: AUTH_FUSIONAUTH_TENANT_ID,
+      issuer: AUTH_FUSIONAUTH_ISSUER,
+    }),
+  ],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import FusionAuth from "@auth/express/providers/fusionauth";
+
+app.use(
+  "/auth/*",
+  ExpressAuth({
+    providers: [
+      FusionAuth({
+        clientId: process.env.AUTH_FUSIONAUTH_ID,
+        clientSecret: process.env.AUTH_FUSIONAUTH_SECRET,
+        tenantId: process.env.AUTH_FUSIONAUTH_TENANT_ID,
+        issuer: process.env.AUTH_FUSIONAUTH_ISSUER,
+      }),
+    ],
+  })
+);
+```
+
+  </Code.Express>
+</Code>
 
 <Callout type="warning">
   If you're using multi-tenancy, you need to pass in the tenantId option to

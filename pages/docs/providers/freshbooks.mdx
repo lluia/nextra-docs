@@ -1,6 +1,6 @@
 import { Callout } from "nextra/components";
 
-<img align="right" src="/img/providers/foursquare.svg" height="64" width="64" />
+<img align="right" src="/img/providers/freshbooks.svg" height="64" width="64" />
 
 # Freshbooks Provider
 
@@ -9,43 +9,75 @@ import { Callout } from "nextra/components";
 ### Callback URL
 
 ```
-https://example.com/api/auth/callback/foursquare
+https://example.com/api/auth/callback/freshbooks
 ```
+
+### Environment Variables
+
+```
+AUTH_FRESHBOOKS_ID
+AUTH_FRESHBOOKS_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
 
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import FourSquare from "@auth/core/providers/foursquare";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    FourSquare({
-      clientId: FOURSQUARE_CLIENT_ID,
-      clientSecret: FOURSQUARE_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import FreshBooks from "next-auth/providers/freshbooks";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [FreshBooks],
 });
 ```
 
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import FreshBooks from "@auth/sveltekit/providers/freshbooks";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [FreshBooks],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import FreshBooks from "@auth/express/providers/freshbooks";
+
+app.use("/auth/*", ExpressAuth({ providers: [FreshBooks] }));
+```
+
+  </Code.Express>
+</Code>
+
 ### Resources
 
-- [FourSquare OAuth documentation](https://developer.foursquare.com/docs/places-api/authentication/#web-applications)
+- [FreshBooks OAuth documentation](https://developer.freshbooks.com/docs/places-api/authentication/#web-applications)
 
 ### Notes
 
-By default, Auth.js assumes that the FourSquare provider is
+By default, Auth.js assumes that the FreshBooks provider is
 based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
 
 <Callout type="warning">
-  Foursquare requires an additional apiVersion parameter in YYYYMMDD format,
+  freshbooks requires an additional apiVersion parameter in YYYYMMDD format,
   which essentially states "I'm prepared for API changes up to this date".
 </Callout>
 
 <Callout type="info">
 
-The FourSquare provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/foursquare.ts).
+The FreshBooks provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/freshbooks.ts).
 To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
 
 </Callout>

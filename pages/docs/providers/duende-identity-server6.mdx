@@ -17,23 +17,55 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/duende-identity-server6
 ```
 
+### Environment Variables
+
+```
+AUTH_DUENDE_IDENTITY_SERVER6_ID
+AUTH_DUENDE_IDENTITY_SERVER6_SECRET
+AUTH_DUENDE_IDENTITY_SERVER6_ISSUER
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import DuendeIdentityServer6 from "@auth/core/providers/duende-identity-server6";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    DuendeIdentityServer6({
-      clientId: DIS6_CLIENT_ID,
-      clientSecret: DIS6_CLIENT_SECRET,
-      issuer: DIS6_ISSUER,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import DuendeIdentityServer6 from "next-auth/providers/duende-identity-server6";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [DuendeIdentityServer6],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import DuendeIdentityServer6 from "@auth/sveltekit/providers/duende-identity-server6";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [DuendeIdentityServer6],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import DuendeIdentityServer6 from "@auth/express/providers/duende-identity-server6";
+
+app.use("/auth/*", ExpressAuth({ providers: [DuendeIdentityServer6] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

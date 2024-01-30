@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/eveonline
 ```
 
+### Environment Variables
+
+```
+AUTH_EVEONLINE_ID
+AUTH_EVEONLINE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import EveOnline from "@auth/core/providers/eveonline";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    EveOnline({
-      clientId: EVEONLINE_CLIENT_ID,
-      clientSecret: EVEONLINE_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import EveOnline from "next-auth/providers/eve-online";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [EveOnline],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import EveOnline from "@auth/sveltekit/providers/eve-online";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [EveOnline],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import EveOnline from "@auth/express/providers/eve-online";
+
+app.use("/auth/*", ExpressAuth({ providers: [EveOnline] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

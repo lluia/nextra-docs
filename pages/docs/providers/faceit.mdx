@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/faceit
 ```
 
+### Environment Variables
+
+```
+AUTH_FACEIT_ID
+AUTH_FACEIT_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import FACEIT from "@auth/core/providers/faceit";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    FACEIT({ clientId: FACEIT_CLIENT_ID, clientSecret: FACEIT_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import FaceIt from "next-auth/providers/faceit";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [FaceIt],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import FaceIt from "@auth/sveltekit/providers/faceit";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [FaceIt],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import FaceIt from "@auth/express/providers/faceit";
+
+app.use("/auth/*", ExpressAuth({ providers: [FaceIt] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

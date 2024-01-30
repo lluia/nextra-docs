@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/foursquare
 ```
 
+### Environment Variables
+
+```
+AUTH_FOURSQUARE__ID
+AUTH_FOURSQUARE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import FourSquare from "@auth/core/providers/foursquare";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    FourSquare({
-      clientId: FOURSQUARE_CLIENT_ID,
-      clientSecret: FOURSQUARE_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import FourSquare from "next-auth/providers/foursquare";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [FourSquare],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import FourSquare from "@auth/sveltekit/providers/foursquare";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [FourSquare],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import FourSquare from "@auth/express/providers/foursquare";
+
+app.use("/auth/*", ExpressAuth({ providers: [FourSquare] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 
