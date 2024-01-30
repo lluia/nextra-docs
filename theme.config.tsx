@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 const config: DocsThemeConfig = {
   logo: (
     <div className="flex flex-row items-center">
-      <img src="/img/etc/logo-xs.webp" width="30" />
+      <img src="/img/etc/logo-sm.webp" width="30" />
       <span className="ml-2 text-xl font-black">Auth.js</span>
     </div>
   ),
@@ -34,6 +34,9 @@ const config: DocsThemeConfig = {
       </div>
     ),
   },
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
+  },
   head: (
     <>
       <link
@@ -59,10 +62,7 @@ const config: DocsThemeConfig = {
     content: (
       <>
         Migrating from NextAuth.js v4? Read{" "}
-        <a
-          style={{ textDecoration: "underline" }}
-          href="/getting-started/migrating-to-v5"
-        >
+        <a style={{ textDecoration: "underline" }} href="/docs/migrating-to-v5">
           <b>our migration guide</b>
         </a>
         .

@@ -98,6 +98,7 @@ import { SolidAuth } from "@auth/express"
 import GitHub from "@auth/express/providers/github"
 
 const app = express()
+
 app.use("/auth/*", ExpressAuth({ providers: [GitHub] }))
 `;
 }

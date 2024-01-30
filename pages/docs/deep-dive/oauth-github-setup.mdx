@@ -1,5 +1,5 @@
 import { Callout, Tabs, Steps } from "nextra/components";
-import { Screenshot } from "@/components/Screenshot"
+import { Screenshot } from "@/components/Screenshot";
 
 # OAuth authentication
 
@@ -9,7 +9,7 @@ The fastest way to set up Auth.js is with an [OAuth provider](/concepts/oauth). 
   Auth.js comes with a list of [built-in OAuth
   providers](/reference/oauth-providers) (Google, Facebook, Twitter, etc.). You
   can also integrate with your custom OAuth provider by [building your
-  own](/guides/providers/custom-provider).
+  own](/docs/configuring-oauth#use-your-own-provider).
 </Callout>
 {/* prettier-ignore */}
 <Callout type="info">
@@ -104,13 +104,13 @@ We need to register our application in GitHub, so that when Auth.js forwards the
 
 Log in [to GitHub](https://github.com/settings/developers), go to **Settings** → **Developers** → **OAuth Apps** and click "New OAuth App":
 
-import CreatingOAuthApp from "../../../public/img/oauth-setup/creating-oauth-app.webp"
+import CreatingOAuthApp from "../../../public/img/oauth-setup/creating-oauth-app.webp";
 
 <Screenshot src={CreatingOAuthApp} alt="Creating an OAuth App on Github" />
 
 Next, you'll be presented with a screen to register your application. Fill in all the required fields:
 
-import CallbackUrl from "../../../public/img/oauth-setup/callback-url.webp"
+import CallbackUrl from "../../../public/img/oauth-setup/callback-url.webp";
 
 <Screenshot src={CallbackUrl} />
 
@@ -137,7 +137,7 @@ The last part of the URL, `[provider]`, is the ID of the provider you're using. 
 
 Once created, the next screen shows all the configurations for our app:
 
-import ClientIdSecret from "../../../public/img/oauth-setup/clientid-secret.webp"
+import ClientIdSecret from "../../../public/img/oauth-setup/clientid-secret.webp";
 
 <Screenshot src={ClientIdSecret} alt="Generating clientId and clientSecret" />
 
@@ -174,7 +174,7 @@ npm run next dev
 
 And navigate to [`http://localhost:3000`](http://localhost:3000). You should see the following page:
 
-import AppStart from "../../../public/img/oauth-setup/app-start.webp"
+import AppStart from "../../../public/img/oauth-setup/app-start.webp";
 
 <Screenshot src={AppStart} alt="App Start" />
 
@@ -182,13 +182,13 @@ Click on "Sign in" and then on "Sign in with GitHub".
 
 Auth.js will redirect you to GitHub, and GitHub will recognize our app (that we just registered), asking the user to enter its credentials to proceed:
 
-import GithubCredentials from "../../../public/img/oauth-setup/github-auth-credentials.webp"
+import GithubCredentials from "../../../public/img/oauth-setup/github-auth-credentials.webp";
 
 <Screenshot src={GithubCredentials} alt="GitHub Credentials" />
 
 Once authenticated, GitHub will redirect the user back to our app and Auth.js will take care of the rest:
 
-import GithubAuthSuccess from "../../../public/img/oauth-setup/github-auth-success.webp"
+import GithubAuthSuccess from "../../../public/img/oauth-setup/github-auth-success.webp";
 
 <Screenshot src={GithubAuthSuccess} alt="GitHub Authentication Success" />
 

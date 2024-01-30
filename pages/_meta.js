@@ -10,12 +10,8 @@ export default {
       layout: "raw",
     },
   },
-  "getting-started": {
-    title: "Getting started",
-    type: "page",
-  },
-  guides: {
-    title: "Guides",
+  docs: {
+    title: "Docs",
     type: "page",
   },
   reference: {
@@ -29,5 +25,11 @@ export default {
   security: {
     title: "Security",
     type: "page",
+  },
+  contributors: {
+    type: "hidden",
+  },
+  sponsors: {
+    type: "hidden",
   },
 };

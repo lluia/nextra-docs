@@ -17,7 +17,7 @@ export function Guides() {
           <div className="flex justify-between items-center mb-10 w-full">
             <h2 className="text-2xl lg:text-3xl">Highlighted Guides</h2>
             <Link
-              href="/guides"
+              href="/docs"
               className="flex gap-2 items-center text-[#289ef9]"
             >
               See all
@@ -25,14 +25,14 @@ export function Guides() {
             </Link>
           </div>
           <ul className="w-full list-none">
-            <Link href="/guides/configuring-oauth">
+            <Link href="/docs/configuring-oauth">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <ShieldStar size={32} />
                   <div className="flex flex-col items-start">
                     Configuring OAuth providers
                     <span className="text-neutral-400 dark:text-neutral-700">
-                      Customize/contribute to a built-in one or set up your own.
+                      Customize to a built-in one or set up your own.
                     </span>
                   </div>
                 </div>
@@ -41,7 +41,7 @@ export function Guides() {
                 </div>
               </li>
             </Link>
-            <Link href="/guides/deep-dive/oauth-github-setup">
+            <Link href="/docs/deep-dive/oauth-github-setup">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <GithubLogo size={32} />
@@ -109,11 +109,16 @@ export function Guides() {
             ].map((f) => (
               <li
                 key={f.id}
-                className="flex justify-between items-center mb-8 p-2 w-full grayscale hover:grayscale-0 transition duration-300"
+                className="flex justify-between items-center p-2 mb-8 w-full transition duration-300 grayscale hover:grayscale-0"
               >
                 <div className="flex gap-2 items-center">
                   <Image
                     src={`/img/etc/${f.id}.svg`}
+                    className={
+                      f.id === "express" || f.id === "nextjs"
+                        ? "dark:invert"
+                        : ""
+                    }
                     height="32"
                     width="32"
                     alt={`${f.name} Logo`}
