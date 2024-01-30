@@ -8,9 +8,11 @@ import Express from "../../public/img/etc/express.svg";
 import NextJs from "../../public/img/etc/nextjs.svg";
 
 async function renderNextJs(framework: Framework) {
+  const tailwindDarkMode = document.documentElement.classList.contains("dark");
+
   return codeToHtml(frameworkDetails[framework].code, {
     lang: "ts",
-    theme: "rose-pine",
+    theme: tailwindDarkMode ? "rose-pine" : "rose-pine-moon",
     transformers: [
       {
         pre(node) {
@@ -54,7 +56,12 @@ export function FrameworkExamples() {
             className="!border-0 aria-selected:!bg-violet-600/40 !h-32 !w-32 flex-1 p-4 rounded-md focus:outline-none transition-all duration-300"
           >
             <div className="flex flex-col justify-center items-center h-full">
-              <Image width="64" src={NextJs} alt="Next.js Logo" />
+              <Image
+                width="64"
+                src={NextJs}
+                alt="Next.js Logo"
+                className="dark:invert"
+              />
             </div>
           </RichTabs.Trigger>
           <RichTabs.Trigger
@@ -71,7 +78,7 @@ export function FrameworkExamples() {
             orientation="vertical"
             className="!border-0 aria-selected:!bg-violet-600/40 !h-32 !w-32 flex-1 p-4 rounded-md focus:outline-none transition-all duration-300"
           >
-            <div className="flex flex-col justify-center items-center h-full">
+            <div className="flex flex-col justify-center items-center h-full dark:invert">
               <Image width="64" src={Express} alt="Next.js Logo" />
             </div>
           </RichTabs.Trigger>

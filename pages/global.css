@@ -122,13 +122,18 @@ details > *:not(summary) {
 .github-counter {
   position: absolute;
   color: #000;
-  top: -25px;
-  right: -5px;
+  top: 11px;
+  right: -18px;
   font-size: 9px;
   background-color: #ccc;
   padding: 2px 5px;
   border-radius: 10px;
   z-index: -1;
+  pointer-events: none;
+}
+
+div.nextra-search + a {
+  display: none;
 }
 
 html[data-theme="dark"] .github-counter {

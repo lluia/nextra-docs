@@ -13,9 +13,9 @@ import manifest from "@/data/manifest.json";
 
 At this point, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
-- [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- [Token-based authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
-- [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs,
+- [OAuth authentication](/docs/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
+- [Token-based authentication](/docs/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
+- [Credentials](/docs/providers/credentials-tutorial) ( _Integrating with external APIs,
   WebAuthn, etc..._ )
 
 <br />
@@ -109,7 +109,7 @@ You will need access to an SMTP server, ideally from one of [the services known 
 
 ### Database Adapter
 
-Please make sure you've [setup a database adapter](/getting-started/database-setup), as mentioned earlier,
+Please make sure you've [setup a database adapter](/docs/database), as mentioned earlier,
 a database is required for passwordless login to work as verification tokens need to be stored.
 
 ### Connecting to the SMTP server
@@ -320,9 +320,9 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 <Callout type="info">
   If you're using TypeScript, you can [augment the `User`
-  interface](/getting-started/typescript#module-augmentation) to match the
-  response of your `authorize` callback, so whenever you read the user in other
-  callbacks (like the `jwt`) the type will match correctly.
+  interface](/docs/typescript#module-augmentation) to match the response of your
+  `authorize` callback, so whenever you read the user in other callbacks (like
+  the `jwt`) the type will match correctly.
 </Callout>
 
 </Steps>
@@ -339,5 +339,5 @@ import SessionWorking from "../../public/img/getting-started/session-working.web
 <Screenshot className="mb-12" src={SessionWorking} alt="Auth.js Session" />
 
 If you've gotten this far, you can be confident that your user is authenticated and
-your setup is working. See the next section, [Session management](/getting-started/session-management),
+your setup is working. See the next section, [Session management](/docs/session-management),
 to learn how to manage and display the user's session in your application.
