@@ -12,23 +12,55 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/workos
 ```
 
+### Environment Variables
+
+```
+AUTH_WORKOS_ID
+AUTH_WORKOS_SECRET
+AUTH_WORKOS_ISSUER
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import WorkOS from "@auth/core/providers/workos";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    WorkOS({
-      clientId: WORKOS_CLIENT_ID,
-      clientSecret: WORKOS_CLIENT_SECRET,
-      issuer: WORKOS_ISSUER,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import WorkOS from "next-auth/providers/workos";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [WorkOS],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import WorkOS from "@auth/sveltekit/providers/workos";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [WorkOS],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import WorkOS from "@auth/express/providers/workos";
+
+app.use("/auth/*", ExpressAuth({ providers: [WorkOS] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

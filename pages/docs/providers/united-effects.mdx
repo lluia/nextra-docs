@@ -17,19 +17,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/united-effects
 ```
 
+### Environment Variables
+
+```
+AUTH_UNITEDEFFECTS_ID
+AUTH_UNITEDEFFECTS_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import UnitedEffects from "@auth/core/providers/united-effects";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    UnitedEffects({ clientId: UE_CLIENT_ID, clientSecret: UE_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import UnitedEffects from "next-auth/providers/united-effects";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [UnitedEffects],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import UnitedEffects from "@auth/sveltekit/providers/united-effects";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [UnitedEffects],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import UnitedEffects from "@auth/express/providers/united-effects";
+
+app.use("/auth/*", ExpressAuth({ providers: [UnitedEffects] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

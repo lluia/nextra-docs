@@ -12,23 +12,55 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/osso
 ```
 
+### Environment Variables
+
+```
+AUTH_OSSO_ID
+AUTH_OSSO_SECRET
+AUTH_OSSO_ISSUER
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Osso from "@auth/core/providers/osso";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Osso({
-      clientId: OSSO_CLIENT_ID,
-      clientSecret: OSSO_CLIENT_SECRET,
-      issuer: OSSO_ISSUER,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Osso from "next-auth/providers/osso";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Osso],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Osso from "@auth/sveltekit/providers/osso";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Osso],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Osso from "@auth/express/providers/osso";
+
+app.use("/auth/*", ExpressAuth({ providers: [Osso] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 
@@ -38,7 +70,7 @@ Osso is an open source service that handles SAML authentication against Identity
 - [Osso OAuth documentation](https://ossoapp.com/)
 
 You can configure your OAuth Clients on your Osso Admin UI, i.e. https://demo.ossoapp.com/admin/config - you'll need to get a Client ID and Secret and allow-list your redirect URIs.
-[SAML SSO differs a bit from OAuth](https://ossoapp.com/blog/saml-vs-oauth) - for every tenant who wants to sign in to your application using SAML, you and your customer need to perform a multi-step configuration in Osso's Admin UI and the admin dashboard of the tenant's Identity Provider. Osso provides documentation for providers like Okta and OneLogin, cloud-based IDPs who also offer a developer account that's useful for testing. Osso also provides a [Mock IDP](https://idp.ossoapp.com) that you can use for testing without needing to sign up for an Identity Provider service.
+[SAML SSO differs a bit from OAuth](https://ossoapp.com/blog/saml-vs-oauth) - for every tenant who wants to sign in to your application using SAML, you and your customer need to perform a multi-step configuration in Osso's Admin UI and the admin dashboard of the tenant's Identity Provider. Osso provides documentation for providers like Okta and Osso, cloud-based IDPs who also offer a developer account that's useful for testing. Osso also provides a [Mock IDP](https://idp.ossoapp.com) that you can use for testing without needing to sign up for an Identity Provider service.
 
 See Osso's complete configuration and testing documentation at https://ossoapp.com/docs/configure/overview
 

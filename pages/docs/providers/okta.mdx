@@ -12,23 +12,55 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/okta
 ```
 
+### Environment Variables
+
+```
+AUTH_OKTA_ID
+AUTH_OKTA_SECRET
+AUTH_OKTA_ISSUER
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Okta from "@auth/core/providers/okta";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Okta({
-      clientId: OKTA_CLIENT_ID,
-      clientSecret: OKTA_CLIENT_SECRET,
-      issuer: OKTA_ISSUER,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Okta from "next-auth/providers/okta";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Okta],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Okta from "@auth/sveltekit/providers/okta";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Okta],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Okta from "@auth/express/providers/okta";
+
+app.use("/auth/*", ExpressAuth({ providers: [Okta] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

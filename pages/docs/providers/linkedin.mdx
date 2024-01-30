@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/linkedin
 ```
 
+### Environment Variables
+
+```
+AUTH_LINKEDIN_ID
+AUTH_LINKEDIN_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import LinkedIn from "@auth/core/providers/linkedin";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    LinkedIn({
-      clientId: LINKEDIN_CLIENT_ID,
-      clientSecret: LINKEDIN_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import LinkedIn from "next-auth/providers/linkedin";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [LinkedIn],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import LinkedIn from "@auth/sveltekit/providers/linkedin";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [LinkedIn],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import LinkedIn from "@auth/express/providers/linkedin";
+
+app.use("/auth/*", ExpressAuth({ providers: [LinkedIn] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

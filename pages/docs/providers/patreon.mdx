@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/patreon
 ```
 
+### Environment Variables
+
+```
+AUTH_PATREON_ID
+AUTH_PATREON_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Patreon from "@auth/core/providers/patreon";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Patreon({
-      clientId: PATREON_CLIENT_ID,
-      clientSecret: PATREON_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Patreon from "next-auth/providers/patreon";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Patreon],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Patreon from "@auth/sveltekit/providers/patreon";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Patreon],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Patreon from "@auth/express/providers/patreon";
+
+app.use("/auth/*", ExpressAuth({ providers: [Patreon] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/mailru
 ```
 
+### Environment Variables
+
+```
+AUTH_MAILRU_ID
+AUTH_MAILRU_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Mailru from "@auth/core/providers/mailru";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Mailru({ clientId: MAILRU_CLIENT_ID, clientSecret: MAILRU_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import MailRu from "next-auth/providers/mailru";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [MailRu],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import MailRu from "@auth/sveltekit/providers/mailru";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [MailRu],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import MailRu from "@auth/express/providers/mailru";
+
+app.use("/auth/*", ExpressAuth({ providers: [MailRu] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

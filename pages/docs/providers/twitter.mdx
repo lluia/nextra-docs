@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/twitter
 ```
 
+### Environment Variables
+
+```
+AUTH_TWITTER_ID
+AUTH_TWITTER_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Twitter from "@auth/core/providers/twitter";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Twitter({
-      clientId: TWITTER_CLIENT_ID,
-      clientSecret: TWITTER_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Twitter from "next-auth/providers/twitter";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Twitter],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Twitter from "@auth/sveltekit/providers/twitter";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Twitter],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Twitter from "@auth/express/providers/twitter";
+
+app.use("/auth/*", ExpressAuth({ providers: [Twitter] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

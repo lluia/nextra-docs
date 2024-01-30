@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/wikimedia
 ```
 
+### Environment Variables
+
+```
+AUTH_WIKIMEDIA_ID
+AUTH_WIKIMEDIA_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Wikimedia from "@auth/core/providers/wikimedia";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Wikimedia({
-      clientId: WIKIMEDIA_CLIENT_ID,
-      clientSecret: WIKIMEDIA_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Wikimedia from "next-auth/providers/wikimedia";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Wikimedia],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Wikimedia from "@auth/sveltekit/providers/wikimedia";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Wikimedia],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Wikimedia from "@auth/express/providers/wikimedia";
+
+app.use("/auth/*", ExpressAuth({ providers: [Wikimedia] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

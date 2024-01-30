@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/strava
 ```
 
+### Environment Variables
+
+```
+AUTH_STRAVA_ID
+AUTH_STRAVA_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Strava from "@auth/core/providers/strava";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Strava({ clientId: STRAVA_CLIENT_ID, clientSecret: STRAVA_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Strava from "next-auth/providers/strava";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Strava],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Strava from "@auth/sveltekit/providers/strava";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Strava],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Strava from "@auth/express/providers/strava";
+
+app.use("/auth/*", ExpressAuth({ providers: [Strava] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

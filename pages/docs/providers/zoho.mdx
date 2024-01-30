@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/zoho
 ```
 
+### Environment Variables
+
+```
+AUTH_ZOHO_ID
+AUTH_ZOHO_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import ZOHO from "@auth/core/providers/zoho";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    ZOHO({ clientId: ZOHO_CLIENT_ID, clientSecret: ZOHO_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Zoho from "next-auth/providers/zoho";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Zoho],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Zoho from "@auth/sveltekit/providers/zoho";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Zoho],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Zoho from "@auth/express/providers/zoho";
+
+app.use("/auth/*", ExpressAuth({ providers: [Zoho] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

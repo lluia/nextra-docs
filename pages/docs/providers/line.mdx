@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/line
 ```
 
+### Environment Variables
+
+```
+AUTH_LINE_ID
+AUTH_LINE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import LINE from "@auth/core/providers/line";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    LINE({ clientId: LINE_CLIENT_ID, clientSecret: LINE_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Line from "next-auth/providers/line";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Line],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Line from "@auth/sveltekit/providers/line";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Line],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Line from "@auth/express/providers/line";
+
+app.use("/auth/*", ExpressAuth({ providers: [Line] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

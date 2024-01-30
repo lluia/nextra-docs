@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/trakt
 ```
 
+### Environment Variables
+
+```
+AUTH_TRAKT_ID
+AUTH_TRAKT_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Trakt from "@auth/core/providers/trakt";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Trakt({ clientId: TRAKT_CLIENT_ID, clientSecret: TRAKT_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Trakt from "next-auth/providers/trakt";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Trakt],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Trakt from "@auth/sveltekit/providers/trakt";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Trakt],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Trakt from "@auth/express/providers/trakt";
+
+app.use("/auth/*", ExpressAuth({ providers: [Trakt] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

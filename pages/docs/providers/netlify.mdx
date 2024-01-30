@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/netlify
 ```
 
+### Environment Variables
+
+```
+AUTH_NETLIFY_ID
+AUTH_NETLIFY_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Netlify from "@auth/core/providers/netlify";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Netlify({
-      clientId: NETLIFY_CLIENT_ID,
-      clientSecret: NETLIFY_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Netlify from "next-auth/providers/netlify";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Netlify],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Netlify from "@auth/sveltekit/providers/netlify";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Netlify],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Netlify from "@auth/express/providers/netlify";
+
+app.use("/auth/*", ExpressAuth({ providers: [Netlify] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

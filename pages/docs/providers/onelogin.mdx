@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/onelogin
 ```
 
+### Environment Variables
+
+```
+AUTH_ONELOGIN_ID
+AUTH_ONELOGIN_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import OneLogin from "@auth/core/providers/onelogin";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    OneLogin({
-      clientId: ONELOGIN_CLIENT_ID,
-      clientSecret: ONELOGIN_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import OneLogin from "next-auth/providers/onelogin";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [OneLogin],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import OneLogin from "@auth/sveltekit/providers/onelogin";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [OneLogin],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import OneLogin from "@auth/express/providers/onelogin";
+
+app.use("/auth/*", ExpressAuth({ providers: [OneLogin] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

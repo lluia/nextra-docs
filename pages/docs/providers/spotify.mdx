@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/spotify
 ```
 
+### Environment Variables
+
+```
+AUTH_SPOTIFY_ID
+AUTH_SPOTIFY_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Spotify from "@auth/core/providers/spotify";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Spotify({
-      clientId: SPOTIFY_CLIENT_ID,
-      clientSecret: SPOTIFY_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Spotify from "next-auth/providers/spotify";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Spotify],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Spotify from "@auth/sveltekit/providers/spotify";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Spotify],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Spotify from "@auth/express/providers/spotify";
+
+app.use("/auth/*", ExpressAuth({ providers: [Spotify] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

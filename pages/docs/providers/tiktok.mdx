@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/tiktok
 ```
 
+### Environment Variables
+
+```
+AUTH_TIKTOK_ID
+AUTH_TIKTOK_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Tiktok from "@auth/core/providers/tiktok";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Tiktok({ clientId: TIKTOK_CLIENT_KEY, clientSecret: TIKTOK_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import TikTok from "next-auth/providers/tiktok";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [TikTok],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import TikTok from "@auth/sveltekit/providers/tiktok";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [TikTok],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import TikTok from "@auth/express/providers/tiktok";
+
+app.use("/auth/*", ExpressAuth({ providers: [TikTok] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

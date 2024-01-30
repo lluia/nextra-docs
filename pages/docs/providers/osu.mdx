@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/osu
 ```
 
+### Environment Variables
+
+```
+AUTH_OSU_ID
+AUTH_OSU_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Osu from "@auth/core/providers/osu";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Osu({ clientId: OSU_CLIENT_ID, clientSecret: OSU_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Osu from "next-auth/providers/osu";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Osu],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Osu from "@auth/sveltekit/providers/osu";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Osu],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Osu from "@auth/express/providers/osu";
+
+app.use("/auth/*", ExpressAuth({ providers: [Osu] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

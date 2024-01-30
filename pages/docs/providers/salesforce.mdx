@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/saleforce
 ```
 
+### Environment Variables
+
+```
+AUTH_SALESFORCE_ID
+AUTH_SALESFORCE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import SaleForce from "@auth/core/providers/saleforce";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    SaleForce({
-      clientId: SALEFORCE_CLIENT_ID,
-      clientSecret: SALEFORCE_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Salesforce from "next-auth/providers/salesforce";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Salesforce],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Salesforce from "@auth/sveltekit/providers/salesforce";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Salesforce],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Salesforce from "@auth/express/providers/salesforce";
+
+app.use("/auth/*", ExpressAuth({ providers: [Salesforce] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

@@ -6,17 +6,60 @@ import { Callout } from "nextra/components";
 
 ## Setup
 
-```ts
-import { Auth } from "@auth/core";
-import Yandex from "@auth/core/providers/yandex";
+### Callback URL
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Yandex({ clientId: YANDEX_CLIENT_ID, clientSecret: YANDEX_CLIENT_SECRET }),
-  ],
+```
+https://example.com/api/auth/callback/yandex
+```
+
+### Environment Variables
+
+```
+AUTH_YANDEX_ID
+AUTH_YANDEX_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Yandex from "next-auth/providers/yandex";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Yandex],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Yandex from "@auth/sveltekit/providers/yandex";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Yandex],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Yandex from "@auth/express/providers/yandex";
+
+app.use("/auth/*", ExpressAuth({ providers: [Yandex] }));
+```
+
+  </Code.Express>
+</Code>
 
 ## Resources
 

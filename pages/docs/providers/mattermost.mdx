@@ -12,18 +12,55 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/mattermost
 ```
 
-### Configuration
-
-```js
-import Auth from "@auth/core"
-import Mattermost from "@auth/core/providers/mattermost"
-
-const request = new Request(origin)
-const response = await Auth(request, {
-providers: [Mattermost({ clientId: MATTERMOST_CLIENT_ID, clientSecret: MATTERMOST_CLIENT_SECRET, issuer: MATTERMOST_ISSUER // The base url of your Mattermost instance. e.g `https://my-cool-server.cloud.mattermost.com` })],
-})
+### Environment Variables
 
 ```
+AUTH_MATTERMOST_ID
+AUTH_MATTERMOST_SECRET
+AUTH_MATTERMOST_ISSUER
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
+### Configuration
+
+<Code>
+  <Code.Next>
+
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Mattermost from "next-auth/providers/mattermost";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Mattermost],
+});
+```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Mattermost from "@auth/sveltekit/providers/mattermost";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Mattermost],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Mattermost from "@auth/express/providers/mattermost";
+
+app.use("/auth/*", ExpressAuth({ providers: [Mattermost] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/pipedrive
 ```
 
+### Environment Variables
+
+```
+AUTH_PIPEDRIVE_ID
+AUTH_PIPEDRIVE_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Pipedrive from "@auth/core/providers/pipedrive";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Pipedrive({
-      clientId: PIPEDRIVE_CLIENT_ID,
-      clientSecret: PIPEDRIVE_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import PipeDrive from "next-auth/providers/pipedrive";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [PipeDrive],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import PipeDrive from "@auth/sveltekit/providers/pipedrive";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [PipeDrive],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import PipeDrive from "@auth/express/providers/pipedrive";
+
+app.use("/auth/*", ExpressAuth({ providers: [PipeDrive] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

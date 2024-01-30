@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/wordpress
 ```
 
+### Environment Variables
+
+```
+AUTH_WORDPRESS_ID
+AUTH_WORDPRESS_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import WordPress from "@auth/core/providers/wordpress";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    WordPress({
-      clientId: WORKPRESS_CLIENT_ID,
-      clientSecret: WORKPRESS_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Wordpress from "next-auth/providers/wordpress";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Wordpress],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Wordpress from "@auth/sveltekit/providers/wordpress";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Wordpress],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Wordpress from "@auth/express/providers/wordpress";
+
+app.use("/auth/*", ExpressAuth({ providers: [Wordpress] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

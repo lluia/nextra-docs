@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/reddit
 ```
 
+### Environment Variables
+
+```
+AUTH_REDDIT_ID
+AUTH_REDDIT_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Reddit from "@auth/core/providers/reddit";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Reddit({ clientId: REDDIT_CLIENT_ID, clientSecret: REDDIT_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Reddit from "next-auth/providers/reddit";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Reddit],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Reddit from "@auth/sveltekit/providers/reddit";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Reddit],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Reddit from "@auth/express/providers/reddit";
+
+app.use("/auth/*", ExpressAuth({ providers: [Reddit] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

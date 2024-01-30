@@ -12,19 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/zoom
 ```
 
+### Environment Variables
+
+```
+AUTH_ZOOM_ID
+AUTH_ZOOM_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Zoom from "@auth/core/providers/zoom";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Zoom({ clientId: ZOOM_CLIENT_ID, clientSecret: ZOOM_CLIENT_SECRET }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Zoom from "next-auth/providers/zoom";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Zoom],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Zoom from "@auth/sveltekit/providers/zoom";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Zoom],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Zoom from "@auth/express/providers/zoom";
+
+app.use("/auth/*", ExpressAuth({ providers: [Zoom] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 

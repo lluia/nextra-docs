@@ -12,22 +12,54 @@ import { Callout } from "nextra/components";
 https://example.com/api/auth/callback/todoist
 ```
 
+### Environment Variables
+
+```
+AUTH_TODOIST_ID
+AUTH_TODOIST_SECRET
+```
+
+> Next.js and SvelteKit will automatically pick them up if named exactly this way, simplifying
+> setup, if you'd like to name them something else you must pass them in in your providers array.
+
 ### Configuration
 
-```js
-import Auth from "@auth/core";
-import Todoist from "@auth/core/providers/todoist";
+<Code>
+  <Code.Next>
 
-const request = new Request(origin);
-const response = await Auth(request, {
-  providers: [
-    Todoist({
-      clientId: TODOIST_CLIENT_ID,
-      clientSecret: TODOIST_CLIENT_SECRET,
-    }),
-  ],
+```ts filename="/auth.ts"
+import NextAuth from "next-auth";
+import Todoist from "next-auth/providers/todoist";
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [Todoist],
 });
 ```
+
+  </Code.Next>
+  <Code.Svelte>
+
+```ts filename="/auth.ts"
+import SvelteKitAuth from "@auth/sveltekit";
+import Todoist from "@auth/sveltekit/providers/todoist";
+
+export const { signIn, signOut, auth } = SvelteKitAuth(request, {
+  providers: [Todoist],
+});
+```
+
+  </Code.Svelte>
+  <Code.Express>
+
+```ts filename="/src/app.ts"
+import ExpressAuth from "@auth/express";
+import Todoist from "@auth/express/providers/todoist";
+
+app.use("/auth/*", ExpressAuth({ providers: [Todoist] }));
+```
+
+  </Code.Express>
+</Code>
 
 ### Resources
 
