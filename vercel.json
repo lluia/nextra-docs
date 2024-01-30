@@ -13,11 +13,6 @@
   ],
   "redirects": [
     {
-      "source": "/guides/:path*",
-      "destination": "/docs/:path*",
-      "permanent": true
-    },
-    {
       "source": "/getting-started/:path*",
       "destination": "/docs/:path*",
       "permanent": true
