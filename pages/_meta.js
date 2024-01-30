@@ -14,6 +14,10 @@ export default {
     title: "Docs",
     type: "page",
   },
+  guides: {
+    title: "Guides",
+    type: "page",
+  },
   reference: {
     title: "API reference",
     type: "page",
