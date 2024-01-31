@@ -19,7 +19,7 @@ jobs:
       - run: |
           {
             echo 'OUTPUT=<<EOF'
-            pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app
+            echo "$(pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app)"
             echo EOF
           } >> "$GITHUB_ENV"
         id: runLinkChecker
