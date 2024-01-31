@@ -75,12 +75,15 @@ Auth.js has built-in support for a lot of OAuth providers, you can see the full 
     <Link
       href={`/reference/oauth-providers/${id}`}
       key={name}
-      className="p-4 border border-solid dark:border-neutral-800 dark:bg-neutral-950 border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
+      className="p-4 border border-solid dark:border-neutral-800 dark:bg-neutral-950
+      border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
     >
       <div className="grid place-items-center flex-grow">
         <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
       </div>
-      <div className="text-sm text-center">{name}</div>
+      <div className="text-sm text-center break-word-legacy !text-wrap">
+        {name}
+      </div>
     </Link>
   ))}
 </ListDisclosure>
@@ -286,8 +289,8 @@ Click the "Sign in with GitHub" button and if all went well, you should be redir
 
 <Callout>
   You can build your own Signin, Signout, etc. pages to match the style of your
-  application, check out [session management](/getting-started/session-management) for more
-  details.
+  application, check out [session
+  management](/getting-started/session-management) for more details.
 </Callout>
 
 </Steps>
@@ -540,9 +543,9 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 <Callout type="info">
   If you're using TypeScript, you can [augment the `User`
-  interface](/getting-started/typescript#module-augmentation) to match the response of your
-  `authorize` callback, so whenever you read the user in other callbacks (like
-  the `jwt`) the type will match correctly.
+  interface](/getting-started/typescript#module-augmentation) to match the
+  response of your `authorize` callback, so whenever you read the user in other
+  callbacks (like the `jwt`) the type will match correctly.
 </Callout>
 
 </Steps>
