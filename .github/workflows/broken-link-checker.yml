@@ -1,5 +1,6 @@
 name: "Broken Link Checker"
 on:
+  push:
   pull_request:
     types: [opened, synchronize]
 
@@ -30,6 +31,7 @@ jobs:
         env:
           CHECKER_OUTPUT: ${{ steps.runLinkChecker.outputs.OUTPUT }}
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             // 1a. Retrieve PRs
             const { data: pulls } = await github.rest.pulls.list({
