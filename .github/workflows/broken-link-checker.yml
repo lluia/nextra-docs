@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  validate-docs-links:
+  broken-link-checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,8 +26,10 @@ jobs:
         name: "Run link checker"
         continue-on-error: true
       - name: Comment results on PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         continue-on-error: true
+        env:
+          CHECKER_OUTPUT: ${{ steps.runLinkChecker.outputs.OUTPUT }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -48,7 +50,7 @@ jobs:
               });
 
               const headline = `## Link Checker Results`
-              const data = steps.runLinkChecker.outputs.OUTPUT
+              const data = process.env.CHECKER_OUTPUT
               const output = `${headline}
 
               ${data}`
