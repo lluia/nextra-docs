@@ -18,10 +18,10 @@ jobs:
       - run: corepack enable
       - run: |
           {
-            echo 'OUTPUT=<<EOF'
+            echo 'OUTPUT<<EOF'
             echo "$(pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app)"
             echo EOF
-          } >> "$GITHUB_ENV"
+          } >> "$GITHUB_OUTPUT"
         id: runLinkChecker
         name: "Run link checker"
         continue-on-error: true
