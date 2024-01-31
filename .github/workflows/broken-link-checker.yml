@@ -1,6 +1,5 @@
 name: "Broken Link Checker"
 on:
-  push:
   pull_request:
     types: [opened, synchronize]
 
@@ -33,12 +32,19 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             // 1a. Retrieve PRs
-            const { data: pulls } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              head: `${context.repo.owner}:${context.ref.replace('refs/heads/','')}`
-            })
-            const prNumber = pulls[0]?.number
+            let prNumber = undefined
+            if (context.number) {
+              // From trigger:pull_request
+              prNumber = context.number
+            } else {
+              // From trigger:push
+              const { data: pulls } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                head: `${context.repo.owner}:${context.ref.replace('refs/heads/','')}`
+              })
+              prNumber = pulls[0]?.number
+            }
 
             if (prNumber) {
               // 1b. Retrieve existing bot comments for the PR
