@@ -33,9 +33,9 @@ jobs:
           script: |
             // 1a. Retrieve PRs
             let prNumber = undefined
-            if (context.number) {
+            if (context.payload.number) {
               // From trigger:pull_request
-              prNumber = context.number
+              prNumber = context.payload.number
             } else {
               // From trigger:push
               const { data: pulls } = await github.rest.pulls.list({
