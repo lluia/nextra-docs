@@ -26,6 +26,7 @@ jobs:
         continue-on-error: true
       - name: Comment results on PR
         uses: actions/github-script@v7
+        continue-on-error: true
         env:
           CHECKER_OUTPUT: ${{ steps.runLinkChecker.outputs.OUTPUT }}
         with:
