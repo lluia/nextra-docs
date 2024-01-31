@@ -15,15 +15,25 @@ jobs:
         with:
           node-version: 20
       - run: corepack enable
-      - run: |
-          {
-            echo 'OUTPUT<<EOF'
-            echo "$(pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app)"
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
-        id: runLinkChecker
+      - name: Get Vercel Preview URL
+        id: vercelDeployment
+        uses: mishkeTz/get-vercel-preview-url-by-project-id@main
+        with:
+          vercel_access_token: ${{ secrets.VERCEL_TOKEN }}
+          vercel_team_id: ${{ secrets.VERCEL_TEAM_ID }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+      - id: runLinkChecker
         name: "Run link checker"
         continue-on-error: true
+        env:
+          PREVIEW_URL: ${{ steps.vercelDeployment.outputs.preview_url }}
+        run: |
+          {
+            echo 'OUTPUT<<EOF'
+            echo "$(pnpx broken-link-checker -f -r "$PREVIEW_URL")"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
       - name: Comment results on PR
         uses: actions/github-script@v7
         env:
