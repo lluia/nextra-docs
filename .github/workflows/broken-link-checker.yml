@@ -16,11 +16,12 @@ jobs:
         with:
           node-version: 20
       - run: corepack enable
-      - run: pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app >> $GITHUB_OUTPUT
+      - run: echo "OUTPUT=$(pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app)" >> $GITHUB_OUTPUT
+        id: runLinkChecker
         name: "Run link checker"
+        continue-on-error: true
       - name: Announce the beauty in PR comment
         uses: actions/github-script@v6
-        id: image-id-comment
         continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -42,7 +43,7 @@ jobs:
               });
 
               const headline = `## Link Checker Results`
-              const data = $GITHUB_OUTPUT
+              const data = steps.runLinkChecker.outputs.OUTPUT
               const output = `${headline}
 
               ${data}`
