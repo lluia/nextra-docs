@@ -13,7 +13,7 @@ Controlling the session strategy can be done through the [`session.strategy`](/r
 
 ## JWT Session
 
-Auth.js can create sessions using [JSON Web Tokens (JWT)](https://datatracker.ietf.org/doc/html/rfc7519). This is the default session strategy for Auth.js. When a user signs in, a JWT is created [in a `HttpOnly` cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies). Making the cookie `HttpOnly` prevents JavaScript from accessing it client-side (`document.cookie`), which makes it harder for attackers to steal the value. In addition, the JWT is encrypted with a secret key only known to the server. So even if an attacker were to steal the JWT from the cookie, they would not be able to decrypt it. Combined with a short expiration time, this makes JWTs a secure way to create sessions.
+Auth.js can create sessions using [JSON Web Tokens (JWT)](https://datatracker.ietf.org/doc/html/rfc7519). This is the default session strategy for Auth.js. When a user signs in, a JWT is created [in a `HttpOnly` cookie](https://developer.mozilla.org/en-US/getting-started/Web/HTTP/Cookies#restrict_access_to_cookies). Making the cookie `HttpOnly` prevents JavaScript from accessing it client-side (`document.cookie`), which makes it harder for attackers to steal the value. In addition, the JWT is encrypted with a secret key only known to the server. So even if an attacker were to steal the JWT from the cookie, they would not be able to decrypt it. Combined with a short expiration time, this makes JWTs a secure way to create sessions.
 
 When a user signs out, the JWT is deleted from the cookies, and the session is destroyed.
 
@@ -42,8 +42,8 @@ When a user signs out, the session is deleted from the database, and the session
 
 - Database sessions can be at any time modified server-side, so you can implement features that might be more difficult - but not impossible - using the JWT strategy, etc.: "sign out everywhere", or limiting concurrent logins
 - Auth.js has no opinion on the type of database you are using, we have a big list of [official
-  database adapters](/docs/database), but you can [implement your
-  own](/docs/creating-a-database-adapter) as well
+  database adapters](/getting-started/database), but you can [implement your
+  own](/guides/creating-a-database-adapter) as well
 
 ### 👎🏽 Disadvantages
 

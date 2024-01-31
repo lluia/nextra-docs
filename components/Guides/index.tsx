@@ -25,7 +25,7 @@ export function Guides() {
             </Link>
           </div>
           <ul className="w-full list-none">
-            <Link href="/docs/configuring-oauth">
+            <Link href="/guides/configuring-oauth">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <ShieldStar size={32} />
@@ -41,7 +41,7 @@ export function Guides() {
                 </div>
               </li>
             </Link>
-            <Link href="/docs/deep-dive/oauth-github-setup">
+            <Link href="/guides/deep-dive/oauth-github-setup">
               <li className="flex justify-between mb-8 w-full group">
                 <div className="flex gap-2">
                   <GithubLogo size={32} />

@@ -82,11 +82,14 @@ export const handle = SvelteKitAuth({
 ## Use your own provider
 
 <Callout>
-  Check our [built-in OAuth providers](/overview/authentication#setup-oauth) first, before creating one from scratch.
+  Check our [built-in OAuth providers](/overview/authentication#setup-oauth)
+  first, before creating one from scratch.
 </Callout>
 
 <Callout type="info">
-Auth.js uses the [`oauth4webapi`](https://github.com/panva/oauth4webapi/blob/main/docs/README.md) package under the hood.
+  Auth.js uses the
+  [`oauth4webapi`](https://github.com/panva/oauth4webapi/blob/main/docs/README.md)
+  package under the hood.
 </Callout>
 
 We support _any_ [OAuth](https://datatracker.ietf.org/doc/html/rfc6749) or [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) compliant provider.
@@ -130,7 +133,8 @@ export const handle = SvelteKitAuth({
 Then, set the [callback URL](https://www.ietf.org/archive/id/draft-ietf-oauth-v2-1-07.html#name-client-redirection-endpoint) in your provider's dashboard to `https://app.com/{basePath}/callback/{id}`.
 
 <Callout type="info">
-  By default, `basePath` is `/api/auth` for Next.js, and `/auth` in all other integrations. See [`basePath`](/reference/core#basepath).
+  By default, `basePath` is `/api/auth` for Next.js, and `/auth` in all other
+  integrations. See [`basePath`](/reference/core#basepath).
 </Callout>
 
 That's it! 🎉
@@ -161,8 +165,9 @@ Add the new provider name to the `Provider type` dropdown options in [`the provi
 
 ### Add a logo
 
-Add a logo `{provider}.svg` to the [`docs/static/img/providers`](https://github.com/nextauthjs/next-auth/tree/main/docs/static/img/providers) directory.
+Add a logo `{provider}.svg` to the
+[`docs/static/img/providers`](https://github.com/nextauthjs/next-auth/tree/main/docs/static/img/providers) directory.
 
 </Steps>
 
-Once the PR is merged, others will also be able to discover and use this provider with any of our integrations. That's it! 🎉 
+Once the PR is merged, others will also be able to discover and use this provider with any of our integrations. That's it! 🎉
