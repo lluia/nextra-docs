@@ -1,0 +1,20 @@
+name: "Broken Link Checker"
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  validate-docs-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: corepack enable
+      - run: pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app
+        name: "Run link checker"
