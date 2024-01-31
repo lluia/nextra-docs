@@ -16,11 +16,16 @@ jobs:
         with:
           node-version: 20
       - run: corepack enable
-      - run: echo "OUTPUT=$(pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app)" >> $GITHUB_OUTPUT
+      - run: |
+          {
+            echo 'OUTPUT<<EOF'
+            pnpx broken-link-checker -f -r https://authjs-nextra-docs.vercel.app
+            echo EOF
+          } >> "$GITHUB_ENV"
         id: runLinkChecker
         name: "Run link checker"
         continue-on-error: true
-      - name: Announce the beauty in PR comment
+      - name: Comment results on PR
         uses: actions/github-script@v6
         continue-on-error: true
         with:
