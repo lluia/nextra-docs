@@ -149,10 +149,11 @@ const generateOutputMd = (output: Output): string => {
   Object.entries(linksByPage).forEach(([page, links], i) => {
     outputMd += `
 
-### ${i + 1}) ${page}
+### ${i + 1}) [${new URL(page).pathname}](${page})
 
 | Target Link | Link Text  |
-|------|------|`;
+|------|------|
+`;
 
     // @ts-expect-error
     links.forEach((link: TODO) => {
