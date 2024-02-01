@@ -128,10 +128,13 @@ const postComment = async (outputMd: string) => {
 };
 
 const generateOutputMd = (output: Output): string => {
+  // Add comment header
   let outputMd = `${COMMENT_TAG}
 
 > **${output.links.length}** broken links found. Links organised below by source page, or page where they were found.
 `;
+
+  // Build map of page and array of its found broken links
   const linksByPage = output.links.reduce((acc, link) => {
     if (!acc[link.base.resolved]) {
       acc[link.base.resolved] = [];
@@ -141,10 +144,12 @@ const generateOutputMd = (output: Output): string => {
     }
     return acc;
   }, {});
+
+  // Write out markdown tables of these links
   Object.entries(linksByPage).forEach(([page, links], i) => {
     outputMd += `
 
-### ${i + 1}) [\`${new URL(page).pathname}\`](${page})
+### ${i + 1}) ${page}
 
 | Target Link | Link Text  |
 |------|------|`;
@@ -155,19 +160,21 @@ const generateOutputMd = (output: Output): string => {
         link.url.resolved
       }) | "${link.html.text.trim().replaceAll("\n", "")}" |`;
     });
+  });
 
-    if (output.errors.length) {
-      outputMd += `
+  // If there were scrape errors, append to bottom of comment
+  if (output.errors.length) {
+    outputMd += `
 ### Errors
 `;
-      output.errors.forEach((error) => {
-        outputMd += `
+    output.errors.forEach((error) => {
+      outputMd += `
 ${error}
 `;
-      });
-    }
-    return outputMd;
-  });
+    });
+  }
+
+  return outputMd;
 };
 
 // Main function that triggers link validation across .mdx files
