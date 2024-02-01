@@ -176,7 +176,7 @@ async function brokenLinkChecker(): Promise<void> {
     throw new Error("GITHUB_TOKEN is required");
   }
   const siteUrl =
-    process.env.VERCEL_PREVIEW_URL ?? "https://authjs-nextra-docs.vercel.app";
+    process.env.VERCEL_PREVIEW_URL || "https://authjs-nextra-docs.vercel.app";
   const output: Output = {
     errors: [],
     links: [],
