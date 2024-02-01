@@ -15,14 +15,14 @@ jobs:
         with:
           node-version: 20
       - run: corepack enable
-      - name: Get Vercel Preview URL
-        id: vercelDeployment
-        uses: mishkeTz/get-vercel-preview-url-by-project-id@main
-        with:
-          vercel_access_token: ${{ secrets.VERCEL_TOKEN }}
-          vercel_team_id: ${{ secrets.VERCEL_TEAM_ID }}
-          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Get Vercel Preview URL
+      #   id: vercelDeployment
+      #   uses: mishkeTz/get-vercel-preview-url-by-project-id@main
+      #   with:
+      #     vercel_access_token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel_team_id: ${{ secrets.VERCEL_TEAM_ID }}
+      #     vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
+      #     gh_token: ${{ secrets.GITHUB_TOKEN }}
       - run: node ./.github/actions/broken-link-checker/lib/index.js
         name: "Run link checker"
         env:
