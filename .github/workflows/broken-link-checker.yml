@@ -29,3 +29,4 @@ jobs:
         id: broken-links
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_PREVIEW_URL: ${{ steps.vercelDeployment.outputs.preview_url }}
