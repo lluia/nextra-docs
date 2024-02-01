@@ -5,15 +5,14 @@ on:
 
 permissions:
   pull-requests: write
+  checks: write
 
 jobs:
   broken-link-checker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - run: corepack enable
       # - name: Get Vercel Preview URL
       #   id: vercelDeployment
@@ -30,7 +29,3 @@ jobs:
         id: broken-links
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - run: node ./.github/actions/broken-link-checker/dist/index.js
-      #   name: "Run link checker"
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

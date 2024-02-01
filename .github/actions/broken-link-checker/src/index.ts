@@ -139,12 +139,12 @@ const generateOutputMd = (output: Output): string => {
 
 ### \`${page}\`
 
-|     | link | text | line |
-|-----|------|------|----------|`;
+| link | text | line |
+|------|------|----------|`;
     // @ts-expect-error
     links.forEach((link: TODO) => {
       outputMd += `
-| [ ] | ${link.url.resolved} | ${link.html.text
+| ${link.url.resolved} | ${link.html.text
         .trim()
         .replaceAll("\n", "")} | \`${pageBasePath}:${
         link.html.location.line
