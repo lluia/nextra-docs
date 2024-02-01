@@ -23,7 +23,14 @@ jobs:
       #     vercel_team_id: ${{ secrets.VERCEL_TEAM_ID }}
       #     vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
       #     gh_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: node ./.github/actions/broken-link-checker/lib/index.js
-        name: "Run link checker"
+      - name: Install dependencies
+        run: cd .github/actions/broken-link-checker && pnpm install
+      - name: Run link checker
+        uses: .github/actions/broken-link-checker
+        id: broken-links
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - run: node ./.github/actions/broken-link-checker/dist/index.js
+      #   name: "Run link checker"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

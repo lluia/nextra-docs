@@ -1,0 +1,12 @@
+import f from"broken-link-checker";import{setFailed as a}from"@actions/core";import*as d from"@actions/github";var p="## Broken Links";async function b({octokit:s,owner:t,repo:n,prNumber:o}){try{let{data:e}=await s.rest.issues.listComments({owner:t,repo:n,issue_number:o});return e.find(r=>r.body?.includes(p))}catch(e){a("Error finding bot comment: "+e);return}}async function y(s){let t="Broken Link Checker",n="This PR introduces broken links to the docs. Click details for a list.",o=`[See the comment for details](${s})`,{context:e,getOctokit:r}=d,i=r(process.env.GITHUB_TOKEN),{owner:m,repo:u}=e.repo,c=e.payload.pull_request?.head.sha,h={owner:m,repo:u,name:t,head_sha:c,status:"completed",conclusion:"failure",output:{title:t,summary:n,text:o}};try{await i.rest.checks.create(h)}catch(k){a("Failed to create check: "+k)}}var O=async s=>{try{let{context:t,getOctokit:n}=d,o=n(process.env.GITHUB_TOKEN),{owner:e,repo:r}=t.repo,i=t.payload.pull_request;i||(console.log("Skipping since this is not a pull request"),process.exit(0));let m=i.head.repo.fork,u=i.number;if(m)return a("The action could not create a Github comment because it is initiated from a forked repo. View the action logs for a list of broken links."),"";let l=await b({octokit:o,owner:e,repo:r,prNumber:u});if(l){let{data:c}=await o.rest.issues.updateComment({owner:e,repo:r,comment_id:l?.id,body:s});return c.html_url}else{let{data:c}=await o.rest.issues.createComment({owner:e,repo:r,issue_number:u,body:s});return c.html_url}}catch(t){return a("Error updating comment: "+t),""}},T=s=>{let t=`${p}`,n=s.links.reduce((o,e)=>(o[e.base.resolved]||(o[e.base.resolved]=[]),o[e.base.resolved].push(e),o),{});return Object.entries(n).forEach(([o,e])=>{let r=new URL(o).pathname;t+=`
+
+### \`${o}\`
+
+|     | link | text | line |
+|-----|------|------|----------|`,e.forEach(i=>{t+=`
+| [ ] | ${i.url.resolved} | ${i.html.text.trim().replaceAll(`
+`,"")} | \`${r}:${i.html.location.line}\` |`})}),s.errors.length&&(t+=`
+### Errors
+`,s.errors.forEach(o=>{t+=`
+${o}
+`})),t};async function g(){if(!process.env.GITHUB_TOKEN)throw new Error("GITHUB_TOKEN is required");let s=process.env.VERCEL_PREVIEW_URL??"https://authjs-nextra-docs.vercel.app",t={errors:[],links:[],pages:[],sites:[]},n={excludeExternalLinks:!0,excludedKeywords:[]};new f.SiteChecker(n,{error:e=>{t.errors.push(e)},link:e=>{e.broken&&e.brokenReason==="HTTP_404"&&t.links.push(e)},end:async()=>{if(t.links.length){let e=T(t),r=await O(e);await y(r),a("Found broken links")}}}).enqueue(s)}g();
