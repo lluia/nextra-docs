@@ -144,16 +144,16 @@ const generateOutputMd = (output: Output): string => {
   Object.entries(linksByPage).forEach(([page, links], i) => {
     outputMd += `
 
-### ${i + 1}) \`[${new URL(page).pathname}](${page})\`
+### ${i + 1}) [\`${new URL(page).pathname}\`](${page})
 
 | Target Link | Link Text  |
 |------|------|`;
 
     // @ts-expect-error
     links.forEach((link: TODO) => {
-      outputMd += `| ${new URL(link.url.resolved).pathname} | "${link.html.text
-        .trim()
-        .replaceAll("\n", "")}" |`;
+      outputMd += `| [${new URL(link.url.resolved).pathname}](${
+        link.url.resolved
+      }) | "${link.html.text.trim().replaceAll("\n", "")}" |`;
     });
 
     if (output.errors.length) {
