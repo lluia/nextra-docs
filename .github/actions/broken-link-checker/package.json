@@ -1,0 +1,23 @@
+{
+  "name": "broken-link-checker",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "pnpm types && ncc build src/index.ts -m -o ./lib --license licenses.txt",
+    "types": "tsc"
+  },
+  "keywords": [],
+  "author": "ndom91 <yo@ndo.dev> (https://ndo.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "broken-link-checker": "^0.7.8"
+  }
+}
