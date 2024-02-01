@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
       - run: corepack enable
       - name: Get Vercel Preview URL
-        if: contains('${{ secrets.VERCEL_PROJECT_ID }}', 'prj_')
+        if: false
         id: vercelDeployment
         uses: mishkeTz/get-vercel-preview-url-by-project-id@main
         with:
