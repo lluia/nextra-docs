@@ -2,11 +2,11 @@
   "name": "broken-link-checker",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "pnpm types && ncc build src/index.ts -m -o ./lib --license licenses.txt",
+    "build": "pnpm types && ncc build src/index.ts --target es2022 -m -o ./lib --license licenses.txt",
     "types": "tsc"
   },
   "keywords": [],
