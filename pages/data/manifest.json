@@ -48,8 +48,6 @@
     "apple": "Apple",
     "discord": "Discord",
     "auth0": "Auth0",
-    "resend": "Resend",
-    "sendgrid": "Sendgrid",
     "42-school": "42 School",
     "asgardeo": "Asgardeo",
     "atlassian": "Atlassian",
@@ -89,7 +87,6 @@
     "medium": "Medium",
     "naver": "Naver",
     "netlify": "Netlify",
-    "nodemailer": "Nodemailer",
     "notion": "Notion",
     "okta": "Okta",
     "onelogin": "OneLogin",
@@ -117,5 +114,10 @@
     "zitadel": "ZITADEL",
     "zoho": "Zoho",
     "zoom": "Zoom"
+  },
+  "emailProviders": {
+    "resend": "Resend",
+    "sendgrid": "Sendgrid",
+    "nodemailer": "Nodemailer"
   }
 }
