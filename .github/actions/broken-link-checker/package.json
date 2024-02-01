@@ -6,14 +6,20 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "pnpm types && ncc build src/index.ts --target es2022 -m -o ./lib --license licenses.txt",
+    "clean": "rimraf lib/*",
+    "tsup": "tsup --out-dir lib --minify --format esm src/index.ts",
+    "build": "pnpm clean && pnpm tsup",
+    "build2": "pnpm types && ncc build src/index.ts --target es2022 -m -o ./lib --license licenses.txt",
     "types": "tsc"
   },
   "keywords": [],
   "author": "ndom91 <yo@ndo.dev> (https://ndo.dev/)",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^20.11.15",
     "@vercel/ncc": "^0.38.1",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.0.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },

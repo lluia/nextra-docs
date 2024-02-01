@@ -1,4 +1,3 @@
-// @ts-expect-error
 import blc from "broken-link-checker";
 import { setFailed } from "@actions/core";
 import * as github from "@actions/github";
@@ -168,6 +167,9 @@ ${error}
 
 // Main function that triggers link validation across .mdx files
 async function brokenLinkChecker(): Promise<void> {
+  if (!process.env.GITHUB_TOKEN) {
+    throw new Error("GITHUB_TOKEN is required");
+  }
   const siteUrl =
     process.env.VERCEL_PREVIEW_URL ?? "https://authjs-nextra-docs.vercel.app";
   const output: Output = {
