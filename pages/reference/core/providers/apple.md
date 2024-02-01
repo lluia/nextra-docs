@@ -61,7 +61,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`AppleProfile`](apple.md#appleprofile)
+• **P** extends [`AppleProfile`](/reference/core/providers/apple.md#appleprofile)
 
 ### Parameters
 

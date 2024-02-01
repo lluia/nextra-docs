@@ -61,11 +61,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<[`ZoomProfile`](zoom.md#zoomprofile)\>
+• **config**: `OAuthUserConfig`\<[`ZoomProfile`](/reference/core/providers/zoom.md#zoomprofile)\>
 
 ### Returns
 
-`OAuthConfig`\<[`ZoomProfile`](zoom.md#zoomprofile)\>
+`OAuthConfig`\<[`ZoomProfile`](/reference/core/providers/zoom.md#zoomprofile)\>
 
 ***
 

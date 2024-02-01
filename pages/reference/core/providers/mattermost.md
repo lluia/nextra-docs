@@ -69,7 +69,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`MattermostProfile`](mattermost.md#mattermostprofile)
+• **P** extends [`MattermostProfile`](/reference/core/providers/mattermost.md#mattermostprofile)
 
 ### Parameters
 

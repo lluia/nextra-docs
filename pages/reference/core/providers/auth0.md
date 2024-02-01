@@ -58,11 +58,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OIDCUserConfig`\<[`Auth0Profile`](auth0.md#auth0profile)\>
+• **config**: `OIDCUserConfig`\<[`Auth0Profile`](/reference/core/providers/auth0.md#auth0profile)\>
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`Auth0Profile`](auth0.md#auth0profile)\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<[`Auth0Profile`](/reference/core/providers/auth0.md#auth0profile)\>
 
 ***
 

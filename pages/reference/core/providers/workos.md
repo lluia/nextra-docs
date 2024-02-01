@@ -126,7 +126,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`WorkOSProfile`](workos.md#workosprofile)
+• **P** extends [`WorkOSProfile`](/reference/core/providers/workos.md#workosprofile)
 
 ### Parameters
 

@@ -44,15 +44,15 @@ callbacks: {
 
 ### Type parameters
 
-• **CredentialsInputs** extends `Record`\<`string`, [`CredentialInput`](credentials.md#credentialinput)\> = `Record`\<`string`, [`CredentialInput`](credentials.md#credentialinput)\>
+• **CredentialsInputs** extends `Record`\<`string`, [`CredentialInput`](/reference/core/providers/credentials.md#credentialinput)\> = `Record`\<`string`, [`CredentialInput`](/reference/core/providers/credentials.md#credentialinput)\>
 
 ### Parameters
 
-• **config**: `Partial`\<[`CredentialsConfig`](credentials.md#credentialsconfig)\<`CredentialsInputs`\>\>
+• **config**: `Partial`\<[`CredentialsConfig`](/reference/core/providers/credentials.md#credentialsconfigcredentialsinputs)\<`CredentialsInputs`\>\>
 
 ### Returns
 
-[`CredentialsConfig`](credentials.md#credentialsconfig)
+[`CredentialsConfig`](/reference/core/providers/credentials.md#credentialsconfigcredentialsinputs)
 
 ### Example
 
@@ -89,7 +89,7 @@ const response = await AuthHandler(request, {
 
 ## CredentialInput
 
-Besides providing type safety inside [CredentialsConfig.authorize](credentials.md#authorize)
+Besides providing type safety inside [CredentialsConfig.authorize](/reference/core/providers/credentials.md#authorize)
 it also determines how the credentials input fields will be rendered
 on the default sign in page.
 
@@ -105,18 +105,18 @@ The Credentials Provider needs to be configured.
 
 ### Extends
 
-- [`CommonProviderOptions`](../providers.md#commonprovideroptions)
+- [`CommonProviderOptions`](/reference/core/providers.md#commonprovideroptions)
 
 ### Type parameters
 
-• **CredentialsInputs** extends `Record`\<`string`, [`CredentialInput`](credentials.md#credentialinput)\> = `Record`\<`string`, [`CredentialInput`](credentials.md#credentialinput)\>
+• **CredentialsInputs** extends `Record`\<`string`, [`CredentialInput`](/reference/core/providers/credentials.md#credentialinput)\> = `Record`\<`string`, [`CredentialInput`](/reference/core/providers/credentials.md#credentialinput)\>
 
 ### Properties
 
 #### authorize
 
 ```ts
-authorize: (credentials, request) => Awaitable<null | User>;
+authorize: (credentials: Partial<Record<keyof CredentialsInputs, unknown>>, request: Request) => Awaitable<null | User>;
 ```
 
 Gives full control over how you handle the credentials received from the user.
@@ -130,7 +130,7 @@ by a popular library like [Zod](https://zod.dev)
 
 • **credentials**: `Partial`\<`Record`\<keyof `CredentialsInputs`, `unknown`\>\>
 
-The available keys are determined by [CredentialInput](credentials.md#credentialinput).
+The available keys are determined by [CredentialInput](/reference/core/providers/credentials.md#credentialinput).
 
 **Note**
 The existence/correctness of a field cannot be guaranteed at compile time,
@@ -145,7 +145,7 @@ The original request is forward for convenience
 
 ##### Returns
 
-`Awaitable`\<`null` \| [`User`](../types.md#user)\>
+`Awaitable`\<`null` \| [`User`](/reference/core/types.md#user)\>
 
 ##### Example
 
@@ -171,7 +171,7 @@ It's also part of the URL
 
 ##### Inherited from
 
-[`providers.CommonProviderOptions.id`](../providers.md#id)
+[`CommonProviderOptions`](/reference/core/providers.md#commonprovideroptions).[`id`](/reference/core/providers.md#id)
 
 #### name
 
@@ -185,4 +185,4 @@ For example if it's "Google", the corresponding button will say:
 
 ##### Inherited from
 
-[`providers.CommonProviderOptions.name`](../providers.md#name)
+[`CommonProviderOptions`](/reference/core/providers.md#commonprovideroptions).[`name`](/reference/core/providers.md#name)

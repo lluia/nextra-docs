@@ -3,11 +3,11 @@
 ## Provider\<P\>
 
 ```ts
-type Provider<P>: OIDCConfig<P> | OAuth2Config<P> | EmailConfig | CredentialsConfig & InternalProviderOptions | (...args) => OAuth2Config<P> | OIDCConfig<P> | EmailConfig | CredentialsConfig & InternalProviderOptions & InternalProviderOptions;
+type Provider<P>: OIDCConfig<P> | OAuth2Config<P> | EmailConfig | CredentialsConfig & InternalProviderOptions | (...args: any) => OAuth2Config<P> | OIDCConfig<P> | EmailConfig | CredentialsConfig & InternalProviderOptions & InternalProviderOptions;
 ```
 
 Must be a supported authentication provider config:
-- [OAuthConfig]([object Object])
+- OAuthConfig
 - EmailConfigInternal
 - CredentialsConfigInternal
 
@@ -21,7 +21,7 @@ For more information, see the guides:
 
 ### Type parameters
 
-• **P** extends [`Profile`](types.md#profile) = `any`
+• **P** extends [`Profile`](/reference/core/types.md#profile) = `any`
 
 ***
 
@@ -44,12 +44,12 @@ Providers passed to Auth.js must define one of these types.
 
 ## CommonProviderOptions
 
-Shared across all [ProviderType](providers.md#providertype)
+Shared across all [ProviderType](/reference/core/providers.md#providertype)
 
 ### Extended by
 
-- [`CredentialsConfig`](providers/credentials.md#credentialsconfig)
-- [`OAuth2Config`](providers.md#oauth2config)
+- [`CredentialsConfig`](/reference/core/providers/credentials.md#credentialsconfigcredentialsinputs)
+- [`OAuth2Config`](/reference/core/providers.md#oauth2configprofile)
 
 ### Properties
 
@@ -78,7 +78,7 @@ For example if it's "Google", the corresponding button will say:
 type: ProviderType;
 ```
 
-See [ProviderType](providers.md#providertype)
+See [ProviderType](/reference/core/providers.md#providertype)
 
 ***
 
@@ -88,7 +88,7 @@ TODO: Document
 
 ### Extends
 
-- [`CommonProviderOptions`](providers.md#commonprovideroptions).`PartialIssuer`
+- [`CommonProviderOptions`](/reference/core/providers.md#commonprovideroptions).`PartialIssuer`
 
 ### Type parameters
 
@@ -113,7 +113,7 @@ signIn('github') // "github" is the provider ID
 
 ##### Overrides
 
-[`providers.CommonProviderOptions.id`](providers.md#id)
+[`CommonProviderOptions`](/reference/core/providers.md#commonprovideroptions).[`id`](/reference/core/providers.md#id)
 
 #### name
 
@@ -125,7 +125,7 @@ The name of the provider. shown on the default sign in page.
 
 ##### Overrides
 
-[`providers.CommonProviderOptions.name`](providers.md#name)
+[`CommonProviderOptions`](/reference/core/providers.md#commonprovideroptions).[`name`](/reference/core/providers.md#name)
 
 #### account?
 
@@ -133,7 +133,7 @@ The name of the provider. shown on the default sign in page.
 account?: AccountCallback;
 ```
 
-Receives the full [TokenSet](types.md#tokenset) returned by the OAuth provider, and returns a subset.
+Receives the full [TokenSet](/reference/core/types.md#tokenset) returned by the OAuth provider, and returns a subset.
 It is used to create the account associated with a user in the database.
 
 :::note
@@ -213,7 +213,7 @@ The CSRF protection performed on the callback endpoint.
 
 ##### Note
 
-When `redirectProxyUrl` or [AuthConfig.redirectProxyUrl](@auth/core.md#redirectproxyurl) is set,
+When `redirectProxyUrl` or [AuthConfig.redirectProxyUrl](/reference/core#redirectproxyurl) is set,
 `"state"` will be added to checks automatically.
 
 [RFC 7636 - Proof Key for Code Exchange by OAuth Public Clients (PKCE)](https://www.rfc-editor.org/rfc/rfc7636.html#section-4) |
@@ -235,7 +235,7 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 profile?: ProfileCallback<Profile>;
 ```
 
-Receives the full [Profile](providers.md#oauth2config) returned by the OAuth provider, and returns a subset.
+Receives the full [Profile](/reference/core/providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
 
 Defaults to: `id`, `email`, `name`, `image`
@@ -262,7 +262,7 @@ options for advanced control.
 
 ## OIDCConfig\<Profile\>
 
-Extension of the [OAuth2Config](providers.md#oauth2config).
+Extension of the [OAuth2Config](/reference/core/providers.md#oauth2configprofile).
 
 ### See
 
@@ -270,7 +270,7 @@ https://openid.net/specs/openid-connect-core-1_0.html
 
 ### Extends
 
-- `Omit`\<[`OAuth2Config`](providers.md#oauth2config)\<`Profile`\>, `"type"` \| `"checks"`\>
+- `Omit`\<[`OAuth2Config`](/reference/core/providers.md#oauth2configprofile)\<`Profile`\>, `"type"` \| `"checks"`\>
 
 ### Type parameters
 
@@ -315,7 +315,7 @@ The name of the provider. shown on the default sign in page.
 account?: AccountCallback;
 ```
 
-Receives the full [TokenSet](types.md#tokenset) returned by the OAuth provider, and returns a subset.
+Receives the full [TokenSet](/reference/core/types.md#tokenset) returned by the OAuth provider, and returns a subset.
 It is used to create the account associated with a user in the database.
 
 :::note
@@ -410,7 +410,7 @@ See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs
 profile?: ProfileCallback<Profile>;
 ```
 
-Receives the full [Profile](providers.md#oauth2config) returned by the OAuth provider, and returns a subset.
+Receives the full [Profile](/reference/core/providers.md#oauth2configprofile) returned by the OAuth provider, and returns a subset.
 It is used to create the user in the database.
 
 Defaults to: `id`, `email`, `name`, `image`

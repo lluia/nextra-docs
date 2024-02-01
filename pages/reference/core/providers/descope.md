@@ -78,11 +78,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OIDCUserConfig`\<[`DescopeProfile`](descope.md#descopeprofile)\>
+• **config**: `OIDCUserConfig`\<[`DescopeProfile`](/reference/core/providers/descope.md#descopeprofile)\>
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`DescopeProfile`](descope.md#descopeprofile)\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<[`DescopeProfile`](/reference/core/providers/descope.md#descopeprofile)\>
 
 ***
 

@@ -92,7 +92,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`KakaoProfile`](kakao.md#kakaoprofile)
+• **P** extends [`KakaoProfile`](/reference/core/providers/kakao.md#kakaoprofile)
 
 ### Parameters
 

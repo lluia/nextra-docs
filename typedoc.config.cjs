@@ -18,7 +18,7 @@ module.exports = {
   entryPoints: ["index.ts", "adapters.ts", "errors.ts", "jwt.ts", "types.ts"]
     .map((e) => `${coreSrc}/${e}`)
     .concat(providers),
-  entryModule: `${core}/src/index.ts`,
+  entryModule: `@auth/core`,
   entryPointStrategy: "expand",
   excludeExternals: true,
   excludeGroups: true,
@@ -29,7 +29,7 @@ module.exports = {
   expandObjects: true,
   githubPages: false,
   gitRevision: "main",
-  entryFileName: "@auth/core.md",
+  entryFileName: "core.md",
   hidePageHeader: true,
   hideBreadcrumbs: true,
   hideGenerator: true,
@@ -59,6 +59,7 @@ module.exports = {
   ],
   plugin: [
     "typedoc-plugin-markdown",
+    require.resolve("./typedoc-nextra.cjs"),
     require.resolve("./typedoc-mdn-links.cjs"),
   ],
   readme: "none",
@@ -66,5 +67,7 @@ module.exports = {
   tsconfig: `${core}/tsconfig.json`,
   useCodeBlocks: true,
   out: "pages/reference/core",
+  publicPath: "/reference/core",
   outputFileStrategy: "modules",
+  theme: "nextauth",
 };

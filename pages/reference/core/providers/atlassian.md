@@ -58,7 +58,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`AtlassianProfile`](atlassian.md#atlassianprofile)
+• **P** extends [`AtlassianProfile`](/reference/core/providers/atlassian.md#atlassianprofile)
 
 ### Parameters
 

@@ -65,7 +65,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<[`GitHubProfile`](github.md#githubprofile)\> & \{
+• **config**: `OAuthUserConfig`\<[`GitHubProfile`](/reference/core/providers/github.md#githubprofile)\> & \{
   `enterprise`: \{
      `baseUrl`: `string`;
   };
@@ -73,7 +73,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-`OAuthConfig`\<[`GitHubProfile`](github.md#githubprofile)\>
+`OAuthConfig`\<[`GitHubProfile`](/reference/core/providers/github.md#githubprofile)\>
 
 ***
 

@@ -81,7 +81,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`FusionAuthProfile`](fusionauth.md#fusionauthprofile)
+• **P** extends [`FusionAuthProfile`](/reference/core/providers/fusionauth.md#fusionauthprofile)
 
 ### Parameters
 

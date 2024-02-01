@@ -71,4 +71,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<`P`\>

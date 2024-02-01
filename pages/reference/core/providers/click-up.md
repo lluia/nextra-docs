@@ -62,11 +62,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<[`ClickUpProfile`](click-up.md#clickupprofile)\>
+• **config**: `OAuthUserConfig`\<[`ClickUpProfile`](/reference/core/providers/click-up.md#clickupprofile)\>
 
 ### Returns
 
-`OAuthConfig`\<[`ClickUpProfile`](click-up.md#clickupprofile)\>
+`OAuthConfig`\<[`ClickUpProfile`](/reference/core/providers/click-up.md#clickupprofile)\>
 
 ***
 

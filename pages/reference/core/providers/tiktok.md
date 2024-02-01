@@ -80,7 +80,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`TiktokProfile`](tiktok.md#tiktokprofile)
+• **P** extends [`TiktokProfile`](/reference/core/providers/tiktok.md#tiktokprofile)
 
 ### Parameters
 

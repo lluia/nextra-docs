@@ -41,7 +41,7 @@ Decodes a Auth.js issued JWT.
 
 ### Type parameters
 
-• **Payload** = [`JWT`](jwt.md#jwt)
+• **Payload** = [`JWT`](/reference/core/jwt.md#jwt)
 
 ### Parameters
 
@@ -63,7 +63,7 @@ Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 
 ### Type parameters
 
-• **Payload** = [`JWT`](jwt.md#jwt)
+• **Payload** = [`JWT`](/reference/core/jwt.md#jwt)
 
 ### Parameters
 
@@ -94,7 +94,7 @@ or the raw JWT string. We look for the JWT in the either the cookies, or the `Au
 
 ### Returns
 
-`Promise`\<`R` extends `true` ? `string` : [`JWT`](jwt.md#jwt) \| `null`\>
+`Promise`\<`R` extends `true` ? `string` : [`JWT`](/reference/core/jwt.md#jwt) \| `null`\>
 
 ***
 

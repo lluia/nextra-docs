@@ -17,11 +17,11 @@ Add Yandex login to your page
 
 ### Parameters
 
-• **options**: `OAuthUserConfig`\<[`YandexProfile`](yandex.md#yandexprofile)\>
+• **options**: `OAuthUserConfig`\<[`YandexProfile`](/reference/core/providers/yandex.md#yandexprofile)\>
 
 ### Returns
 
-`OAuthConfig`\<[`YandexProfile`](yandex.md#yandexprofile)\>
+`OAuthConfig`\<[`YandexProfile`](/reference/core/providers/yandex.md#yandexprofile)\>
 
 ### Example
 

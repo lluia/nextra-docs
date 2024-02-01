@@ -109,7 +109,7 @@ async function refreshAccessToken(token) {
 
 ### Type parameters
 
-• **P** extends [`AzureDevOpsProfile`](azure-devops.md#azuredevopsprofile)
+• **P** extends [`AzureDevOpsProfile`](/reference/core/providers/azure-devops.md#azuredevopsprofile)
 
 ### Parameters
 

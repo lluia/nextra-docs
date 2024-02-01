@@ -77,7 +77,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 ### Parameters
 
 • **options**: `OAuthUserConfig`\<`P`\> & \{
-  `issuer`: [`BattleNetIssuer`](battlenet.md#battlenetissuer);
+  `issuer`: [`BattleNetIssuer`](/reference/core/providers/battlenet.md#battlenetissuer);
   }
 
 ### Returns

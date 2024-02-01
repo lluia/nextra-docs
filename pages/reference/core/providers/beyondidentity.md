@@ -17,11 +17,11 @@ Add Beyond Identity login to your page.
 
 ### Parameters
 
-• **config**: `OIDCUserConfig`\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+• **config**: `OIDCUserConfig`\<[`BeyondIdentityProfile`](/reference/core/providers/beyondidentity.md#beyondidentityprofile)\>
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`BeyondIdentityProfile`](beyondidentity.md#beyondidentityprofile)\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<[`BeyondIdentityProfile`](/reference/core/providers/beyondidentity.md#beyondidentityprofile)\>
 
 ### Example
 

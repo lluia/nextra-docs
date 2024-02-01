@@ -62,7 +62,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`DiscordProfile`](discord.md#discordprofile)
+• **P** extends [`DiscordProfile`](/reference/core/providers/discord.md#discordprofile)
 
 ### Parameters
 

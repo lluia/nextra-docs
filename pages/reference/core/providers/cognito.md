@@ -41,7 +41,7 @@ const response = await Auth(request, {
 You need to select your AWS region to go the the Cognito dashboard.
 
 :::tip
-The issuer is a URL, that looks like this: https://cognito-idp.{region}.amazonaws.com/{PoolId}
+The issuer is a URL, that looks like this: https://cognito-idp.\{region\}.amazonaws.com/\{PoolId\}
 :::
 `PoolId` is from General Settings in Cognito, not to be confused with the App Client ID.
 :::warning

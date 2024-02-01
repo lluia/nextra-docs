@@ -67,4 +67,4 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<`TwitchProfile`\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<`TwitchProfile`\>

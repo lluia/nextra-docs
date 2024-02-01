@@ -87,11 +87,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<[`TwitterProfile`](twitter.md#twitterprofile)\>
+• **config**: `OAuthUserConfig`\<[`TwitterProfile`](/reference/core/providers/twitter.md#twitterprofile)\>
 
 ### Returns
 
-`OAuthConfig`\<[`TwitterProfile`](twitter.md#twitterprofile)\>
+`OAuthConfig`\<[`TwitterProfile`](/reference/core/providers/twitter.md#twitterprofile)\>
 
 ***
 

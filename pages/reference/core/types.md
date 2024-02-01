@@ -198,11 +198,11 @@ Provider's type for this account
 expires_at?: number;
 ```
 
-Calculated value based on [OAuth2TokenEndpointResponse.expires_in]([object Object]).
+Calculated value based on OAuth2TokenEndpointResponse.expires_in.
 
-It is the absolute timestamp (in seconds) when the [OAuth2TokenEndpointResponse.access_token]([object Object]) expires.
+It is the absolute timestamp (in seconds) when the OAuth2TokenEndpointResponse.access_token expires.
 
-This value can be used for implementing token rotation together with [OAuth2TokenEndpointResponse.refresh_token]([object Object]).
+This value can be used for implementing token rotation together with OAuth2TokenEndpointResponse.refresh_token.
 
 ##### See
 
@@ -229,16 +229,24 @@ Override the default session creation flow of Auth.js
 
 ### Type parameters
 
-• **P** = [`Profile`](types.md#profile)
+• **P** = [`Profile`](/reference/core/types.md#profile)
 
-• **A** = [`Account`](types.md#account)
+• **A** = [`Account`](/reference/core/types.md#account)
 
 ### Properties
 
 #### jwt
 
 ```ts
-jwt: (params) => Awaitable<null | JWT>;
+jwt: (params: {
+  account: null | A;
+  token: JWT;
+  user: User | AdapterUser;
+  isNewUser: boolean;
+  profile: P;
+  session: any;
+  trigger: "signIn" | "signUp" | "update";
+}) => Awaitable<null | JWT>;
 ```
 
 This callback is called whenever a JSON Web Token is created (i.e. at sign in)
@@ -256,8 +264,8 @@ The JWT is encrypted by default.
 
 • **params**: \{
   `account`: `null` \| `A`;
-  `token`: [`JWT`](jwt.md#jwt);
-  `user`: [`User`](types.md#user) \| [`AdapterUser`](adapters.md#adapteruser);
+  `token`: [`JWT`](/reference/core/jwt.md#jwt);
+  `user`: [`User`](/reference/core/types.md#user) \| [`AdapterUser`](/reference/core/adapters.md#adapteruser);
   `isNewUser`: `boolean`;
   `profile`: `P`;
   `session`: `any`;
@@ -267,21 +275,21 @@ The JWT is encrypted by default.
 • **params\.account**: `null` \| `A`
 
 Contains information about the provider that was used to sign in.
-Also includes [TokenSet](types.md#tokenset)
+Also includes [TokenSet](/reference/core/types.md#tokenset)
 
 **Note**
 available when `trigger` is `"signIn"` or `"signUp"`
 
-• **params\.token**: [`JWT`](jwt.md#jwt)
+• **params\.token**: [`JWT`](/reference/core/jwt.md#jwt)
 
-When `trigger` is `"signIn"` or `"signUp"`, it will be a subset of [JWT](jwt.md#jwt),
+When `trigger` is `"signIn"` or `"signUp"`, it will be a subset of [JWT](/reference/core/jwt.md#jwt),
 `name`, `email` and `image` will be included.
 
-Otherwise, it will be the full [JWT](jwt.md#jwt) for subsequent calls.
+Otherwise, it will be the full [JWT](/reference/core/jwt.md#jwt) for subsequent calls.
 
-• **params\.user**: [`User`](types.md#user) \| [`AdapterUser`](adapters.md#adapteruser)
+• **params\.user**: [`User`](/reference/core/types.md#user) \| [`AdapterUser`](/reference/core/adapters.md#adapteruser)
 
-Either the result of the OAuthConfig.profile or the [CredentialsConfig.authorize](providers/credentials.md#authorize) callback.
+Either the result of the OAuthConfig.profile or the [CredentialsConfig.authorize](/reference/core/providers/credentials.md#authorize) callback.
 
 **Note**
 available when `trigger` is `"signIn"` or `"signUp"`.
@@ -305,7 +313,7 @@ available when `trigger` is `"signIn"`.
 
 • **params\.session?**: `any`
 
-When using [AuthConfig.session](@auth/core.md#session) `strategy: "jwt"`, this is the data
+When using [AuthConfig.session](/reference/core#session) `strategy: "jwt"`, this is the data
 sent from the client via the [`useSession().update`](https://next-auth.js.org/getting-started/client#update-session) method.
 
 ⚠ Note, you should validate this data before using it.
@@ -314,18 +322,21 @@ sent from the client via the [`useSession().update`](https://next-auth.js.org/ge
 
 Check why was the jwt callback invoked. Possible reasons are:
 - user sign-in: First time the callback is invoked, `user`, `profile` and `account` will be present.
-- user sign-up: a user is created for the first time in the database (when [AuthConfig.session](@auth/core.md#session).strategy is set to `"database"`)
+- user sign-up: a user is created for the first time in the database (when [AuthConfig.session](/reference/core#session).strategy is set to `"database"`)
 - update event: Triggered by the [`useSession().update`](https://next-auth.js.org/getting-started/client#update-session) method.
 In case of the latter, `trigger` will be `undefined`.
 
 ##### Returns
 
-`Awaitable`\<`null` \| [`JWT`](jwt.md#jwt)\>
+`Awaitable`\<`null` \| [`JWT`](/reference/core/jwt.md#jwt)\>
 
 #### redirect
 
 ```ts
-redirect: (params) => Awaitable<string>;
+redirect: (params: {
+  baseUrl: string;
+  url: string;
+}) => Awaitable<string>;
 ```
 
 This callback is called anytime the user is redirected to a callback URL (e.g. on signin or signout).
@@ -356,7 +367,18 @@ URL provided as callback URL by the client
 #### session
 
 ```ts
-session: (params) => Awaitable<Session | DefaultSession>;
+session: (params: {
+  session: {
+     user: AdapterUser;
+  } & AdapterSession;
+  user: AdapterUser;
+  } & {
+  session: Session;
+  token: JWT;
+  } & {
+  newSession: any;
+  trigger: "update";
+}) => Awaitable<Session | DefaultSession>;
 ```
 
 This callback is called whenever a session is checked.
@@ -372,12 +394,12 @@ you have to explicitly forward it here to make it available to the client.
 
 • **params**: \{
   `session`: \{
-     `user`: [`AdapterUser`](adapters.md#adapteruser);
-  } & [`AdapterSession`](adapters.md#adaptersession);
-  `user`: [`AdapterUser`](adapters.md#adapteruser);
+     `user`: [`AdapterUser`](/reference/core/adapters.md#adapteruser);
+  } & [`AdapterSession`](/reference/core/adapters.md#adaptersession);
+  `user`: [`AdapterUser`](/reference/core/adapters.md#adapteruser);
   } & \{
-  `session`: [`Session`](types.md#session-2);
-  `token`: [`JWT`](jwt.md#jwt);
+  `session`: [`Session`](/reference/core/types.md#session-2);
+  `token`: [`JWT`](/reference/core/jwt.md#jwt);
   } & \{
   `newSession`: `any`;
   `trigger`: `"update"`;
@@ -385,7 +407,7 @@ you have to explicitly forward it here to make it available to the client.
 
 ##### Returns
 
-`Awaitable`\<[`Session`](types.md#session-2) \| `DefaultSession`\>
+`Awaitable`\<[`Session`](/reference/core/types.md#session-2) \| `DefaultSession`\>
 
 ##### See
 
@@ -394,7 +416,15 @@ you have to explicitly forward it here to make it available to the client.
 #### signIn
 
 ```ts
-signIn: (params) => Awaitable<string | boolean>;
+signIn: (params: {
+  account: null | A;
+  user: User | AdapterUser;
+  credentials: Record<string, CredentialInput>;
+  email: {
+     verificationRequest: boolean;
+  };
+  profile: P;
+}) => Awaitable<string | boolean>;
 ```
 
 Controls whether a user is allowed to sign in or not.
@@ -408,8 +438,8 @@ Unhandled errors will throw an `AuthorizedCallbackError` with the message set to
 
 • **params**: \{
   `account`: `null` \| `A`;
-  `user`: [`User`](types.md#user) \| [`AdapterUser`](adapters.md#adapteruser);
-  `credentials`: `Record`\<`string`, [`CredentialInput`](providers/credentials.md#credentialinput)\>;
+  `user`: [`User`](/reference/core/types.md#user) \| [`AdapterUser`](/reference/core/adapters.md#adapteruser);
+  `credentials`: `Record`\<`string`, [`CredentialInput`](/reference/core/providers/credentials.md#credentialinput)\>;
   `email`: \{
      `verificationRequest`: `boolean`;
   };
@@ -418,9 +448,9 @@ Unhandled errors will throw an `AuthorizedCallbackError` with the message set to
 
 • **params\.account**: `null` \| `A`
 
-• **params\.user**: [`User`](types.md#user) \| [`AdapterUser`](adapters.md#adapteruser)
+• **params\.user**: [`User`](/reference/core/types.md#user) \| [`AdapterUser`](/reference/core/adapters.md#adapteruser)
 
-• **params\.credentials?**: `Record`\<`string`, [`CredentialInput`](providers/credentials.md#credentialinput)\>
+• **params\.credentials?**: `Record`\<`string`, [`CredentialInput`](/reference/core/providers/credentials.md#credentialinput)\>
 
 If Credentials provider is used, it contains the user credentials
 
@@ -485,7 +515,10 @@ The various event callbacks you can register for from next-auth
 #### session
 
 ```ts
-session: (message) => Awaitable<void>;
+session: (message: {
+  session: Session;
+  token: JWT;
+}) => Awaitable<void>;
 ```
 
 The message object will contain one of these depending on
@@ -496,13 +529,13 @@ if you use JWT or database persisted sessions:
 ##### Parameters
 
 • **message**: \{
-  `session`: [`Session`](types.md#session-2);
-  `token`: [`JWT`](jwt.md#jwt);
+  `session`: [`Session`](/reference/core/types.md#session-2);
+  `token`: [`JWT`](/reference/core/jwt.md#jwt);
   }
 
-• **message\.session**: [`Session`](types.md#session-2)
+• **message\.session**: [`Session`](/reference/core/types.md#session-2)
 
-• **message\.token**: [`JWT`](jwt.md#jwt)
+• **message\.token**: [`JWT`](/reference/core/jwt.md#jwt)
 
 ##### Returns
 
@@ -511,7 +544,12 @@ if you use JWT or database persisted sessions:
 #### signIn
 
 ```ts
-signIn: (message) => Awaitable<void>;
+signIn: (message: {
+  account: null | Account;
+  user: User;
+  isNewUser: boolean;
+  profile: Profile;
+}) => Awaitable<void>;
 ```
 
 If using a `credentials` type auth, the user is the raw response from your
@@ -522,19 +560,19 @@ and an indicator if the user was new to your Adapter.
 ##### Parameters
 
 • **message**: \{
-  `account`: `null` \| [`Account`](types.md#account);
-  `user`: [`User`](types.md#user);
+  `account`: `null` \| [`Account`](/reference/core/types.md#account);
+  `user`: [`User`](/reference/core/types.md#user);
   `isNewUser`: `boolean`;
-  `profile`: [`Profile`](types.md#profile);
+  `profile`: [`Profile`](/reference/core/types.md#profile);
   }
 
-• **message\.account**: `null` \| [`Account`](types.md#account)
+• **message\.account**: `null` \| [`Account`](/reference/core/types.md#account)
 
-• **message\.user**: [`User`](types.md#user)
+• **message\.user**: [`User`](/reference/core/types.md#user)
 
 • **message\.isNewUser?**: `boolean`
 
-• **message\.profile?**: [`Profile`](types.md#profile)
+• **message\.profile?**: [`Profile`](/reference/core/types.md#profile)
 
 ##### Returns
 
@@ -543,7 +581,11 @@ and an indicator if the user was new to your Adapter.
 #### signOut
 
 ```ts
-signOut: (message) => Awaitable<void>;
+signOut: (message: {
+  session: undefined | null | void | AdapterSession;
+  } | {
+  token: null | JWT;
+}) => Awaitable<void>;
 ```
 
 The message object will contain one of these depending on
@@ -554,9 +596,9 @@ if you use JWT or database persisted sessions:
 ##### Parameters
 
 • **message**: \{
-  `session`: `undefined` \| `null` \| `void` \| [`AdapterSession`](adapters.md#adaptersession);
+  `session`: `undefined` \| `null` \| `void` \| [`AdapterSession`](/reference/core/adapters.md#adaptersession);
   } \| \{
-  `token`: `null` \| [`JWT`](jwt.md#jwt);
+  `token`: `null` \| [`JWT`](/reference/core/jwt.md#jwt);
   }
 
 ##### Returns
@@ -614,4 +656,4 @@ or the second parameter of the `session` callback, when using a database.
 
 ### Extended by
 
-- [`AdapterUser`](adapters.md#adapteruser)
+- [`AdapterUser`](/reference/core/adapters.md#adapteruser)

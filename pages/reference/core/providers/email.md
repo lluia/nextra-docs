@@ -37,13 +37,13 @@ like they are supposed to click on it to sign in.
 
 • **params**: \{
   `host`: `string`;
-  `theme`: [`Theme`](../types.md#theme);
+  `theme`: [`Theme`](/reference/core/types.md#theme);
   `url`: `string`;
   }
 
 • **params\.host**: `string`
 
-• **params\.theme**: [`Theme`](../types.md#theme)
+• **params\.theme**: [`Theme`](/reference/core/types.md#theme)
 
 • **params\.url**: `string`
 

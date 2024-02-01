@@ -62,7 +62,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`NaverProfile`](naver.md#naverprofile)
+• **P** extends [`NaverProfile`](/reference/core/providers/naver.md#naverprofile)
 
 ### Parameters
 

@@ -85,11 +85,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OIDCUserConfig`\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+• **config**: `OIDCUserConfig`\<[`AsgardeoProfile`](/reference/core/providers/asgardeo.md#asgardeoprofile)\>
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<[`AsgardeoProfile`](asgardeo.md#asgardeoprofile)\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<[`AsgardeoProfile`](/reference/core/providers/asgardeo.md#asgardeoprofile)\>
 
 ***
 

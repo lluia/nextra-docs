@@ -86,7 +86,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends [`ZitadelProfile`](zitadel.md#zitadelprofile)
+• **P** extends [`ZitadelProfile`](/reference/core/providers/zitadel.md#zitadelprofile)
 
 ### Parameters
 
@@ -94,7 +94,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Returns
 
-[`OIDCConfig`](../providers.md#oidcconfig)\<`P`\>
+[`OIDCConfig`](/reference/core/providers.md#oidcconfigprofile)\<`P`\>
 
 ***
 

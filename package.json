@@ -37,7 +37,7 @@
     "react-fast-marquee": "^1.6.2",
     "shikiji": "^0.9.19",
     "typedoc": "0.25.7",
-    "typedoc-plugin-markdown": "4.0.0-next.43"
+    "typedoc-plugin-markdown": "4.0.0-next.49"
   },
   "devDependencies": {
     "@types/node": "20.9.0",

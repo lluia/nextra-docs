@@ -18,7 +18,7 @@ If `debug: true` is set, you can check out `[auth][debug]` in the logs to learn 
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -32,7 +32,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -65,7 +65,7 @@ or if it returns `false`.
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -79,7 +79,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -127,7 +127,7 @@ It will show the original stack trace.
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -141,7 +141,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -212,7 +212,7 @@ Learn more at [Guide: Error pages](https://authjs.dev/guides/basics/pages)
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -226,7 +226,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -241,7 +241,7 @@ Learn more at [`events`](https://authjs.dev/reference/core/types#eventcallbacks)
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -255,7 +255,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -272,7 +272,7 @@ There is no action required, but it might be an indicator that somebody is tryin
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -286,7 +286,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -299,7 +299,7 @@ Learn more at [`checks`](https://authjs.dev/reference/core/providers#checks)
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -313,7 +313,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -326,7 +326,7 @@ Learn more at [`OAuth2Config`](https://authjs.dev/reference/core/providers#oauth
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -340,7 +340,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -350,7 +350,7 @@ Thrown when the callback endpoint was incorrectly called without a provider.
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -364,7 +364,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -382,7 +382,7 @@ Learn more at [`secret`](https://authjs.dev/reference/core#secret), [`jwt.encode
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -396,7 +396,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -410,7 +410,7 @@ Learn more at [Database Adapters](https://authjs.dev/getting-started/adapters), 
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -424,7 +424,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -438,7 +438,7 @@ Learn more at [Database Adapters](https://authjs.dev/reference/core/adapters)
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -452,7 +452,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -465,7 +465,7 @@ Learn more at [Credentials provider](https://authjs.dev/reference/core/providers
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -479,7 +479,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -529,7 +529,7 @@ To generate a random string, you can use the Auth.js CLI: `npx auth secret`
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -543,7 +543,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -615,7 +615,7 @@ changed, or the [`OAuth2Config.profile`](https://authjs.dev/reference/core/provi
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -629,7 +629,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -681,7 +681,7 @@ Learn more at [Concept: Database session strategy](https://authjs.dev/concepts/s
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -695,7 +695,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -711,7 +711,7 @@ The session cookie(s) are emptied even if this error is logged.
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -725,7 +725,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -737,7 +737,7 @@ See [`AuthAction`](https://authjs.dev/reference/core/types#authaction) for the s
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -751,7 +751,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -763,7 +763,7 @@ Learn more at [`strategy`](https://authjs.dev/reference/core#strategy) or [Crede
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -777,7 +777,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -795,7 +795,7 @@ Learn more at [`trustHost`](https://authjs.dev/reference/core#trusthost) or [Gui
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -809,7 +809,7 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)
 
 ***
 
@@ -821,7 +821,7 @@ or because the token has expired. Ask the user to log in again.
 
 ### Extends
 
-- [`AuthError`](errors.md#autherror)
+- [`AuthError`](/reference/core/errors.md#autherror)
 
 ### Properties
 
@@ -835,4 +835,4 @@ The error type. Used to identify the error in the logs.
 
 ##### Inherited from
 
-[`errors.AuthError.type`](errors.md#type-1)
+[`AuthError`](/reference/core/errors.md#autherror).[`type`](/reference/core/errors.md#type-1)

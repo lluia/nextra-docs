@@ -81,7 +81,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Type parameters
 
-• **P** extends `Record`\<`string`, `any`\> = [`VkProfile`](vk.md#vkprofile)
+• **P** extends `Record`\<`string`, `any`\> = [`VkProfile`](/reference/core/providers/vk.md#vkprofile)
 
 ### Parameters
 

@@ -61,11 +61,11 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 ### Parameters
 
-• **config**: `OAuthUserConfig`\<[`PassageProfile`](passage.md#passageprofile)\>
+• **config**: `OAuthUserConfig`\<[`PassageProfile`](/reference/core/providers/passage.md#passageprofile)\>
 
 ### Returns
 
-`OAuthConfig`\<[`PassageProfile`](passage.md#passageprofile)\>
+`OAuthConfig`\<[`PassageProfile`](/reference/core/providers/passage.md#passageprofile)\>
 
 ***
 

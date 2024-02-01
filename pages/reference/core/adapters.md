@@ -30,7 +30,7 @@ Then, you can import this submodule from `@auth/core/adapters`.
 
 ## Usage
 
-Each adapter method and its function signature is documented in the [Adapter](adapters.md#adapter) interface.
+Each adapter method and its function signature is documented in the [Adapter](/reference/core/adapters.md#adapter) interface.
 
 ```ts title=my-adapter.ts
 import { type Adapter } from "@auth/core/adapters"
@@ -206,7 +206,7 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-`Awaitable`\<[`AdapterSession`](adapters.md#adaptersession)\>
+`Awaitable`\<[`AdapterSession`](/reference/core/adapters.md#adaptersession)\>
 
 #### createUser()?
 
@@ -220,11 +220,11 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Parameters
 
-• **user**: [`AdapterUser`](adapters.md#adapteruser)
+• **user**: [`AdapterUser`](/reference/core/adapters.md#adapteruser)
 
 ##### Returns
 
-`Awaitable`\<[`AdapterUser`](adapters.md#adapteruser)\>
+`Awaitable`\<[`AdapterUser`](/reference/core/adapters.md#adapteruser)\>
 
 #### createVerificationToken()?
 
@@ -238,11 +238,11 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 ##### Parameters
 
-• **verificationToken**: [`VerificationToken`](adapters.md#verificationtoken)
+• **verificationToken**: [`VerificationToken`](/reference/core/adapters.md#verificationtoken)
 
 ##### Returns
 
-`Awaitable`\<`undefined` \| `null` \| [`VerificationToken`](adapters.md#verificationtoken)\>
+`Awaitable`\<`undefined` \| `null` \| [`VerificationToken`](/reference/core/adapters.md#verificationtoken)\>
 
 #### deleteSession()?
 
@@ -261,7 +261,7 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](/reference/core/adapters.md#adaptersession)\>
 
 #### deleteUser()?
 
@@ -275,7 +275,7 @@ optional deleteUser(userId): Promise<void> | Awaitable<undefined | null | Adapte
 
 ##### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterUser`](/reference/core/adapters.md#adapteruser)\>
 
 ##### Todo
 
@@ -306,7 +306,7 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Returns
 
-`Awaitable`\<`null` \| \{   `session`: [`AdapterSession`](adapters.md#adaptersession);   `user`: [`AdapterUser`](adapters.md#adapteruser);   }\>
+`Awaitable`\<`null` \| \{   `session`: [`AdapterSession`](/reference/core/adapters.md#adaptersession);   `user`: [`AdapterUser`](/reference/core/adapters.md#adapteruser);   }\>
 
 #### getUser()?
 
@@ -324,7 +324,7 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Returns
 
-`Awaitable`\<`null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+`Awaitable`\<`null` \| [`AdapterUser`](/reference/core/adapters.md#adapteruser)\>
 
 #### getUserByAccount()?
 
@@ -338,11 +338,11 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Parameters
 
-• **providerAccountId**: `Pick`\<[`AdapterAccount`](adapters.md#adapteraccount), `"provider"` \| `"providerAccountId"`\>
+• **providerAccountId**: `Pick`\<[`AdapterAccount`](/reference/core/adapters.md#adapteraccount), `"provider"` \| `"providerAccountId"`\>
 
 ##### Returns
 
-`Awaitable`\<`null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+`Awaitable`\<`null` \| [`AdapterUser`](/reference/core/adapters.md#adapteruser)\>
 
 #### getUserByEmail()?
 
@@ -360,7 +360,7 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 ##### Returns
 
-`Awaitable`\<`null` \| [`AdapterUser`](adapters.md#adapteruser)\>
+`Awaitable`\<`null` \| [`AdapterUser`](/reference/core/adapters.md#adapteruser)\>
 
 #### linkAccount()?
 
@@ -375,11 +375,11 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Parameters
 
-• **account**: [`AdapterAccount`](adapters.md#adapteraccount)
+• **account**: [`AdapterAccount`](/reference/core/adapters.md#adapteraccount)
 
 ##### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| `null` \| [`AdapterAccount`](/reference/core/adapters.md#adapteraccount)\>
 
 #### unlinkAccount()?
 
@@ -389,11 +389,11 @@ optional unlinkAccount(providerAccountId): Promise<void> | Awaitable<undefined |
 
 ##### Parameters
 
-• **providerAccountId**: `Pick`\<[`AdapterAccount`](adapters.md#adapteraccount), `"provider"` \| `"providerAccountId"`\>
+• **providerAccountId**: `Pick`\<[`AdapterAccount`](/reference/core/adapters.md#adapteraccount), `"provider"` \| `"providerAccountId"`\>
 
 ##### Returns
 
-`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| [`AdapterAccount`](adapters.md#adapteraccount)\>
+`Promise`\<`void`\> \| `Awaitable`\<`undefined` \| [`AdapterAccount`](/reference/core/adapters.md#adapteraccount)\>
 
 ##### Todo
 
@@ -411,11 +411,11 @@ See also [Database Session management](https://authjs.dev/guides/adapters/creati
 
 ##### Parameters
 
-• **session**: `Partial`\<[`AdapterSession`](adapters.md#adaptersession)\> & `Pick`\<[`AdapterSession`](adapters.md#adaptersession), `"sessionToken"`\>
+• **session**: `Partial`\<[`AdapterSession`](/reference/core/adapters.md#adaptersession)\> & `Pick`\<[`AdapterSession`](/reference/core/adapters.md#adaptersession), `"sessionToken"`\>
 
 ##### Returns
 
-`Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](adapters.md#adaptersession)\>
+`Awaitable`\<`undefined` \| `null` \| [`AdapterSession`](/reference/core/adapters.md#adaptersession)\>
 
 #### updateUser()?
 
@@ -429,11 +429,11 @@ See also [User management](https://authjs.dev/guides/adapters/creating-a-databas
 
 ##### Parameters
 
-• **user**: `Partial`\<[`AdapterUser`](adapters.md#adapteruser)\> & `Pick`\<[`AdapterUser`](adapters.md#adapteruser), `"id"`\>
+• **user**: `Partial`\<[`AdapterUser`](/reference/core/adapters.md#adapteruser)\> & `Pick`\<[`AdapterUser`](/reference/core/adapters.md#adapteruser), `"id"`\>
 
 ##### Returns
 
-`Awaitable`\<[`AdapterUser`](adapters.md#adapteruser)\>
+`Awaitable`\<[`AdapterUser`](/reference/core/adapters.md#adapteruser)\>
 
 #### useVerificationToken()?
 
@@ -459,7 +459,7 @@ See also [Verification tokens](https://authjs.dev/guides/adapters/creating-a-dat
 
 ##### Returns
 
-`Awaitable`\<`null` \| [`VerificationToken`](adapters.md#verificationtoken)\>
+`Awaitable`\<`null` \| [`VerificationToken`](/reference/core/adapters.md#verificationtoken)\>
 
 ***
 
@@ -475,7 +475,7 @@ One user can have multiple accounts.
 
 ### Extends
 
-- [`Account`](types.md#account)
+- [`Account`](/reference/core/types.md#account)
 
 ### Properties
 
@@ -489,7 +489,7 @@ Provider's id for this account. Eg.: "google"
 
 ##### Inherited from
 
-[`types.Account.provider`](types.md#provider)
+[`Account`](/reference/core/types.md#account).[`provider`](/reference/core/types.md#provider)
 
 #### providerAccountId
 
@@ -504,7 +504,7 @@ This value depends on the type of the provider being used to create the account.
 
 ##### Inherited from
 
-[`types.Account.providerAccountId`](types.md#provideraccountid)
+[`Account`](/reference/core/types.md#account).[`providerAccountId`](/reference/core/types.md#provideraccountid)
 
 #### expires\_at?
 
@@ -512,11 +512,11 @@ This value depends on the type of the provider being used to create the account.
 expires_at?: number;
 ```
 
-Calculated value based on [OAuth2TokenEndpointResponse.expires_in]([object Object]).
+Calculated value based on OAuth2TokenEndpointResponse.expires_in.
 
-It is the absolute timestamp (in seconds) when the [OAuth2TokenEndpointResponse.access_token]([object Object]) expires.
+It is the absolute timestamp (in seconds) when the OAuth2TokenEndpointResponse.access_token expires.
 
-This value can be used for implementing token rotation together with [OAuth2TokenEndpointResponse.refresh_token]([object Object]).
+This value can be used for implementing token rotation together with OAuth2TokenEndpointResponse.refresh_token.
 
 ##### See
 
@@ -525,7 +525,7 @@ This value can be used for implementing token rotation together with [OAuth2Toke
 
 ##### Inherited from
 
-[`types.Account.expires_at`](types.md#expires_at)
+[`Account`](/reference/core/types.md#account).[`expires_at`](/reference/core/types.md#expires_at)
 
 ***
 
@@ -579,7 +579,7 @@ A corresponding account is also created and linked to the user.
 
 ### Extends
 
-- [`User`](types.md#user)
+- [`User`](/reference/core/types.md#user)
 
 ### Properties
 

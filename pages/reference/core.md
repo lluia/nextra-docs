@@ -43,13 +43,13 @@ function Auth(request, config): Promise<ResponseInternal>
 
 Core functionality provided by Auth.js.
 
-Receives a standard [Request]([object Object]) and returns a [Response]([object Object]).
+Receives a standard Request and returns a Response.
 
 #### Parameters
 
 • **request**: [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
 
-• **config**: [`AuthConfig`](core.md#authconfig)
+• **config**: [`AuthConfig`](/reference/core#authconfig)
 
 #### Returns
 
@@ -80,13 +80,13 @@ function Auth(request, config): Promise<Response>
 
 Core functionality provided by Auth.js.
 
-Receives a standard [Request]([object Object]) and returns a [Response]([object Object]).
+Receives a standard Request and returns a Response.
 
 #### Parameters
 
 • **request**: [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
 
-• **config**: `Omit`\<[`AuthConfig`](core.md#authconfig), `"raw"`\>
+• **config**: `Omit`\<[`AuthConfig`](/reference/core#authconfig), `"raw"`\>
 
 #### Returns
 
@@ -123,7 +123,7 @@ Set default env variables on the config object
 
 • **envObject**: `any`
 
-• **config**: [`AuthConfig`](core.md#authconfig)
+• **config**: [`AuthConfig`](/reference/core#authconfig)
 
 ### Returns
 
@@ -133,7 +133,7 @@ Set default env variables on the config object
 
 ## AuthConfig
 
-Configure the [Auth](core.md#auth) method.
+Configure the [Auth](/reference/core#auth) method.
 
 ### Example
 
@@ -231,7 +231,7 @@ debug?: boolean;
 
 Set debug to true to enable debug messages for authentication and database operations.
 
-- ⚠ If you added a custom [AuthConfig.logger](core.md#logger), this setting is ignored.
+- ⚠ If you added a custom [AuthConfig.logger](/reference/core#logger), this setting is ignored.
 
 ##### Default
 
@@ -283,7 +283,7 @@ Experimental features are not guaranteed to be stable and may change or be remov
 jwt?: Partial<JWTOptions>;
 ```
 
-JSON Web Tokens are enabled by default if you have not specified an [AuthConfig.adapter](core.md#adapter).
+JSON Web Tokens are enabled by default if you have not specified an [AuthConfig.adapter](/reference/core#adapter).
 JSON Web Tokens are encrypted (JWE) by default. We recommend you keep this behaviour.
 
 #### logger?
@@ -315,7 +315,7 @@ export default NextAuth({
 })
 ```
 
-- ⚠ When set, the [AuthConfig.debug](core.md#debug) option is ignored
+- ⚠ When set, the [AuthConfig.debug](/reference/core#debug) option is ignored
 
 ##### Default
 
@@ -494,7 +494,7 @@ If set to `0`, session is updated every time.
 theme?: Theme;
 ```
 
-Changes the theme of built-in [AuthConfig.pages](core.md#pages).
+Changes the theme of built-in [AuthConfig.pages](/reference/core#pages).
 
 #### trustHost?
 
@@ -539,9 +539,9 @@ const raw: *typeof* raw;
 This option is intended for framework authors.
 :::
 
-Auth.js returns a web standard [Response]([object Object]) by default, but
+Auth.js returns a web standard Response by default, but
 if you are implementing a framework you might want to get access to the raw internal response
-by passing this value to [AuthConfig.raw]([object Object]).
+by passing this value to AuthConfig.raw.
 
 ***
 
@@ -557,4 +557,4 @@ This option is intended for framework authors.
 
 Auth.js comes with built-in [CSRF](https://authjs.dev/concepts/security#csrf) protection, but
 if you are implementing a framework that is already protected against CSRF attacks, you can skip this check by
-passing this value to [AuthConfig.skipCSRFCheck]([object Object]).
+passing this value to AuthConfig.skipCSRFCheck.
