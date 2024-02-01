@@ -71,7 +71,7 @@ Once you have decided how to authenticate users in your application (you can alw
 Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
 
 <ListDisclosure limit={8}>
-  {Object.entries(manifest.providers).map(([id, name]) => (
+  {Object.entries(manifest.providersOAuth).map(([id, name]) => (
     <Link
       href={`/reference/oauth-providers/${id}`}
       key={name}

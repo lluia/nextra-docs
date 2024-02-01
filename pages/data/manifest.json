@@ -41,7 +41,7 @@
     "unstorage": "Unstorage",
     "xata": "Xata"
   },
-  "providers": {
+  "providersOAuth": {
     "github": "GitHub",
     "google": "Google",
     "twitter": "Twitter",
@@ -115,7 +115,7 @@
     "zoho": "Zoho",
     "zoom": "Zoom"
   },
-  "emailProviders": {
+  "providersEmail": {
     "resend": "Resend",
     "sendgrid": "Sendgrid",
     "nodemailer": "Nodemailer"

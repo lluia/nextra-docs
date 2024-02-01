@@ -47,7 +47,7 @@ export const ProviderMarquee = memo(() => {
         scatterRandomly
         resetAfterTries={200}
       >
-        {Object.entries(manifest.providers)
+        {Object.entries(manifest.providersOAuth)
           .sort(() => Math.random() - 0.5)
           .filter((_, i) => i < logoCount)
           .map(([key, name]) => (

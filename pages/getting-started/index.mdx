@@ -39,7 +39,7 @@ There are 3 ways to authenticate users with Auth.js:
 ### Official Providers
 
 <ListDisclosure limit={8}>
-  {Object.entries(manifest.providers).map(([id, name]) => (
+  {Object.entries(manifest.providersOAuth).map(([id, name]) => (
     <Link
       href={`/reference/core/providers/${id}`}
       key={name}
