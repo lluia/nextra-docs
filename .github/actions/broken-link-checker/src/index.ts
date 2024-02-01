@@ -41,10 +41,12 @@ async function findBotComment({
   }
 }
 
-async function updateCheckStatus(commentUrl?: string): Promise<void> {
+async function updateCheckStatus(
+  brokenLinkCount: number,
+  commentUrl?: string
+): Promise<void> {
   const checkName = "Broken Link Checker";
-  const summary =
-    "This PR introduces broken links to the docs. Click details for a list.";
+  const summary = `Found ${brokenLinkCount} broken links in this PR. Click details for a list.`;
   const text = `[See the comment for details](${commentUrl})`;
   const { context, getOctokit } = github;
   const octokit = getOctokit(process.env.GITHUB_TOKEN!);
@@ -98,7 +100,9 @@ const postComment = async (outputMd: string) => {
       repo,
       prNumber,
     });
+    console.log("botComment", botComment);
     if (botComment) {
+      console.log("Updating Comment");
       const { data } = await octokit.rest.issues.updateComment({
         owner,
         repo,
@@ -108,6 +112,7 @@ const postComment = async (outputMd: string) => {
 
       return data.html_url;
     } else {
+      console.log("Creating Comment");
       const { data } = await octokit.rest.issues.createComment({
         owner,
         repo,
@@ -117,7 +122,7 @@ const postComment = async (outputMd: string) => {
       return data.html_url;
     }
   } catch (error) {
-    setFailed("Error updating comment: " + error);
+    setFailed("Error commenting: " + error);
     return "";
   }
 };
@@ -134,21 +139,18 @@ const generateOutputMd = (output: Output): string => {
     return acc;
   }, {});
   Object.entries(linksByPage).forEach(([page, links]) => {
-    const pageBasePath = new URL(page).pathname;
     outputMd += `
 
 ### \`${page}\`
 
-| link | text | line |
+| Target Link | Link Text | Broken Reason |
 |------|------|----------|`;
     // @ts-expect-error
     links.forEach((link: TODO) => {
       outputMd += `
-| ${link.url.resolved} | ${link.html.text
-        .trim()
-        .replaceAll("\n", "")} | \`${pageBasePath}:${
-        link.html.location.line
-      }\` |`;
+| ${link.url.resolved} | ${link.html.text.trim().replaceAll("\n", "")} | ${
+        link.brokenReason
+      } |`;
     });
   });
 
@@ -189,24 +191,16 @@ async function brokenLinkChecker(): Promise<void> {
       output.errors.push(error);
     },
     link: (result: TODO) => {
-      if (result.broken && result.brokenReason === "HTTP_404") {
-        // console.log({ result, customData });
+      if (result.broken) {
         output.links.push(result);
       }
     },
     end: async () => {
-      // console.log({
-      //   output,
-      //   link0: output.links[0],
-      //   link0Html: output.links[0].html,
-      //   page0: output.pages[0],
-      // });
       if (output.links.length) {
         const outputMd = generateOutputMd(output);
-        // console.log(outputMd);
         const commentUrl = await postComment(outputMd);
 
-        await updateCheckStatus(commentUrl);
+        await updateCheckStatus(output.links.length, commentUrl);
         setFailed(`Found broken links`);
       }
     },

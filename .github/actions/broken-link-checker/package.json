@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsup --clean --minify --format esm src/index.ts",
-    "build2": "pnpm types && ncc build src/index.ts --target es2022 -m -o ./lib --license licenses.txt",
     "types": "tsc"
   },
   "keywords": [],
@@ -15,7 +14,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.15",
-    "@vercel/ncc": "^0.38.1",
     "tsup": "^8.0.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
