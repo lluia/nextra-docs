@@ -149,22 +149,25 @@ const generateOutputMd = (output: Output): string => {
 | Target Link | Link Text  |
 |------|------|`;
 
-  // @ts-expect-error
-  links.forEach((link: TODO) => {
-      outputMd += `| ${new URL(link.url.resolved).pathname} | "${link.html.text.trim().replaceAll("\n", "")}" |`
-  });
+    // @ts-expect-error
+    links.forEach((link: TODO) => {
+      outputMd += `| ${new URL(link.url.resolved).pathname} | "${link.html.text
+        .trim()
+        .replaceAll("\n", "")}" |`;
+    });
 
-  if (output.errors.length) {
-    outputMd += `
+    if (output.errors.length) {
+      outputMd += `
 ### Errors
 `;
-    output.errors.forEach((error) => {
-      outputMd += `
+      output.errors.forEach((error) => {
+        outputMd += `
 ${error}
 `;
-    });
-  }
-  return outputMd;
+      });
+    }
+    return outputMd;
+  });
 };
 
 // Main function that triggers link validation across .mdx files
