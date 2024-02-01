@@ -19,7 +19,7 @@ type FindBotComment = {
   prNumber: number;
 };
 
-const COMMENT_TAG = "## Broken Links";
+const COMMENT_TAG = "## Found Broken Links";
 
 async function findBotComment({
   octokit,
@@ -128,7 +128,10 @@ const postComment = async (outputMd: string) => {
 };
 
 const generateOutputMd = (output: Output): string => {
-  let outputMd = `${COMMENT_TAG}`;
+  let outputMd = `${COMMENT_TAG}
+
+> ${output.links.length} broken links found. Links organised below by source page, or page where they were found.
+`;
   const linksByPage = output.links.reduce((acc, link) => {
     if (!acc[link.base.resolved]) {
       acc[link.base.resolved] = [];
@@ -138,10 +141,10 @@ const generateOutputMd = (output: Output): string => {
     }
     return acc;
   }, {});
-  Object.entries(linksByPage).forEach(([page, links]) => {
+  Object.entries(linksByPage).forEach(([page, links], i) => {
     outputMd += `
 
-### \`${page}\`
+### ${i + 1} \`${page}\`
 
 | Target Link | Link Text | Broken Reason |
 |------|------|----------|`;
