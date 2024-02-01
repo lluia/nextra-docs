@@ -15,7 +15,7 @@ import manifest from "@/data/manifest.json";
 At this point, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
 - [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- [Token-based authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
+- [Passwordless authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
 - [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs,
   WebAuthn, etc..._ )
 
@@ -56,13 +56,13 @@ Once you have decided how to authenticate users in your application (you can alw
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Trigger>
-    <RichTabs.Trigger key="token-auth" value="token-auth">
+    <RichTabs.Trigger key="token-auth" value="passwordless">
       <div className="flex flex-col justify-center gap-1 items-center h-full">
         <ChatDots fontSize="2.5rem" />
-        <span>Setup Token auth</span>
+        <span>Passwordless</span>
       </div>
     </RichTabs.Trigger>
-    <RichTabs.Trigger key="external-auth" value="external-auth">
+    <RichTabs.Trigger key="external-auth" value="credentials">
       <div className="flex flex-col justify-center gap-1 items-center h-full">
         <Password fontSize="2.5rem" />
         <span>Setup Credentials</span>
@@ -71,85 +71,15 @@ Once you have decided how to authenticate users in your application (you can alw
   </RichTabs.List>
   <RichTabs.Content className="p-8" key="oauth" value="oauth">
   <SelectProvider />
-</RichTabs.Content>
+  </RichTabs.Content>
 
-<RichTabs.Content className="p-8" key="passwordless" value="passwordless">
+{" "}
 
-You can setup Auth.js to allow passwordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
-
-Once the user provide their email address, a **Verification Token** is sent to the them. By default this token is valid <u>for 24 hours</u>. If the Verification Token is used within that time (i.e. by clicking on the link in the email) an account is created for the user and they are signed in.
-
-<Callout>
-  Magic links are setup through the [`EmailProvider`](/). The `EmailProvider`
-  can be used with both [JSON Web Tokens](https://jwt.io/) and [database
-  sessions](/concepts/session-strategies#database-session), but you **must
-  configure a database to use it**. It is not possible to enable email sign in
-  without using a database.
-</Callout>
-
-There are two ways to setup magic links through the `EmailProvider`, either through an SMTP server or via HTTP-based email services like AWS SES, Postmark, Sendgrid, etc. We're going to walk through the SMTP Server setup here.
-
-<Callout type="info">
-  Make sure you check the [HTTP-based magic links tutorial](/) in case you want
-  to integrate with an HTTP-based email service instead of an SMTP server.
-</Callout>
-
-<Steps>
-
-### Install `nodemailer`
-
-Auth.js does not include `nodemailer` as a dependency, so you'll need to install it yourself if you want to use the [`EmailProvider`](/). Run:
-
-```sh npm2yarn
-npm install nodemailer
-```
-
-You will need access to an SMTP server, ideally from one of [the services known to work with nodemailer](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/).
-
-### Database Adapter
-
-Please make sure you've [setup a database adapter](/getting-started/database), as mentioned earlier,
-a database is required for passwordless login to work as verification tokens need to be stored.
-
-### Connecting to the SMTP server
-
-There are two ways to configure the SMTP server connection: using a connection string or a configuration object.
-
-<Tabs items={['Connection string', 'Configuration object']}>
-  <Tabs.Tab>
-
-```bash filename=".env"
-EMAIL_SERVER=smtp://username:password@smtp.example.com:587
-EMAIL_FROM=noreply@example.com
-```
-
-```ts filename="./auth.ts"
-import EmailProvider from "next-auth/providers/email";
-...
-providers: [
-  EmailProvider({
-    server: process.env.EMAIL_SERVER,
-    from: process.env.EMAIL_FROM
-  }),
-],
-```
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-```bash filename=".env"
-EMAIL_SERVER_USER=username
-EMAIL_SERVER_PASSWORD=password
-EMAIL_SERVER_HOST=smtp.example.com
-EMAIL_SERVER_PORT=587
-EMAIL_FROM=noreply@example.com
-```
-
-<RichTabs.Content className="p-8" key="token-auth" value="token-auth">
+<RichTabs.Content className="p-8" key="token-auth" value="passwordless">
   <TokenAuthInstructions />
 </RichTabs.Content>
 
-<RichTabs.Content className="p-8" key="external-auth" value="external-auth">
+<RichTabs.Content className="p-8" key="external-auth" value="credentials">
 
 To setup Auth.js with external authentication we need to use the `CredentialsProvider`, which is designed to forward any inserted credentials (.i.e username/password) in the sign in form to your authentication service. This provider is very flexible, and can be easily setup to work with modern authentication methods like for example [WebAuthn](https://webauthn.io/).
 
@@ -249,9 +179,9 @@ Now display the `SignIn` button we made somewhere in your app and click it, inse
 
 <Callout type="info">
   If you're using TypeScript, you can [augment the `User`
-  interface](/getting-started/typescript#module-augmentation) to match the response of your
-  `authorize` callback, so whenever you read the user in other callbacks (like
-  the `jwt`) the type will match correctly.
+  interface](/getting-started/typescript#module-augmentation) to match the
+  response of your `authorize` callback, so whenever you read the user in other
+  callbacks (like the `jwt`) the type will match correctly.
 </Callout>
 
 </Steps>
