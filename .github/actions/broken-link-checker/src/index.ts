@@ -151,9 +151,9 @@ const generateOutputMd = (output: Output): string => {
     // @ts-expect-error
     links.forEach((link: TODO) => {
       outputMd += `
-| ${link.url.resolved} | ${link.html.text.trim().replaceAll("\n", "")} | ${
+| ${link.url.resolved} | "${link.html.text.trim().replaceAll("\n", "")}" | \`${
         link.brokenReason
-      } |`;
+      }\` |`;
     });
   });
 
