@@ -159,7 +159,7 @@ const generateOutputMd = (output: Output): string => {
     links.forEach((link: TODO) => {
       outputMd += `| [${new URL(link.url.resolved).pathname}](${
         link.url.resolved
-      }) | "${link.html.text.trim().replaceAll("\n", "")}" |
+      }) | "${link.html?.text?.trim().replaceAll("\n", "")}" |
 `;
     });
   });
