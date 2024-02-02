@@ -25,7 +25,7 @@ export function OAuthInstructions({ providerId, disabled = false }: Props) {
       .catch(console.error);
   }, []);
 
-  const providerName = manifest.providers[providerId];
+  const providerName = manifest.providersOAuth[providerId];
 
   const providerEnVars = (
     <Pre data-filename=".env.local">
@@ -72,7 +72,7 @@ AUTH_${providerId.toUpperCase().replace(/-/ig, "_", )}_SECRET={CLIENT_SECRET}
         ask you to enter your application’s callback URL. See below for the
         callback URL you must insert based on your client library.
       </p>
-      <h4 className="font-bold text-lg mt-4 -mb-3">Callback URL</h4>
+      <h4 className="mt-4 -mb-3 text-lg font-bold">Callback URL</h4>
       <Code>
         <Code.Next>
           <Pre>
