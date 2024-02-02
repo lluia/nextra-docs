@@ -1,8 +1,11 @@
 import { Steps, Callout, Tabs } from "nextra/components";
 import { Link } from "@/components/Link";
+import { SelectProvider } from "@/components/SelectProvider";
 import { RichTabs } from "@/components/RichTabs";
 import { Code } from "@/components/Code";
 import { Screenshot } from "@/components/Screenshot";
+import { OAuthInstructions } from "@/components/OAuthInstructions";
+import { TokenAuthInstructions } from "@/components/TokenAuthInstructions";
 import { GitDiff, Password, ChatDots } from "@phosphor-icons/react";
 import { ListDisclosure } from "@/components/ListDisclosure";
 import manifest from "@/data/manifest.json";
@@ -12,7 +15,7 @@ import manifest from "@/data/manifest.json";
 At this point, you need to decide how you're gonna authenticate users in your application. Auth.js supports <u>three main authentication paradigms</u>:
 
 - [OAuth authentication](/getting-started/providers/oauth-tutorial) ( _Sign in with Google, Github, LinkedIn, etc..._ )
-- [Token-based authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
+- [Passwordless authentication](/getting-started/providers/email-tutorial) ( _Magic links, OTP codes, etc..._ )
 - [Credentials](/getting-started/providers/credentials-tutorial) ( _Integrating with external APIs,
   WebAuthn, etc..._ )
 
@@ -53,13 +56,13 @@ Once you have decided how to authenticate users in your application (you can alw
         <span>Setup OAuth</span>
       </div>
     </RichTabs.Trigger>
-    <RichTabs.Trigger key="passwordless" value="passwordless">
+    <RichTabs.Trigger key="token-auth" value="passwordless">
       <div className="flex flex-col justify-center gap-1 items-center h-full">
         <ChatDots fontSize="2.5rem" />
-        <span>Setup Token auth</span>
+        <span>Passwordless</span>
       </div>
     </RichTabs.Trigger>
-    <RichTabs.Trigger key="external-auth" value="external-auth">
+    <RichTabs.Trigger key="external-auth" value="credentials">
       <div className="flex flex-col justify-center gap-1 items-center h-full">
         <Password fontSize="2.5rem" />
         <span>Setup Credentials</span>
@@ -67,383 +70,16 @@ Once you have decided how to authenticate users in your application (you can alw
     </RichTabs.Trigger>
   </RichTabs.List>
   <RichTabs.Content className="p-8" key="oauth" value="oauth">
+  <SelectProvider />
+  </RichTabs.Content>
 
-Auth.js has built-in support for a lot of OAuth providers, you can see the full list below and click in one of them to learn how to configure it.
+{" "}
 
-<ListDisclosure limit={8}>
-  {Object.entries(manifest.providersOAuth).map(([id, name]) => (
-    <Link
-      href={`/reference/oauth-providers/${id}`}
-      key={name}
-      className="p-4 border border-solid dark:border-neutral-800 dark:bg-neutral-950
-      border-slate-200 rounded-lg flex flex-col items-center justify-between w-36 shadow-lg h-32"
-    >
-      <div className="grid place-items-center flex-grow">
-        <img src={`/img/providers/${id}.svg`} className="w-11 mt-2" />
-      </div>
-      <div className="text-sm text-center break-word-legacy !text-wrap">
-        {name}
-      </div>
-    </Link>
-  ))}
-</ListDisclosure>
-
-<Callout type="info">
-  Can't find the OAuth provider you're looking for? In that case, you'll need to
-  build your own provider, which is easy. [Learn
-  how](/tutorials/deep-dive/oauth-github-setup). Auth.js can be setup with any
-  OAuth provider as long as they support **OAuth/OIDC**.
-</Callout>
-
-<Steps>
-
-### Setup Provider OAuth App
-
-First you must setup an OAuth application on your provider's platform.
-
-<Callout>
-  If you haven't used OAuth before, you can read the deep dive guide on [how to
-  setup Github OAuth with Auth.js](/tutorials/oauth-github-setup).
-</Callout>
-
-You can find detailed instructions on registering an OAuth application with your provider of choice on their respective pages linked above. When registering an OAuth application, they will all ask you to enter your application's callback URL. See below for the default callback URL pattern based on your client library.
-
-<Code>
-  <Code.Next>
-
-```
-[origin]/api/auth/callback/[provider]
-```
-
-In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
-
-```
-[origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
-```
-
-  </Code.Next>
-  <Code.Svelte>
-
-```
-[origin]/api/callback/[provider]
-```
-
-In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
-
-```
-[origin]/api/callback/[provider_name] → http://localhost:3000/api/callback/github
-```
-
-  </Code.Svelte>
-  {/* <Code.Solid>
-
-```
-[origin]/api/auth/callback/[provider]
-```
-
-In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
-
-```
-[origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
-```
-
-  </Code.Solid> */}
-  <Code.Express>
-
-```
-[origin]/api/auth/callback/[provider]
-```
-
-In this case, given we want to try our application locally, it would be the provider's name (always in [kebab case](https://www.theserverside.com/definition/Kebab-case), so for Github → `github`):
-
-```
-[origin]/api/auth/callback/[provider_name] → http://localhost:3000/api/auth/callback/github
-```
-
-  </Code.Express>
-</Code>
-
-### Setup Environment Variables
-
-Once registered, you should get a **Client ID** and **Client Secret**. Add those in your application environment file (`.env.local` for Next.js) like so:
-
-```bash filename=".env.local"
-AUTH_GITHUB_ID={CLIENT_ID}
-AUTH_GITHUB_SECRET={CLIENT_SECRET}
-```
-
-Auth.js will automatically pick up these if formatted like the example above. You can [also use a different name for the environment variables](/concepts/environment-variables#oauth-variables) if needed, but then you'll need to pass them to the provider manually. All other client libraries also require you to manually pass the environment variables to the provider.
-
-### Setup Auth.js Provider
-
-Let's enable Github as a sign in option in our Auth.js configuration. You'll have to import the `GitHub` provider from the package and pass it to the `providers` array we setup before. With most Auth.js clients you'll also have to pass the provider your environment variables manually.
-
-<Code>
-  <Code.Next>
-
-```ts filename="@/auth.ts"
-import NextAuth from "next-auth";
-// In this example we're using Github, if you're using another provider, for example, like Google, it'll be:
-// `import Google from "next-auth/providers/google"`
-import GitHub from "next-auth/providers/github";
-
-export const { signIn, auth } = NextAuth({
-  providers: [GitHub],
-});
-```
-
-  </Code.Next>
-  <Code.Svelte>
-
-```ts filename="./src/hooks.server.ts"
-import { SvelteKitAuth } from "@auth/sveltekit";
-import GitHub from "@auth/sveltekit/providers/github";
-
-export const handle = SvelteKitAuth({
-  providers: [GitHub()],
-});
-```
-
-  </Code.Svelte>
-  {/* <Code.Solid>
-
-```ts filename="./routes/api/auth/[...solidauth].ts"
-import { SolidAuth, type SolidAuthConfig } from "@auth/solid-start";
-import GitHub from "@auth/core/providers/github";
-
-export const authOpts: SolidAuthConfig = {
-  providers: [
-    GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
-    }),
-  ],
-};
-
-export const { GET, POST } = SolidAuth(authOpts);
-```
-
-  </Code.Solid> */}
-  <Code.Express>
-
-```ts filename="./src/routes/auth.route.ts"
-import { ExpressAuth } from "@auth/express";
-import GitHub from "@auth/express/providers/github";
-import express from "express";
-
-const app = express();
-
-// Make sure to use these body parsers so Auth.js can receive data from the client
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
-app.use("trust proxy");
-
-app.use(
-  "/api/auth/*",
-  ExpressAuth({
-    providers: [
-      GitHub({
-        clientId: process.env.AUTH_GITHUB_ID,
-        clientSecret: process.env.AUTH_GITHUB_SECRET,
-      }),
-    ],
-  })
-);
-```
-
-  </Code.Express>
-</Code>
-
-### Signin Button
-
-Next, we can add a sign in button somewhere in your application like the Navbar. This will forward the user on to the Auth.js default signin page.
-
-<Code>
-<Code.Next>
-
-```tsx filename="./components/sign-in.tsx"
-import { signIn } from "@/auth.ts";
-
-export function SignIn() {
-  return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("github");
-      }}
-    >
-      <button type="submit">Signin with GitHub</button>
-    </form>
-  );
-}
-```
-
-</Code.Next>
-</Code>
-
-### Ship it!
-
-Click the "Sign in with GitHub" button and if all went well, you should be redirected to Github and once authenticated, redirected back to the app!
-
-<Callout>
-  You can build your own Signin, Signout, etc. pages to match the style of your
-  application, check out [session
-  management](/getting-started/session-management) for more details.
-</Callout>
-
-</Steps>
-
+<RichTabs.Content className="p-8" key="token-auth" value="passwordless">
+  <TokenAuthInstructions />
 </RichTabs.Content>
 
-<RichTabs.Content className="p-8" key="passwordless" value="passwordless">
-
-You can setup Auth.js to allow passwordless authentication. The most common use case is to set up "magic links" (sign in tokens sent to the user's email), you will likely have seen these if you have used services like Slack or Notion before.
-
-Once the user provide their email address, a **Verification Token** is sent to the them. By default this token is valid <u>for 24 hours</u>. If the Verification Token is used within that time (i.e. by clicking on the link in the email) an account is created for the user and they are signed in.
-
-<Callout>
-  Magic links are setup through the [`EmailProvider`](/). The `EmailProvider`
-  can be used with both [JSON Web Tokens](https://jwt.io/) and [database
-  sessions](/concepts/session-strategies#database-session), but you **must
-  configure a database to use it**. It is not possible to enable email sign in
-  without using a database.
-</Callout>
-
-There are two ways to setup magic links through the `EmailProvider`, either through an SMTP server or via HTTP-based email services like AWS SES, Postmark, Sendgrid, etc. We're going to walk through the SMTP Server setup here.
-
-<Callout type="info">
-  Make sure you check the [HTTP-based magic links tutorial](/) in case you want
-  to integrate with an HTTP-based email service instead of an SMTP server.
-</Callout>
-
-<Steps>
-
-### Install `nodemailer`
-
-Auth.js does not include `nodemailer` as a dependency, so you'll need to install it yourself if you want to use the [`EmailProvider`](/). Run:
-
-```sh npm2yarn
-npm install nodemailer
-```
-
-You will need access to an SMTP server, ideally from one of [the services known to work with nodemailer](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/).
-
-### Database Adapter
-
-Please make sure you've [setup a database adapter](/getting-started/database), as mentioned earlier,
-a database is required for passwordless login to work as verification tokens need to be stored.
-
-### Connecting to the SMTP server
-
-There are two ways to configure the SMTP server connection: using a connection string or a configuration object.
-
-<Tabs items={['Connection string', 'Configuration object']}>
-  <Tabs.Tab>
-
-```bash filename=".env"
-EMAIL_SERVER=smtp://username:password@smtp.example.com:587
-EMAIL_FROM=noreply@example.com
-```
-
-```ts filename="./auth.ts"
-import EmailProvider from "next-auth/providers/email";
-...
-providers: [
-  EmailProvider({
-    server: process.env.EMAIL_SERVER,
-    from: process.env.EMAIL_FROM
-  }),
-],
-```
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-```bash filename=".env"
-EMAIL_SERVER_USER=username
-EMAIL_SERVER_PASSWORD=password
-EMAIL_SERVER_HOST=smtp.example.com
-EMAIL_SERVER_PORT=587
-EMAIL_FROM=noreply@example.com
-```
-
-```ts filename="./auth.ts"
-import EmailProvider from "next-auth/providers/email";
-...
-providers: [
-  EmailProvider({
-    server: {
-      host: process.env.EMAIL_SERVER_HOST,
-      port: process.env.EMAIL_SERVER_PORT,
-      auth: {
-        user: process.env.EMAIL_SERVER_USER,
-        pass: process.env.EMAIL_SERVER_PASSWORD
-      }
-    },
-    from: process.env.EMAIL_FROM
-  }),
-],
-```
-
-  </Tabs.Tab>
-</Tabs>
-
-<Callout type="info">
-  Check our [Customising magic links emails](/) to learn how to change the look
-  and feel of the emails the user receives to sign in.
-</Callout>
-
-<Callout>
-  Check our deep-dive tutorial on how to setup [Auth.js magic links with
-  SendGrid](/tutorials/deep-dive/passwordless-sendgrid-setup) for a better
-  understanding on how to setup magic links end-to-end (including database
-  setup).
-</Callout>
-
-### Signin Button
-
-Next, we can add a sign in button somewhere in your application like the Navbar. This will forward the user on to the Auth.js default signin page.
-
-<Code>
-<Code.Next>
-
-```tsx filename="./components/sign-in.tsx"
-import { signIn } from "../../auth.ts";
-
-export function SignIn() {
-  return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn();
-      }}
-    >
-      <button type="submit">Sign In</button>
-    </form>
-  );
-}
-```
-
-</Code.Next>
-</Code>
-
-### Signin
-
-Start your application, click on the sign in button we just added, and you should see Auth.js [built-in sign in page](/tutorials/custom-pages/built-in-pages) with the option to sign in with your email:
-
-import MagicLink from "../../public/img/magic-links/start.webp";
-
-<Screenshot src={MagicLink} alt="Screenshot of sign in page" />
-
-Insert your email and click "Sign in with Email". You should receive an email from Auth.js, click on it and should be redirected to your application, landing already authenticated.
-
-</Steps>
-
-</RichTabs.Content>
-
-<RichTabs.Content className="p-8" key="external-auth" value="external-auth">
+<RichTabs.Content className="p-8" key="external-auth" value="credentials">
 
 To setup Auth.js with external authentication we need to use the `CredentialsProvider`, which is designed to forward any inserted credentials (.i.e username/password) in the sign in form to your authentication service. This provider is very flexible, and can be easily setup to work with modern authentication methods like for example [WebAuthn](https://webauthn.io/).
 

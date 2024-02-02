@@ -34,6 +34,8 @@ module.exports = {
         "no-console": "error",
         // React does not have to be imported in the latest version of React
         "react/react-in-jsx-scope": "off",
+        // Most of the time useless...
+        "react/no-unescaped-entities": "off",
         // to ensure an actual error is suppressed
         "@typescript-eslint/prefer-ts-expect-error": "error",
         // enforce consistent styling for component declarations

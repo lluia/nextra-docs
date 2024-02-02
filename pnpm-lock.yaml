@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@ariakit/react':
+    specifier: ^0.4.0
+    version: 0.4.0(react-dom@18.2.0)(react@18.2.0)
   '@ark-ui/react':
     specifier: ^1.1.0
     version: 1.1.0(@internationalized/date@3.5.0)(react-dom@18.2.0)(react@18.2.0)
@@ -132,6 +135,34 @@ packages:
       ts-invariant: 0.10.3
       tslib: 2.6.2
       zen-observable-ts: 1.2.5
+    dev: false
+
+  /@ariakit/core@0.4.0:
+    resolution: {integrity: sha512-7Rav88xaFFVTOo72t7Srr3FOxVUh3oV3UoJyypmZS1qkONb56j/iDcQ4xf/fqDomIdFfgn9uYWGCa/JSDgf1iQ==}
+    dev: false
+
+  /@ariakit/react-core@0.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-deC77vBpAqcX0MNI9WC/KfsyqVro+KJkEQM3gRRtw2uNb+Z03g5hWvRzyQ1eSrlbD0AfcYEKico4wEs/zcEMNA==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@ariakit/core': 0.4.0
+      '@floating-ui/dom': 1.5.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@ariakit/react@0.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-S1bqF/NCj9MHo/oIEfuR5PhV9/X5imYqtfAjZ7XrMnnw2zJVnVd7sFPqyyJLBsZ7lkMnAVntkOMPoyzr3yhCCg==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@ariakit/react-core': 0.4.0(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@ark-ui/anatomy@0.1.0(@internationalized/date@3.5.0):
@@ -3829,7 +3860,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001581
-      electron-to-chromium: 1.4.648
+      electron-to-chromium: 1.4.650
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.3)
     dev: false
@@ -4531,8 +4562,8 @@ packages:
   /electron-to-chromium@1.4.579:
     resolution: {integrity: sha512-bJKvA+awBIzYR0xRced7PrQuRIwGQPpo6ZLP62GAShahU9fWpsNN2IP6BSP1BLDDSbxvBVRGAMWlvVVq3npmLA==}
 
-  /electron-to-chromium@1.4.648:
-    resolution: {integrity: sha512-EmFMarXeqJp9cUKu/QEciEApn0S/xRcpZWuAm32U7NgoZCimjsilKXHRO9saeEW55eHZagIDg6XTUOv32w9pjg==}
+  /electron-to-chromium@1.4.650:
+    resolution: {integrity: sha512-sYSQhJCJa4aGA1wYol5cMQgekDBlbVfTRavlGZVr3WZpDdOPcp6a6xUnFfrt8TqZhsBYYbDxJZCjGfHuGupCRQ==}
     dev: false
 
   /elkjs@0.8.2:
@@ -8902,6 +8933,14 @@ packages:
       '@types/react': 18.2.46
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.46)(react@18.2.0)
+    dev: false
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /util-deprecate@1.0.2:

@@ -21,6 +21,12 @@ export default {
   },
   deployment: "Deployment",
   typescript: "TypeScript",
+  "-- connect": {
+    type: "separator",
+    title: "Connections",
+  },
+  providers: "OAuth Providers",
+  adapters: "Adapters",
   "-- more": {
     type: "separator",
     title: "More",

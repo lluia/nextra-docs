@@ -8,10 +8,18 @@ interface Props {
 
 export function Tooltip({ label, children }: Props) {
   return (
-    <ArkTooltip.Root openDelay={0} lazyMount unmountOnExit>
-      <ArkTooltip.Trigger>{children}</ArkTooltip.Trigger>
+    <ArkTooltip.Root
+      positioning={{ placement: "bottom" }}
+      openDelay={0}
+      lazyMount
+      unmountOnExit
+    >
+      <ArkTooltip.Trigger asChild={true}>{children}</ArkTooltip.Trigger>
       <ArkTooltip.Positioner>
-        <ArkTooltip.Content className="bg-purple-100 rounded-lg text-fuchsia-900 px-4 py-2 text-sm max-w-xs text-center shadow-md  border">
+        <ArkTooltip.Content
+          className="bg-purple-100 rounded-lg text-fuchsia-900 px-4 py-2 text-sm max-w-xs text-center shadow-md  border"
+          style={{ animation: "	animation: fadeIn .2s linear" }}
+        >
           {label}
         </ArkTooltip.Content>
       </ArkTooltip.Positioner>
