@@ -109,7 +109,7 @@ export function SelectProvider() {
             </div>
           </>
         ) : (
-          <p className="py-2 px-4 mt-6 bg-amber-100 rounded-md dark:bg-amber-400 dark:text-neutral-900">
+          <p className="py-2 px-4 mt-6 bg-purple-200/50 rounded-md dark:bg-purple-400/50 dark:text-neutral-900">
             Can't find the OAuth provider you're looking for? Then, you'll need
             to <Link href="/guides/custom-oauth">build your own provider</Link>.
           </p>
@@ -118,7 +118,7 @@ export function SelectProvider() {
       {selected ? (
         <OAuthInstructions
           providerId={selected}
-          disabled={term !== manifest.providers[selected]}
+          disabled={term !== manifest.providersOAuth[selected]}
         />
       ) : null}
     </>

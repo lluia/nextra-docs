@@ -14,7 +14,10 @@ export function LogosMarquee() {
         gradientColor="#171717"
         autoFill
       >
-        {Object.entries(manifest.providers)
+        {Object.entries({
+          ...manifest.providersEmail,
+          ...manifest.providersOAuth,
+        })
           .sort(() => Math.random() - 0.5)
           .map(([key, name]) => (
             <div

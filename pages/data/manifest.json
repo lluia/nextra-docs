@@ -41,12 +41,16 @@
     "unstorage": "Unstorage",
     "xata": "Xata"
   },
-  "providers": {
-    "42-school": "42 School",
+  "providersOAuth": {
+    "github": "GitHub",
+    "google": "Google",
+    "twitter": "Twitter",
     "apple": "Apple",
+    "discord": "Discord",
+    "auth0": "Auth0",
+    "42-school": "42 School",
     "asgardeo": "Asgardeo",
     "atlassian": "Atlassian",
-    "auth0": "Auth0",
     "authentik": "Authentik",
     "azure-ad-b2c": "Azure Active Directory B2C",
     "azure-ad": "Azure Active Directory",
@@ -60,19 +64,15 @@
     "cognito": "Cognito",
     "coinbase": "Coinbase",
     "descope": "Descope",
-    "discord": "Discord",
     "dribbble": "Dribbble",
     "dropbox": "Dropbox",
     "duende-identityserver6": "DuendeIdentityServer6",
     "eveonline": "EVE Online",
-    "facebook": "Facebook",
     "faceit": "FACEIT",
     "foursquare": "Foursquare",
     "freshbooks": "Freshbooks",
     "fusionauth": "FusionAuth",
-    "github": "GitHub",
     "gitlab": "GitLab",
-    "google": "Google",
     "hubspot": "HubSpot",
     "identity-server4": "IdentityServer4",
     "instagram": "Instagram",
@@ -105,7 +105,6 @@
     "todoist": "Todoist",
     "trakt": "Trakt",
     "twitch": "Twitch",
-    "twitter": "Twitter",
     "united-effects": "United Effects",
     "vk": "VK",
     "wikimedia": "Wikimedia",
@@ -115,5 +114,10 @@
     "zitadel": "ZITADEL",
     "zoho": "Zoho",
     "zoom": "Zoom"
+  },
+  "providersEmail": {
+    "resend": "Resend",
+    "sendgrid": "Sendgrid",
+    "nodemailer": "Nodemailer"
   }
 }

@@ -1,9 +1,11 @@
 import manifest from "@/data/manifest.json";
 import { useState } from "react";
 
-const providerList = Object.entries(manifest.providers).map(([id, name]) => {
-  return { id, name };
-});
+const providerList = Object.entries(manifest.providersOAuth).map(
+  ([id, name]) => {
+    return { id, name };
+  }
+);
 
 export function useSelectProvider() {
   const [term, setTerm] = useState("");

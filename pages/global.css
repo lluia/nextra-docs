@@ -107,6 +107,12 @@ details > *:not(summary) {
   }
 }
 
+@layer components {
+  .break-word-legacy {
+    word-break: break-word;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
